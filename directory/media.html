@@ -41,9 +41,9 @@
 .grp-l{display:inline-flex;align-items:center;font-size:12.5px;font-weight:800;color:var(--pt);background:var(--pt-soft);border-radius:6px;padding:5px 11px;margin-bottom:12px}
 .grp-l .g{font-size:11px;color:var(--sub-2);font-weight:700;margin-left:7px}
 .chips{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
-.chips span{display:flex;align-items:center;justify-content:center;text-align:center;font-size:13px;font-weight:600;color:var(--ink);background:var(--surf);border:1px solid var(--line);border-radius:7px;padding:11px 8px;line-height:1.35;min-height:44px}
-.chips span:hover{border-color:var(--pt);color:var(--pt);background:var(--pt-soft)}
-.chips span mark{background:#FFF3C4;color:inherit;border-radius:2px;padding:0 1px}
+.chips a{display:flex;align-items:center;justify-content:center;text-align:center;font-size:13px;font-weight:600;color:var(--ink);text-decoration:none;background:var(--surf);border:1px solid var(--line);border-radius:7px;padding:11px 8px;line-height:1.35;min-height:44px;position:relative}
+.chips a:hover{border-color:var(--pt);color:var(--pt);background:var(--pt-soft)}
+.chips a mark{background:#FFF3C4;color:inherit;border-radius:2px;padding:0 1px}
 .empty{padding:20px 0;color:var(--sub-2);font-size:13.5px}
 .note{font-size:12.5px;color:var(--sub-2);line-height:1.7;margin:26px 0 60px;padding-top:18px;border-top:1px solid var(--line)}
 .note a{color:var(--pt);font-weight:600}
@@ -139,6 +139,22 @@ var DATA=[
   ]}
 ];
 var esc=function(s){return s.replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});};
+/* 매체·기관 공식 홈페이지 (확인된 곳만 직접 링크, 나머지는 네이버 검색으로 안전 연결) */
+var URLS={
+ '경향신문':'khan.co.kr','국민일보':'kmib.co.kr','동아일보':'donga.com','문화일보':'munhwa.com','서울신문':'seoul.co.kr','세계일보':'segye.com','조선일보':'chosun.com','중앙일보':'joongang.co.kr','한겨레':'hani.co.kr','한국일보':'hankookilbo.com','내일신문':'naeil.com',
+ 'KBS':'kbs.co.kr','MBC':'imbc.com','SBS':'sbs.co.kr','YTN':'ytn.co.kr','JTBC':'jtbc.co.kr','채널A':'ichannela.com','TV조선':'tvchosun.com','MBN':'mbn.co.kr','연합뉴스':'yna.co.kr','연합뉴스TV':'yonhapnewstv.co.kr','뉴스1':'news1.kr','뉴시스':'newsis.com','노컷뉴스':'nocutnews.co.kr','EBS':'ebs.co.kr','CBS':'cbs.co.kr','BBS':'bbsi.co.kr','PBC':'pbc.co.kr','FEBC':'febc.net','국악방송':'gugakfm.co.kr','TBS':'tbs.seoul.kr','TBN':'tbn.or.kr','아리랑국제방송':'arirang.com','한국경제TV':'wowtv.co.kr','KNN':'knn.co.kr','TBC':'tbc.co.kr','TJB':'tjb.co.kr','KBC':'ikbc.co.kr','UBC':'ubc.co.kr','JTV':'jtv.co.kr','JIBS':'jibs.co.kr','CJB':'cjb.co.kr','G1강원민방':'g1tv.co.kr','OBS경인TV':'obsnews.co.kr',
+ '매일경제':'mk.co.kr','한국경제':'hankyung.com','서울경제':'sedaily.com','헤럴드경제':'heraldcorp.com','아시아경제':'asiae.co.kr','파이낸셜뉴스':'fnnews.com','머니투데이':'mt.co.kr','이데일리':'edaily.co.kr','아주경제':'ajunews.com','조선비즈':'biz.chosun.com','비즈워치':'bizwatch.co.kr',
+ '전자신문':'etnews.com','디지털타임스':'dt.co.kr','아이뉴스24':'inews24.com','ZDNet Korea':'zdnet.co.kr','블로터':'bloter.net','IT조선':'it.chosun.com','디지털데일리':'ddaily.co.kr','테크M':'techm.kr',
+ '오마이뉴스':'ohmynews.com','프레시안':'pressian.com','데일리안':'dailian.co.kr','뉴스핌':'newspim.com','뉴스토마토':'newstomato.com','쿠키뉴스':'kukinews.com','위키트리':'wikitree.co.kr','인사이트':'insight.co.kr','민중의소리':'vop.co.kr',
+ '스포츠조선':'sportschosun.com','스포츠서울':'sportsseoul.com','일간스포츠':'isplus.com','스포츠동아':'sports.donga.com','OSEN':'osen.co.kr','마이데일리':'mydaily.co.kr','스타뉴스':'starnewskorea.com','엑스포츠뉴스':'xportsnews.com','스포탈코리아':'sportalkorea.com','텐아시아':'tenasia.co.kr',
+ '시사IN':'sisain.co.kr','시사저널':'sisajournal.com','한겨레21':'h21.hani.co.kr','주간조선':'weekly.chosun.com','주간동아':'weekly.donga.com','월간중앙':'jmagazine.joins.com','신동아':'shindonga.donga.com','여성동아':'woman.donga.com','톱클래스':'topclass.chosun.com','월간조선':'monthly.chosun.com','미디어오늘':'mediatoday.co.kr','위클리경향':'weekly.khan.co.kr',
+ '부산일보':'busan.com','국제신문':'kookje.co.kr','매일신문':'imaeil.com','영남일보':'yeongnam.com','강원일보':'kwnews.co.kr','강원도민일보':'kado.net','대전일보':'daejonilbo.com','중도일보':'joongdo.co.kr','경인일보':'kyeongin.com','인천일보':'incheonilbo.com','광주일보':'kwangju.co.kr','전남일보':'jnilbo.com','전북일보':'jjan.kr','경남신문':'knnews.co.kr','제주일보':'jejunews.com','대구일보':'idaegu.com',
+ '코리아헤럴드':'koreaherald.com','코리아타임스':'koreatimes.co.kr','코리아중앙데일리':'koreajoongangdaily.joins.com',
+ '환경일보':'hkbs.co.kr','농민신문':'nongmin.com','건설경제':'cnews.co.kr','의학신문':'bosa.co.kr','전기신문':'electimes.com','헬스조선':'health.chosun.com','코메디닷컴':'kormedi.com','여성신문':'womennews.co.kr',
+ '문화체육관광부':'mcst.go.kr','방송통신위원회':'kcc.go.kr','한국언론진흥재단':'kpf.or.kr','한국콘텐츠진흥원':'kocca.kr','한국방송광고진흥공사':'kobaco.co.kr','한국방송협회':'kba.or.kr','언론중재위원회':'pac.or.kr','영상물등급위원회':'kmrb.or.kr','한국저작권위원회':'copyright.or.kr','시청자미디어재단':'kcmf.or.kr',
+ '한국기자협회':'journalist.or.kr','한국신문협회':'presskorea.or.kr','한국신문방송편집인협회':'editor.or.kr','관훈클럽':'kwanhun.com','전국언론노동조합':'media.nodong.org','민주언론시민연합':'ccdm.or.kr','대한출판문화협회':'kpa21.or.kr'
+};
+function url(n){var u=URLS[n];return u?('https://'+u):('https://search.naver.com/search.naver?query='+encodeURIComponent(n));}
 /* 앵커 내비 */
 document.getElementById('anav').innerHTML=DATA.map(function(d){return '<a href="#'+d.id+'">'+d.title+'</a>';}).join('');
 /* 본문 렌더 */
@@ -146,7 +162,7 @@ function render(){
  document.getElementById('body').innerHTML=DATA.map(function(d,i){
   var groups=d.groups.map(function(g){
    var cat=g[0], items=g.slice(1);
-   var chips=items.map(function(n){return '<span data-n="'+n.toLowerCase()+'">'+esc(n)+'</span>';}).join('');
+   var chips=items.map(function(n){return '<a class="chip" data-n="'+n.toLowerCase()+'" href="'+url(n)+'" target="_blank" rel="noopener">'+esc(n)+'</a>';}).join('');
    return '<div class="grp" data-grp><div class="grp-l">'+cat+'<span class="g">'+items.length+'</span></div><div class="chips">'+chips+'</div></div>';
   }).join('');
   var total=d.groups.reduce(function(a,g){return a+g.length-1;},0);
@@ -169,7 +185,7 @@ function filter(){
   var secShown=0;
   sec.querySelectorAll('[data-grp]').forEach(function(grp){
    var grpShown=0;
-   grp.querySelectorAll('.chips span').forEach(function(sp){
+   grp.querySelectorAll('.chips a').forEach(function(sp){
     var name=sp.getAttribute('data-n');
     var hit=!q||name.indexOf(q)>-1;
     sp.style.display=hit?'':'none';
