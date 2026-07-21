@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제목 생성기 — PRCOME PR 도구</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="../assets/css/magazine-system.css">
+<script>window.MAG={root:'../',home:'../index.html',catBase:'../insights/index.html'};</script>
+<style>
+.subhead{padding:30px 0 6px}.subhead .crumb{font-size:12.5px;color:var(--sub);margin-bottom:12px}
+.subhead h1{font-size:clamp(24px,3vw,32px);font-weight:800;letter-spacing:-.03em;display:flex;align-items:center;gap:12px}
+.subhead h1 .tick{width:26px;height:3px;background:var(--pt);border-radius:2px}
+.subhead .desc{font-size:15.5px;color:var(--sub);margin-top:10px;max-width:56ch;line-height:1.6}
+.tg{padding:26px 0}
+.tg .field{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.tg label{display:block;font-size:13px;font-weight:700;margin:0 0 6px}
+.tg input{width:100%;height:48px;border:1px solid var(--line-2);border-radius:4px;padding:0 13px;font-family:inherit;font-size:15px}
+.tg input:focus{outline:0;border-color:var(--pt)}
+.tg .go{height:44px;border:0;border-radius:4px;background:var(--pt);color:#fff;font-weight:700;font-size:15px;padding:0 22px;margin-top:16px}
+.res{border-top:2px solid var(--ink);margin-top:24px}
+.res .r{display:flex;justify-content:space-between;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+.res .r .t{font-size:17px;font-weight:700;line-height:1.4}
+.res .r .cp{font-size:12.5px;font-weight:700;color:var(--pt);border:1px solid var(--pt);border-radius:5px;padding:6px 12px;white-space:nowrap;background:none}
+.note{font-size:12.5px;color:var(--sub);margin-top:14px}
+@media (max-width:640px){.tg .field{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="mag-header"></div>
+<div class="wrap">
+  <section class="subhead">
+    <div class="crumb"><a href="../index.html">홈</a> / <a href="index.html">PR 도구</a> / 제목 생성기</div>
+    <h1><span class="tick"></span>보도자료 제목 생성기</h1>
+    <p class="desc">핵심 정보를 넣으면 각도가 다른 제목 후보를 만들어 드립니다. (템플릿 기반 가안 · 실제 AI 연결은 준비 중)</p>
+  </section>
+  <div class="tg">
+    <div class="field">
+      <div><label>회사·브랜드</label><input id="org" value="그린테이블"></div>
+      <div><label>핵심 소식</label><input id="what" value="비건 간편식 신규 라인 출시"></div>
+    </div>
+    <button class="go" onclick="gen()">제목 생성</button>
+    <div class="res" id="res"></div>
+    <p class="note">※ 생성 결과는 초안입니다. 사실·과장 표현을 검토하고 매체 성격에 맞춰 다듬어 사용하세요.</p>
+  </div>
+  <div style="height:50px"></div>
+</div>
+<div id="mag-footer"></div>
+<script src="../assets/js/magazine-header.js"></script>
+<script>
+function gen(){
+ var o=(document.getElementById('org').value||'브랜드').trim(), w=(document.getElementById('what').value||'신규 소식').trim();
+ var T=[
+  o+', '+w,
+  w.replace(/ 출시$/,'')+'…'+o+'가 던진 승부수',
+  '“이제는 '+w.replace(/ 출시$/,'')+'”… '+o+'의 선택',
+  o+'의 '+w+', 무엇이 달랐나',
+  '[단독] '+o+', '+w+' 공식화',
+  o+' "'+w.replace(/ 출시$/,'')+'로 시장 공략"'
+ ];
+ document.getElementById('res').innerHTML=T.map(function(t){return '<div class="r"><span class="t">'+t+'</span><button class="cp" onclick="cp(this)">복사</button></div>';}).join('');
+}
+function cp(b){var t=b.parentNode.querySelector('.t').innerText;if(navigator.clipboard){navigator.clipboard.writeText(t).then(function(){b.textContent='복사됨';setTimeout(function(){b.textContent='복사';},1200);});}else alert(t);}
+gen();
+</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>마케팅 단가표 — PRCOME 마케팅 도구</title>
+<meta name="description" content="블로그·인스타·유튜브·보도자료·퍼포먼스 광고의 채널별 시세를 한눈에. 견적·협상 전 참고용 마케팅 단가표.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="../assets/css/magazine-system.css">
+<script>window.MAG={root:'../',home:'../index.html',catBase:'../insights/index.html'};</script>
+<style>
+.tw{max-width:920px}
+.subhead{padding:30px 0 6px}
+.subhead .crumb{font-size:12.5px;color:var(--sub);margin-bottom:12px}
+.subhead h1{font-size:clamp(22px,2.7vw,30px);font-weight:800;letter-spacing:-.03em;display:flex;align-items:center;gap:12px}
+.subhead h1 .tick{width:26px;height:3px;background:var(--pt);border-radius:2px}
+.subhead .desc{font-size:15px;color:var(--sub);margin-top:10px;line-height:1.6}
+.tabs{display:flex;gap:18px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-top:22px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{background:none;border:0;font-family:inherit;padding:12px 0;font-size:14px;font-weight:700;color:var(--sub);white-space:nowrap;position:relative;cursor:pointer}
+.tabs button.on{color:var(--pt)}.tabs button.on::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--pt)}
+.tbl{width:100%;border-collapse:collapse;margin-top:18px}
+.tbl thead th{font-size:12px;font-weight:800;color:var(--sub);text-align:left;padding:12px 14px;border-bottom:2px solid var(--ink);white-space:nowrap}
+.tbl thead th.r,.tbl td.r{text-align:right}
+.tbl td{font-size:14px;padding:14px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl td.item{font-weight:700}
+.tbl td .sub{font-size:12px;color:var(--sub);margin-top:3px;font-weight:400}
+.tbl td.price{font-weight:800;color:var(--navy);white-space:nowrap}
+.tbl tr:hover td{background:var(--bg)}
+.note{font-size:12.5px;color:var(--sub-2);margin-top:18px;line-height:1.6}
+@media (max-width:600px){.tbl td.hidem,.tbl th.hidem{display:none}}
+</style>
+</head>
+<body>
+<div id="mag-header"></div>
+<div class="wrap tw">
+  <section class="subhead">
+    <div class="crumb"><a href="../index.html">홈</a> / <a href="index.html">마케팅 도구</a> / 마케팅 단가표</div>
+    <h1><span class="tick"></span>마케팅 단가표</h1>
+    <p class="desc">채널별 광고·콘텐츠·홍보의 대략적인 시세입니다. 견적 협상과 예산 수립 전 기준선으로 참고하세요.</p>
+  </section>
+
+  <nav class="tabs" id="tabs"></nav>
+  <table class="tbl">
+    <thead><tr><th>항목</th><th class="hidem">규격·조건</th><th class="r">시세(부가세 별도)</th></tr></thead>
+    <tbody id="tb"></tbody>
+  </table>
+  <p class="note">※ 본 단가표는 업계 일반 시세를 바탕으로 한 참고용 예시(1차 데모)이며, 실제 단가는 매체·인플루언서 규모, 기간, 산업군, 성과 조건에 따라 크게 달라집니다. 정확한 견적은 <a href="../projects/new.html" style="color:var(--pt);font-weight:700">프로젝트 의뢰</a>로 받아보세요.</p>
+  <div style="height:60px"></div>
+</div>
+<div id="mag-footer"></div>
+<script src="../assets/js/magazine-header.js"></script>
+<script>
+var DATA={
+ '블로그':[
+  ['체험단 리뷰 (일반 블로거)','방문/배송형 · 원고 1건','5만~15만원'],
+  ['상위 블로거 리뷰','일 방문 1만+ · 최적화','30만~80만원'],
+  ['블로그 기자단 운영','월 10~20건 패키지','150만~400만원/월'],
+  ['블로그 상위노출 대행','키워드 난이도별','30만~150만원/건']
+ ],
+ '인스타':[
+  ['나노 인플루언서','팔로워 1천~1만 · 피드 1건','5만~20만원'],
+  ['마이크로 인플루언서','팔로워 1만~10만 · 피드 1건','30만~150만원'],
+  ['매크로 인플루언서','팔로워 10만~100만 · 피드 1건','200만~800만원'],
+  ['릴스 제작·업로드','기획·촬영·편집 포함','50만~300만원/건']
+ ],
+ '유튜브':[
+  ['유튜브 PPL·리뷰','구독 1만~10만 채널','100만~500만원'],
+  ['유튜브 PPL·리뷰','구독 10만~50만 채널','500만~2,000만원'],
+  ['쇼츠 제작','기획·편집 포함','30만~120만원/건'],
+  ['브랜드 영상 제작','60초 · 촬영 포함','300만~1,500만원']
+ ],
+ '보도자료':[
+  ['보도자료 작성','A4 1~2매 · 1건','15만~40만원'],
+  ['보도자료 배포 (온라인)','30~80개 매체','20만~60만원'],
+  ['기자간담회·미디어데이','기획·운영 포함','300만~1,500만원'],
+  ['월간 언론홍보 대행','작성·배포·리포트','200만~600만원/월']
+ ],
+ '퍼포먼스':[
+  ['네이버 검색광고 대행','광고비 별도 · 운영 수수료','광고비의 10~15%'],
+  ['메타(인스타·페북) 광고 대행','광고비 별도 · 운영','광고비의 10~20%'],
+  ['광고 소재 제작','이미지·카피 세트','10만~50만원/세트'],
+  ['랜딩페이지 제작','기획·디자인·퍼블','80만~400만원']
+ ]
+};
+var KEYS=Object.keys(DATA);var cur=KEYS[0];
+document.getElementById('tabs').innerHTML=KEYS.map(function(k){return '<button class="'+(k===cur?'on':'')+'" onclick="setT(\''+k+'\')">'+k+'</button>';}).join('');
+function render(){
+ document.getElementById('tb').innerHTML=DATA[cur].map(function(r){
+  return '<tr><td class="item">'+r[0]+'</td><td class="hidem"><span class="sub">'+r[1]+'</span></td><td class="r price">'+r[2]+'</td></tr>';
+ }).join('');
+}
+function setT(k){cur=k;document.querySelectorAll('#tabs button').forEach(function(b){b.classList.toggle('on',b.textContent===k);});render();}
+render();
+</script>
+</body>
+</html>

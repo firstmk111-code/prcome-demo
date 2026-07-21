@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI가 보도자료를 읽는 시대 — PRCOME 매거진</title>
+<meta name="description" content="생성형 AI가 보도자료를 읽고 인용하는 시대, 기업 PR이 준비해야 할 콘텐츠 구조와 사실 정합성.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="../assets/css/magazine-system.css">
+<script>window.MAG={root:'../',home:'../index.html',catBase:'index.html',active:'ai-pr'};</script>
+<body class="acc-ai-pr">
+<style>
+.art-head{max-width:820px;margin:0 auto;padding:34px 0 10px}
+.art-head .crumb{font-size:12.5px;color:var(--sub);margin-bottom:14px}.art-head .crumb a:hover{color:var(--pt)}
+.ad-badge{display:none;align-items:center;gap:8px;font-size:12px;font-weight:800;color:#9a5a12;background:#FBF2E2;border:1px solid #EED9B4;border-radius:6px;padding:6px 12px;margin-bottom:14px}
+.ad-badge.show{display:inline-flex}.ad-badge i{width:6px;height:6px;background:#C98A2B;border-radius:1px}
+.art-head .cat{display:inline-block;margin-bottom:12px}
+.art-head h1{font-size:clamp(30px,3.6vw,46px);font-weight:800;letter-spacing:-.04em;line-height:1.12}
+.art-head .sum{font-size:18px;color:var(--sub);line-height:1.6;margin:16px 0 20px;max-width:44ch}
+.art-head .meta{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 0}
+.art-head .who{font-size:13.5px;color:var(--sub);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.art-head .who b{color:var(--ink);font-weight:700}.art-head .who .d{width:3px;height:3px;border-radius:50%;background:var(--line-2)}
+.share{display:flex;gap:8px}.share button{width:36px;height:36px;border:1px solid var(--line-2);border-radius:8px;background:var(--surf);color:var(--ink);font-size:13px;font-weight:700}
+.share button:hover{border-color:var(--pt);color:var(--pt)}
+.art-hero{max-width:960px;margin:22px auto 0}.art-hero .imgwrap{border-radius:2px}
+.art-body{max-width:720px;margin:0 auto;padding:34px 0 10px}
+.prose{font-size:17px;line-height:1.9;color:var(--ink)}.prose p{margin:0 0 22px}
+.prose h2{font-size:24px;font-weight:800;letter-spacing:-.03em;margin:38px 0 14px;line-height:1.25}
+.prose h2 .lead-tick{display:inline-block;width:18px;height:3px;background:var(--pt);border-radius:2px;margin-right:10px;vertical-align:middle}
+.prose blockquote{margin:28px 0;padding:6px 0 6px 22px;border-left:3px solid var(--pt);font-size:21px;font-weight:600;letter-spacing:-.02em;line-height:1.5;color:var(--ink)}
+.prose blockquote cite{display:block;font-size:13px;font-weight:600;color:var(--sub);font-style:normal;margin-top:10px}
+.keybox{border:1px solid var(--line);background:var(--surf);border-radius:8px;padding:22px 24px;margin:30px 0}
+.keybox .kh{font-size:13px;font-weight:800;color:var(--pt);display:flex;align-items:center;gap:8px;margin-bottom:12px}.keybox .kh i{width:6px;height:6px;background:var(--pt)}
+.keybox li{display:flex;gap:10px;padding:7px 0;font-size:15px;line-height:1.6}.keybox li .n{color:var(--pt);font-weight:800;flex:none}
+.sources{margin:30px 0 6px;padding-top:16px;border-top:1px solid var(--line)}.sources .sh{font-size:12px;font-weight:800;color:var(--sub);margin-bottom:8px}
+.sources li{font-size:13px;color:var(--sub);padding:4px 0}.sources li a{color:var(--pt)}
+.art-tools{max-width:820px;margin:10px auto 0}.art-tools .th{font-size:12px;font-weight:800;color:var(--sub);margin-bottom:12px}
+.art-tools .row{border:1px solid var(--line);background:var(--surf);display:flex;flex-wrap:wrap}
+.art-tools .row a{flex:1;min-width:180px;display:flex;align-items:center;gap:9px;padding:18px 20px;border-left:1px solid var(--line);font-size:14.5px;font-weight:700}
+.art-tools .row a:first-child{border-left:0}.art-tools .row a:hover{color:var(--pt);background:var(--background)}
+.art-tools .row a .ai{font-size:9.5px;font-weight:800;color:#fff;background:var(--pt);padding:1px 5px;border-radius:3px}
+.art-related{max-width:960px;margin:0 auto;padding:44px 0 10px}.art-related .sh{margin-bottom:20px}
+.rel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.rel-grid a .mini-poster{aspect-ratio:16/10;margin-bottom:10px}.rel-grid a .cat{display:inline-block;margin-bottom:5px}
+.rel-grid a h4{font-size:16px;font-weight:700;line-height:1.36}.rel-grid a .m{font-size:12px;color:var(--sub);margin-top:7px}
+@media (max-width:640px){.art-head h1{font-size:28px}.art-head .sum{font-size:16px;max-width:none}.prose{font-size:16px}.prose blockquote{font-size:18px}.art-tools .row a{flex:1 1 100%;border-left:0;border-top:1px solid var(--line)}.art-tools .row a:first-child{border-top:0}.rel-grid{grid-template-columns:1fr}}
+</style>
+<div id="mag-header"></div>
+<article>
+  <header class="art-head up">
+    <div class="crumb"><a href="../index.html">홈</a> / <a href="index.html?cat=ai-pr">AI와 PR</a> / 기사</div>
+    <span class="ad-badge" id="adBadge"><i></i><span id="adText">스폰서 콘텐츠</span></span>
+    <span class="cat">AI와 PR</span>
+    <h1>AI가 보도자료를 읽는 시대, 기업 PR은 무엇을 준비해야 하나</h1>
+    <p class="sum">생성형 AI가 보도자료를 요약·인용하기 시작하면서, 홍보실의 문장 하나가 검색 결과와 AI 답변으로 확산된다. 지금 준비해야 할 콘텐츠 구조와 사실 정합성을 짚었다.</p>
+    <div class="meta">
+      <div class="who"><b>PRCOME 편집팀</b><span class="d"></span><span>2026.07.18</span><span class="d"></span><span>10분 읽기</span></div>
+      <div class="share"><button id="shareCopy" title="링크 복사">링크</button><button title="공유">공유</button><button title="저장">저장</button></div>
+    </div>
+  </header>
+  <div class="art-hero up">
+    <div class="imgwrap r169"><div class="poster-g"><span class="accbar"></span><span class="lab">AI <i>×</i> PR</span><div class="blue"></div><span class="tick t1"></span><span class="tick t2"></span><span class="tick t3"></span><div class="big">AI READS<br><u>PR</u></div><span class="rule"></span><span class="sub">CONTENT · MEDIA · SEARCH</span></div></div>
+  </div>
+  <div class="art-body up">
+    <div class="prose">
+      <p><b>검색은 더 이상 링크의 목록이 아니다.</b> 사용자는 키워드를 넣고 파란 링크를 하나씩 여는 대신, AI에게 문장으로 묻고 하나의 요약된 답변을 받는다. 이 변화는 마케팅만의 문제가 아니라 기업 홍보실 전체의 과제가 됐다.</p>
+      <p>보도자료 한 건이 기사로, 검색 결과로, 그리고 AI 답변으로 확산되기까지의 경로가 바뀌었다. 이제 홍보실은 “우리 페이지를 상위에 노출”시키는 일을 넘어, “AI가 우리 브랜드를 어떻게 이해하고 인용하는가”를 관리해야 한다.</p>
+      <h2><span class="lead-tick"></span>AI는 어떤 문장을 인용하는가</h2>
+      <p>생성형 검색이 인용하는 콘텐츠에는 공통점이 있다. 첫째, 사실이 명확하고 출처가 분명하다. 둘째, 질문에 대한 답이 문서 안에서 구조적으로 드러난다. 셋째, 여러 신뢰할 수 있는 매체에서 반복적으로 언급된다. 즉, 언론 노출과 검색 가시성은 분리된 영역이 아니라 서로를 강화하는 관계다.</p>
+      <blockquote>“상위 노출이 아니라 정확한 인용을 목표로 삼아야 한다. AI가 우리 브랜드를 잘못 설명하는 것이야말로 가장 큰 홍보 리스크다.”<cite>— 현직 산업부 데스크 (익명)</cite></blockquote>
+      <h2><span class="lead-tick"></span>홍보실이 지금 점검할 것</h2>
+      <p>거창한 시스템이 필요한 것은 아니다. 회사 소개 문구를 정비하고, 자주 묻는 질문을 문서화하고, 주요 보도자료의 핵심 사실을 일관되게 유지하는 것부터 시작할 수 있다. 검색의 형태는 바뀌었지만 원칙은 그대로다.</p>
+      <div class="keybox">
+        <div class="kh"><i></i>핵심 정리</div>
+        <ul>
+          <li><span class="n">01</span><span>회사·제품 정보가 홈페이지·보도자료·외부 매체에서 일치하는가</span></li>
+          <li><span class="n">02</span><span>핵심 정보가 제목·소제목·FAQ로 기계가 읽기 쉽게 정리됐는가</span></li>
+          <li><span class="n">03</span><span>신뢰할 수 있는 매체에서 브랜드가 반복적으로 언급되는가</span></li>
+        </ul>
+      </div>
+      <p>결국 AI 시대의 PR은 새로운 도구의 문제가 아니라 오래된 원칙의 재확인이다. 다만 그 원칙을 기계가 읽을 수 있는 형태로 다시 쓰는 일이 더해졌을 뿐이다.</p>
+      <div class="sources">
+        <div class="sh">참고 출처</div>
+        <ul>
+          <li>PRCOME 편집팀, 「검색이 답변이 되는 시대」, 2026 (<a href="index.html?cat=geo">AEO·GEO</a>)</li>
+          <li>PRCOME 실무 가이드, 「AI가 인용하는 콘텐츠 구조 만들기」</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="art-tools up">
+    <div class="th">관련 PR 실무 도구</div>
+    <div class="row">
+      <a href="../tools/press-release.html">보도자료 작성 <span class="ai">AI</span></a>
+      <a href="../tools/distribute.html">보도자료 배포 <span class="ai">AI</span></a>
+      <a href="../directory/media.html">언론사 리스트</a>
+    </div>
+  </div>
+  <div class="art-related up">
+    <div class="sh"><span class="klab">관련 기사</span></div>
+    <div class="rel-grid">
+      <a href="article.html"><div class="mini-poster"><span class="bar"></span><span class="pt">AEO·GEO</span><span class="k">GEO</span></div><span class="cat">AEO·GEO</span><h4 class="h">검색이 답변이 되는 시대, 무엇을 최적화할 것인가</h4><div class="m">8분 읽기</div></a>
+      <a href="article.html"><div class="mini-poster"><span class="bar"></span><span class="pt">PR</span><span class="k">PR</span></div><span class="cat">PR</span><h4 class="h">채택되는 보도자료의 제목은 무엇이 다른가</h4><div class="m">5분 읽기</div></a>
+      <a href="article.html"><div class="mini-poster"><span class="bar"></span><span class="pt">AI와 PR</span><span class="k">AI·PR</span></div><span class="cat">AI와 PR</span><h4 class="h">보도자료 작성 AI, 어디까지 맡길까</h4><div class="m">7분 읽기</div></a>
+    </div>
+  </div>
+</article>
+<div id="mag-footer"></div>
+<script src="../assets/js/magazine-header.js"></script>
+<script>
+(function(){var p=new URLSearchParams(location.search);var type=(p.get('type')||'').toLowerCase();
+var AD={advertorial:'애드버토리얼 · 광고',sponsored:'스폰서 콘텐츠',ad:'광고'};
+if(AD[type]){var b=document.getElementById('adBadge'),t=document.getElementById('adText');if(b){if(t)t.textContent=AD[type];b.classList.add('show');}}
+var sc=document.getElementById('shareCopy');if(sc)sc.addEventListener('click',function(){var u=location.href;if(navigator.clipboard){navigator.clipboard.writeText(u).then(function(){sc.textContent='복사됨';setTimeout(function(){sc.textContent='링크';},1400);});}else alert('링크: '+u);});
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+var ups=[].slice.call(document.querySelectorAll('.up'));
+if(reduce||!('IntersectionObserver'in window)){ups.forEach(function(e){e.classList.add('in');});return;}
+var io=new IntersectionObserver(function(es){es.filter(function(e){return e.isIntersecting;}).forEach(function(e,i){setTimeout(function(){e.target.classList.add('in');},Math.min(i,4)*80);io.unobserve(e.target);});},{threshold:.1,rootMargin:'0px 0px -6% 0px'});ups.forEach(function(e){io.observe(e);});
+})();
+</script>
+</body>
+</html>

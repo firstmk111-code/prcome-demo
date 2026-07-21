@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEO·AEO·GEO 가시성 진단 (가안) — PRCOME PR 도구</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700&display=swap">
+<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="../assets/css/magazine-system.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230E1726'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23FF5A1F'/%3E%3C/svg%3E">
+<script>window.SITE_ROOT='../';window.MAG={root:'../',home:'../index.html',catBase:'../insights/index.html'};</script>
+</head>
+<body>
+<div id="mag-header"></div>
+
+<header class="page-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../index.html">홈</a> › <a href="index.html">PR 도구</a> › SEO·AEO·GEO 진단</div>
+    <h1>SEO · AEO · GEO 가시성 진단 <span style="font-size:16px;font-weight:600;color:var(--coral)">가안</span></h1>
+    <p class="lead">검색과 AI 답변에서 우리 브랜드가 얼마나 잘 드러나는지, 항목별로 점검하고 개선 방향을 제안합니다.</p>
+  </div>
+</header>
+
+<div class="wrap" style="padding-top:26px">
+  <div class="notice" style="margin-bottom:20px">1차 데모 가안입니다. 실제 크롤링·AI 인용 분석 연결은 준비 중이며, 아래 결과는 <b>진단 항목과 리포트 형태</b>를 보여주는 예시입니다.</div>
+
+  <div class="form-card" style="max-width:720px;margin:0 auto 30px">
+    <div class="grid g-2" style="gap:14px">
+      <div class="form-row" style="margin-bottom:0"><label>기업·브랜드명</label><input class="input" id="d-name" value="그린테이블"></div>
+      <div class="form-row" style="margin-bottom:0"><label>홈페이지 URL</label><input class="input" id="d-url" value="https://greentable.example"></div>
+    </div>
+    <button class="btn btn-signal mt-16" style="width:100%" onclick="run()">가시성 진단 실행</button>
+  </div>
+
+  <div id="report" class="hide">
+    <!-- 종합 점수 -->
+    <div class="grid g-4" style="margin-bottom:24px">
+      <div class="card card-pad center"><div class="serif" style="font-size:40px;color:var(--signal)" id="s-total">72</div><b style="color:var(--ink)">종합 가시성</b><div class="muted" style="font-size:12.5px">100점 만점</div></div>
+      <div class="card card-pad center"><div class="serif" style="font-size:40px;color:var(--ink)">78</div><b style="color:var(--ink)">SEO</b><div class="muted" style="font-size:12.5px">검색엔진 최적화</div></div>
+      <div class="card card-pad center"><div class="serif" style="font-size:40px;color:var(--ink)">70</div><b style="color:var(--ink)">AEO</b><div class="muted" style="font-size:12.5px">답변엔진 최적화</div></div>
+      <div class="card card-pad center"><div class="serif" style="font-size:40px;color:var(--warn)">61</div><b style="color:var(--ink)">GEO</b><div class="muted" style="font-size:12.5px">생성형 엔진 최적화</div></div>
+    </div>
+
+    <!-- 항목별 진단 -->
+    <div class="card" style="margin-bottom:24px">
+      <div class="card-pad"><h3 style="font-size:17px;color:var(--ink);margin-bottom:6px">항목별 진단</h3></div>
+      <div class="row-list" style="box-shadow:none;border:0" id="items"></div>
+    </div>
+
+    <!-- 개선 제안 -->
+    <div class="card card-pad">
+      <h3 style="font-size:17px;color:var(--ink);margin-bottom:14px">우선 개선 제안</h3>
+      <div class="prose" style="font-size:15px">
+        <ul>
+          <li><b>GEO — 구조화된 사실 정보 보강</b> · 회사 소개·연혁·핵심 제품 정보를 FAQ와 요약 문단으로 정리해 AI가 인용하기 쉽게 만드세요.</li>
+          <li><b>AEO — FAQ·스니펫 최적화</b> · 자주 묻는 질문에 대한 간결한 답을 페이지 상단에 배치하면 답변형 노출이 늘어납니다.</li>
+          <li><b>레퍼런스 — 언론 노출 확대</b> · 신뢰도 높은 매체의 보도 3~5건이 검색·AI 인용 신호를 함께 강화합니다. <a href="../projects/new.html" style="color:var(--signal);font-weight:700">언론홍보 프로젝트 등록</a>으로 연결됩니다.</li>
+        </ul>
+      </div>
+      <div class="flex gap-8 mt-16" style="flex-wrap:wrap"><a class="btn btn-signal" href="../insights/index.html?cat=geo">GEO 인사이트 보기</a><a class="btn btn-ghost" href="../directory/agencies.html">SEO 전문 대행사 찾기</a></div>
+    </div>
+  </div>
+</div>
+<div style="height:60px"></div>
+
+<div id="mag-footer"></div>
+<script src="../assets/js/magazine-header.js"></script>
+<script>
+var ITEMS=[
+ ['타이틀·메타 설명 최적화','좋음','ok','핵심 키워드가 제목과 설명에 포함되어 있습니다.'],
+ ['모바일·속도','좋음','ok','반응형이 적용되어 있고 로딩 속도가 양호합니다.'],
+ ['구조화 데이터(스키마)','보통','warn','Organization·FAQ 스키마 추가를 권장합니다.'],
+ ['FAQ·답변형 콘텐츠','미흡','warn','질문-답변 형식 콘텐츠가 부족합니다.'],
+ ['핵심 사실 일관성','보통','warn','홈페이지·보도자료 간 회사 정보 표기를 통일하세요.'],
+ ['외부 언론 레퍼런스','미흡','warn','신뢰 매체의 보도 노출을 늘릴 필요가 있습니다.']
+];
+function run(){
+  document.getElementById('report').classList.remove('hide');
+  document.getElementById('items').innerHTML=ITEMS.map(function(it){
+    return '<div class="row" style="padding:14px 20px"><div class="r-main"><div class="r-title" style="color:var(--text)">'+it[0]+'</div>'+
+      '<div class="r-sub"><span>'+it[3]+'</span></div></div>'+
+      '<div class="r-side"><span class="chip '+it[2]+'">'+it[1]+'</span></div></div>';
+  }).join('');
+  document.getElementById('report').scrollIntoView({behavior:'smooth'});
+}
+run();
+</script>
+</body>
+</html>

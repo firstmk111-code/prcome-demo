@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>교육·행사 — PRCOME</title>
+<meta name="description" content="PR·마케팅 세미나, 컨퍼런스, 교육 과정, 공모전·어워드, 기고 모집과 업계 캘린더.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="../assets/css/magazine-system.css">
+<script>(function(){var p=new URLSearchParams(location.search);window.MAG={root:'../',home:'../index.html',catBase:'../insights/index.html',_type:p.get('type')||''};})();</script>
+<style>
+.subhead{padding:30px 0 6px}
+.subhead .crumb{font-size:12.5px;color:var(--sub);margin-bottom:12px}
+.subhead h1{font-size:clamp(24px,3vw,32px);font-weight:800;letter-spacing:-.03em;display:flex;align-items:center;gap:12px}
+.subhead h1 .tick{width:26px;height:3px;background:var(--pt);border-radius:2px}
+.subhead .desc{font-size:15.5px;color:var(--sub);margin-top:10px;max-width:56ch;line-height:1.6}
+.etabs{display:flex;gap:20px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-top:20px;overflow-x:auto}
+.etabs button{background:none;border:0;padding:12px 0;font-family:inherit;font-size:14px;font-weight:600;color:var(--sub);white-space:nowrap;position:relative}
+.etabs button.on{color:var(--pt)}
+.etabs button.on::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--pt)}
+/* 행사 목록: 날짜형 데이터 행 (카드 아님) */
+.elist{border-top:2px solid var(--ink);margin-top:22px}
+.erow{display:grid;grid-template-columns:96px 1fr auto;gap:18px;align-items:center;padding:18px 0;border-bottom:1px solid var(--line)}
+.erow .date{text-align:center;border-right:1px solid var(--line);padding-right:16px}
+.erow .date .d{font-size:24px;font-weight:800;color:var(--pt);line-height:1}
+.erow .date .m{font-size:11.5px;color:var(--sub);margin-top:3px}
+.erow .body .tag{font-size:11px;font-weight:800;color:var(--pt)}
+.erow .body h3{font-size:17px;font-weight:700;margin:5px 0 4px;line-height:1.35}
+.erow:hover .body h3{color:var(--pt)}
+.erow .body .meta{font-size:12.5px;color:var(--sub);display:flex;gap:10px;flex-wrap:wrap}
+.erow .cta{font-size:13px;font-weight:700;color:#fff;background:var(--pt);border:0;border-radius:6px;padding:10px 16px;white-space:nowrap}
+.erow .cta.line{background:none;color:var(--pt);border:1px solid var(--pt)}
+.note{background:var(--pt-soft);border:1px solid #cdd8ff;color:var(--pt-2);border-radius:6px;padding:12px 15px;font-size:13.5px;margin:18px 0}
+</style>
+</head>
+<body>
+<div id="mag-header"></div>
+<div class="wrap">
+  <section class="subhead">
+    <div class="crumb"><a href="../index.html">홈</a> / 교육·행사</div>
+    <h1><span class="tick"></span><span id="etTitle">교육·행사</span></h1>
+    <p class="desc" id="etDesc">업계 세미나·컨퍼런스·교육 과정과 공모전·어워드, 기고 모집 일정을 한곳에서 확인하세요.</p>
+    <div class="etabs" id="etabs"></div>
+  </section>
+  <div class="note">1차 정적 가안입니다. 신청·등록은 준비 중이며, 아래는 실제와 유사한 DEMO 일정입니다.</div>
+  <div class="elist" id="elist"></div>
+  <div style="height:56px"></div>
+</div>
+<div id="mag-footer"></div>
+<script src="../assets/js/magazine-header.js"></script>
+<script>
+var TABS=[['all','전체'],['seminar','세미나'],['conference','컨퍼런스'],['course','교육 과정'],['award','공모전·어워드'],['contribute','기고 모집'],['calendar','업계 캘린더']];
+var DESC={all:'업계 세미나·컨퍼런스·교육 과정과 공모전·어워드, 기고 모집 일정을 한곳에서 확인하세요.',
+ seminar:'실무자 대상 오프라인·온라인 세미나 일정입니다.',conference:'업계 컨퍼런스와 포럼 일정입니다.',
+ course:'PR·마케팅 실무 교육 과정과 아카데미입니다.',award:'공모전·어워드와 시상 일정입니다.',
+ contribute:'매거진·기관의 기고 및 칼럼 모집 공고입니다.',calendar:'전체 업계 일정을 시간순으로 봅니다.'};
+var EV=[
+ ['seminar','07','8월','세미나','생성형 AI 시대의 보도자료 작성 실무','온라인 · 무료 · 홍보담당자','신청'],
+ ['conference','12','8월','컨퍼런스','2026 브랜드 커뮤니케이션 컨퍼런스','서울 코엑스 · 유료','신청'],
+ ['course','19','8월','교육 과정','PR 실무 입문 4주 과정 (야간)','온라인 · 4주','수강신청'],
+ ['award','25','8월','공모전','대학생 PR 캠페인 공모전 접수 마감','전국 · 대학생','접수'],
+ ['contribute','29','8월','기고 모집','PRCOME 매거진 9월호 실무 칼럼 기고 모집','원고료 지급 · 마감 8/29','지원'],
+ ['seminar','03','9월','세미나','GEO·AI 검색 가시성 실전 워크숍','서울 강남 · 유료','신청'],
+ ['conference','10','9월','컨퍼런스','디지털 마케팅 그로스 서밋','온라인 · 무료','사전등록'],
+ ['course','16','9월','교육 과정','위기관리 커뮤니케이션 심화','오프라인 · 2일','수강신청']
+];
+var p=new URLSearchParams(location.search),t=p.get('type')||'all'; if(!DESC[t])t='all';
+document.getElementById('etTitle').textContent=(TABS.filter(function(x){return x[0]===t;})[0]||['','교육·행사'])[1];
+document.getElementById('etDesc').textContent=DESC[t];
+document.getElementById('etabs').innerHTML=TABS.map(function(x){return '<button class="'+(x[0]===t?'on':'')+'" onclick="location.href=\'index.html'+(x[0]==='all'?'':'?type='+x[0])+'\'">'+x[1]+'</button>';}).join('');
+var list=(t==='all'||t==='calendar')?EV:EV.filter(function(e){return e[0]===t;});
+document.getElementById('elist').innerHTML=list.map(function(e){
+ return '<a class="erow" href="#" onclick="return demo(event)"><div class="date"><div class="d">'+e[1]+'</div><div class="m">'+e[2]+'</div></div>'+
+ '<div class="body"><span class="tag">'+e[3]+'</span><h3>'+e[4]+'</h3><div class="meta"><span>'+e[6]+'</span></div></div>'+
+ '<button class="cta'+(e[6].indexOf('마감')>-1?' line':'')+'">'+e[7]+'</button></a>';
+}).join('')||'<div style="padding:30px 0;color:var(--sub)">해당 유형의 일정이 아직 없습니다.</div>';
+function demo(ev){ev.preventDefault();alert('준비 중인 기능입니다. 신청·등록은 회원 로그인 후 제공됩니다. (1차 정적 가안)');return false;}
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>보도자료 체크리스트 — PRCOME PR 도구</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="../assets/css/magazine-system.css">
+<script>window.MAG={root:'../',home:'../index.html',catBase:'../insights/index.html'};</script>
+<style>
+.subhead{padding:30px 0 6px}.subhead .crumb{font-size:12.5px;color:var(--sub);margin-bottom:12px}
+.subhead h1{font-size:clamp(24px,3vw,32px);font-weight:800;letter-spacing:-.03em;display:flex;align-items:center;gap:12px}
+.subhead h1 .tick{width:26px;height:3px;background:var(--pt);border-radius:2px}
+.subhead .desc{font-size:15.5px;color:var(--sub);margin-top:10px;max-width:56ch;line-height:1.6}
+.ck-wrap{display:grid;grid-template-columns:1fr 300px;gap:36px;padding:26px 0;align-items:start}
+.ck-grp{border-top:2px solid var(--ink);margin-bottom:22px}
+.ck-grp h3{font-size:15px;font-weight:800;padding:14px 0 8px}
+.ck-item{display:flex;gap:12px;padding:12px 0;border-top:1px solid var(--line);cursor:pointer;align-items:flex-start}
+.ck-item input{margin-top:3px;width:18px;height:18px;accent-color:var(--pt)}
+.ck-item .t{font-size:14.5px;line-height:1.5}
+.ck-item .h{font-size:12.5px;color:var(--sub);margin-top:3px}
+.score{position:sticky;top:130px;border:1px solid var(--line);border-radius:8px;padding:22px;text-align:center}
+.score .big{font-size:42px;font-weight:800;color:var(--pt)}
+.score .lb{font-size:13px;color:var(--sub)}
+.score .bar{height:8px;background:var(--background);border:1px solid var(--line);border-radius:6px;overflow:hidden;margin:14px 0}
+.score .fill{height:100%;background:var(--pt);width:0;transition:width .3s}
+@media (max-width:900px){.ck-wrap{grid-template-columns:1fr}.score{position:static}}
+</style>
+</head>
+<body>
+<div id="mag-header"></div>
+<div class="wrap">
+  <section class="subhead">
+    <div class="crumb"><a href="../index.html">홈</a> / <a href="index.html">PR 도구</a> / 보도자료 체크리스트</div>
+    <h1><span class="tick"></span>보도자료 체크리스트</h1>
+    <p class="desc">배포 전 마지막 점검. 항목을 체크하면 완성도 점수가 실시간으로 계산됩니다. (저장 없이 화면에서만 동작)</p>
+  </section>
+  <div class="ck-wrap">
+    <div id="cklist"></div>
+    <div class="score"><div class="big" id="scoreNum">0%</div><div class="lb">체크리스트 완성도</div><div class="bar"><div class="fill" id="scoreFill"></div></div><div class="lb" id="scoreMsg">항목을 점검해 보세요.</div></div>
+  </div>
+  <div style="height:50px"></div>
+</div>
+<div id="mag-footer"></div>
+<script src="../assets/js/magazine-header.js"></script>
+<script>
+var G=[
+ ['핵심 구성',[['제목이 회사명이 아니라 독자 관심 포인트로 시작하는가','왜 지금 이 소식이 중요한지 드러나야 합니다'],['첫 문장(리드)에 육하원칙이 압축되어 있는가',''],['핵심 수치·근거가 구체적으로 제시되는가','판매 목표·시장 규모 등']]],
+ ['형식·자료',[['대표 인용문(직책·이름 포함)이 있는가',''],['제품/행사 사진·인포그래픽을 첨부했는가','채택률이 오릅니다'],['문의처(담당자·이메일·연락처)가 정확한가','']]],
+ ['배포 전략',[['우리 아이템을 다룰 담당 부서·매체를 선별했는가',''],['배포 시각과 팔로업 타이밍을 정했는가','마감시간 직전 전화는 지양'],['과장·미검증 표현을 걷어냈는가','']]]
+];
+var total=0,checked=0;
+document.getElementById('cklist').innerHTML=G.map(function(g){
+ return '<div class="ck-grp"><h3>'+g[0]+'</h3>'+g[1].map(function(it){total++;return '<label class="ck-item"><input type="checkbox"><span class="t">'+it[0]+(it[1]?'<span class="h">'+it[1]+'</span>':'')+'</span></label>';}).join('')+'</div>';
+}).join('');
+function upd(){checked=document.querySelectorAll('#cklist input:checked').length;var pct=Math.round(checked/total*100);
+ document.getElementById('scoreNum').textContent=pct+'%';document.getElementById('scoreFill').style.width=pct+'%';
+ document.getElementById('scoreMsg').textContent=pct===100?'완벽합니다. 배포 준비 완료!':(pct>=60?'거의 다 됐어요.':'핵심 항목부터 점검하세요.');}
+document.querySelectorAll('#cklist input').forEach(function(i){i.addEventListener('change',upd);});upd();
+</script>
+</body>
+</html>

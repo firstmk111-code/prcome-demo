@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>키워드 트렌드 — PRCOME 마케팅 도구</title>
+<meta name="description" content="키워드의 최근 12개월 검색 관심도 추이와 함께 뜨는 연관 키워드를 확인하세요.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="../assets/css/magazine-system.css">
+<script>window.MAG={root:'../',home:'../index.html',catBase:'../insights/index.html'};</script>
+<style>
+.tw{max-width:880px}
+.subhead{padding:30px 0 6px}
+.subhead .crumb{font-size:12.5px;color:var(--sub);margin-bottom:12px}
+.subhead h1{font-size:clamp(22px,2.7vw,30px);font-weight:800;letter-spacing:-.03em;display:flex;align-items:center;gap:12px}
+.subhead h1 .tick{width:26px;height:3px;background:var(--pt);border-radius:2px}
+.subhead h1 .nw{font-size:10px;font-weight:800;color:#2FA96A;background:#EAF6EE;border-radius:4px;padding:2px 6px;vertical-align:middle}
+.subhead .desc{font-size:15px;color:var(--sub);margin-top:10px;line-height:1.6}
+.searchrow{display:flex;gap:8px;margin-top:22px}
+.searchrow input{flex:1;height:52px;border:1px solid var(--line-2);border-radius:8px;padding:0 15px;font-family:inherit;font-size:15px;outline:0}
+.searchrow input:focus{border-color:var(--pt);box-shadow:0 0 0 3px var(--pt-soft)}
+.searchrow button{height:52px;background:var(--pt);color:#fff;border:0;border-radius:8px;font-family:inherit;font-size:15px;font-weight:800;padding:0 22px;cursor:pointer}
+.searchrow button:hover{background:var(--pt-2)}
+.result{margin-top:22px;display:none}.result.on{display:block}
+.chartbox{background:var(--surf);border:1px solid var(--line);border-radius:12px;padding:22px}
+.chartbox .ch{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.chartbox .ch b{font-size:15px;font-weight:800}
+.chartbox .ch .tr{font-size:12.5px;font-weight:800;border-radius:999px;padding:4px 12px}
+.chart{display:flex;align-items:flex-end;gap:6px;height:180px;padding-top:10px}
+.chart .col{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end}
+.chart .col i{width:100%;max-width:26px;background:var(--pt);border-radius:4px 4px 0 0;transition:height .5s}
+.chart .col:hover i{background:var(--pt-2)}
+.chart .col span{font-size:10px;color:var(--sub-2)}
+.panel{background:var(--surf);border:1px solid var(--line);border-radius:12px;padding:20px;margin-top:16px}
+.panel h3{font-size:14px;font-weight:800;margin-bottom:12px}
+.rising{display:flex;flex-wrap:wrap;gap:8px}
+.rising a{font-size:13px;font-weight:600;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:7px 13px}
+.rising a:hover{border-color:var(--pt);color:var(--pt)}
+.rising a b{color:#2FA96A;margin-left:5px;font-size:11px}
+.note{font-size:12.5px;color:var(--sub-2);margin-top:16px;line-height:1.6}
+</style>
+</head>
+<body>
+<div id="mag-header"></div>
+<div class="wrap tw">
+  <section class="subhead">
+    <div class="crumb"><a href="../index.html">홈</a> / <a href="index.html">마케팅 도구</a> / 키워드 트렌드</div>
+    <h1><span class="tick"></span>키워드 트렌드 <span class="nw">NEW</span></h1>
+    <p class="desc">키워드의 최근 12개월 검색 관심도 추이와, 함께 떠오르는 연관 키워드를 확인하세요.</p>
+  </section>
+
+  <div class="searchrow">
+    <input id="kw" placeholder="키워드를 입력하세요 (예: 오마카세)" onkeydown="if(event.key==='Enter')run()">
+    <button onclick="run()">트렌드 보기</button>
+  </div>
+
+  <div class="result" id="res">
+    <div class="chartbox">
+      <div class="ch"><b id="kwTitle"></b><span class="tr" id="trend"></span></div>
+      <div class="chart" id="chart"></div>
+    </div>
+    <div class="panel">
+      <h3>함께 뜨는 연관 키워드</h3>
+      <div class="rising" id="rising"></div>
+    </div>
+    <p class="note" id="tip"></p>
+  </div>
+  <p class="note">※ 관심도는 입력값 기반 시뮬레이션(1차 데모)으로 상대값(0~100)입니다. 실제 데이터는 네이버 데이터랩·구글 트렌드 연동 시 반영됩니다.</p>
+  <div style="height:60px"></div>
+</div>
+<div id="mag-footer"></div>
+<script src="../assets/js/magazine-header.js"></script>
+<script>
+function hash(s){var h=2166136261;for(var i=0;i<s.length;i++){h^=s.charCodeAt(i);h=(h*16777619)>>>0;}return h;}
+var MONTHS=['8월','9월','10월','11월','12월','1월','2월','3월','4월','5월','6월','7월'];
+var SUF=['맛집','추천','후기','예약','가격','근처','브랜드','트렌드'];
+function run(){
+ var kw=(document.getElementById('kw').value||'').trim();
+ if(!kw){alert('키워드를 입력하세요.');return;}
+ var h=hash(kw);
+ var vals=[];for(var i=0;i<12;i++){var v=30+((hash(kw+i)>>>2)%70);vals.push(v);}
+ // trend = last quarter avg vs first quarter avg
+ var first=(vals[0]+vals[1]+vals[2])/3, last=(vals[9]+vals[10]+vals[11])/3;
+ var chg=Math.round((last-first)/first*100);
+ document.getElementById('kwTitle').textContent='"'+kw+'" 검색 관심도';
+ var tr=document.getElementById('trend');
+ if(chg>=8){tr.textContent='▲ 상승 '+chg+'%';tr.style.background='#EAF6EE';tr.style.color='#2FA96A';}
+ else if(chg<=-8){tr.textContent='▼ 하락 '+Math.abs(chg)+'%';tr.style.background='#FDECE4';tr.style.color='#E4612B';}
+ else{tr.textContent='― 보합 '+chg+'%';tr.style.background='var(--grey-2)';tr.style.color='var(--sub)';}
+ var max=Math.max.apply(null,vals);
+ document.getElementById('chart').innerHTML=vals.map(function(v,i){
+  return '<div class="col"><i style="height:'+(v/max*100)+'%"></i><span>'+MONTHS[i]+'</span></div>';
+ }).join('');
+ document.getElementById('rising').innerHTML=SUF.map(function(s){
+  var rc=5+(hash(kw+s)%80);
+  return '<a href="keyword-analyzer.html">#'+kw+' '+s+'<b>+'+rc+'%</b></a>';
+ }).join('');
+ document.getElementById('tip').textContent=chg>=8?'💡 관심도가 상승세입니다. 지금이 콘텐츠·광고 집행의 적기입니다.':chg<=-8?'💡 관심도가 하락세입니다. 시즌성 여부를 확인하고 연관 키워드로 확장하세요.':'💡 관심도가 안정적입니다. 꾸준한 롱테일 콘텐츠 전략이 유효합니다.';
+ document.getElementById('res').classList.add('on');
+}
+</script>
+</body>
+</html>

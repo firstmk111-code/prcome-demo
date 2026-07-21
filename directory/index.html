@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>기업·미디어 탐색 — PRCOME</title>
+<meta name="description" content="언론사·매체, PR회사, 마케팅회사, 전문가를 분야·지역·서비스 필터로 한곳에서 탐색하세요.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="../assets/css/magazine-system.css">
+<script>(function(){var p=new URLSearchParams(location.search);window.MAG={root:'../',home:'../index.html',catBase:'../insights/index.html',_t:p.get('type')||'',_q:p.get('q')||''};})();</script>
+<style>
+.subhead{padding:30px 0 6px}.subhead .crumb{font-size:12.5px;color:var(--sub);margin-bottom:12px}
+.subhead h1{font-size:clamp(24px,3vw,32px);font-weight:800;letter-spacing:-.03em;display:flex;align-items:center;gap:12px}
+.subhead h1 .tick{width:26px;height:3px;background:var(--pt);border-radius:2px}
+.subhead .desc{font-size:15.5px;color:var(--sub);margin-top:10px;max-width:56ch;line-height:1.6}
+/* 유형 탭 */
+.dtabs{display:flex;gap:20px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-top:20px;overflow-x:auto;scrollbar-width:none}
+.dtabs button{background:none;border:0;padding:12px 0;font-family:inherit;font-size:14.5px;font-weight:700;color:var(--sub);white-space:nowrap;position:relative;cursor:pointer}
+.dtabs button.on{color:var(--pt)}.dtabs button.on::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--pt)}
+.dtabs button .c{font-size:11px;color:var(--sub-2);font-weight:600;margin-left:4px}
+/* 필터바 */
+.fbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:18px 0}
+.fbar .fld{display:flex;align-items:center;gap:8px;border:1px solid var(--line-2);border-radius:6px;padding:0 12px;height:44px;background:var(--surf)}
+.fbar .fld.grow{flex:1;min-width:200px}
+.fbar select,.fbar input{border:0;outline:0;background:transparent;font-family:inherit;font-size:14px;color:var(--ink);min-width:0}
+.fbar .fld svg{width:16px;height:16px;stroke:var(--sub);fill:none;stroke-width:1.8;flex:none}
+.fbar .go{height:44px;border:0;border-radius:6px;background:var(--pt);color:#fff;font-weight:700;font-size:14px;padding:0 18px}
+.rescount{font-size:13px;color:var(--sub);margin-bottom:6px}.rescount b{color:var(--ink)}
+/* 결과 목록 */
+.dlist{border-top:2px solid var(--ink)}
+.drow{display:grid;grid-template-columns:52px 1.2fr 1.3fr auto;gap:16px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line)}
+.drow .lg{width:48px;height:48px;border-radius:8px;background:var(--pt-soft);color:var(--pt);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px}
+.drow .nm{font-size:15.5px;font-weight:700}.drow:hover .nm{color:var(--pt)}
+.drow .ty{font-size:12.5px;color:var(--sub);margin-top:2px}
+.drow .tags{display:flex;gap:6px;flex-wrap:wrap}
+.drow .tags span{font-size:11.5px;color:var(--sub);border:1px solid var(--line);border-radius:4px;padding:2px 8px}
+.drow .go{font-size:12.5px;font-weight:700;color:#fff;background:var(--pt);border-radius:6px;padding:9px 15px;white-space:nowrap}
+.drow .go.line{background:none;color:var(--pt);border:1px solid var(--pt)}
+.empty{padding:30px 0;color:var(--sub)}
+@media (max-width:820px){.drow{grid-template-columns:44px 1fr auto}.drow .tags{display:none}}
+</style>
+</head>
+<body>
+<div id="mag-header"></div>
+<div class="wrap">
+  <section class="subhead">
+    <div class="crumb"><a href="../index.html">홈</a> / 기업·미디어</div>
+    <h1><span class="tick"></span>기업·미디어 통합 탐색</h1>
+    <p class="desc">언론사·매체, PR회사, 마케팅회사, 전문가를 <b>분야·지역·서비스</b> 조건으로 한곳에서 찾아보세요.</p>
+    <div class="dtabs" id="dtabs"></div>
+  </section>
+  <div class="fbar">
+    <div class="fld grow"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4" stroke-linecap="round"/></svg><input id="q" placeholder="이름·분야·서비스 검색"></div>
+    <div class="fld"><select id="f-field"><option value="">분야 전체</option><option>산업·기업</option><option>IT·스타트업</option><option>금융</option><option>유통·소비재</option><option>위기관리</option><option>퍼포먼스</option><option>SEO·GEO</option></select></div>
+    <div class="fld"><select id="f-region"><option value="">지역 전체</option><option>서울</option><option>경기·인천</option><option>부산·경남</option><option>원격</option></select></div>
+    <button class="go" onclick="render()">필터 적용</button>
+  </div>
+  <div class="rescount" id="rescount"></div>
+  <div class="dlist" id="dlist"></div>
+  <div style="height:50px"></div>
+</div>
+<div id="mag-footer"></div>
+<script src="../assets/js/magazine-header.js"></script>
+<script>
+var TABS=[['all','전체'],['media','언론사·매체'],['pr','PR회사'],['mkt','마케팅회사'],['expert','전문가']];
+/* [type, ini, name, typeLabel, field, region, tags, href] — 언론 우선 정렬 */
+var D=[
+ ['media','경','경제산업신문','경제일간지','산업·기업','서울',['산업부','유통부','지면+온라인'],'media.html'],
+ ['media','테','테크리포트','IT 전문지','IT·스타트업','서울',['스타트업팀','온라인'],'media.html'],
+ ['media','데','데일리커머스','인터넷신문','유통·소비재','서울',['유통팀','트렌드팀'],'media.html'],
+ ['media','금','금융투자저널','경제일간지','금융','서울',['증권부','금융부'],'media.html'],
+ ['media','부','부산경제신문','지역지','산업·기업','부산·경남',['지역경제','지면+온라인'],'media.html'],
+ ['pr','브','브릿지커뮤니케이션즈','종합PR','IT·스타트업','서울',['미디어관계','보도자료','위기관리'],'detail.html'],
+ ['pr','한','한결피알','공공·지역 PR','산업·기업','부산·경남',['공공','지역언론'],'agencies.html'],
+ ['pr','미','미디어웨이브','종합PR','금융','서울',['IR·위기관리','대기업'],'agencies.html'],
+ ['mkt','노','노바디지털','퍼포먼스','퍼포먼스','서울',['커머스','콘텐츠'],'agencies.html'],
+ ['mkt','써','써치온','디지털 마케팅','SEO·GEO','서울',['SEO','GEO','콘텐츠'],'agencies.html'],
+ ['expert','이','이서준','PR 전략·위기관리','위기관리','서울',['전 홍보실장','20년'],'detail.html'],
+ ['expert','정','정하윤','디지털·퍼포먼스','퍼포먼스','원격',['그로스','커머스'],'detail.html']
+];
+var params=new URLSearchParams(location.search);
+var type=params.get('type')||'all'; if(!TABS.some(function(t){return t[0]===type;}))type='all';
+var q0=params.get('q')||''; if(q0)document.getElementById('q').value=q0;
+
+function counts(){var c={all:D.length};TABS.slice(1).forEach(function(t){c[t[0]]=D.filter(function(d){return d[0]===t[0];}).length;});return c;}
+function drawTabs(){var c=counts();document.getElementById('dtabs').innerHTML=TABS.map(function(t){return '<button class="'+(t[0]===type?'on':'')+'" onclick="type=\''+t[0]+'\';drawTabs();render();">'+t[1]+'<span class="c">'+c[t[0]]+'</span></button>';}).join('');}
+function render(){
+ var q=(document.getElementById('q').value||'').trim();
+ var fld=document.getElementById('f-field').value, reg=document.getElementById('f-region').value;
+ var list=D.filter(function(d){
+   if(type!=='all'&&d[0]!==type)return false;
+   if(fld&&d[4]!==fld)return false;
+   if(reg&&d[5]!==reg)return false;
+   if(q&&(d[2]+' '+d[6].join(' ')+' '+d[3]).toLowerCase().indexOf(q.toLowerCase())<0)return false;
+   return true;
+ });
+ var TL={media:'언론사',pr:'PR회사',mkt:'마케팅회사',expert:'전문가'};
+ document.getElementById('rescount').innerHTML='조건에 맞는 결과 <b>'+list.length+'건</b>'+(type!=='all'?' · '+TL[type]:'');
+ document.getElementById('dlist').innerHTML=list.map(function(d){
+  var go=d[0]==='media'?'매체 보기':(d[0]==='expert'?'전문가 보기':'기업 정보');
+  return '<a class="drow" href="'+d[7]+'"><span class="lg">'+d[1]+'</span>'+
+   '<span><div class="nm">'+d[2]+'</div><div class="ty">'+d[3]+' · '+d[5]+'</div></span>'+
+   '<span class="tags">'+d[6].map(function(t){return '<span>'+t+'</span>';}).join('')+'</span>'+
+   '<span class="go'+(d[0]==='media'?' line':'')+'">'+go+'</span></a>';
+ }).join('')||'<div class="empty">조건에 맞는 결과가 없습니다. 필터를 조정해 보세요.</div>';
+}
+drawTabs();render();
+</script>
+</body>
+</html>

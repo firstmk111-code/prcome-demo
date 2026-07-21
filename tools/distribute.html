@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>보도자료 배포 AI (가안) — PRCOME PR 도구</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="../assets/css/magazine-system.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23C8FF3D'/%3E%3Crect x='9' y='9' width='14' height='14' rx='4' fill='%23111318'/%3E%3C/svg%3E">
+<script>window.SITE_ROOT='../';window.MAG={root:'../',home:'../index.html',catBase:'../insights/index.html'};</script>
+</head>
+<body>
+<div id="mag-header"></div>
+
+<header class="page-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../index.html">홈</a> › <a href="index.html">PR 도구</a> › 보도자료 배포 AI</div>
+    <h1>보도자료 배포 AI <span style="font-size:15px;font-weight:600;color:var(--primary)">가안</span></h1>
+    <p class="lead">보도자료 주제와 산업을 입력하면 적합한 매체와 담당 부서를 매칭해 배포 리스트를 제안합니다.</p>
+  </div>
+</header>
+
+<div class="wrap" style="padding-top:26px">
+  <div class="notice" style="margin-bottom:20px">1차 데모 가안입니다. 실제 매체 매칭·발송 기능은 준비 중이며, 아래는 입력값 기반 매칭 리스트 예시입니다.</div>
+
+  <div class="form-card" style="margin-bottom:24px">
+    <div class="grid g-3" style="gap:14px">
+      <div class="form-row" style="margin-bottom:0"><label>산업·분야</label><select class="select" id="d-ind"><option>식품·소비재</option><option>IT·스타트업</option><option>금융·투자</option><option>제조·산업재</option><option>유통·이커머스</option><option>문화·라이프</option></select></div>
+      <div class="form-row" style="margin-bottom:0"><label>보도자료 유형</label><select class="select" id="d-type"><option>신제품 출시</option><option>투자유치</option><option>실적·성과</option><option>행사·캠페인</option><option>인사·수상</option></select></div>
+      <div class="form-row" style="margin-bottom:0"><label>배포 채널</label><select class="select"><option>온라인+지면</option><option>온라인 우선</option><option>전문지 중심</option></select></div>
+    </div>
+    <a class="btn btn-signal mt-16" style="width:100%;display:block;text-align:center;box-sizing:border-box" href="pr-agent/index.html?start=distribute">PRCOME AI PR 워크스페이스에서 배포 시작 →</a>
+    <button class="btn btn-ghost btn-sm" style="width:100%;margin-top:8px" onclick="match()">간단 미리보기 (가안)</button>
+  </div>
+
+  <div id="result" class="hide">
+    <div class="flex between items-center" style="margin-bottom:12px"><h3 style="font-size:17px;color:var(--text-primary)">매칭된 배포 대상 <span id="cnt" class="muted" style="font-weight:500"></span></h3>
+      <button class="btn btn-signal btn-sm" onclick="alert('1차 데모 가안입니다. 실제 배포는 준비 중입니다.')">선택 매체로 배포하기</button></div>
+    <div class="row-list" id="list"></div>
+    <p class="muted mt-16" style="font-size:12px">※ 매칭 점수는 산업·유형 적합도 기반의 데모 예시이며, 실제 기자 개인 연락처는 제공하지 않습니다.</p>
+  </div>
+</div>
+<div style="height:60px"></div>
+
+<div id="mag-footer"></div>
+<script src="../assets/js/magazine-header.js"></script>
+<script>
+var DB={
+ '식품·소비재':[['데일리커머스','유통팀·트렌드팀',96],['라이프앤컬처','문화부·라이프팀',90],['경제산업신문','유통부',84],['한국종합일보','경제부',72]],
+ 'IT·스타트업':[['테크리포트','스타트업팀',95],['산업기술뉴스','제조산업부',82],['경제산업신문','산업부',80],['뉴스와이어통신','배포데스크',70]],
+ '금융·투자':[['금융투자저널','증권부·금융부',96],['한국종합일보','경제부',80],['경제산업신문','금융부',78]],
+ '제조·산업재':[['산업기술뉴스','소재부품팀',94],['경제산업신문','산업부',86],['부산경제신문','경제부',68]],
+ '유통·이커머스':[['데일리커머스','유통팀',95],['경제산업신문','유통부',82],['라이프앤컬처','라이프팀',74]],
+ '문화·라이프':[['라이프앤컬처','문화부',95],['한국종합일보','문화부',80],['데일리커머스','트렌드팀',70]]
+};
+function match(){
+  var ind=document.getElementById('d-ind').value, list=DB[ind]||DB['식품·소비재'];
+  document.getElementById('result').classList.remove('hide');
+  document.getElementById('cnt').textContent='· '+list.length+'곳';
+  document.getElementById('list').innerHTML=list.map(function(m){
+    var cls=m[2]>=90?'ok':(m[2]>=78?'signal':'line');
+    return '<div class="row"><label class="flex items-center gap-8" style="cursor:pointer"><input type="checkbox" checked></label>'+
+      '<div class="logo-badge">'+m[0][0]+'</div>'+
+      '<div class="r-main"><div class="r-title" style="color:var(--text-primary)">'+m[0]+'</div><div class="r-sub"><span>담당: '+m[1]+'</span></div></div>'+
+      '<div class="r-side"><span class="chip '+cls+'">매칭 '+m[2]+'%</span></div></div>';
+  }).join('');
+}
+match();
+</script>
+</body>
+</html>

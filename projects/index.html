@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>프로젝트 — PRCOME(피알컴)</title>
+<meta name="description" content="언론홍보, 보도자료, 콘텐츠, SEO·GEO, 브랜드 컨설팅까지. 지금 파트너를 찾는 홍보·마케팅 프로젝트를 만나보세요.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="../assets/css/magazine-system.css">
+<script>window.MAG={root:'../',home:'../index.html',catBase:'../insights/index.html'};</script>
+<style>
+.subhead{padding:30px 0 6px}
+.subhead .top{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.subhead .crumb{font-size:12.5px;color:var(--sub);margin-bottom:12px}
+.subhead h1{font-size:clamp(24px,3vw,32px);font-weight:800;letter-spacing:-.03em;display:flex;align-items:center;gap:12px}
+.subhead h1 .tick{width:26px;height:3px;background:var(--pt);border-radius:2px}
+.subhead .desc{font-size:15.5px;color:var(--sub);margin-top:10px;max-width:56ch;line-height:1.6}
+.reg-btn{flex:none;height:44px;display:inline-flex;align-items:center;gap:7px;background:var(--pt);color:#fff;font-weight:700;font-size:14px;border-radius:6px;padding:0 18px}
+.reg-btn:hover{background:var(--pt-2)}
+/* 카테고리 탭 = 텍스트 + 파란 밑줄 */
+.ptabs{display:flex;gap:20px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-top:22px;overflow-x:auto;scrollbar-width:none}
+.ptabs::-webkit-scrollbar{display:none}
+.ptabs a{padding:12px 0;font-size:14px;font-weight:700;color:var(--sub);white-space:nowrap;position:relative}
+.ptabs a:hover{color:var(--ink)}
+.ptabs a.on{color:var(--pt)}.ptabs a.on::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--pt)}
+/* 필터바 */
+.fbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin:18px 0 6px}
+.fbar .cnt{font-size:13px;color:var(--sub)}.fbar .cnt b{color:var(--ink)}
+.fbar .fld{display:flex;align-items:center;gap:8px;border:1px solid var(--line-2);border-radius:6px;padding:0 12px;height:40px;background:var(--surf)}
+.fbar select{border:0;outline:0;background:transparent;font-family:inherit;font-size:13.5px;color:var(--ink)}
+/* 프로젝트 목록 = 촘촘한 데이터 행 */
+.plist{border-top:2px solid var(--ink)}
+.prow{display:grid;grid-template-columns:92px 1fr 180px 84px;gap:18px;align-items:center;padding:17px 0;border-bottom:1px solid var(--line)}
+.prow .field{font-size:12px;font-weight:800;color:var(--pt);align-self:start;padding-top:3px}
+.prow .tt{font-size:16px;font-weight:700;line-height:1.4}.prow:hover .tt{color:var(--pt)}
+.prow .ds{font-size:13px;color:var(--sub);margin-top:4px;line-height:1.55;max-width:60ch}
+.prow .meta{text-align:right}
+.prow .meta .bud{font-size:14px;font-weight:700;color:var(--ink)}
+.prow .meta .sch{font-size:12px;color:var(--sub);margin-top:3px}
+.prow .st{font-size:12px;font-weight:700;display:inline-flex;align-items:center;gap:6px;justify-self:end;white-space:nowrap}
+.prow .st i{width:6px;height:6px;border-radius:50%;background:var(--pt)}
+.prow .st.warn{color:#E4612B}.prow .st.warn i{background:#E4612B}
+.prow .st.line{color:var(--sub-2)}.prow .st.line i{background:var(--sub-2)}
+.empty{padding:40px 0;color:var(--sub)}
+/* 페이지네이션 */
+.pager{display:flex;gap:6px;justify-content:center;margin:34px 0}
+.pager a{min-width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:6px;font-size:13px;font-weight:600;color:var(--sub)}
+.pager a.on{background:var(--pt);color:#fff;border-color:var(--pt)}
+.pager a:hover:not(.on){border-color:var(--pt);color:var(--pt)}
+@media (max-width:820px){
+  .prow{grid-template-columns:1fr auto;gap:6px 14px}
+  .prow .field{grid-column:1/-1;padding-top:0}
+  .prow .meta{grid-column:1;text-align:left}.prow .meta .sch{margin-top:2px}
+  .prow .st{grid-column:2;grid-row:3;align-self:center}
+  .prow .ds{display:none}
+}
+</style>
+</head>
+<body>
+<div id="mag-header"></div>
+<div class="wrap">
+  <section class="subhead">
+    <div class="top">
+      <div>
+        <div class="crumb"><a href="../index.html">홈</a> / 프로젝트</div>
+        <h1><span class="tick"></span>홍보·마케팅 프로젝트</h1>
+      </div>
+      <a class="reg-btn" href="new.html">＋ 프로젝트 등록</a>
+    </div>
+    <p class="desc">지금 파트너를 찾는 의뢰를 확인하고 제안하세요. 대행사·프리랜서·전문가 모두 지원할 수 있습니다.</p>
+  </section>
+
+  <nav class="ptabs">
+    <a href="index.html">전체</a>
+    <a href="index.html?cat=media">언론홍보</a>
+    <a href="index.html?cat=release">보도자료</a>
+    <a href="index.html?cat=content">콘텐츠</a>
+    <a href="index.html?cat=seo">SEO·AEO·GEO</a>
+    <a href="index.html?cat=brand">브랜드 컨설팅</a>
+    <a href="index.html?cat=design">디자인·영상</a>
+    <a href="index.html?cat=etc">기타</a>
+  </nav>
+
+  <div class="fbar">
+    <span class="cnt" id="cnt"></span>
+    <div class="fld"><select><option>최신 등록순</option><option>마감 임박순</option><option>예산 높은순</option></select></div>
+  </div>
+
+  <div class="plist" id="plist"></div>
+  <div class="pager"><a>‹</a><a class="on">1</a><a href="index.html">2</a><a href="index.html">3</a><a>›</a></div>
+  <div style="height:50px"></div>
+</div>
+
+<div id="mag-footer"></div>
+<script src="../assets/js/magazine-header.js"></script>
+<script>
+var CAT={media:'언론홍보',release:'보도자료',content:'콘텐츠',seo:'SEO·GEO',brand:'브랜드',design:'디자인·영상',etc:'기타'};
+var ST={open:['모집중',''],soon:['마감임박','warn'],closed:['모집완료','line']};
+var P=[
+ {c:'media',t:'식품 브랜드 신제품 언론홍보 대행사 모집',d:'비건 간편식 신규 라인 출시. 소비재·식품 담당 기자 네트워크 보유 대행사 우대.',bud:'월 300~500만원',sch:'8월 착수 · 3개월',st:'open',dt:'2026.07.19'},
+ {c:'seo',t:'B2B 기업 홈페이지 SEO·AEO 개선 프로젝트',d:'산업용 부품 제조사. 검색 유입 및 AI 검색 인용률 개선. 리포트 기반 협업 선호.',bud:'1,000~1,500만원',sch:'협의 · 2개월',st:'open',dt:'2026.07.18'},
+ {c:'content',t:'스타트업 브랜드 스토리·오너드미디어 콘텐츠 제작',d:'시리즈A 핀테크. 블로그·뉴스룸 정기 콘텐츠와 인터뷰 기사형 콘텐츠 파트너 모집.',bud:'월 200~300만원',sch:'즉시 · 6개월',st:'soon',dt:'2026.07.16'},
+ {c:'release',t:'투자유치 보도자료 작성·배포 (단건)',d:'시드 투자 유치 발표. 경제·IT지 배포와 기자 팔로업 포함 단건 프로젝트.',bud:'80~150만원',sch:'7월 말 · 2주',st:'open',dt:'2026.07.15'},
+ {c:'brand',t:'제조 중소기업 리브랜딩 컨설팅',d:'창업 20년 제조사. 로고·네이밍·메시지 정비와 브랜드 가이드 수립.',bud:'2,000만원~',sch:'9월 · 4개월',st:'open',dt:'2026.07.14'},
+ {c:'design',t:'제품 소개 영상·상세페이지 디자인',d:'뷰티 디바이스 신제품. 60초 소개 영상과 상세페이지 비주얼 제작.',bud:'500~800만원',sch:'8월 · 6주',st:'open',dt:'2026.07.12'},
+ {c:'media',t:'공공기관 캠페인 지역 언론홍보',d:'지자체 환경 캠페인. 지역지·지역방송 대상 홍보와 현장 취재 지원.',bud:'700~900만원',sch:'8~10월',st:'soon',dt:'2026.07.10'},
+ {c:'content',t:'뉴스레터 기획·운영 대행 (월 2회)',d:'HR테크 SaaS. 구독자 대상 뉴스레터 콘텐츠 기획과 발송 운영.',bud:'월 150만원',sch:'상시 · 장기',st:'open',dt:'2026.07.08'},
+ {c:'release',t:'전시회 참가 보도자료 패키지',d:'산업 전시회 참가 기업. 사전·현장·사후 보도자료 3종 작성·배포.',bud:'200~300만원',sch:'9월 전시 전후',st:'closed',dt:'2026.07.05'}
+];
+var params=new URLSearchParams(location.search),f=params.get('cat');
+var list=f?P.filter(function(p){return p.c===f;}):P;
+document.querySelectorAll('.ptabs a').forEach(function(a){
+  var h=a.getAttribute('href');
+  a.classList.toggle('on',(!f&&h==='index.html')||(!!f&&h.indexOf('cat='+f)>-1));
+});
+document.getElementById('cnt').innerHTML=(f?CAT[f]+' · ':'진행 중 프로젝트 ')+'<b>'+list.length+'</b>건';
+document.getElementById('plist').innerHTML=list.map(function(p){
+ var s=ST[p.st];
+ return '<a class="prow" href="detail.html">'+
+  '<span class="field">'+CAT[p.c]+'</span>'+
+  '<span><div class="tt">'+p.t+'</div><div class="ds">'+p.d+'</div></span>'+
+  '<span class="meta"><div class="bud">'+p.bud+'</div><div class="sch">'+p.sch+'</div></span>'+
+  '<span class="st '+s[1]+'"><i></i>'+s[0]+'</span></a>';
+}).join('')||'<div class="empty">해당 분야의 프로젝트가 아직 없습니다.</div>';
+</script>
+</body>
+</html>

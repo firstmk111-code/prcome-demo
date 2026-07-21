@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>기사화 가능성 진단 (가안) — PRCOME PR 도구</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="../assets/css/magazine-system.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23C8FF3D'/%3E%3Crect x='9' y='9' width='14' height='14' rx='4' fill='%23111318'/%3E%3C/svg%3E">
+<script>window.SITE_ROOT='../';window.MAG={root:'../',home:'../index.html',catBase:'../insights/index.html'};</script>
+</head>
+<body>
+<div id="mag-header"></div>
+
+<header class="page-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../index.html">홈</a> › <a href="index.html">PR 도구</a> › 기사화 가능성 진단</div>
+    <h1>기사화 가능성 진단 <span style="font-size:15px;font-weight:600;color:var(--primary)">가안</span></h1>
+    <p class="lead">작성한 보도자료를 뉴스 가치·형식 기준으로 점검하고, 기사화 가능성을 높이는 개선점을 제안합니다.</p>
+  </div>
+</header>
+
+<div class="wrap" style="padding-top:26px">
+  <div class="notice" style="margin-bottom:20px">1차 데모 가안입니다. 아래는 진단 항목과 리포트 형태를 보여주는 예시입니다.</div>
+  <div class="split" style="gap:30px;grid-template-columns:1fr 1fr">
+    <div class="form-card">
+      <div class="form-row"><label>보도자료 제목</label><input class="input" value="그린테이블, 비건 간편식 신규 라인 출시"></div>
+      <div class="form-row"><label>보도자료 본문 붙여넣기</label><textarea class="textarea" style="min-height:220px">그린테이블이 8월 1일 비건 간편식 신규 라인을 선보인다. 100% 식물성 원료로 만들어졌으며 1인 가구를 겨냥했다...</textarea></div>
+      <button class="btn btn-signal" style="width:100%" onclick="run()">기사화 가능성 진단</button>
+    </div>
+    <div id="rep" class="hide">
+      <div class="card card-pad center" style="margin-bottom:16px"><div style="font-size:44px;font-weight:800;color:var(--primary)">68</div><b style="color:var(--text-primary)">기사화 가능성</b><div class="muted" style="font-size:12.5px">100점 만점 · 보통</div></div>
+      <div class="card"><div class="card-pad" style="padding-bottom:6px"><h3 style="font-size:16px;color:var(--text-primary)">항목별 점검</h3></div>
+        <div class="row-list" style="border:0;box-shadow:none" id="items"></div></div>
+    </div>
+  </div>
+  <div style="height:60px"></div>
+</div>
+
+<div id="mag-footer"></div>
+<script src="../assets/js/magazine-header.js"></script>
+<script>
+var IT=[['뉴스 가치(신규성·시의성)','보통','warn','업계 최초·수치 근거를 앞세우면 가치가 올라갑니다.'],
+['제목 매력도','좋음','ok','회사명보다 독자 관심 포인트가 앞서면 더 좋습니다.'],
+['리드 문장','보통','warn','핵심을 첫 문장에 육하원칙으로 압축하세요.'],
+['수치·근거','미흡','warn','판매 목표·시장 규모 등 구체 수치를 보강하세요.'],
+['이미지·자료','미흡','warn','제품 사진·인포그래픽 첨부 시 채택률이 오릅니다.'],
+['인용문','좋음','ok','대표 인용문이 포함되어 있습니다.']];
+function run(){document.getElementById('rep').classList.remove('hide');
+ document.getElementById('items').innerHTML=IT.map(function(i){return '<div class="row"><div class="r-main"><div class="r-title" style="color:var(--text-primary)">'+i[0]+'</div><div class="r-sub"><span>'+i[3]+'</span></div></div><div class="r-side"><span class="chip '+i[2]+'">'+i[1]+'</span></div></div>';}).join('');
+ document.getElementById('rep').scrollIntoView({behavior:'smooth'});}
+run();
+</script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>회원가입 — PRCOME(피알컴)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="../assets/css/magazine-system.css">
+<script>window.MAG={root:'../',home:'../index.html',catBase:'../insights/index.html'};</script>
+<style>
+.auth-wrap{max-width:480px;margin:0 auto;padding:44px 24px 60px}
+.auth-card{background:var(--surf);border:1px solid var(--line);border-radius:12px;padding:34px}
+.auth-card .brand{display:flex;align-items:center;justify-content:center;gap:8px;font-weight:800;font-size:22px;letter-spacing:-.04em;margin-bottom:14px}
+.auth-card .brand .dot{width:10px;height:10px;background:var(--pt);border-radius:2px;transform:rotate(45deg)}
+.auth-card h1{font-size:23px;font-weight:800;letter-spacing:-.03em;text-align:center}
+.auth-card .sub{font-size:13.5px;color:var(--sub);text-align:center;margin-top:8px;line-height:1.5}
+.row{margin:14px 0}
+.row label{display:block;font-size:13px;font-weight:700;margin-bottom:6px}
+.req{color:var(--pt)}
+.inp,.sel{width:100%;height:48px;font-family:inherit;font-size:14.5px;color:var(--ink);background:var(--surf);border:1px solid var(--line-2);border-radius:4px;padding:0 13px;outline:0}
+.inp:focus,.sel:focus{border-color:var(--pt);box-shadow:0 0 0 3px var(--pt-soft)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.agree{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:14px;margin:18px 0}
+.agree label{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--sub);padding:4px 0}
+.agree label.all{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.submit{width:100%;height:50px;background:var(--pt);color:#fff;border:0;border-radius:6px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer}
+.submit:hover{background:var(--pt-2)}
+.sep{display:flex;align-items:center;gap:12px;font-size:12px;color:var(--sub-2);margin:22px 0 12px}
+.sep::before,.sep::after{content:"";flex:1;height:1px;background:var(--line)}
+.oauth{display:flex;flex-direction:column;gap:9px}
+.oauth button{display:flex;align-items:center;justify-content:center;gap:8px;font-family:inherit;font-size:14px;font-weight:700;color:var(--ink);background:var(--surf);border:1px solid var(--line-2);border-radius:6px;padding:12px;cursor:pointer}
+.oauth button:hover{border-color:var(--pt)}
+.foot{text-align:center;margin-top:22px;font-size:14px;color:var(--sub)}.foot a{color:var(--pt);font-weight:700}
+.demo{text-align:center;margin-top:16px;font-size:12.5px;color:var(--sub-2)}
+@media (max-width:480px){.g2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="mag-header"></div>
+<div class="auth-wrap">
+  <div class="auth-card">
+    <a class="brand" href="../index.html"><span class="dot"></span>PRCOME</a>
+    <h1>회원가입</h1>
+    <p class="sub">PR·마케팅 실무자, 언론인, 대행사 모두 환영합니다.</p>
+
+    <form onsubmit="event.preventDefault();demo();">
+      <div class="row"><label>이름 <span class="req">*</span></label><input class="inp" placeholder="홍길동"></div>
+      <div class="row"><label>이메일 <span class="req">*</span></label><input class="inp" type="email" placeholder="name@company.com"></div>
+      <div class="g2">
+        <div class="row"><label>비밀번호 <span class="req">*</span></label><input class="inp" type="password" placeholder="8자 이상"></div>
+        <div class="row"><label>비밀번호 확인 <span class="req">*</span></label><input class="inp" type="password" placeholder="재입력"></div>
+      </div>
+      <div class="row"><label>회원 유형 <span class="req">*</span></label>
+        <select class="sel">
+          <option>기업 홍보담당자 (인하우스)</option>
+          <option>PR·마케팅 대행사</option>
+          <option>언론인·기자</option>
+          <option>프리랜서·전문가</option>
+          <option>마케팅 실무자</option>
+          <option>학생·취업준비생</option>
+          <option>기타</option>
+        </select></div>
+      <div class="row"><label>회사·소속 (선택)</label><input class="inp" placeholder="소속을 입력하세요"></div>
+
+      <div class="agree">
+        <label class="all"><input type="checkbox"> 전체 동의</label>
+        <label><input type="checkbox"> (필수) 이용약관 동의</label>
+        <label><input type="checkbox"> (필수) 개인정보 수집·이용 동의</label>
+        <label><input type="checkbox"> (선택) 뉴스레터·PR 브리핑 수신</label>
+      </div>
+
+      <button class="submit" type="submit">가입하고 시작하기</button>
+    </form>
+
+    <div class="sep">간편 가입</div>
+    <div class="oauth">
+      <button onclick="demo()"><span style="color:#03C75A;font-weight:800">N</span> 네이버로 가입</button>
+      <button onclick="demo()"><span style="font-weight:800">K</span> 카카오로 가입</button>
+    </div>
+
+    <p class="foot">이미 회원이신가요? <a href="login.html">로그인</a></p>
+  </div>
+  <p class="demo">1차 데모 가안 — 실제 가입·인증은 준비 중입니다.</p>
+</div>
+<div id="mag-footer"></div>
+<script src="../assets/js/magazine-header.js"></script>
+<script>function demo(){alert('1차 데모 가안입니다. 실제 회원가입은 준비 중입니다.');location.href='../index.html';}</script>
+</body>
+</html>

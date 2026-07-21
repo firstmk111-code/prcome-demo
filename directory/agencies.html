@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PR·마케팅회사 — PRCOME 기업·미디어</title>
+<meta name="description" content="종합홍보·디지털·콘텐츠·퍼포먼스 대행사를 분야·지역·규모로 비교하고 프로젝트로 연결하세요.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="../assets/css/magazine-system.css">
+<script>window.MAG={root:'../',home:'../index.html',catBase:'../insights/index.html'};</script>
+<style>
+.subhead{padding:30px 0 6px}.subhead .crumb{font-size:12.5px;color:var(--sub);margin-bottom:12px}
+.subhead h1{font-size:clamp(24px,3vw,32px);font-weight:800;letter-spacing:-.03em;display:flex;align-items:center;gap:12px}
+.subhead h1 .tick{width:26px;height:3px;background:var(--pt);border-radius:2px}
+.subhead .desc{font-size:15.5px;color:var(--sub);margin-top:10px;max-width:56ch;line-height:1.6}
+.dtabs{display:flex;gap:20px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-top:20px;overflow-x:auto;scrollbar-width:none}
+.dtabs button{background:none;border:0;padding:12px 0;font-family:inherit;font-size:14px;font-weight:700;color:var(--sub);white-space:nowrap;position:relative;cursor:pointer}
+.dtabs button.on{color:var(--pt)}.dtabs button.on::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--pt)}
+.fbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:18px 0}
+.fbar .fld{display:flex;align-items:center;gap:8px;border:1px solid var(--line-2);border-radius:6px;padding:0 12px;height:44px;background:var(--surf)}
+.fbar .fld.grow{flex:1;min-width:200px}.fbar select,.fbar input{border:0;outline:0;background:transparent;font-family:inherit;font-size:14px;color:var(--ink);min-width:0}
+.fbar .fld svg{width:16px;height:16px;stroke:var(--sub);fill:none;stroke-width:1.8;flex:none}
+.fbar .go{height:44px;border:0;border-radius:6px;background:var(--pt);color:#fff;font-weight:700;font-size:14px;padding:0 18px}
+.rescount{font-size:13px;color:var(--sub);margin-bottom:6px}.rescount b{color:var(--ink)}
+.dlist{border-top:2px solid var(--ink)}
+.drow{display:grid;grid-template-columns:52px 1.1fr 1.3fr auto;gap:16px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line)}
+.drow .lg{width:48px;height:48px;border-radius:8px;background:var(--pt-soft);color:var(--pt);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px}
+.drow .nm{font-size:15.5px;font-weight:700}.drow:hover .nm{color:var(--pt)}
+.drow .ty{font-size:12.5px;color:var(--sub);margin-top:2px}
+.drow .ds{font-size:13px;color:var(--sub)}
+.drow .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}.drow .tags span{font-size:11px;color:var(--sub);border:1px solid var(--line);border-radius:4px;padding:2px 7px}
+.drow .go{font-size:12.5px;font-weight:700;color:#fff;background:var(--pt);border-radius:6px;padding:9px 15px;white-space:nowrap}
+.empty{padding:30px 0;color:var(--sub)}
+@media (max-width:820px){.drow{grid-template-columns:44px 1fr auto}.drow .ds,.drow .tags{display:none}}
+</style>
+</head>
+<body>
+<div id="mag-header"></div>
+<div class="wrap">
+  <section class="subhead">
+    <div class="crumb"><a href="../index.html">홈</a> / <a href="index.html">기업·미디어</a> / PR·마케팅회사</div>
+    <h1><span class="tick"></span>PR·마케팅회사</h1>
+    <p class="desc">우리 프로젝트에 맞는 대행사를 <b>분야·지역·규모</b>로 좁혀 찾아보세요.</p>
+  </section>
+  <div class="fbar">
+    <div class="fld grow"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4" stroke-linecap="round"/></svg><input id="q" placeholder="회사명·전문분야 검색"></div>
+    <div class="fld"><select id="f-field"><option value="">분야 전체</option><option>종합PR</option><option>디지털 마케팅</option><option>퍼포먼스</option><option>콘텐츠</option><option>브랜드 컨설팅</option><option>공공·지역</option></select></div>
+    <div class="fld"><select id="f-region"><option value="">지역 전체</option><option>서울</option><option>경기</option><option>부산</option><option>대구</option></select></div>
+    <div class="fld"><select id="f-size"><option value="">규모 전체</option><option>1~10인</option><option>11~50인</option><option>50인 이상</option></select></div>
+    <button class="go" onclick="render()">필터 적용</button>
+  </div>
+  <div class="rescount" id="rescount"></div>
+  <div class="dlist" id="dlist"></div>
+  <div style="height:50px"></div>
+</div>
+<div id="mag-footer"></div>
+<script src="../assets/js/magazine-header.js"></script>
+<script>
+var A=[
+ {n:'브릿지커뮤니케이션즈',ini:'브',f:'종합PR',loc:'서울',sz:'11~50인',d:'IT·B2B 미디어 릴레이션 강점. 스타트업·테크 기업 홍보 다수.',tags:['IT·B2B','미디어관계','스타트업']},
+ {n:'미디어웨이브',ini:'미',f:'종합PR',loc:'서울',sz:'50인 이상',d:'금융·대기업 IR·PR. 위기관리 커뮤니케이션 경험 풍부.',tags:['금융','위기관리','IR']},
+ {n:'한결피알',ini:'한',f:'공공·지역',loc:'부산',sz:'1~10인',d:'공공기관·지자체 홍보와 지역 언론 네트워크.',tags:['공공','지역','캠페인']},
+ {n:'스토리브릭스',ini:'스',f:'콘텐츠',loc:'서울',sz:'1~10인',d:'브랜드 저널리즘·오너드미디어 콘텐츠 제작 전문.',tags:['콘텐츠','브랜드저널리즘','영상']},
+ {n:'노바디지털',ini:'노',f:'퍼포먼스',loc:'서울',sz:'11~50인',d:'퍼포먼스·콘텐츠 통합. 커머스 브랜드 그로스와 광고 운영.',tags:['퍼포먼스','커머스','콘텐츠']},
+ {n:'그로스랩스',ini:'그',f:'퍼포먼스',loc:'서울',sz:'11~50인',d:'데이터 기반 퍼포먼스와 CRM. B2B 리드젠 성과.',tags:['B2B','리드젠','데이터']},
+ {n:'플랜에이트',ini:'플',f:'브랜드 컨설팅',loc:'경기',sz:'11~50인',d:'브랜드 전략·네이밍·아이덴티티 컨설팅.',tags:['브랜딩','전략','디자인']},
+ {n:'써치온',ini:'써',f:'디지털 마케팅',loc:'서울',sz:'11~50인',d:'SEO·AEO·GEO와 콘텐츠 마케팅. 검색 가시성 특화.',tags:['SEO','GEO','콘텐츠']},
+ {n:'대구애드',ini:'대',f:'디지털 마케팅',loc:'대구',sz:'1~10인',d:'지역 중소기업 온라인 마케팅과 SNS 운영.',tags:['지역','SNS','중소기업']}
+];
+function render(){
+ var q=(document.getElementById('q').value||'').trim().toLowerCase();
+ var ff=document.getElementById('f-field').value, fr=document.getElementById('f-region').value, fs=document.getElementById('f-size').value;
+ var list=A.filter(function(a){
+   if(ff&&a.f!==ff)return false; if(fr&&a.loc!==fr)return false; if(fs&&a.sz!==fs)return false;
+   if(q&&(a.n+' '+a.f+' '+a.tags.join(' ')).toLowerCase().indexOf(q)<0)return false; return true;
+ });
+ document.getElementById('rescount').innerHTML='등록 대행사 <b>'+list.length+'곳</b>';
+ document.getElementById('dlist').innerHTML=list.map(function(a){
+  return '<a class="drow" href="detail.html"><span class="lg">'+a.ini+'</span>'+
+   '<span><div class="nm">'+a.n+'</div><div class="ty">'+a.f+' · '+a.loc+' · '+a.sz+'</div></span>'+
+   '<span><div class="ds">'+a.d+'</div><div class="tags">'+a.tags.map(function(t){return '<span>#'+t+'</span>';}).join('')+'</div></span>'+
+   '<span class="go">기업 정보</span></a>';
+ }).join('')||'<div class="empty">조건에 맞는 대행사가 없습니다.</div>';
+}
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>공지사항 — PRCOME(피알컴)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="../assets/css/magazine-system.css">
+<script>window.MAG={root:'../',home:'../index.html',catBase:'../insights/index.html'};</script>
+<style>
+.narrow{max-width:860px}
+.subhead{padding:30px 0 6px}
+.subhead .crumb{font-size:12.5px;color:var(--sub);margin-bottom:12px}
+.subhead h1{font-size:clamp(23px,2.8vw,30px);font-weight:800;letter-spacing:-.03em;display:flex;align-items:center;gap:12px}
+.subhead h1 .tick{width:26px;height:3px;background:var(--pt);border-radius:2px}
+.subhead .desc{font-size:15px;color:var(--sub);margin-top:10px;line-height:1.6}
+.nlist{border-top:2px solid var(--ink);margin-top:22px}
+.nrow{display:grid;grid-template-columns:70px 1fr 96px;gap:16px;align-items:start;padding:18px 0;border-bottom:1px solid var(--line)}
+.nrow .tag{font-size:11px;font-weight:800;border-radius:4px;padding:4px 9px;text-align:center;white-space:nowrap}
+.nrow .tag.signal{background:var(--pt-soft);color:var(--pt)}
+.nrow .tag.warn{background:#FDECE4;color:#E4612B}
+.nrow .tag.line{border:1px solid var(--line);color:var(--sub)}
+.nrow .t{font-size:16px;font-weight:700;color:var(--ink)}
+.nrow .s{font-size:13.5px;color:var(--sub);line-height:1.65;margin-top:6px}
+.nrow .dt{font-size:12.5px;color:var(--sub-2);text-align:right;white-space:nowrap}
+.pager{display:flex;gap:6px;justify-content:center;margin:30px 0}
+.pager a{min-width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:6px;font-size:13px;font-weight:600;color:var(--sub)}
+.pager a.on{background:var(--pt);color:#fff;border-color:var(--pt)}.pager a:hover:not(.on){border-color:var(--pt);color:var(--pt)}
+@media (max-width:640px){.nrow{grid-template-columns:1fr}.nrow .dt{text-align:left}}
+</style>
+</head>
+<body>
+<div id="mag-header"></div>
+<div class="wrap narrow">
+  <section class="subhead">
+    <div class="crumb"><a href="../index.html">홈</a> / 공지사항</div>
+    <h1><span class="tick"></span>공지사항</h1>
+    <p class="desc">PRCOME의 서비스 소식과 업데이트를 안내합니다.</p>
+  </section>
+  <div class="nlist" id="list"></div>
+  <div class="pager"><a>‹</a><a class="on">1</a><a href="index.html">2</a><a>›</a></div>
+  <div style="height:60px"></div>
+</div>
+<div id="mag-footer"></div>
+<script src="../assets/js/magazine-header.js"></script>
+<script>
+var N=[
+ ['공지','PRCOME 1차 서비스 오픈 안내','PR·마케팅 커뮤니티, 인사이트, 기업·미디어 디렉토리, 프로젝트 매칭, PR 도구, 구인구직을 포함한 1차 서비스를 오픈했습니다. 일부 기능은 순차적으로 제공됩니다.','2026.07.20'],
+ ['업데이트','보도자료 작성·배포 AI 도구 베타 공개','보도자료 초안 작성과 매체 매칭을 돕는 AI 도구(가안)를 PR 도구 메뉴에서 이용할 수 있습니다.','2026.07.20'],
+ ['안내','커뮤니티 이용 가이드라인 안내','서로 존중하는 실무 정보 공유를 위해 광고성 도배와 비방을 제한합니다. 자세한 내용은 이용안내를 참고해 주세요.','2026.07.18'],
+ ['공지','기업·언론사 디렉토리 정보 등록 안내','PR·마케팅회사와 전문가는 회사 등록을 통해 디렉토리에 정보를 노출할 수 있습니다.','2026.07.15'],
+ ['점검','정기 서비스 점검 안내 (7/25 02:00~04:00)','안정적인 서비스 제공을 위한 정기 점검이 진행됩니다. 해당 시간 동안 일부 기능 이용이 제한될 수 있습니다.','2026.07.14']
+];
+document.getElementById('list').innerHTML=N.map(function(n){
+ var cls=n[0]==='공지'?'signal':(n[0]==='점검'?'warn':'line');
+ return '<div class="nrow"><span class="tag '+cls+'">'+n[0]+'</span>'+
+  '<div><div class="t">'+n[1]+'</div><div class="s">'+n[2]+'</div></div>'+
+  '<div class="dt">'+n[3]+'</div></div>';
+}).join('');
+</script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>키워드 분석기 — PRCOME 마케팅 도구</title>
+<meta name="description" content="키워드의 예상 검색량, 경쟁 강도, 연관 키워드를 분석합니다. 콘텐츠·광고 기획 전 키워드 리서치 도구.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="../assets/css/magazine-system.css">
+<script>window.MAG={root:'../',home:'../index.html',catBase:'../insights/index.html'};</script>
+<style>
+.tw{max-width:880px}
+.subhead{padding:30px 0 6px}
+.subhead .crumb{font-size:12.5px;color:var(--sub);margin-bottom:12px}
+.subhead h1{font-size:clamp(22px,2.7vw,30px);font-weight:800;letter-spacing:-.03em;display:flex;align-items:center;gap:12px}
+.subhead h1 .tick{width:26px;height:3px;background:var(--pt);border-radius:2px}
+.subhead .desc{font-size:15px;color:var(--sub);margin-top:10px;line-height:1.6}
+.searchrow{display:flex;gap:8px;margin-top:22px}
+.searchrow input{flex:1;height:52px;border:1px solid var(--line-2);border-radius:8px;padding:0 15px;font-family:inherit;font-size:15px;outline:0}
+.searchrow input:focus{border-color:var(--pt);box-shadow:0 0 0 3px var(--pt-soft)}
+.searchrow button{height:52px;background:var(--pt);color:#fff;border:0;border-radius:8px;font-family:inherit;font-size:15px;font-weight:800;padding:0 22px;cursor:pointer}
+.searchrow button:hover{background:var(--pt-2)}
+.result{margin-top:22px;display:none}.result.on{display:block}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.mc{background:var(--surf);border:1px solid var(--line);border-radius:12px;padding:18px;text-align:center}
+.mc .l{font-size:12px;color:var(--sub)}
+.mc .v{font-size:26px;font-weight:800;color:var(--navy);margin-top:6px;letter-spacing:-.02em}
+.mc .b{display:inline-block;margin-top:8px;font-size:11.5px;font-weight:800;border-radius:999px;padding:3px 11px}
+.panel{background:var(--surf);border:1px solid var(--line);border-radius:12px;padding:20px;margin-top:16px}
+.panel h3{font-size:14px;font-weight:800;margin-bottom:12px}
+.rel{border-top:2px solid var(--ink)}
+.rel .r{display:grid;grid-template-columns:1fr 90px 90px;gap:10px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line);font-size:13.5px}
+.rel .r .k{font-weight:600}.rel .r .n{text-align:right;color:var(--sub)}
+.rel .rh{font-size:11.5px;font-weight:700;color:var(--sub-2)}
+.note{font-size:12.5px;color:var(--sub-2);margin-top:16px;line-height:1.6}
+@media (max-width:600px){.cards{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="mag-header"></div>
+<div class="wrap tw">
+  <section class="subhead">
+    <div class="crumb"><a href="../index.html">홈</a> / <a href="index.html">마케팅 도구</a> / 키워드 분석기</div>
+    <h1><span class="tick"></span>키워드 분석기</h1>
+    <p class="desc">키워드의 예상 검색량, 경쟁 강도, 연관 키워드를 확인하세요. 콘텐츠·광고 기획 전 리서치에 활용할 수 있습니다.</p>
+  </section>
+
+  <div class="searchrow">
+    <input id="kw" placeholder="분석할 키워드를 입력하세요 (예: 비건 간편식)" onkeydown="if(event.key==='Enter')run()">
+    <button onclick="run()">분석</button>
+  </div>
+
+  <div class="result" id="res">
+    <div class="cards">
+      <div class="mc"><div class="l">월간 예상 검색량</div><div class="v" id="vol">-</div><div class="b" id="volb"></div></div>
+      <div class="mc"><div class="l">경쟁 강도</div><div class="v" id="comp">-</div><div class="b" id="compb"></div></div>
+      <div class="mc"><div class="l">콘텐츠 발행량</div><div class="v" id="doc">-</div><div class="b" id="docb"></div></div>
+    </div>
+    <div class="panel">
+      <h3>연관 키워드</h3>
+      <div class="rel" id="rel"><div class="r rh"><span>키워드</span><span class="n">검색량</span><span class="n">경쟁</span></div></div>
+    </div>
+    <p class="note" id="tip"></p>
+  </div>
+  <p class="note">※ 본 도구는 키워드 입력값 기반의 시뮬레이션 결과를 제공합니다(1차 데모). 실제 검색량은 네이버·구글 키워드 도구 연동 시 반영됩니다.</p>
+  <div style="height:60px"></div>
+</div>
+<div id="mag-footer"></div>
+<script src="../assets/js/magazine-header.js"></script>
+<script>
+function hash(s){var h=0;for(var i=0;i<s.length;i++){h=(h*31+s.charCodeAt(i))>>>0;}return h;}
+function comma(n){return n.toLocaleString('ko-KR');}
+function lvl(v){return v<33?['낮음','#2FA96A']:v<66?['보통','#E4612B']:['높음','#d43f2e'];}
+var SUFFIX=['추천','후기','가격','순위','비교','브랜드','효능','판매','종류','만들기'];
+function run(){
+ var kw=(document.getElementById('kw').value||'').trim();
+ if(!kw){alert('키워드를 입력하세요.');return;}
+ var h=hash(kw);
+ var vol=800+(h%42000);
+ var comp=10+(h>>>3)%88;
+ var docs=vol*(3+(h>>>5)%12);
+ document.getElementById('vol').textContent=comma(vol);
+ var vb=vol>15000?['많음','#315CFF']:vol>4000?['보통','#E4612B']:['적음','#8A93A3'];
+ setb('volb',vb);
+ document.getElementById('comp').textContent=comp+'%';setb('compb',lvl(comp));
+ document.getElementById('doc').textContent=comma(docs);
+ var ratio=docs/vol;
+ var db=ratio>10?['포화','#d43f2e']:ratio>5?['보통','#E4612B']:['기회','#2FA96A'];
+ setb('docb',db);
+ var rows='<div class="r rh"><span>키워드</span><span class="n">검색량</span><span class="n">경쟁</span></div>';
+ SUFFIX.forEach(function(s,i){
+  var hh=hash(kw+s);var rv=300+(hh%18000);var rc=10+(hh>>>4)%88;var rl=lvl(rc);
+  rows+='<div class="r"><span class="k">'+kw+' '+s+'</span><span class="n">'+comma(rv)+'</span><span class="n" style="color:'+rl[1]+';font-weight:700">'+rl[0]+'</span></div>';
+ });
+ document.getElementById('rel').innerHTML=rows;
+ var tip=comp<40?'경쟁이 낮은 편입니다. 정보성 콘텐츠로 상위 노출을 노려볼 만합니다.':comp<70?'경쟁이 보통입니다. 롱테일 연관 키워드를 함께 공략하세요.':'경쟁이 치열합니다. 세부 니치 키워드나 차별화된 앵글이 필요합니다.';
+ document.getElementById('tip').textContent='💡 '+tip;
+ document.getElementById('res').classList.add('on');
+}
+function setb(id,arr){var e=document.getElementById(id);e.textContent=arr[0];e.style.background=arr[1]+'22';e.style.color=arr[1];}
+</script>
+</body>
+</html>

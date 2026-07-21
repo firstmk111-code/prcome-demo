@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>이용안내 — PRCOME(피알컴)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="../assets/css/magazine-system.css">
+<script>window.MAG={root:'../',home:'../index.html',catBase:'../insights/index.html'};</script>
+<style>
+.narrow{max-width:860px}
+.subhead{padding:30px 0 6px}
+.subhead .crumb{font-size:12.5px;color:var(--sub);margin-bottom:12px}
+.subhead h1{font-size:clamp(23px,2.8vw,30px);font-weight:800;letter-spacing:-.03em;display:flex;align-items:center;gap:12px}
+.subhead h1 .tick{width:26px;height:3px;background:var(--pt);border-radius:2px}
+.subhead .desc{font-size:15px;color:var(--sub);margin-top:10px;line-height:1.6}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0 34px}
+.gcard{display:block;background:var(--surf);border:1px solid var(--line);border-radius:10px;padding:18px}
+.gcard:hover{border-color:var(--pt)}
+.gcard b{color:var(--ink);font-size:15px}.gcard:hover b{color:var(--pt)}
+.gcard p{font-size:13.5px;color:var(--sub);margin-top:8px;line-height:1.6}
+.faqh{font-size:19px;font-weight:800;letter-spacing:-.03em;margin-bottom:6px;display:flex;align-items:center;gap:10px}
+.faqh .tick{width:22px;height:3px;background:var(--pt);border-radius:2px}
+.faq{border-top:2px solid var(--ink);margin-top:14px}
+.faq .q{padding:16px 0;border-bottom:1px solid var(--line)}
+.faq .q b{display:block;font-size:15.5px;font-weight:700;color:var(--navy)}
+.faq .q p{font-size:14.5px;color:#374151;line-height:1.75;margin-top:8px}
+.notice{background:var(--pt-soft);border:1px solid #cdd8ff;border-radius:8px;padding:14px 16px;font-size:13px;color:var(--navy);margin-top:26px}
+.notice a{color:var(--pt);font-weight:700}
+@media (max-width:640px){.cards{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="mag-header"></div>
+<div class="wrap narrow">
+  <section class="subhead">
+    <div class="crumb"><a href="../index.html">홈</a> / 이용안내</div>
+    <h1><span class="tick"></span>이용안내</h1>
+    <p class="desc">PRCOME을 처음 이용하시나요? 주요 서비스와 자주 묻는 질문을 정리했습니다.</p>
+  </section>
+
+  <div class="cards">
+    <a class="gcard" href="../community/index.html"><b>커뮤니티 이용</b><p>실무 질문과 정보를 나누는 공간입니다. 로그인 후 글쓰기·답변이 가능합니다.</p></a>
+    <a class="gcard" href="../tools/press-release.html"><b>PR 도구 사용</b><p>보도자료 작성·배포, 가시성 진단 등 실무 도구를 무료로 사용해 보세요.</p></a>
+    <a class="gcard" href="../projects/new.html"><b>프로젝트 의뢰</b><p>홍보·마케팅 파트너가 필요하면 프로젝트를 등록해 제안을 받으세요.</p></a>
+    <a class="gcard" href="../directory/register.html"><b>회사 등록</b><p>PR·마케팅회사는 디렉토리에 등록해 잠재 고객과 연결될 수 있습니다.</p></a>
+  </div>
+
+  <div class="faqh"><span class="tick"></span>자주 묻는 질문</div>
+  <div class="faq">
+    <div class="q"><b>Q. 회원가입 없이도 이용할 수 있나요?</b><p>인사이트 열람과 디렉토리 탐색은 비회원도 가능합니다. 커뮤니티 글쓰기, 프로젝트 제안, 도구 저장 기능은 로그인이 필요합니다.</p></div>
+    <div class="q"><b>Q. PR 도구는 유료인가요?</b><p>1차 서비스의 기본 도구는 무료로 제공됩니다. 향후 고급 기능은 별도 안내될 수 있습니다.</p></div>
+    <div class="q"><b>Q. 언론사 기자 개인 연락처를 제공하나요?</b><p>제공하지 않습니다. 매체와 담당 부서 단위 정보만 안내하며, 공개된 정보를 기준으로 합니다.</p></div>
+    <div class="q"><b>Q. 프로젝트 의뢰와 제안은 어떻게 이루어지나요?</b><p>기업이 프로젝트를 등록하면 대행사·프리랜서가 제안하고, 당사자 간 협의로 진행됩니다. PRCOME은 연결을 돕는 플랫폼입니다.</p></div>
+  </div>
+
+  <div class="notice">더 궁금한 점은 <a href="contact.html">광고·제휴 문의</a> 또는 <a href="../community/index.html">커뮤니티</a>를 이용해 주세요.</div>
+  <div style="height:60px"></div>
+</div>
+<div id="mag-footer"></div>
+<script src="../assets/js/magazine-header.js"></script>
+</body>
+</html>

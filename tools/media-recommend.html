@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>언론사·매체 추천 (가안) — PRCOME PR 도구</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="../assets/css/magazine-system.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23C8FF3D'/%3E%3Crect x='9' y='9' width='14' height='14' rx='4' fill='%23111318'/%3E%3C/svg%3E">
+<script>window.SITE_ROOT='../';window.MAG={root:'../',home:'../index.html',catBase:'../insights/index.html'};</script>
+</head>
+<body>
+<div id="mag-header"></div>
+
+<header class="page-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../index.html">홈</a> › <a href="index.html">PR 도구</a> › 언론사·매체 추천</div>
+    <h1>언론사·매체 추천 <span style="font-size:15px;font-weight:600;color:var(--primary)">가안</span></h1>
+    <p class="lead">우리 아이템의 산업·목표에 맞는 매체와 담당 부서를 추천해 배포 리스트 구성을 돕습니다.</p>
+  </div>
+</header>
+
+<div class="wrap" style="padding-top:26px">
+  <div class="notice" style="margin-bottom:20px">1차 데모 가안입니다. 아래는 조건 기반 추천 결과 예시입니다. 전체 매체는 <a href="../directory/media.html" style="color:var(--primary);font-weight:700">언론사 디렉토리</a>에서 확인하세요.</div>
+  <div class="form-card" style="margin-bottom:24px">
+    <div class="grid g-3" style="gap:14px">
+      <div class="form-row" style="margin-bottom:0"><label>산업</label><select class="select" id="ind"><option>식품·소비재</option><option>IT·스타트업</option><option>금융·투자</option><option>제조·산업재</option></select></div>
+      <div class="form-row" style="margin-bottom:0"><label>홍보 목표</label><select class="select"><option>인지도 확대</option><option>투자·IR</option><option>제품 판매</option><option>브랜드 신뢰</option></select></div>
+      <div class="form-row" style="margin-bottom:0"><label>지역</label><select class="select"><option>전국</option><option>수도권</option><option>영남</option><option>호남</option></select></div>
+    </div>
+    <button class="btn btn-signal mt-16" style="width:100%" onclick="rec()">매체 추천받기</button>
+  </div>
+  <div class="grid g-3" id="grid"></div>
+</div>
+<div style="height:60px"></div>
+
+<div id="mag-footer"></div>
+<script src="../assets/js/magazine-header.js"></script>
+<script>
+var DB={
+ '식품·소비재':[['데일리커머스','인터넷신문','유통·소비재','온라인'],['라이프앤컬처','인터넷신문','문화·라이프','온라인'],['경제산업신문','경제일간지','기업·유통','지면+온라인']],
+ 'IT·스타트업':[['테크리포트','IT 전문지','IT·스타트업','온라인'],['산업기술뉴스','산업 전문지','제조·B2B','온라인'],['경제산업신문','경제일간지','산업','지면+온라인']],
+ '금융·투자':[['금융투자저널','경제일간지','금융·투자','지면+온라인'],['한국종합일보','종합일간지','경제','지면+온라인'],['경제산업신문','경제일간지','금융','지면+온라인']],
+ '제조·산업재':[['산업기술뉴스','산업 전문지','소재·부품','온라인'],['경제산업신문','경제일간지','산업','지면+온라인'],['부산경제신문','지역지','지역경제','지면+온라인']]
+};
+function rec(){var ind=document.getElementById('ind').value,l=DB[ind]||DB['식품·소비재'];
+ document.getElementById('grid').innerHTML=l.map(function(m,i){return '<a class="card card-pad" href="../directory/detail.html"><div class="flex between items-center"><div class="logo-badge">'+m[0][0]+'</div><span class="chip '+(i===0?'signal':'line')+'">'+(i===0?'추천 1순위':'추천')+'</span></div><h3 style="font-size:16px;margin:12px 0 4px;color:var(--text-primary)">'+m[0]+'</h3><div class="muted" style="font-size:12.5px">'+m[1]+' · '+m[3]+'</div><div class="tag-row mt-16"><span class="chip line">'+m[2]+'</span></div></a>';}).join('');}
+rec();
+</script>
+</body>
+</html>

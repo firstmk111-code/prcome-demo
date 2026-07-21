@@ -1,0 +1,9 @@
+﻿# dev / internal
+_server.js
+HANDOFF.md
+design-preview/
+_*.html
+.claude/
+.DS_Store
+Thumbs.db
+node_modules/

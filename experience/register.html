@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>체험단·기자단 모집 등록 — PRCOME</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="../assets/css/magazine-system.css">
+<script>window.MAG={root:'../',home:'../index.html',catBase:'../insights/index.html'};</script>
+<style>
+.narrow{max-width:840px}
+.subhead{padding:30px 0 6px}
+.subhead .crumb{font-size:12.5px;color:var(--sub);margin-bottom:12px}
+.subhead h1{font-size:clamp(23px,2.8vw,30px);font-weight:800;letter-spacing:-.03em;display:flex;align-items:center;gap:12px}
+.subhead h1 .tick{width:26px;height:3px;background:var(--pt);border-radius:2px}
+.subhead .desc{font-size:15px;color:var(--sub);margin-top:10px;line-height:1.6}
+.notice{background:var(--pt-soft);border:1px solid #cdd8ff;border-radius:6px;padding:13px 16px;font-size:13px;color:var(--navy);margin:20px 0}
+.fcard{background:var(--surf);border:1px solid var(--line);border-radius:8px;padding:28px}
+.step{font-size:15px;font-weight:800;color:var(--navy);margin-bottom:16px;display:flex;align-items:center;gap:9px}
+.step .no{width:22px;height:22px;border-radius:5px;background:var(--pt);color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center}
+.row{margin-bottom:16px}
+.row>label{display:block;font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:7px}
+.row .req{color:var(--pt)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.seg{display:flex;gap:8px}
+.seg label{flex:1;text-align:center;border:1px solid var(--line-2);border-radius:6px;padding:12px;font-size:14px;font-weight:700;color:var(--sub);cursor:pointer}
+.seg input{display:none}
+.seg input:checked+span{color:var(--pt)}
+.seg label:has(input:checked){border-color:var(--pt);background:var(--pt-soft);color:var(--pt)}
+.inp,.sel,.ta{width:100%;font-family:inherit;font-size:14.5px;color:var(--ink);background:var(--surf);border:1px solid var(--line-2);border-radius:4px;padding:0 13px;height:48px;outline:0}
+.ta{height:auto;padding:12px 13px;min-height:160px;line-height:1.6;resize:vertical}
+.inp:focus,.sel:focus,.ta:focus{border-color:var(--pt);box-shadow:0 0 0 3px var(--pt-soft)}
+.hr{height:1px;background:var(--line);margin:22px 0}
+.foot{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.btn{min-height:44px;display:inline-flex;align-items:center;justify-content:center;border-radius:4px;font-family:inherit;font-size:14px;font-weight:700;padding:0 20px;border:1px solid var(--line-2);background:var(--surf);color:var(--ink)}
+.btn:hover{border-color:var(--pt);color:var(--pt)}
+.btn.pri{background:var(--pt);color:#fff;border-color:var(--pt)}.btn.pri:hover{background:var(--pt-2);color:#fff}
+@media (max-width:640px){.g2{grid-template-columns:1fr}.fcard{padding:20px}}
+</style>
+</head>
+<body>
+<div id="mag-header"></div>
+<div class="wrap narrow">
+  <section class="subhead">
+    <div class="crumb"><a href="../index.html">홈</a> / <a href="index.html">체험단·기자단</a> / 모집 등록</div>
+    <h1><span class="tick"></span>체험단·기자단 모집 등록</h1>
+    <p class="desc">제품·서비스 체험단이나 기자단을 모집하고 실무자·인플루언서와 연결되세요.</p>
+  </section>
+
+  <div class="notice">1차 데모 가안입니다. 등록·심사 기능은 준비 중이며, 아래 폼은 입력 흐름 확인용입니다.</div>
+
+  <form class="fcard" onsubmit="event.preventDefault();alert('데모 가안입니다. 실제 등록은 준비 중입니다.');">
+    <div class="step"><span class="no">1</span>모집 유형</div>
+    <div class="seg" style="margin-bottom:16px">
+      <label><input type="radio" name="ty" checked><span>체험단</span></label>
+      <label><input type="radio" name="ty"><span>기자단</span></label>
+      <label><input type="radio" name="ty"><span>방문형</span></label>
+      <label><input type="radio" name="ty"><span>배송형</span></label>
+    </div>
+    <div class="row"><label>브랜드·회사명 <span class="req">*</span></label><input class="inp" placeholder="예: 그린테이블"></div>
+    <div class="row"><label>모집 제목 <span class="req">*</span></label><input class="inp" placeholder="예: 비건 간편식 신제품 체험단"></div>
+    <div class="g2">
+      <div class="row"><label>카테고리 <span class="req">*</span></label><select class="sel"><option>푸드·외식</option><option>뷰티·화장품</option><option>패션·라이프</option><option>IT·테크</option><option>여행·숙박</option><option>기타</option></select></div>
+      <div class="row"><label>모집 인원</label><input class="inp" type="number" placeholder="예: 20"></div>
+    </div>
+
+    <div class="hr"></div>
+    <div class="step"><span class="no">2</span>혜택 · 일정</div>
+    <div class="row"><label>제공 혜택 <span class="req">*</span></label><input class="inp" placeholder="예: 제품 3종 무료 제공 + 원고료 3만원"></div>
+    <div class="g2">
+      <div class="row"><label>모집 시작일</label><input class="inp" type="date"></div>
+      <div class="row"><label>모집 마감일</label><input class="inp" type="date"></div>
+    </div>
+
+    <div class="hr"></div>
+    <div class="step"><span class="no">3</span>상세 안내</div>
+    <div class="row"><label>모집 상세 <span class="req">*</span></label><textarea class="ta" placeholder="제품·서비스 소개, 참여 조건, 미션(리뷰·SNS 업로드 등), 선정 방식을 작성해 주세요."></textarea></div>
+    <div class="row"><label>담당자 연락처 <span class="req">*</span></label><input class="inp" placeholder="이메일 또는 전화번호"></div>
+
+    <div class="hr"></div>
+    <div class="foot"><a class="btn" href="index.html">취소</a><button type="submit" class="btn pri">모집 등록</button></div>
+  </form>
+  <div style="height:60px"></div>
+</div>
+<div id="mag-footer"></div>
+<script src="../assets/js/magazine-header.js"></script>
+</body>
+</html>

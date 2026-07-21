@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>더보기 — PRCOME</title>
+<meta name="description" content="캘린더, 포트폴리오, 활동 배지, 회원 랭킹, 쪽지, 알림, 이용 가이드, 공지사항, FAQ.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="../assets/css/magazine-system.css">
+<script>window.MAG={root:'../',home:'../index.html',catBase:'../insights/index.html'};</script>
+<style>
+.subhead{padding:30px 0 6px}
+.subhead .crumb{font-size:12.5px;color:var(--sub);margin-bottom:12px}
+.subhead h1{font-size:clamp(24px,3vw,32px);font-weight:800;letter-spacing:-.03em;display:flex;align-items:center;gap:12px}
+.subhead h1 .tick{width:26px;height:3px;background:var(--pt);border-radius:2px}
+.mtabs{display:flex;gap:18px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-top:20px;overflow-x:auto}
+.mtabs button{background:none;border:0;padding:12px 0;font-family:inherit;font-size:14px;font-weight:600;color:var(--sub);white-space:nowrap;position:relative}
+.mtabs button.on{color:var(--pt)}.mtabs button.on::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--pt)}
+.panel{padding:26px 0}
+.note{background:var(--pt-soft);border:1px solid #cdd8ff;color:var(--pt-2);border-radius:6px;padding:12px 15px;font-size:13.5px;margin-bottom:20px}
+.rank{border-top:2px solid var(--ink)}
+.rank .r{display:grid;grid-template-columns:34px 40px 1fr auto;gap:14px;align-items:center;padding:13px 0;border-bottom:1px solid var(--line)}
+.rank .n{font-size:17px;font-weight:800;color:var(--pt)}
+.rank .av{width:34px;height:34px;border-radius:8px;background:var(--pt-soft);color:var(--pt);display:flex;align-items:center;justify-content:center;font-weight:800}
+.rank .nm{font-weight:700}.rank .sub{font-size:12px;color:var(--sub)}
+.rank .pt{font-size:13px;font-weight:700;color:var(--ink)}
+.badges{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.badge{border:1px solid var(--line);border-radius:8px;padding:18px;text-align:center}
+.badge .ic{width:44px;height:44px;border-radius:50%;background:var(--pt-soft);color:var(--pt);display:flex;align-items:center;justify-content:center;font-weight:800;margin:0 auto 10px}
+.badge b{display:block;font-size:14px}.badge span{font-size:12px;color:var(--sub)}
+.cal{border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.cal .row{display:grid;grid-template-columns:120px 1fr;gap:14px;padding:14px 18px;border-top:1px solid var(--line)}
+.cal .row:first-child{border-top:0}
+.cal .dt{font-weight:700;color:var(--pt);font-size:13.5px}
+.stub{border:1px dashed var(--line-2);border-radius:8px;padding:36px;text-align:center;color:var(--sub);font-size:14px}
+.stub b{color:var(--ink);display:block;font-size:16px;margin-bottom:6px}
+</style>
+</head>
+<body>
+<div id="mag-header"></div>
+<div class="wrap">
+  <section class="subhead">
+    <div class="crumb"><a href="../index.html">홈</a> / 더보기</div>
+    <h1><span class="tick"></span><span id="mTitle">더보기</span></h1>
+    <div class="mtabs" id="mtabs"></div>
+  </section>
+  <div class="panel" id="panel"></div>
+  <div style="height:40px"></div>
+</div>
+<div id="mag-footer"></div>
+<script src="../assets/js/magazine-header.js"></script>
+<script>
+var TABS=[['calendar','캘린더'],['badges','활동 배지'],['ranking','회원 랭킹'],['messages','쪽지'],['notifications','알림'],['faq','FAQ']];
+var p=new URLSearchParams(location.search),tab=p.get('tab')||'calendar'; if(!TABS.some(function(x){return x[0]===tab;}))tab='calendar';
+document.getElementById('mTitle').textContent=(TABS.filter(function(x){return x[0]===tab;})[0]||['','더보기'])[1];
+document.getElementById('mtabs').innerHTML=TABS.map(function(x){return '<button class="'+(x[0]===tab?'on':'')+'" onclick="location.href=\'index.html?tab='+x[0]+'\'">'+x[1]+'</button>';}).join('');
+
+function login(){return '<div class="note">회원 전용 기능입니다. 로그인 후 이용할 수 있습니다. (1차 정적 가안)</div>';}
+var html='';
+if(tab==='calendar'){
+  html=login().replace('회원 전용 기능입니다. ','')+'<div class="cal">'+
+   [['8/07 (목)','생성형 AI 보도자료 작성 세미나 · 온라인'],['8/12 (화)','브랜드 커뮤니케이션 컨퍼런스 · 코엑스'],['8/19 (화)','PR 실무 입문 4주 과정 개강'],['8/25 (월)','대학생 PR 캠페인 공모전 마감'],['8/29 (금)','매거진 9월호 칼럼 기고 마감']]
+   .map(function(r){return '<div class="row"><span class="dt">'+r[0]+'</span><span>'+r[1]+'</span></div>';}).join('')+'</div>';
+}else if(tab==='ranking'){
+  html=login()+'<div class="rank">'+
+   [['홍보2년차','인하우스 · 답변 128','2,140p'],['현직기자출신','전 경제지 · 채택 41','1,980p'],['대행사PM','종합PR · 글 63','1,720p'],['B2B마케터','제조 · 답변 96','1,510p'],['그로스리드','스타트업 · 글 44','1,330p']]
+   .map(function(r,i){return '<div class="r"><span class="n">'+(i+1)+'</span><span class="av">'+r[0][0]+'</span><span><div class="nm">'+r[0]+'</div><div class="sub">'+r[1]+'</div></span><span class="pt">'+r[2]+'</span></div>';}).join('')+'</div>';
+}else if(tab==='badges'){
+  html=login()+'<div class="badges">'+
+   [['첫 글','작','커뮤니티 첫 글 작성'],['채택왕','채','베스트 답변 10회'],['연속 출석','출','7일 연속 방문'],['기고자','기','매거진 칼럼 기고'],['멘토','멘','실무 Q&A 50회 답변'],['이슈메이커','이','인기 글 5회'],['네트워커','넷','전문가 5인 연결'],['얼리버드','얼','베타 참여자']]
+   .map(function(b){return '<div class="badge"><div class="ic">'+b[1]+'</div><b>'+b[0]+'</b><span>'+b[2]+'</span></div>';}).join('')+'</div>';
+}else if(tab==='faq'){
+  html='<div class="cal">'+
+   [['가입은 어떻게 하나요?','상단 회원가입에서 이메일 또는 소셜 계정으로 가입합니다. (준비 중)'],['기사 제보는 어떻게 하나요?','헤더의 ‘기사 제보’에서 제보 내용을 보낼 수 있습니다.'],['보도자료 작성 AI는 무료인가요?','1차 서비스의 기본 도구는 무료로 제공됩니다.'],['기자 개인 연락처를 제공하나요?','제공하지 않으며, 매체·담당 부서 단위 정보만 안내합니다.']]
+   .map(function(r){return '<div class="row"><span class="dt">Q</span><span><b>'+r[0]+'</b><div style="color:var(--sub);font-size:13.5px;margin-top:4px">'+r[1]+'</div></span></div>';}).join('')+'</div>';
+}else{ /* messages / notifications */
+  html=login()+'<div class="stub"><b>'+(tab==='messages'?'쪽지함':'알림함')+'</b>'+(tab==='messages'?'회원 간 쪽지 기능은 준비 중입니다.':'활동 알림 기능은 준비 중입니다.')+'</div>';
+}
+document.getElementById('panel').innerHTML=html;
+</script>
+</body>
+</html>

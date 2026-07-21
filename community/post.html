@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>보도자료 배포 후 기사화 가능성을 높이는 방법 — PRCOME 커뮤니티</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="../assets/css/magazine-system.css">
+<script>window.MAG={root:'../',home:'../index.html',catBase:'../insights/index.html'};</script>
+<style>
+.crumb{font-size:12.5px;color:var(--sub);padding:26px 0 14px}.crumb a:hover{color:var(--pt)}
+.psplit{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:36px;align-items:start;padding-bottom:60px}
+/* 본문 카드 */
+.pmain{background:var(--surf);border:1px solid var(--line);border-radius:12px;padding:28px}
+.pbadge{font-size:12px;font-weight:800;color:var(--pt);background:var(--pt-soft);border-radius:5px;padding:5px 11px;display:inline-block}
+.pmain h1{font-size:clamp(22px,2.6vw,28px);font-weight:800;letter-spacing:-.03em;line-height:1.35;margin:14px 0 16px}
+.pauthor{display:flex;align-items:center;gap:12px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.pauthor .ava{width:46px;height:46px;border-radius:50%;background:#315CFF;color:#fff;font-weight:800;font-size:17px;display:flex;align-items:center;justify-content:center;flex:none}
+.pauthor .nm{font-size:15px;font-weight:700;display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap}
+.pauthor .nm:hover{color:var(--pt)}
+.pauthor .role{font-size:11.5px;font-weight:700;color:var(--pt);background:var(--pt-soft);border-radius:4px;padding:2px 8px}
+.pauthor .org{font-size:12.5px;color:var(--sub);margin-top:2px}
+.pauthor .stat{margin-left:auto;font-size:12.5px;color:var(--sub-2);white-space:nowrap}
+.prose{margin-top:20px}
+.prose p{font-size:16px;color:#2d3748;line-height:1.85;margin:0 0 14px}
+.prose b{color:var(--ink)}
+.ptags{display:flex;gap:7px;flex-wrap:wrap;margin-top:22px}
+.ptags a{font-size:12.5px;color:var(--sub);background:var(--bg);border:1px solid var(--line);border-radius:5px;padding:4px 10px}
+.ptags a:hover{color:var(--pt);border-color:var(--pt)}
+.pact{display:flex;gap:10px;margin-top:20px;padding-top:18px;border-top:1px solid var(--line);flex-wrap:wrap}
+.pact button{display:inline-flex;align-items:center;gap:7px;font-family:inherit;font-size:13.5px;font-weight:700;color:var(--ink);background:var(--surf);border:1px solid var(--line-2);border-radius:6px;padding:9px 15px;cursor:pointer}
+.pact button:hover{border-color:var(--pt);color:var(--pt)}
+.pact button.like{background:var(--pt);color:#fff;border-color:var(--pt)}
+.pact .views{margin-left:auto;align-self:center;font-size:12.5px;color:var(--sub-2)}
+/* 댓글/답변 */
+.answers{margin-top:28px}
+.answers .ah{font-size:18px;font-weight:800;letter-spacing:-.02em;margin-bottom:14px}
+.acard{background:var(--surf);border:1px solid var(--line);border-radius:10px;padding:20px;margin-bottom:12px}
+.acard.best{border-color:var(--pt);box-shadow:0 0 0 3px var(--pt-soft)}
+.atop{display:flex;align-items:center;gap:11px}
+.atop .ava{width:38px;height:38px;border-radius:50%;color:#fff;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;flex:none}
+.atop .nm{font-size:14px;font-weight:700;display:inline-flex;align-items:center;gap:7px;flex-wrap:wrap}.atop .nm:hover{color:var(--pt)}
+.atop .best-b{font-size:11px;font-weight:800;color:#fff;background:var(--pt);border-radius:4px;padding:2px 8px}
+.atop .org{font-size:12px;color:var(--sub);margin-top:2px}
+.acard .txt{font-size:15px;color:#2d3748;line-height:1.8;margin-top:13px}
+.acard .txt a{color:var(--pt);font-weight:700}
+.acard .ab{margin-top:14px}
+.acard .ab button{font-family:inherit;font-size:12.5px;font-weight:700;color:var(--sub);background:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px;cursor:pointer}
+.acard .ab button:hover{border-color:var(--pt);color:var(--pt)}
+/* 답변 작성 */
+.awrite{background:var(--surf);border:1px solid var(--line);border-radius:10px;padding:20px;margin-top:20px}
+.awrite h4{font-size:15px;font-weight:800;margin-bottom:12px}
+.awrite textarea{width:100%;min-height:120px;font-family:inherit;font-size:14.5px;color:var(--ink);border:1px solid var(--line-2);border-radius:6px;padding:13px;line-height:1.6;outline:0;resize:vertical}
+.awrite textarea:focus{border-color:var(--pt);box-shadow:0 0 0 3px var(--pt-soft)}
+.awrite .row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;flex-wrap:wrap}
+.awrite .row .g{font-size:12.5px;color:var(--sub)}
+.awrite .row a{background:var(--pt);color:#fff;font-weight:700;font-size:14px;border-radius:6px;padding:11px 22px}.awrite .row a:hover{background:var(--pt-2)}
+/* 우측 */
+.side .sbox{background:var(--surf);border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:16px}
+.side.col-side{position:sticky;top:80px}
+.acard-mini .ava{width:52px;height:52px;border-radius:50%;background:#315CFF;color:#fff;font-weight:800;font-size:20px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+.acard-mini .nm{font-size:15px;font-weight:800}.acard-mini .role{font-size:12px;color:var(--pt);font-weight:700;margin-top:3px}
+.acard-mini .org{font-size:12.5px;color:var(--sub);margin-top:2px}
+.acard-mini .mini-st{display:flex;gap:16px;margin:14px 0}
+.acard-mini .mini-st div{font-size:12px;color:var(--sub)}.acard-mini .mini-st b{display:block;font-size:16px;font-weight:800;color:var(--navy)}
+.acard-mini .fbtn{display:block;text-align:center;background:var(--pt);color:#fff;font-weight:700;font-size:13.5px;border-radius:6px;padding:10px}
+.acard-mini .fbtn:hover{background:var(--pt-2)}
+.side h4{font-size:13px;font-weight:800;color:var(--navy);margin-bottom:6px}
+.side .rel a{display:block;padding:11px 0;border-top:1px solid var(--line);font-size:13.5px;font-weight:600;line-height:1.45;color:var(--ink)}
+.side .rel a:first-of-type{border-top:0}.side .rel a:hover{color:var(--pt)}
+.side .rel a .m{font-size:11.5px;color:var(--sub-2);font-weight:500;margin-top:3px}
+.backrow{margin:20px 0 60px}
+.backrow a{font-size:13.5px;font-weight:700;color:var(--sub)}.backrow a:hover{color:var(--pt)}
+@media (max-width:900px){.psplit{grid-template-columns:1fr}.side.col-side{position:static}}
+</style>
+</head>
+<body>
+<div id="mag-header"></div>
+
+<div class="wrap">
+  <div class="crumb"><a href="../index.html">홈</a> / <a href="index.html">커뮤니티</a> / <a href="index.html?cat=qa">질문·답변</a></div>
+
+  <div class="psplit">
+    <main>
+      <article class="pmain">
+        <span class="pbadge">질문·답변</span>
+        <h1>보도자료 배포 후 기사화 가능성을 높이는 방법이 있을까요?</h1>
+        <div class="pauthor">
+          <a href="profile.html"><span class="ava">이</span></a>
+          <div>
+            <a class="nm" href="profile.html">이수민 <span class="role">홍보팀장 · 리테일</span></a>
+            <div class="org">중소 제조기업 인하우스 · 2026.07.20 09:14</div>
+          </div>
+          <span class="stat">조회 340 · 답변 12</span>
+        </div>
+        <div class="prose">
+          <p>안녕하세요. 제조업 인하우스에서 홍보 2년차로 일하고 있습니다.</p>
+          <p>보도자료를 나름 열심히 써서 30여 개 매체에 배포하는데, 실제 기사로 나가는 건 손에 꼽습니다. 배포 대행사를 통해 뿌리기도 하고 직접 기자님들께 메일도 드리는데 반응이 미미해요.</p>
+          <p>배포 <b>이후</b>에 기사화 가능성을 높이기 위해 할 수 있는 실무적인 액션이 있을까요? 팔로업 전화를 드려도 되는 건지, 언제 하는 게 적절한지도 궁금합니다. 선배님들 노하우 부탁드립니다 🙏</p>
+        </div>
+        <div class="ptags"><a href="index.html?cat=qa">#보도자료</a><a href="index.html?cat=qa">#기사화</a><a href="index.html?cat=qa">#미디어관계</a></div>
+        <div class="pact">
+          <button class="like">♥ 공감 24</button>
+          <button>🔖 저장 8</button>
+          <button>↗ 공유</button>
+          <span class="views">조회 340</span>
+        </div>
+      </article>
+
+      <section class="answers">
+        <div class="ah">답변 12</div>
+
+        <div class="acard best">
+          <div class="atop"><a href="profile.html"><span class="ava" style="background:#3E4B63">김</span></a>
+            <div><a class="nm" href="profile.html">김도윤 <span class="best-b">베스트답변</span></a><div class="org">전 경제일간지 산업부 기자 · 2시간 전</div></div></div>
+          <div class="txt">
+            <p>기자 입장에서 말씀드리면, 배포 후 액션보다 <b>배포 직전의 선별</b>이 훨씬 중요합니다. 30곳에 똑같이 뿌리는 것보다, 우리 아이템을 실제로 다룰 만한 5~7명에게 개별 메일을 드리는 편이 기사화율이 높아요.</p>
+            <p>팔로업은 배포 후 <b>2~3시간 뒤</b>, 그것도 전화보다 짧은 메일 한 줄이 낫습니다. “혹시 추가로 필요한 자료(사진·인터뷰) 있으면 바로 드리겠습니다” 정도로요. 마감시간(보통 오후 3~4시) 직전 전화는 역효과입니다.</p>
+          </div>
+          <div class="ab"><button>♥ 채택에 도움됨 41</button></div>
+        </div>
+
+        <div class="acard">
+          <div class="atop"><a href="profile.html"><span class="ava" style="background:#6D5DF0">박</span></a>
+            <div><a class="nm" href="profile.html">박준호</a><div class="org">종합PR대행사 5년차 AE · 4시간 전</div></div></div>
+          <div class="txt"><p>제목이 절반입니다. 회사 이름으로 시작하는 제목(“○○기업, …”)은 광고처럼 읽혀요. <b>독자가 왜 궁금해할지</b>를 앞에 두는 게 좋습니다. 그리고 이미지·표를 첨부하면 지면·온라인 모두 채택 확률이 올라갑니다.</p></div>
+          <div class="ab"><button>♥ 18</button></div>
+        </div>
+
+        <div class="acard">
+          <div class="atop"><a href="profile.html"><span class="ava" style="background:#0FA6C0">인</span></a>
+            <div><a class="nm" href="profile.html">인하우스PR</a><div class="org">IT 서비스 시니어 홍보 · 5시간 전</div></div></div>
+          <div class="txt"><p>저도 같은 고민을 했는데, 배포 채널을 늘리기보다 <b>기자 리스트를 우리 산업에 맞게 다듬으니</b> 확실히 나아졌어요. PRCOME <a href="../directory/media.html">언론사 디렉토리</a>에서 담당 부서 보고 정리하시는 것 추천드립니다.</p></div>
+          <div class="ab"><button>♥ 12</button></div>
+        </div>
+
+        <div class="awrite">
+          <h4>답변 남기기</h4>
+          <textarea placeholder="실무 경험을 바탕으로 도움이 되는 답변을 남겨주세요. (로그인 후 등록됩니다)"></textarea>
+          <div class="row"><span class="g">비방·광고성 답변은 제한될 수 있습니다.</span><a href="../auth/login.html">답변 등록</a></div>
+        </div>
+      </section>
+    </main>
+
+    <aside class="side col-side">
+      <div class="sbox acard-mini">
+        <a href="profile.html"><span class="ava">이</span></a>
+        <div class="nm">이수민</div><div class="role">홍보팀장 · 리테일</div>
+        <div class="org">중소 제조기업 인하우스</div>
+        <div class="mini-st"><div><b>34</b>작성 글</div><div><b>88</b>답변</div><div><b>210</b>팔로워</div></div>
+        <a class="fbtn" href="profile.html">프로필 보기</a>
+      </div>
+      <div class="sbox rel">
+        <h4>관련 글</h4>
+        <a href="post.html"><div>대표님이 “우리도 신문에 나오게 해달라”고 하시는데</div><div class="m">질문·답변 · 답변 18</div></a>
+        <a href="post.html"><div>엠바고 걸린 보도자료, 실무에서 어떻게 관리하세요</div><div class="m">질문·답변 · 답변 9</div></a>
+        <a href="post.html"><div>기자 컨택 이메일 제목, 이렇게 쓰니 열림률이 올랐어요</div><div class="m">실무 노하우 · 공감 38</div></a>
+        <a href="post.html"><div>배포 리스트, 넓히기보다 좁혀서 관리하는 법</div><div class="m">실무 노하우 · 공감 33</div></a>
+      </div>
+    </aside>
+  </div>
+
+  <div class="backrow"><a href="index.html">← 커뮤니티 목록으로</a></div>
+</div>
+
+<div id="mag-footer"></div>
+<script src="../assets/js/magazine-header.js"></script>
+</body>
+</html>

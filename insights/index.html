@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>매거진 — PRCOME</title>
+<meta name="description" content="PR·언론·마케팅 전문 매거진. PR, 마케팅, 브랜드·콘텐츠, 미디어, 디지털, SEO, AEO·GEO, AI와 PR, 칼럼·인터뷰, 사례 분석, 트렌드 리포트, 용어사전.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="../assets/css/magazine-system.css">
+<script>(function(){var p=new URLSearchParams(location.search);var c=p.get('cat')||p.get('cate')||'';window.MAG={root:'../',home:'../index.html',catBase:'index.html',active:c};})();</script>
+<style>
+.chead{padding:30px 0 6px}
+.chead .crumb{font-size:12.5px;color:var(--sub);margin-bottom:12px}.chead .crumb a:hover{color:var(--pt)}
+.chead h1{font-size:clamp(26px,3vw,34px);font-weight:800;letter-spacing:-.035em;display:flex;align-items:center;gap:12px}
+.chead h1 .tick{width:26px;height:3px;background:var(--acc);border-radius:2px}
+.chead .desc{font-size:16px;color:var(--sub);margin-top:10px;max-width:56ch;line-height:1.6}
+.chead .meta{font-size:12.5px;color:var(--sub-2);margin-top:10px}
+.subtabs{display:flex;gap:20px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-top:20px;overflow-x:auto;scrollbar-width:none}
+.subtabs::-webkit-scrollbar{display:none}
+.subtabs button{background:none;border:0;padding:12px 0;font-family:inherit;font-size:14px;font-weight:600;color:var(--sub);white-space:nowrap;position:relative;cursor:pointer}
+.subtabs button.on{color:var(--pt)}.subtabs button.on::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--pt)}
+.cgrid{display:grid;grid-template-columns:8fr 4fr;gap:40px;padding:30px 0 8px;align-items:start}
+.c-feat .imgwrap{margin-bottom:14px}
+.c-feat .cat{display:inline-block;margin-bottom:8px}
+.c-feat h2{font-size:clamp(24px,2.6vw,32px);font-weight:800;letter-spacing:-.03em;line-height:1.14;max-width:18ch}
+.c-feat .sum{font-size:15.5px;color:var(--sub);line-height:1.7;margin:12px 0;max-width:52ch}
+.c-latest .lh{font-size:12px;font-weight:800;letter-spacing:.06em;color:var(--sub);padding-bottom:10px;border-bottom:2px solid var(--ink)}
+.c-latest a{display:block;padding:14px 0;border-top:1px solid var(--line)}.c-latest a:first-of-type{border-top:0}
+.c-latest h4{font-size:15.5px;font-weight:700;line-height:1.42}.c-latest .m{font-size:12px;color:var(--sub);margin-top:6px}
+.clist-grid{display:grid;grid-template-columns:8fr 4fr;gap:40px;padding:30px 0 10px;align-items:start}
+.clist{display:grid;grid-template-columns:1fr 1fr;gap:26px 30px}
+.clist .a-img .mini-poster{aspect-ratio:16/10;margin-bottom:10px}
+.clist .a-img .cat{display:inline-block;margin-bottom:5px}.clist .a-img h4{font-size:16.5px;font-weight:700;line-height:1.36}
+.clist .a-img .m{font-size:12px;color:var(--sub);margin-top:7px;display:flex;align-items:center;gap:8px}
+.clist .a-img .m .save{margin-left:auto;display:inline-flex;align-items:center;gap:4px;color:var(--sub-2);font-weight:600}
+.clist .a-img .m .save svg{width:13px;height:13px;stroke:var(--sub-2);fill:none;stroke-width:1.7}
+.a-txt .save{display:inline-flex;align-items:center;color:var(--sub-2)}
+.a-txt .save svg{width:14px;height:14px;stroke:var(--sub-2);fill:none;stroke-width:1.7}
+.c-feat .fmeta{display:flex;align-items:center;gap:12px;margin-top:12px}
+.c-feat .fmeta .src{font-size:12.5px;font-weight:700;color:var(--pt)}
+.c-feat .fmeta .save-btn{margin-left:auto;display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:var(--sub);border:1px solid var(--line-2);border-radius:6px;padding:6px 12px}
+.c-feat .fmeta .save-btn svg{width:14px;height:14px;stroke:var(--sub);fill:none;stroke-width:1.8}
+.c-feat .fmeta .save-btn:hover{border-color:var(--pt);color:var(--pt)}.c-feat .fmeta .save-btn:hover svg{stroke:var(--pt)}
+.clist .txtwrap{grid-column:1/-1;border-top:2px solid var(--ink);margin-top:6px}
+.clist .a-txt{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:baseline;padding:15px 0;border-top:1px solid var(--line)}
+.clist .a-txt:first-of-type{border-top:0}.clist .a-txt .cat{white-space:nowrap}.clist .a-txt h4{font-size:16px;font-weight:600;line-height:1.4}
+.clist .a-txt:hover h4{color:var(--pt)}.clist .a-txt .m{font-size:12px;color:var(--sub);white-space:nowrap}
+.cpicks{border-top:2px solid var(--ink);padding-top:4px}
+.cpicks .ph{font-size:12px;font-weight:800;letter-spacing:.06em;color:var(--sub);padding:12px 0 4px}
+.cpicks a{display:grid;grid-template-columns:26px 1fr;gap:12px;align-items:baseline;padding:12px 0;border-top:1px solid var(--line)}
+.cpicks a:first-of-type{border-top:0}.cpicks .n{font-size:16px;font-weight:800;color:var(--pt)}
+.cpicks .t{font-size:14.5px;font-weight:600;line-height:1.42}.cpicks a:hover .t{color:var(--pt)}
+.gloss{padding:26px 0}
+.gloss .g{border-top:1px solid var(--line);padding:16px 0;display:grid;grid-template-columns:190px 1fr;gap:20px}
+.gloss .g:first-child{border-top:2px solid var(--ink)}
+.gloss .term{font-weight:800;font-size:16px}.gloss .term .en{display:block;font-size:12px;color:var(--sub-2);font-weight:600;margin-top:3px}
+.gloss .def{font-size:14.5px;color:var(--sub);line-height:1.7}
+@media (max-width:1000px){.cgrid,.clist-grid{grid-template-columns:1fr}}
+@media (max-width:640px){.clist{grid-template-columns:1fr}.c-feat h2{max-width:none}.clist .a-txt{grid-template-columns:1fr auto}.clist .a-txt .cat{grid-column:1;order:-1}.gloss .g{grid-template-columns:1fr;gap:4px}}
+</style>
+</head>
+<body>
+<div id="mag-header"></div>
+<div class="wrap">
+  <section class="chead up">
+    <div class="crumb"><a href="../index.html">홈</a> <span aria-hidden="true">/</span> <a href="index.html">매거진</a> <span aria-hidden="true">/</span> <span id="cCrumb">전체</span></div>
+    <h1><span class="tick"></span><span id="cName">매거진</span></h1>
+    <p class="desc" id="cDesc"></p>
+    <div class="meta" id="cMeta"></div>
+  </section>
+  <div class="subtabs" id="subtabs" role="tablist"></div>
+</div>
+<div class="wrap" id="cbody"></div>
+<div id="mag-footer"></div>
+<script src="../assets/js/magazine-header.js"></script>
+<script>
+var ART='article.html';
+var BM='<svg viewBox="0 0 24 24"><path d="M6 4h12v16l-6-4-6 4z"/></svg>';
+var CAT={
+ all:{name:'매거진',kw:'INSIGHT',acc:'pr',desc:'언론홍보·PR을 중심으로 마케팅까지, 실무의 오늘을 편집팀이 정리합니다.',sub:['전체','PR·언론홍보','미디어','AEO·GEO','마케팅'],
+  feat:['AI가 보도자료를 읽는 시대, 기업 PR은 무엇을 준비해야 하나','생성형 AI가 보도자료를 요약·인용하기 시작하면서 홍보실의 문장 하나가 검색과 AI 답변으로 확산된다.'],
+  arts:['애드버토리얼은 어디까지 광고로 표시해야 할까','검색에서 답변으로, GEO가 바꾸는 기업 홍보','기자가 실제로 읽는 보도자료의 첫 문장','브랜드 위기 대응, 최초 30분이 중요한 이유','오너드미디어, 뉴스룸을 콘텐츠 채널로','측정할 수 없다면 홍보가 아니다','우리 브랜드가 챗봇 답변에 안 나오는 이유','참여형 캠페인이 다시 주목받는 이유','채택되는 보도자료의 제목은 무엇이 다른가','소비자 트렌드로 읽는 2026 브랜드 언어']},
+ pr:{name:'PR',kw:'PR',acc:'pr',desc:'미디어 관계, 보도자료, 위기관리와 기업 커뮤니케이션을 다룹니다.',sub:['전체','보도자료','미디어 릴레이션','위기관리','기업 커뮤니케이션'],
+  feat:['브랜드 위기, 최초 30분에 결정되는 신뢰 회복의 조건','사건 발생 후 첫 대응은 사실 확인·창구 단일화·메시지 정렬로 압축된다. 실무자가 점검할 순서를 정리했다.'],
+  arts:['채택되는 보도자료의 제목은 무엇이 다른가','기자와의 관계는 배포가 아니라 신뢰에서 시작된다','보도자료 배포 후 기사화 가능성을 높이는 5가지 방법','사내 메시지와 대외 메시지, 어떻게 정렬할까','대표님의 ‘신문에 나오게 해줘’를 번역하는 법','위기 상황, 홍보실이 가장 먼저 해야 할 일','보도자료 첫 문장에서 승부가 갈린다','언론 배포 리스트, 넓히기보다 좁혀라','기업 메시지 하우스, 어떻게 설계할까','기고와 인터뷰, 언제 무엇을 택할까']},
+ marketing:{name:'마케팅',kw:'MKT',acc:'marketing',desc:'브랜드, 콘텐츠, 광고와 변화하는 소비자 접점을 분석합니다.',sub:['전체','브랜드','콘텐츠','광고','디지털 캠페인','소비자 트렌드'],
+  feat:['짧아진 주목, 3초 안에 브랜드를 각인시키는 법','스크롤 속도가 빨라진 시대, 첫 3초가 캠페인의 성패를 가른다.'],
+  arts:['참여형 캠페인이 다시 주목받는 이유','오너드미디어, 뉴스룸을 콘텐츠 채널로','소비자 트렌드로 읽는 2026 브랜드 언어','퍼포먼스와 브랜딩, 예산은 어떻게 나눌까','콘텐츠 캘린더를 성과로 연결하는 법','브랜드 보이스, 말투가 신뢰가 되기까지','리텐션을 만드는 콘텐츠의 조건','데이터로 증명하는 마케팅 리포트','인플루언서 협업, 무엇을 계약서에 담을까','캠페인 이후, 자산으로 남기는 법']},
+ brand:{name:'브랜드·콘텐츠',kw:'BRAND',acc:'brand',desc:'브랜드 아이덴티티와 오너드미디어 콘텐츠 전략을 다룹니다.',sub:['전체','브랜딩','콘텐츠','오너드미디어','네이밍'],
+  feat:['브랜드의 말투는 어떻게 신뢰가 되는가','시각 아이덴티티만큼 중요한 언어 아이덴티티. 브랜드 보이스를 설계하고 유지하는 방법.'],
+  arts:['오너드미디어, 뉴스룸을 콘텐츠 채널로','네이밍, 검색과 상표를 함께 고려하기','브랜드 스토리를 기사로 옮기는 법','콘텐츠 허브 전략의 기본','비주얼과 카피의 균형 잡기','브랜드 가이드, 실무에서 살아남게 하기','리브랜딩, 언제가 적기인가','시리즈 콘텐츠로 팬을 만드는 법','브랜드 저널리즘의 경계','톤앤매너를 문서화하는 방법']},
+ media:{name:'미디어',kw:'MEDIA',acc:'media',desc:'언론 환경과 매체 전략, 기자 관계의 변화를 다룹니다.',sub:['전체','언론 환경','매체 전략','기자 관계'],
+  feat:['기자의 메일함에서 살아남는 보도자료','하루 수백 통 속에서 열리는 제목과 리드는 무엇이 다른가. 전 경제지 기자의 관점.'],
+  arts:['산업별 전문지 담당 부서, 어떻게 파악할까','매체 성격에 맞춰 아이템을 다듬는 법','온라인·지면 배포, 무엇이 다른가','통신사 전재의 구조 이해하기','기자 컨택, 첫 메일의 원칙','엠바고와 단독, 실무 매너','매체 리스트를 정기적으로 갱신하는 법','전문지와 종합지, 접근을 달리하라','보도 모니터링을 리포트로','미디어 데이 준비 체크리스트']},
+ digital:{name:'디지털',kw:'DIGITAL',acc:'digital',desc:'퍼포먼스, 채널, 그로스와 데이터 기반 마케팅을 다룹니다.',sub:['전체','퍼포먼스','채널','그로스','데이터'],
+  feat:['측정할 수 없다면 홍보가 아니다','노출과 클릭을 넘어, 홍보가 만든 변화를 어떻게 지표로 증명할 것인가.'],
+  arts:['채널별 역할을 나누는 통합 플래닝','리드젠, 트래픽보다 전환이 먼저다','UTM과 리포트 설계의 기본','그로스 실험을 조직에 심는 법','랜딩페이지 카피의 원칙','데이터 대시보드, 무엇을 볼 것인가','검색 유입을 문의로 잇는 구조','리마케팅의 적정선','콘텐츠 성과를 코호트로 보기','예산 배분을 데이터로 방어하기']},
+ seo:{name:'SEO',kw:'SEO',acc:'seo',desc:'검색엔진 최적화의 기초와 기술 실무를 다룹니다.',sub:['전체','키워드','콘텐츠','기술 SEO'],
+  feat:['B2B 홈페이지 SEO, 트래픽보다 리드가 먼저다','검색 유입을 실제 문의로 전환하는 B2B 콘텐츠 구조와 기술 SEO의 우선순위.'],
+  arts:['키워드 리서치, 의도로 분류하기','타이틀·메타 설명 최적화의 기본','내부 링크로 문맥을 만드는 법','구조화 데이터 시작하기','속도와 모바일, 무엇부터','콘텐츠 클러스터 설계','검색 콘솔로 문제 찾기','중복 콘텐츠 정리하기','이미지 SEO의 기초','SEO와 홍보의 접점']},
+ geo:{name:'AEO·GEO',kw:'GEO',acc:'geo',desc:'답변엔진과 생성형 검색에서의 브랜드 가시성을 다룹니다.',sub:['전체','AEO','GEO','AI 인용','사례'],
+  feat:['검색이 답변이 되는 시대, 무엇을 최적화할 것인가','AI가 우리 브랜드를 정확히 인용하도록 만드는 일이 과제가 됐다. SEO·AEO·GEO의 차이를 해설한다.'],
+  arts:['AI가 인용하는 콘텐츠 구조 만들기','챗봇 답변에 인용된 브랜드의 공통점','FAQ·요약 문단으로 스니펫 잡기','회사 정보 정합성이 인용을 만든다','GEO 준비 체크리스트','언론 노출과 AI 인용의 관계','구조화 데이터와 답변 엔진','우리 브랜드 가시성 진단하기','생성형 검색 시대의 위기','AI 검색 사례 3선']},
+ 'ai-pr':{name:'AI와 PR',kw:'AI·PR',acc:'ai-pr',desc:'생성형 AI가 바꾸는 홍보 실무와 워크플로를 다룹니다.',sub:['전체','AI 작성','AI 배포','AI 검색','윤리'],
+  feat:['AI가 보도자료를 읽는 시대, 기업 PR은 무엇을 준비해야 하나','생성형 AI가 보도자료를 요약·인용하기 시작하면서, 홍보실의 문장 하나가 검색과 AI 답변으로 확산된다.'],
+  arts:['보도자료 작성 AI, 어디까지 맡길까','매체 매칭 AI로 배포 리스트 좁히기','AI 초안을 검토하는 실무 원칙','생성형 AI 시대의 사실 정합성','AI가 만든 콘텐츠의 표기 문제','홍보팀 워크플로에 AI 심기','프롬프트보다 데이터가 먼저다','AI 검색 가시성 관리의 기본','AI 오인용, 어떻게 대응할까','사람이 남겨야 할 판단']},
+ column:{name:'칼럼·인터뷰',kw:'COLUMN',acc:'column',desc:'현장 실무자의 칼럼과 인물 인터뷰를 싣습니다.',sub:['전체','칼럼','인터뷰'],
+  feat:['“보도자료는 팩트, 스토리는 관계에서 나온다”','현직 산업부 데스크(익명)에게 채택되는 보도자료의 공통점과 신뢰를 쌓는 법을 들었다.'],
+  arts:['대표님의 ‘신문에 나오게 해줘’를 번역하는 법','기자의 메일함에서 살아남는 보도자료','측정할 수 없다면 홍보가 아니다','브랜드의 말투는 어떻게 신뢰가 되는가','인하우스와 대행사, 무엇이 다른가','20년차 PR 실무자의 하루','전 기자가 말하는 좋은 홍보','그로스 리드의 홍보 관점','위기관리 컨설턴트의 노트','편집장의 서문']},
+ case:{name:'사례 분석',kw:'CASE',acc:'pr',desc:'실제 캠페인과 홍보 활동을 데이터·타임라인으로 뜯어봅니다.',sub:['전체','언론홍보','캠페인','디지털','위기'],
+  feat:['지방 식품 브랜드의 전국지 데뷔, 90일의 기록','무명 브랜드가 첫 경제지 기사를 얻기까지의 실제 타임라인과 의사결정.'],
+  arts:['스타트업 투자유치 발표, 12건 기사화의 과정','뷰티 신제품 미디어 데이 리뷰','B2B 리드젠 캠페인, 6개월 성과 분석','공공기관 캠페인의 지역 언론 확산','위기 대응 48시간, 무엇이 통했나','오너드미디어 리뉴얼 전후 비교','인플루언서 협업 캠페인 결산','검색 가시성 개선 프로젝트 리포트','전시회 참가 홍보 패키지 성과','리브랜딩 6개월 후']},
+ trend:{name:'트렌드 리포트',kw:'TREND',acc:'marketing',desc:'분기별 PR·마케팅 트렌드와 데이터를 리포트로 정리합니다.',sub:['전체','미디어','검색·AI','콘텐츠','소비자'],
+  feat:['2026 상반기 PR·마케팅 트렌드 리포트','생성형 검색 확산, 오너드미디어 강화, 데이터 리포팅 표준화 — 상반기 흐름을 짚었다.'],
+  arts:['생성형 검색이 바꾼 콘텐츠 소비','숏폼과 뉴스룸의 공존','제로파티 데이터 시대의 마케팅','B2B 콘텐츠의 부상','브랜드 저널리즘 확산','AI 카피의 명과 암','로컬·니치 미디어의 재발견','측정 표준화의 흐름','크리에이터 이코노미와 PR','지속가능성 커뮤니케이션']}
+};
+var GLOSS=[
+ ['보도자료','Press Release','기업·기관이 언론에 배포하는 공식 발표 자료. 육하원칙에 따라 사실 중심으로 작성한다.'],
+ ['애드버토리얼','Advertorial','광고(ad)와 편집기사(editorial)의 합성어. 기사 형식의 광고로, 광고 표기 의무가 있다.'],
+ ['엠바고','Embargo','보도 시점을 특정 시각 이후로 제한하는 약속. 사전 공유하되 지정 시각 전 보도를 금한다.'],
+ ['피치','Pitch','기자·매체에 아이템을 제안하는 활동. 짧고 명확한 앵글이 핵심이다.'],
+ ['AEO','Answer Engine Optimization','답변엔진 최적화. 검색이 ‘답변’을 제공할 때 우리 콘텐츠가 채택되도록 구조화하는 작업.'],
+ ['GEO','Generative Engine Optimization','생성형 엔진 최적화. AI가 브랜드를 정확히 인용하도록 콘텐츠·데이터를 설계한다.'],
+ ['오너드미디어','Owned Media','기업이 직접 소유·운영하는 채널(뉴스룸·블로그·SNS 등).'],
+ ['KPI','Key Performance Indicator','핵심 성과 지표. 홍보·마케팅 활동의 목표 달성 정도를 측정하는 기준.']
+];
+function pad(n){return('0'+n).slice(-2);}function fdate(o){var d=new Date();d.setDate(d.getDate()-o);return d.getFullYear()+'.'+pad(d.getMonth()+1)+'.'+pad(d.getDate());}
+function rt(i){return (5+((i*3)%6))+'분 읽기';}
+var params=new URLSearchParams(location.search);
+var key=params.get('cat')||params.get('cate')||'all';
+var ALIAS={ai:'ai-pr',interview:'column'}; if(ALIAS[key])key=ALIAS[key];
+if(!CAT[key])key='all';
+var d=CAT[key];
+document.body.className='acc-'+(d.acc||'pr');
+document.title=d.name+' — PRCOME 매거진';
+document.getElementById('cCrumb').textContent=d.name;
+document.getElementById('cName').textContent=d.name;
+document.getElementById('cDesc').textContent=d.desc;
+document.getElementById('cMeta').textContent='PRCOME 편집팀 편집 · 최근 업데이트 '+fdate(0);
+document.getElementById('subtabs').innerHTML=d.sub.map(function(s,i){return '<button class="'+(i===0?'on':'')+'">'+s+'</button>';}).join('');
+document.querySelectorAll('#subtabs button').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('#subtabs button').forEach(function(x){x.classList.remove('on');});b.classList.add('on');});});
+var body=document.getElementById('cbody');
+if(key==='term'){
+  body.innerHTML='<div class="gloss up">'+GLOSS.map(function(g){return '<div class="g"><div class="term">'+g[0]+'<span class="en">'+g[1]+'</span></div><div class="def">'+g[2]+'</div></div>';}).join('')+'</div>';
+}else{
+  var feat='<article class="c-feat up"><a href="'+ART+'"><div class="imgwrap r169"><div class="poster-g"><span class="accbar"></span><span class="lab">'+d.name+' <i>·</i> PRCOME</span><div class="blue"></div><span class="tick t1"></span><span class="tick t2"></span><span class="tick t3"></span><div class="big">'+d.kw+'</div><span class="rule"></span><span class="sub">PR · MEDIA · SEARCH</span></div></div></a>'+
+   '<span class="cat">'+d.name+'</span><a href="'+ART+'"><h2 class="h">'+d.feat[0]+'</h2></a><p class="sum">'+d.feat[1]+'</p>'+
+   '<div class="byline"><span>PRCOME 편집팀</span><span class="d"></span><span>'+fdate(1)+'</span><span class="d"></span><span>'+rt(3)+'</span></div>'+
+   '<div class="fmeta"><span class="src">PRCOME 편집팀 · '+d.name+'</span><span class="save-btn">'+BM+'저장</span></div></article>';
+  var latest='<aside class="c-latest up"><div class="lh">최신 기사</div>'+d.arts.slice(0,4).map(function(t,i){return '<a href="'+ART+'"><h4 class="h">'+t+'</h4><div class="m">'+fdate(i+1)+' · '+rt(i+2)+'</div></a>';}).join('')+'</aside>';
+  var imgs=d.arts.slice(4,7).map(function(t,i){return '<a class="a-img" href="'+ART+'"><div class="mini-poster"><span class="bar"></span><span class="pt">'+d.name+'</span><span class="k">'+d.kw+'</span></div><span class="cat">'+d.name+'</span><h4 class="h">'+t+'</h4><div class="m"><span>'+fdate(i+3)+' · '+rt(i+1)+'</span><span class="save">'+BM+'저장</span></div></a>';}).join('');
+  var txts='<div class="txtwrap">'+d.arts.slice(7,10).map(function(t,i){return '<a class="a-txt" href="'+ART+'"><span class="cat">'+d.name+'</span><h4 class="h">'+t+'</h4><span class="m">'+fdate(i+6)+' · '+rt(i+4)+' <span class="save">'+BM+'</span></span></a>';}).join('')+'</div>';
+  var picks='<aside class="cpicks up"><div class="ph">편집팀 추천 · 주목할 콘텐츠</div>'+[d.feat[0]].concat(d.arts.slice(0,4)).map(function(t,i){return '<a href="'+ART+'"><span class="n">'+(i+1)+'</span><span class="t h">'+t+'</span></a>';}).join('')+'</aside>';
+  body.innerHTML='<div class="cgrid">'+feat+latest+'</div><div class="clist-grid"><div class="clist up">'+imgs+txts+'</div>'+picks+'</div>';
+}
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+var ups=[].slice.call(document.querySelectorAll('.up'));
+if(reduce||!('IntersectionObserver'in window)){ups.forEach(function(e){e.classList.add('in');});}
+else{var io=new IntersectionObserver(function(es){es.filter(function(e){return e.isIntersecting;}).forEach(function(e,i){setTimeout(function(){e.target.classList.add('in');},Math.min(i,4)*70);io.unobserve(e.target);});},{threshold:.1,rootMargin:'0px 0px -6% 0px'});ups.forEach(function(e){io.observe(e);});}
+</script>
+</body>
+</html>

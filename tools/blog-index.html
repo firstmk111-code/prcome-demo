@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>블로그 지수 체커 — PRCOME 마케팅 도구</title>
+<meta name="description" content="네이버 블로그 주소를 입력하면 예상 등급·지수와 활동성·전문성·인기도·신뢰도 세부 점수를 진단합니다.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="../assets/css/magazine-system.css">
+<script>window.MAG={root:'../',home:'../index.html',catBase:'../insights/index.html'};</script>
+<style>
+.tw{max-width:840px}
+.subhead{padding:30px 0 6px}
+.subhead .crumb{font-size:12.5px;color:var(--sub);margin-bottom:12px}
+.subhead h1{font-size:clamp(22px,2.7vw,30px);font-weight:800;letter-spacing:-.03em;display:flex;align-items:center;gap:12px}
+.subhead h1 .tick{width:26px;height:3px;background:var(--pt);border-radius:2px}
+.subhead h1 .ai{font-size:10px;font-weight:800;color:var(--pt);background:var(--pt-soft);border-radius:4px;padding:2px 6px;vertical-align:middle}
+.subhead .desc{font-size:15px;color:var(--sub);margin-top:10px;line-height:1.6}
+.searchrow{display:flex;gap:8px;margin-top:22px}
+.searchrow input{flex:1;min-width:0;height:52px;border:1px solid var(--line-2);border-radius:8px;padding:0 15px;font-family:inherit;font-size:15px;outline:0}
+.searchrow input:focus{border-color:var(--pt);box-shadow:0 0 0 3px var(--pt-soft)}
+.searchrow button{height:52px;background:var(--pt);color:#fff;border:0;border-radius:8px;font-family:inherit;font-size:15px;font-weight:800;padding:0 22px;cursor:pointer;white-space:nowrap}
+.searchrow button:hover{background:var(--pt-2)}
+.result{margin-top:22px;display:none}.result.on{display:block}
+.gradebox{display:flex;align-items:center;gap:22px;background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:24px;flex-wrap:wrap}
+.gr{width:120px;height:120px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;flex:none}
+.gr b{font-size:26px;font-weight:800;letter-spacing:-.02em}.gr span{font-size:11px;opacity:.85;margin-top:2px}
+.gi{flex:1;min-width:200px}
+.gi .t{font-size:13px;color:var(--sub)}
+.gi .s{font-size:34px;font-weight:800;color:var(--navy);letter-spacing:-.02em}
+.gi .s small{font-size:15px;color:var(--sub-2);font-weight:600}
+.gi .msg{font-size:13.5px;color:#374151;margin-top:8px;line-height:1.6}
+.subs{margin-top:16px;background:var(--surf);border:1px solid var(--line);border-radius:12px;padding:20px}
+.subs h3{font-size:14px;font-weight:800;margin-bottom:14px}
+.srow{display:grid;grid-template-columns:96px 1fr 46px;gap:12px;align-items:center;padding:9px 0;font-size:13.5px}
+.srow .bar{height:9px;background:var(--grey-2);border-radius:5px;overflow:hidden}
+.srow .bar i{display:block;height:100%;border-radius:5px;background:var(--pt)}
+.srow .v{text-align:right;font-weight:800;color:var(--sub)}
+.tips{margin-top:16px;background:var(--pt-soft);border:1px solid #cdd8ff;border-radius:12px;padding:18px}
+.tips h3{font-size:14px;font-weight:800;color:var(--navy);margin-bottom:8px}
+.tips li{font-size:13.5px;color:var(--navy);line-height:1.7;padding-left:18px;position:relative}
+.tips li::before{content:"✓";position:absolute;left:0;color:var(--pt);font-weight:800}
+.note{font-size:12.5px;color:var(--sub-2);margin-top:16px;line-height:1.6}
+@media (max-width:600px){.gradebox{gap:16px}.gr{width:96px;height:96px}}
+</style>
+</head>
+<body>
+<div id="mag-header"></div>
+<div class="wrap tw">
+  <section class="subhead">
+    <div class="crumb"><a href="../index.html">홈</a> / <a href="index.html">마케팅 도구</a> / 블로그 지수 체커</div>
+    <h1><span class="tick"></span>블로그 지수 체커 <span class="ai">AI</span></h1>
+    <p class="desc">네이버 블로그 주소나 아이디를 입력하면 예상 등급과 지수, 그리고 활동성·전문성·인기도·신뢰도 세부 점수를 진단합니다.</p>
+  </section>
+
+  <div class="searchrow">
+    <input id="url" placeholder="blog.naver.com/아이디 또는 아이디 입력" onkeydown="if(event.key==='Enter')run()">
+    <button onclick="run()">⚡ 진단하기</button>
+  </div>
+
+  <div class="result" id="res">
+    <div class="gradebox">
+      <div class="gr" id="gr"><b id="grName">-</b><span>예상 등급</span></div>
+      <div class="gi">
+        <div class="t">종합 블로그 지수</div>
+        <div class="s"><span id="score">0</span><small> / 100</small></div>
+        <div class="msg" id="msg"></div>
+      </div>
+    </div>
+    <div class="subs">
+      <h3>세부 지표</h3>
+      <div class="srow"><span>활동성</span><span class="bar"><i id="b1"></i></span><span class="v" id="v1"></span></div>
+      <div class="srow"><span>전문성</span><span class="bar"><i id="b2"></i></span><span class="v" id="v2"></span></div>
+      <div class="srow"><span>인기도</span><span class="bar"><i id="b3"></i></span><span class="v" id="v3"></span></div>
+      <div class="srow"><span>신뢰도</span><span class="bar"><i id="b4"></i></span><span class="v" id="v4"></span></div>
+    </div>
+    <div class="tips"><h3>개선 제안</h3><ul id="tips"></ul></div>
+  </div>
+  <p class="note">※ 본 진단은 입력값 기반 시뮬레이션(1차 데모)입니다. 실제 지수는 네이버 검색 노출·체류시간·발행 주기 등 비공개 요소로 결정되며, 결과는 참고용입니다.</p>
+  <div style="height:60px"></div>
+</div>
+<div id="mag-footer"></div>
+<script src="../assets/js/magazine-header.js"></script>
+<script>
+function hash(s){var h=5381;for(var i=0;i<s.length;i++){h=((h<<5)+h+s.charCodeAt(i))>>>0;}return h;}
+var GRADES=[['저품질','#8A93A3'],['일반','#667085'],['준최적화 3','#3E4B63'],['준최적화 2','#0FA6C0'],['준최적화 1','#2FA96A'],['최적화 3','#315CFF'],['최적화 2','#1E40E8'],['최적화 1','#6D5DF0']];
+function run(){
+ var url=(document.getElementById('url').value||'').trim();
+ if(!url){alert('블로그 주소나 아이디를 입력하세요.');return;}
+ var h=hash(url.toLowerCase());
+ var a=40+(h%61),b=40+((h>>>3)%61),c=35+((h>>>6)%56),d=45+((h>>>9)%56);
+ var score=Math.round(a*.3+b*.25+c*.25+d*.2);
+ var gi=Math.min(7,Math.floor(score/13));
+ var g=GRADES[gi];
+ var grEl=document.getElementById('gr');grEl.style.background='linear-gradient(135deg,'+g[1]+','+shade(g[1])+')';
+ document.getElementById('grName').textContent=g[0];
+ animateScore(score);
+ setBar('b1','v1',a);setBar('b2','v2',b);setBar('b3','v3',c);setBar('b4','v4',d);
+ document.getElementById('msg').textContent=score>=78?'상위권 블로그입니다. 상위 노출 경쟁력이 높습니다.':score>=52?'성장 중인 블로그입니다. 꾸준함과 전문성 보강으로 등급 상승이 가능합니다.':'기초 다지기 단계입니다. 발행 주기와 주제 집중이 필요합니다.';
+ var tips=[];
+ if(a<70)tips.push('발행 주기를 주 3회 이상으로 유지해 활동성을 높이세요.');
+ if(b<70)tips.push('한 가지 주제(전문 분야)에 집중해 카테고리 일관성을 확보하세요.');
+ if(c<70)tips.push('제목·썸네일을 개선하고 체류시간을 늘리는 본문 구조를 사용하세요.');
+ if(d<70)tips.push('원본 콘텐츠 비중을 높이고 과도한 외부 링크·광고성 문구를 줄이세요.');
+ if(!tips.length)tips.push('현재 밸런스가 좋습니다. 지금의 발행 패턴과 주제 집중을 유지하세요.');
+ document.getElementById('tips').innerHTML=tips.map(function(t){return '<li>'+t+'</li>';}).join('');
+ document.getElementById('res').classList.add('on');
+}
+function shade(hex){return hex;}
+function setBar(bid,vid,v){document.getElementById(bid).style.width=v+'%';document.getElementById(vid).textContent=v;
+ document.getElementById(bid).style.background=v>=70?'#2FA96A':v>=50?'#315CFF':'#E4612B';}
+function animateScore(target){var el=document.getElementById('score'),n=0;var t=setInterval(function(){n+=Math.ceil(target/20);if(n>=target){n=target;clearInterval(t);}el.textContent=n;},24);}
+</script>
+</body>
+</html>

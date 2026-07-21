@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>서지현 — PRCOME 커뮤니티 프로필</title>
+<meta name="description" content="PRCOME 커뮤니티 회원 프로필. 작성 글, 답변, 활동 내역과 전문 분야를 확인하세요.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="../assets/css/magazine-system.css">
+<script>window.MAG={root:'../',home:'../index.html',catBase:'../insights/index.html'};</script>
+<style>
+.crumb{font-size:12.5px;color:var(--sub);padding:26px 0 16px}
+/* 프로필 헤더 */
+.phead{background:var(--surf);border:1px solid var(--line);border-radius:12px;padding:26px;display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.phead .ava{width:84px;height:84px;border-radius:50%;background:#315CFF;color:#fff;font-weight:800;font-size:32px;display:flex;align-items:center;justify-content:center;flex:none}
+.phead .who{min-width:0;flex:1}
+.phead .nm{font-size:23px;font-weight:800;letter-spacing:-.02em;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.phead .role{font-size:12.5px;font-weight:700;color:var(--pt);background:var(--pt-soft);border-radius:5px;padding:3px 10px}
+.phead .org{font-size:14px;color:var(--sub);margin-top:7px}
+.phead .bio{font-size:13.5px;color:#4a5568;line-height:1.6;margin-top:10px;max-width:60ch}
+.phead .act{display:flex;flex-direction:column;gap:8px;flex:none}
+.phead .btn{min-height:42px;display:inline-flex;align-items:center;justify-content:center;border-radius:6px;font-size:13.5px;font-weight:700;padding:0 22px}
+.phead .btn.pri{background:var(--pt);color:#fff}.phead .btn.pri:hover{background:var(--pt-2)}
+.phead .btn.gh{border:1px solid var(--line-2);color:var(--ink)}.phead .btn.gh:hover{border-color:var(--pt);color:var(--pt)}
+/* 통계 */
+.pstats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin:16px 0}
+.pstats div{background:var(--surf);padding:16px;text-align:center}
+.pstats b{font-size:20px;font-weight:800;color:var(--navy)}
+.pstats span{display:block;font-size:12px;color:var(--sub);margin-top:3px}
+/* 탭 + 목록 */
+.ptabs{display:flex;gap:20px;border-bottom:1px solid var(--line);margin:22px 0 4px}
+.ptabs button{background:none;border:0;font-family:inherit;font-size:14px;font-weight:700;color:var(--sub);padding:12px 0;cursor:pointer;position:relative}
+.ptabs button.on{color:var(--pt)}.ptabs button.on::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--pt)}
+.plist{border-top:2px solid var(--ink)}
+.prow{display:grid;grid-template-columns:96px 1fr 150px;gap:14px;align-items:center;padding:15px 0;border-bottom:1px solid var(--line)}
+.prow .bd{font-size:11.5px;font-weight:800;color:var(--pt)}
+.prow .tt{font-size:15px;font-weight:600;line-height:1.4}.prow:hover .tt{color:var(--pt)}
+.prow .rt{text-align:right;font-size:12px;color:var(--sub);white-space:nowrap}
+.tagline{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}
+.tagline span{font-size:12px;color:var(--sub);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:5px 11px}
+@media (max-width:640px){.phead{padding:20px}.pstats{grid-template-columns:repeat(2,1fr)}.prow{grid-template-columns:1fr auto}.prow .rt{grid-column:2}}
+</style>
+</head>
+<body>
+<div id="mag-header"></div>
+<div class="wrap">
+  <div class="crumb"><a href="../index.html">홈</a> / <a href="index.html">커뮤니티</a> / 프로필</div>
+
+  <header class="phead">
+    <div class="ava">서</div>
+    <div class="who">
+      <div class="nm">서지현 <span class="role">PR 전략가 · 위기관리</span></div>
+      <div class="org">미디어스퀘어 · 서울 · PR 12년차</div>
+      <p class="bio">언론홍보와 위기관리 커뮤니케이션을 전문으로 합니다. 스타트업부터 대기업까지 미디어 릴레이션 전략을 설계했고, 현장에서 얻은 노하우를 커뮤니티에서 나눕니다.</p>
+      <div class="tagline"><span>#언론홍보전략</span><span>#위기관리</span><span>#미디어릴레이션</span><span>#스타트업PR</span></div>
+    </div>
+    <div class="act">
+      <a class="btn pri" href="../auth/login.html">＋ 팔로우</a>
+      <a class="btn gh" href="../auth/login.html">쪽지 보내기</a>
+    </div>
+  </header>
+
+  <div class="pstats">
+    <div><b>128</b><span>작성 글</span></div>
+    <div><b>342</b><span>답변</span></div>
+    <div><b>1,204</b><span>팔로워</span></div>
+    <div><b>86</b><span>채택 답변</span></div>
+  </div>
+
+  <div class="ptabs">
+    <button class="on" id="tPost" onclick="tab('post')">작성 글</button>
+    <button id="tAns" onclick="tab('ans')">답변</button>
+    <button id="tSave" onclick="tab('save')">저장</button>
+  </div>
+  <div class="plist" id="plist"></div>
+  <div style="height:60px"></div>
+</div>
+<div id="mag-footer"></div>
+<script src="../assets/js/magazine-header.js"></script>
+<script>
+var DATA={
+ post:[
+  ['언론홍보 사례','[사례] 지방 식품 브랜드의 전국지 데뷔, 90일의 기록','공감 47 · 720 · 어제'],
+  ['질문·답변','위기 상황 첫 30분, 홍보실 대응 순서 공유합니다','공감 39 · 610 · 3일 전'],
+  ['실무 노하우','기업 메시지 하우스, 어떻게 설계할까','공감 28 · 440 · 1주 전'],
+  ['업계 소식','생성형 검색 시대, 회사 정보 정합성이 중요한 이유','공감 33 · 520 · 2주 전']
+ ],
+ ans:[
+  ['질문·답변','Re: 보도자료 배포 후 기사화 가능성을 높이는 방법','채택됨 · 채택도움 41 · 2시간 전'],
+  ['질문·답변','Re: 대표님이 "우리도 신문에 나오게" 하시는데','채택도움 22 · 어제'],
+  ['질문·답변','Re: 엠바고 걸린 보도자료 실무 관리','채택도움 16 · 4일 전']
+ ],
+ save:[
+  ['실무 노하우','기자 컨택 이메일 제목, 이렇게 쓰니 열림률이 올랐어요','박준호 · 2일 전'],
+  ['업계 소식','[정보공유] 산업별 전문지 담당 부서 정리','김도윤 · 5시간 전']
+ ]
+};
+function tab(t){
+ ['post','ans','save'].forEach(function(k){document.getElementById('t'+({post:'Post',ans:'Ans',save:'Save'}[k])).classList.toggle('on',k===t);});
+ document.getElementById('plist').innerHTML=DATA[t].map(function(r){
+  return '<a class="prow" href="post.html"><span class="bd">'+r[0]+'</span><span class="tt">'+r[1]+'</span><span class="rt">'+r[2]+'</span></a>';
+ }).join('');
+}
+tab('post');
+</script>
+</body>
+</html>

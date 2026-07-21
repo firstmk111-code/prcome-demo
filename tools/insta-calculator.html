@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>인스타 참여율 계산기 — PRCOME 마케팅 도구</title>
+<meta name="description" content="팔로워·좋아요·댓글로 인스타그램 참여율(engagement rate)을 자동 계산하고 업계 벤치마크와 비교합니다.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="../assets/css/magazine-system.css">
+<script>window.MAG={root:'../',home:'../index.html',catBase:'../insights/index.html'};</script>
+<style>
+.tw{max-width:880px}
+.subhead{padding:30px 0 6px}
+.subhead .crumb{font-size:12.5px;color:var(--sub);margin-bottom:12px}
+.subhead h1{font-size:clamp(22px,2.7vw,30px);font-weight:800;letter-spacing:-.03em;display:flex;align-items:center;gap:12px}
+.subhead h1 .tick{width:26px;height:3px;background:var(--pt);border-radius:2px}
+.subhead .desc{font-size:15px;color:var(--sub);margin-top:10px;line-height:1.6}
+.panel{background:var(--surf);border:1px solid var(--line);border-radius:12px;padding:24px;margin-top:22px}
+.frow{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.f label{display:block;font-size:13px;font-weight:700;margin-bottom:7px}
+.f input{width:100%;height:48px;border:1px solid var(--line-2);border-radius:6px;padding:0 13px;font-family:inherit;font-size:15px;outline:0}
+.f input:focus{border-color:var(--pt);box-shadow:0 0 0 3px var(--pt-soft)}
+.calc{margin-top:18px;width:100%;height:52px;background:var(--pt);color:#fff;border:0;border-radius:8px;font-family:inherit;font-size:16px;font-weight:800;cursor:pointer}
+.calc:hover{background:var(--pt-2)}
+.result{margin-top:22px;display:none}
+.result.on{display:block}
+.big{text-align:center;padding:26px;background:var(--pt-soft);border-radius:12px}
+.big .rate{font-size:52px;font-weight:800;color:var(--pt);letter-spacing:-.03em;line-height:1}
+.big .lab{font-size:13px;color:var(--sub);margin-top:8px}
+.big .grade{display:inline-block;margin-top:12px;font-size:13px;font-weight:800;color:#fff;border-radius:999px;padding:6px 16px}
+.bench{margin-top:20px}
+.bench h3{font-size:14px;font-weight:800;margin-bottom:12px}
+.brow{display:grid;grid-template-columns:120px 1fr 60px;gap:12px;align-items:center;padding:9px 0;border-top:1px solid var(--line);font-size:13px}
+.brow:first-of-type{border-top:0}.brow .bar{height:8px;background:var(--grey-2);border-radius:4px;overflow:hidden}
+.brow .bar i{display:block;height:100%;background:var(--pt);border-radius:4px}
+.brow .v{text-align:right;font-weight:700;color:var(--sub)}
+.brow.me .bar i{background:#2FA96A}.brow.me .v{color:#2FA96A}
+.note{font-size:12.5px;color:var(--sub-2);margin-top:16px;line-height:1.6}
+@media (max-width:600px){.frow{grid-template-columns:1fr}.brow{grid-template-columns:90px 1fr 52px}}
+</style>
+</head>
+<body>
+<div id="mag-header"></div>
+<div class="wrap tw">
+  <section class="subhead">
+    <div class="crumb"><a href="../index.html">홈</a> / <a href="index.html">마케팅 도구</a> / 인스타 참여율 계산기</div>
+    <h1><span class="tick"></span>인스타 참여율 계산기</h1>
+    <p class="desc">팔로워 수와 게시물 반응을 입력하면 참여율(engagement rate)을 계산하고 업계 벤치마크와 비교해 드립니다.</p>
+  </section>
+
+  <div class="panel">
+    <div class="frow">
+      <div class="f"><label>팔로워 수</label><input id="fol" type="number" inputmode="numeric" placeholder="예: 12000"></div>
+      <div class="f"><label>평균 좋아요</label><input id="lik" type="number" inputmode="numeric" placeholder="예: 480"></div>
+      <div class="f"><label>평균 댓글</label><input id="com" type="number" inputmode="numeric" placeholder="예: 32"></div>
+      <div class="f"><label>평균 저장·공유 (선택)</label><input id="sav" type="number" inputmode="numeric" placeholder="예: 18"></div>
+    </div>
+    <button class="calc" onclick="calc()">참여율 계산하기</button>
+
+    <div class="result" id="res">
+      <div class="big">
+        <div class="rate" id="rate">0%</div>
+        <div class="lab">참여율 (engagement rate)</div>
+        <div class="grade" id="grade"></div>
+      </div>
+      <div class="bench">
+        <h3>업계 평균 대비</h3>
+        <div class="brow me"><span>내 계정</span><span class="bar"><i id="meBar" style="width:0"></i></span><span class="v" id="meV">0%</span></div>
+        <div class="brow"><span>나노 (1K~1만)</span><span class="bar"><i style="width:84%"></i></span><span class="v">4.0%</span></div>
+        <div class="brow"><span>마이크로 (1만~10만)</span><span class="bar"><i style="width:52%"></i></span><span class="v">2.4%</span></div>
+        <div class="brow"><span>매크로 (10만~100만)</span><span class="bar"><i style="width:28%"></i></span><span class="v">1.3%</span></div>
+        <div class="brow"><span>메가 (100만+)</span><span class="bar"><i style="width:16%"></i></span><span class="v">0.8%</span></div>
+      </div>
+      <p class="note" id="tip"></p>
+    </div>
+  </div>
+
+  <p class="note">※ 참여율 = (좋아요 + 댓글 + 저장·공유) ÷ 팔로워 × 100. 저장·공유는 참여의 질을 보여주는 지표로, 최근 인스타그램 알고리즘에서 비중이 큽니다. 벤치마크는 일반 업계 통계 기준의 참고값입니다.</p>
+  <div style="height:60px"></div>
+</div>
+<div id="mag-footer"></div>
+<script src="../assets/js/magazine-header.js"></script>
+<script>
+function n(id){var v=parseFloat(document.getElementById(id).value);return isNaN(v)?0:v;}
+function calc(){
+  var fol=n('fol'),lik=n('lik'),com=n('com'),sav=n('sav');
+  if(fol<=0){alert('팔로워 수를 입력해 주세요.');return;}
+  var er=(lik+com+sav)/fol*100;
+  var pct=Math.round(er*100)/100;
+  document.getElementById('rate').textContent=pct+'%';
+  document.getElementById('res').classList.add('on');
+  var g,gc,tip;
+  if(er>=6){g='매우 높음';gc='#2FA96A';tip='업계 상위 수준의 참여율입니다. 지금의 콘텐츠·해시태그 전략을 유지하면서 저장·공유를 유도하는 포맷을 확대해 보세요.';}
+  else if(er>=3){g='양호';gc='#315CFF';tip='건강한 참여율입니다. 릴스·캐러셀 등 저장을 부르는 포맷과 CTA(댓글 유도)를 강화하면 더 오를 수 있습니다.';}
+  else if(er>=1){g='보통';gc='#E4612B';tip='평균 범위입니다. 팔로워 대비 반응이 아쉽다면 게시 시간대·주제 적합성·해시태그를 점검해 보세요.';}
+  else {g='개선 필요';gc='#8A93A3';tip='참여율이 낮습니다. 유령 팔로워 정리, 콘텐츠 주제 재정비, 참여형(질문·투표) 포맷 도입을 권합니다.';}
+  var ge=document.getElementById('grade');ge.textContent=g;ge.style.background=gc;
+  var w=Math.max(4,Math.min(100,er/5*100));
+  document.getElementById('meBar').style.width=w+'%';
+  document.getElementById('meV').textContent=pct+'%';
+  document.getElementById('tip').textContent='💡 '+tip;
+  document.getElementById('res').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+</script>
+</body>
+</html>

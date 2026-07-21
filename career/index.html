@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>구인구직 — PRCOME(피알컴)</title>
+<meta name="description" content="PR·마케팅 채용과 프리랜서·외주 매칭. 홍보담당자, 마케터, 콘텐츠·SEO 실무자 커리어를 PRCOME에서.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="../assets/css/magazine-system.css">
+<script>window.MAG={root:'../',home:'../index.html',catBase:'../insights/index.html'};</script>
+<style>
+.subhead{padding:30px 0 6px}
+.subhead .top{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.subhead .crumb{font-size:12.5px;color:var(--sub);margin-bottom:12px}
+.subhead h1{font-size:clamp(24px,3vw,32px);font-weight:800;letter-spacing:-.03em;display:flex;align-items:center;gap:12px}
+.subhead h1 .tick{width:26px;height:3px;background:var(--pt);border-radius:2px}
+.subhead .desc{font-size:15.5px;color:var(--sub);margin-top:10px;max-width:56ch;line-height:1.6}
+.reg-btn{flex:none;height:44px;display:inline-flex;align-items:center;gap:7px;background:var(--pt);color:#fff;font-weight:700;font-size:14px;border-radius:6px;padding:0 18px}
+.reg-btn:hover{background:var(--pt-2)}
+.ptabs{display:flex;gap:20px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-top:22px}
+.ptabs a{padding:12px 0;font-size:14px;font-weight:700;color:var(--sub);position:relative}
+.ptabs a:hover{color:var(--ink)}
+.ptabs a.on{color:var(--pt)}.ptabs a.on::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--pt)}
+.fbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:18px 0}
+.fbar .fld{display:flex;align-items:center;gap:8px;border:1px solid var(--line-2);border-radius:6px;padding:0 12px;height:44px;background:var(--surf)}
+.fbar .fld.grow{flex:1;min-width:200px}.fbar select,.fbar input{border:0;outline:0;background:transparent;font-family:inherit;font-size:14px;color:var(--ink);min-width:0}
+.fbar .fld svg{width:16px;height:16px;stroke:var(--sub);fill:none;stroke-width:1.8;flex:none}
+.fbar .go{height:44px;border:0;border-radius:6px;background:var(--pt);color:#fff;font-weight:700;font-size:14px;padding:0 18px}
+.rescount{font-size:13px;color:var(--sub);margin:6px 0}.rescount b{color:var(--ink)}
+.dlist{border-top:2px solid var(--ink)}
+.drow{display:grid;grid-template-columns:52px 1fr 150px;gap:16px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line)}
+.drow .lg{width:48px;height:48px;border-radius:8px;background:var(--pt-soft);color:var(--pt);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px}
+.drow .nm{font-size:15.5px;font-weight:700}.drow:hover .nm{color:var(--pt)}
+.drow .sub{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:5px;font-size:12.5px;color:var(--sub)}
+.drow .emp{font-size:11px;font-weight:700;border-radius:4px;padding:2px 8px}
+.drow .emp.free{background:var(--pt-soft);color:var(--pt)}.drow .emp.full{border:1px solid var(--line);color:var(--sub)}
+.drow .side{text-align:right}.drow .dday{font-size:13px;font-weight:800;color:var(--pt)}.drow .pay{font-size:12px;color:var(--sub);margin-top:3px}
+.pager{display:flex;gap:6px;justify-content:center;margin:30px 0}
+.pager a{min-width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:6px;font-size:13px;font-weight:600;color:var(--sub)}
+.pager a.on{background:var(--pt);color:#fff;border-color:var(--pt)}.pager a:hover:not(.on){border-color:var(--pt);color:var(--pt)}
+@media (max-width:640px){.drow{grid-template-columns:44px 1fr}.drow .side{grid-column:2;text-align:left;display:flex;gap:12px;align-items:baseline}.drow .pay{margin-top:0}}
+</style>
+</head>
+<body>
+<div id="mag-header"></div>
+<div class="wrap">
+  <section class="subhead">
+    <div class="top">
+      <div>
+        <div class="crumb"><a href="../index.html">홈</a> / 구인구직</div>
+        <h1><span class="tick"></span>PR·마케팅 구인구직</h1>
+      </div>
+      <a class="reg-btn" href="index.html?post=1">＋ 채용 등록</a>
+    </div>
+    <p class="desc">홍보·마케팅·콘텐츠·SEO 실무자를 위한 채용과 프리랜서 매칭을 한 곳에서.</p>
+  </section>
+
+  <nav class="ptabs">
+    <a href="index.html">전체</a>
+    <a href="index.html?type=hire">채용공고</a>
+    <a href="index.html?type=freelance">프리랜서·외주</a>
+  </nav>
+
+  <div class="fbar">
+    <div class="fld grow"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4" stroke-linecap="round"/></svg><input id="q" placeholder="직무·회사명 검색"></div>
+    <div class="fld"><select id="f-emp"><option value="">고용형태 전체</option><option>정규직</option><option>계약직</option><option>프리랜서</option></select></div>
+    <div class="fld"><select id="f-loc"><option value="">지역 전체</option><option>서울</option><option>경기</option><option>원격</option></select></div>
+    <button class="go" onclick="render()">필터 적용</button>
+  </div>
+
+  <div class="rescount" id="rescount"></div>
+  <div class="dlist" id="dlist"></div>
+  <div class="pager"><a>‹</a><a class="on">1</a><a href="index.html">2</a><a href="index.html">3</a><a>›</a></div>
+  <div style="height:50px"></div>
+</div>
+<div id="mag-footer"></div>
+<script src="../assets/js/magazine-header.js"></script>
+<script>
+var J=[
+ {type:'hire',ini:'브',t:'PR·콘텐츠 마케터 (경력 3년+)',co:'브릿지커뮤니케이션즈',emp:'정규직',loc:'서울 강남',job:'언론홍보·콘텐츠',pay:'연봉 협의',dday:'D-9'},
+ {type:'hire',ini:'노',t:'퍼포먼스 마케터 (신입/경력)',co:'노바디지털',emp:'정규직',loc:'서울 성수',job:'디지털 마케팅',pay:'3,600만원~',dday:'상시'},
+ {type:'freelance',ini:'프',t:'보도자료 작성 프리랜서 (재택)',co:'다수 클라이언트',emp:'프리랜서',loc:'원격',job:'보도자료·에디팅',pay:'건당 15~30만원',dday:'상시'},
+ {type:'hire',ini:'한',t:'인하우스 홍보담당자 (대리~과장급)',co:'한맥테크',emp:'정규직',loc:'경기 판교',job:'기업 홍보·IR',pay:'4,500만원~',dday:'D-14'},
+ {type:'hire',ini:'스',t:'브랜드 콘텐츠 에디터',co:'스토리브릭스',emp:'계약직',loc:'서울 마포',job:'콘텐츠·에디터',pay:'월 320만원',dday:'D-5'},
+ {type:'freelance',ini:'써',t:'SEO·GEO 컨설팅 파트너 (프로젝트)',co:'써치온',emp:'프리랜서',loc:'원격',job:'SEO·그로스',pay:'프로젝트 협의',dday:'상시'},
+ {type:'hire',ini:'미',t:'커뮤니케이션 매니저 (위기관리 경험 우대)',co:'미디어웨이브',emp:'정규직',loc:'서울 여의도',job:'PR·위기관리',pay:'5,500만원~',dday:'D-20'},
+ {type:'freelance',ini:'라',t:'라이프스타일 콘텐츠 외주 작가',co:'라이프앤컬처',emp:'프리랜서',loc:'원격',job:'콘텐츠·에디터',pay:'건당 8~15만원',dday:'상시'}
+];
+var params=new URLSearchParams(location.search),f=params.get('type');
+document.querySelectorAll('.ptabs a').forEach(function(a){var h=a.getAttribute('href');a.classList.toggle('on',(!f&&h==='index.html')||(!!f&&h.indexOf('type='+f)>-1));});
+function render(){
+ var q=(document.getElementById('q').value||'').trim().toLowerCase();
+ var fe=document.getElementById('f-emp').value, fl=document.getElementById('f-loc').value;
+ var list=J.filter(function(j){
+   if(f&&j.type!==f)return false;
+   if(fe&&j.emp!==fe)return false;
+   if(fl&&j.loc.indexOf(fl)<0)return false;
+   if(q&&(j.t+' '+j.co+' '+j.job).toLowerCase().indexOf(q)<0)return false; return true;
+ });
+ document.getElementById('rescount').innerHTML='공고 <b>'+list.length+'건</b>';
+ document.getElementById('dlist').innerHTML=list.map(function(j){
+  var badge=j.type==='freelance'?'free':'full';
+  return '<a class="drow" href="detail.html"><span class="lg">'+j.ini+'</span>'+
+   '<span><div class="nm">'+j.t+'</div><div class="sub"><span class="emp '+badge+'">'+j.emp+'</span><span>'+j.co+'</span>·<span>'+j.loc+'</span>·<span>'+j.job+'</span></div></span>'+
+   '<span class="side"><div class="dday">'+j.dday+'</div><div class="pay">'+j.pay+'</div></span></a>';
+ }).join('')||'<div style="padding:30px 0;color:var(--sub)">조건에 맞는 공고가 없습니다.</div>';
+}
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>글쓰기 — PRCOME 커뮤니티</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="../assets/css/magazine-system.css">
+<script>window.MAG={root:'../',home:'../index.html',catBase:'../insights/index.html'};</script>
+<style>
+.narrow{max-width:840px}
+.subhead{padding:30px 0 6px}
+.subhead .crumb{font-size:12.5px;color:var(--sub);margin-bottom:12px}
+.subhead h1{font-size:clamp(23px,2.8vw,30px);font-weight:800;letter-spacing:-.03em;display:flex;align-items:center;gap:12px}
+.subhead h1 .tick{width:26px;height:3px;background:var(--pt);border-radius:2px}
+.subhead .desc{font-size:15px;color:var(--sub);margin-top:10px;line-height:1.6}
+.notice{background:var(--pt-soft);border:1px solid #cdd8ff;border-radius:6px;padding:13px 16px;font-size:13px;color:var(--navy);margin:20px 0}
+.fcard{background:var(--surf);border:1px solid var(--line);border-radius:8px;padding:28px}
+.row{margin-bottom:18px}
+.row>label{display:block;font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:7px}
+.row .req{color:var(--pt)}
+.inp,.sel,.ta{width:100%;font-family:inherit;font-size:14.5px;color:var(--ink);background:var(--surf);border:1px solid var(--line-2);border-radius:4px;padding:0 13px;height:48px;outline:0}
+.ta{height:auto;padding:13px;min-height:240px;line-height:1.65;resize:vertical}
+.inp:focus,.sel:focus,.ta:focus{border-color:var(--pt);box-shadow:0 0 0 3px var(--pt-soft)}
+.hint{font-size:12px;color:var(--sub-2);margin-top:6px}
+.hr{height:1px;background:var(--line);margin:22px 0}
+.foot{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.btn{min-height:44px;display:inline-flex;align-items:center;justify-content:center;border-radius:4px;font-family:inherit;font-size:14px;font-weight:700;padding:0 20px;border:1px solid var(--line-2);background:var(--surf);color:var(--ink)}
+.btn:hover{border-color:var(--pt);color:var(--pt)}
+.btn.pri{background:var(--pt);color:#fff;border-color:var(--pt)}.btn.pri:hover{background:var(--pt-2);color:#fff}
+.foot .r{display:flex;gap:8px}
+@media (max-width:640px){.fcard{padding:20px}}
+</style>
+</head>
+<body>
+<div id="mag-header"></div>
+<div class="wrap narrow">
+  <section class="subhead">
+    <div class="crumb"><a href="../index.html">홈</a> / <a href="index.html">커뮤니티</a> / 글쓰기</div>
+    <h1><span class="tick"></span>커뮤니티 글쓰기</h1>
+    <p class="desc">실무 질문, 정보 공유, 협업 제안을 자유롭게 남겨주세요.</p>
+  </section>
+
+  <div class="notice">이 페이지는 1차 데모 가안입니다. 실제 등록·저장 기능은 준비 중이며, 아래 폼은 UI 확인용입니다.</div>
+
+  <form class="fcard" onsubmit="event.preventDefault();alert('데모 가안입니다. 실제 등록은 준비 중입니다.');">
+    <div class="row">
+      <label>게시판 선택 <span class="req">*</span></label>
+      <select class="sel">
+        <option>질문·답변</option>
+        <option>업계 소식</option>
+        <option>실무 노하우</option>
+        <option>언론홍보 사례</option>
+        <option>자유게시판</option>
+        <option>구인구직</option>
+        <option>홍보대행 의뢰</option>
+      </select>
+    </div>
+    <div class="row">
+      <label>제목 <span class="req">*</span></label>
+      <input class="inp" placeholder="질문이나 정보의 핵심이 드러나는 제목을 적어주세요">
+    </div>
+    <div class="row">
+      <label>내용 <span class="req">*</span></label>
+      <textarea class="ta" placeholder="상황과 배경을 함께 적어주시면 더 좋은 답변을 받을 수 있어요.&#10;예) 업종, 회사 규모, 지금까지 시도한 것, 궁금한 점"></textarea>
+      <div class="hint">이미지·파일 첨부 기능은 준비 중입니다.</div>
+    </div>
+    <div class="row">
+      <label>태그</label>
+      <input class="inp" placeholder="쉼표로 구분 (예: 보도자료, 기사화, 미디어관계)">
+    </div>
+    <div class="hr"></div>
+    <div class="foot">
+      <a class="btn" href="index.html">취소</a>
+      <div class="r"><button type="button" class="btn">임시저장</button><button type="submit" class="btn pri">등록하기</button></div>
+    </div>
+  </form>
+  <div style="height:60px"></div>
+</div>
+<div id="mag-footer"></div>
+<script src="../assets/js/magazine-header.js"></script>
+</body>
+</html>

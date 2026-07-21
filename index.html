@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRCOME — 언론홍보 실무자 커뮤니티 · 전문 매거진</title>
+<meta name="description" content="홍보담당자, 언론인, PR대행사 실무자가 함께 업계 인사이트와 실무 경험을 나누는 언론홍보 커뮤니티와 전문 매거진.">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="assets/css/magazine-system.css">
+<script>window.MAG={root:'',home:'index.html',catBase:'insights/index.html'};</script>
+<style>
+/* ===== 히어로 (차분한 에디토리얼) ===== */
+.hero{background:var(--surf);border-bottom:1px solid var(--line)}
+.hero .in{max-width:1000px;margin:0 auto;padding:56px 24px 48px;text-align:center}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:800;letter-spacing:.02em;color:var(--pt)}
+.eyebrow::before,.eyebrow::after{content:"";width:18px;height:2px;background:var(--pt);border-radius:2px}
+.hero h1{font-size:clamp(30px,4.4vw,46px);font-weight:800;letter-spacing:-.04em;line-height:1.24;margin:16px 0 14px}
+.hero .lead{font-size:16px;color:var(--sub);line-height:1.7;max-width:44ch;margin:0 auto}
+.hero-search{display:flex;gap:8px;max-width:560px;margin:26px auto 0}
+.hero-search .fld{flex:1;min-width:0;display:flex;align-items:center;gap:10px;border:1px solid var(--line-2);border-radius:8px;padding:0 16px;height:54px;background:var(--surf)}
+.hero-search:focus-within .fld{border-color:var(--pt);box-shadow:0 0 0 3px var(--pt-soft)}
+.hero-search svg{width:19px;height:19px;stroke:var(--sub);fill:none;stroke-width:1.8;flex:none}
+.hero-search input{flex:1;min-width:0;border:0;outline:0;background:transparent;font-family:inherit;font-size:15px}
+.hero-search button{height:54px;background:var(--pt);color:#fff;border:0;border-radius:8px;font-family:inherit;font-size:15px;font-weight:700;padding:0 24px;cursor:pointer}
+.hero-search button:hover{background:var(--pt-2)}
+.hero-meta{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:20px;font-size:13.5px;color:var(--sub)}
+.hero-meta b{color:var(--ink);font-weight:800}
+.hero-meta i{width:3px;height:3px;border-radius:50%;background:var(--line-2)}
+.hero-ai{margin-top:22px}
+.hero-ai a{display:inline-flex;align-items:center;gap:9px;background:var(--navy);color:#fff;font-weight:700;font-size:14.5px;border-radius:999px;padding:13px 24px;box-shadow:0 8px 20px rgba(14,27,58,.16)}
+.hero-ai a:hover{background:#1b2f57}
+.hero-ai a .tag{font-size:10px;font-weight:800;background:var(--pt);border-radius:4px;padding:2px 7px;color:#fff}
+.hero-ai a .arr{transition:transform .2s}.hero-ai a:hover .arr{transform:translateX(3px)}
+/* ===== 보조 탐색 스트립 (서비스 축소) ===== */
+.quicknav{border-bottom:1px solid var(--line);background:var(--bg)}
+.quicknav .in{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;justify-content:center;gap:4px;overflow-x:auto;scrollbar-width:none}
+.quicknav .in::-webkit-scrollbar{display:none}
+.quicknav a{display:inline-flex;align-items:center;gap:7px;padding:13px 16px;font-size:13.5px;font-weight:700;color:var(--sub);white-space:nowrap;border-bottom:2px solid transparent}
+.quicknav a:hover{color:var(--pt);border-bottom-color:var(--pt)}
+.quicknav a svg{width:16px;height:16px;fill:none;stroke:var(--sub-2);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.quicknav a:hover svg{stroke:var(--pt)}
+/* ===== 공통 섹션 ===== */
+.sec{padding:44px 0}
+.sec.alt{background:var(--surf);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.sec.tight{padding:34px 0}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin:8px 0 20px;flex-wrap:wrap}
+.sec-head h2{font-size:23px;font-weight:800;letter-spacing:-.035em}
+.sec-head.sm h2{font-size:19px}
+/* ===== 2) 커뮤니티 (최대 비중) ===== */
+.comm{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:36px;align-items:start}
+.ctabs{display:flex;gap:22px;border-bottom:1px solid var(--line);margin-bottom:6px}
+.ctabs button{background:none;border:0;font-family:inherit;font-size:15px;font-weight:700;color:var(--sub);padding:12px 0;cursor:pointer;position:relative}
+.ctabs button.on{color:var(--pt)}.ctabs button.on::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--pt)}
+.posts a{display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:16px;align-items:center;padding:15px 0;border-bottom:1px solid var(--line)}
+.posts a .cat{font-size:12px;font-weight:800;color:var(--pt)}
+.posts a .t{font-size:16px;font-weight:600;line-height:1.4;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:block}
+.posts a:hover .t{color:var(--pt)}
+.posts a .by{font-size:12.5px;color:var(--sub-2);margin-top:4px}
+.posts a .stat{font-size:12.5px;color:var(--sub-2);white-space:nowrap;text-align:right}
+.posts a .stat b{color:var(--sub);font-weight:700}
+.comm .side .box{border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:16px;background:var(--surf)}
+.comm .side h3{font-size:13.5px;font-weight:800;color:var(--navy);margin-bottom:12px}
+.topics{display:flex;flex-wrap:wrap;gap:7px}
+.topics a{font-size:12.5px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:5px 11px}
+.topics a:hover{color:var(--pt);border-color:var(--pt)}.topics a b{color:var(--pt);margin-left:4px}
+.au{display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--line)}
+.au:first-of-type{border-top:0}
+.au .av{width:32px;height:32px;border-radius:50%;color:#fff;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;flex:none}
+.au .nm{font-size:13px;font-weight:700}.au:hover .nm{color:var(--pt)}
+.au .mt{font-size:11px;color:var(--sub-2);margin-top:1px}
+.au .cnt{margin-left:auto;font-size:11.5px;color:var(--sub-2);font-weight:700}
+/* ===== 3) PR 매거진 ===== */
+.mag-cats{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.mag-cats a{font-size:12.5px;font-weight:700;color:var(--sub);border:1px solid var(--line);border-radius:999px;padding:6px 13px}
+.mag-cats a:hover,.mag-cats a.on{color:var(--pt);border-color:var(--pt);background:var(--pt-soft)}
+.mag{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:start}
+.feature .cv{aspect-ratio:16/9;border-radius:10px;overflow:hidden;position:relative;background:linear-gradient(135deg,#0E1B3A,#1E2E5C);margin-bottom:14px}
+.feature .cv .bar{position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--pt)}
+.feature .cv .k{position:absolute;left:24px;bottom:26px;color:#fff;font-size:clamp(26px,3.4vw,40px);font-weight:800;letter-spacing:-.04em;line-height:1}
+.feature .cv .k u{color:#7E9BFF;text-decoration:none}
+.feature .cv .lb{position:absolute;left:24px;top:22px;font-size:11px;font-weight:800;letter-spacing:.14em;color:#9DB4FF}
+.feature .cv .rl{position:absolute;left:24px;bottom:18px;width:110px;height:2px;background:rgba(255,255,255,.4)}
+.feature .cat{font-size:12.5px;font-weight:800;color:var(--pt)}
+.feature h3{font-size:24px;font-weight:800;letter-spacing:-.03em;line-height:1.25;margin:8px 0 10px}
+.feature:hover h3{color:var(--pt)}
+.feature .sum{font-size:15px;color:var(--sub);line-height:1.7;max-width:48ch}
+.feature .byl{font-size:12.5px;color:var(--sub-2);margin-top:12px}
+.mag-latest{border-top:2px solid var(--ink)}
+.mag-latest a{display:grid;grid-template-columns:56px minmax(0,1fr);gap:14px;padding:15px 0;border-bottom:1px solid var(--line);align-items:center}
+.mag-latest .th{width:56px;height:56px;border-radius:6px;background:linear-gradient(135deg,#0E1B3A,#1E2E5C);position:relative;overflow:hidden}
+.mag-latest .th .b{position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--pt)}
+.mag-latest .cat{font-size:11px;font-weight:800;color:var(--pt)}
+.mag-latest .t{font-size:15px;font-weight:600;line-height:1.4;margin-top:3px}.mag-latest a:hover .t{color:var(--pt)}
+.mag-latest .m{font-size:11.5px;color:var(--sub-2);margin-top:4px}
+/* ===== PR 업계 뉴스 (메인 배너 바로 아래 · 큼직한 뉴스 보드) ===== */
+.newslead{padding:34px 0 40px}
+.newslead .sec-head h2{font-size:clamp(21px,2.5vw,26px)}
+.newsgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.newsgrid a{display:grid;grid-template-columns:92px minmax(0,1fr);gap:18px;align-items:center;background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:18px 22px}
+.newsgrid a:hover{border-color:var(--pt);box-shadow:0 6px 18px rgba(17,24,39,.07);transform:translateY(-2px);transition:.18s}
+.newsgrid .thumb{width:100px;height:76px;border-radius:10px;border:1px solid var(--line);overflow:hidden;flex:none;background:var(--bg)}
+.newsgrid .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.newsgrid .t{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:16px;font-weight:700;line-height:1.4;color:var(--ink)}
+.newsgrid a:hover .t{color:var(--pt)}
+.newsgrid .m{display:block;font-size:13px;color:var(--sub);margin-top:7px}
+.newsgrid .m b{color:var(--pt);font-weight:700}
+.newsgrid .read{display:inline-block;margin-top:9px;font-size:12.5px;font-weight:700;color:var(--pt)}
+/* ===== AI 워크스페이스 밴드 ===== */
+.aiband{display:flex;align-items:center;justify-content:space-between;gap:24px;background:var(--navy);border-radius:14px;padding:26px 30px;flex-wrap:wrap;margin:8px 0}
+.aiband .ai-l .kl{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:800;color:#7E9BFF;letter-spacing:.02em}
+.aiband .ai-l .kl::before{content:"";width:18px;height:2px;background:#7E9BFF;border-radius:2px}
+.aiband .ai-l h3{color:#fff;font-size:clamp(18px,2.2vw,23px);font-weight:800;letter-spacing:-.03em;margin:10px 0 6px}
+.aiband .ai-l p{color:#AEB4C0;font-size:14px;line-height:1.6;max-width:46ch}
+.aiband .ai-r{display:flex;gap:10px;flex-wrap:wrap}
+.aiband .ai-btn{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:14px;border-radius:8px;padding:13px 20px;white-space:nowrap}
+.aiband .ai-btn.pri{background:var(--pt);color:#fff}.aiband .ai-btn.pri:hover{background:#4A6BFF}
+.aiband .ai-btn.gh{color:#fff;border:1px solid rgba(255,255,255,.35)}.aiband .ai-btn.gh:hover{border-color:#fff}
+.aiband .ai-btn .tag{font-size:9px;font-weight:800;background:rgba(255,255,255,.18);border-radius:3px;padding:1px 5px}
+/* ===== 4) 업계 정보 · 5) 업계 기회 ===== */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start}
+.colhead{display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--ink);padding-bottom:10px;margin-bottom:4px}
+.colhead h3{font-size:15px;font-weight:800}
+.colhead a{font-size:12px;font-weight:600;color:var(--pt)}
+.dir a{display:grid;grid-template-columns:42px minmax(0,1fr) auto;gap:12px;align-items:center;padding:13px 0;border-bottom:1px solid var(--line)}
+.dir .lg{width:42px;height:42px;border-radius:8px;background:var(--pt-soft);color:var(--pt);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px}
+.dir .nm{font-size:14.5px;font-weight:700}.dir a:hover .nm{color:var(--pt)}
+.dir .ty{font-size:12px;color:var(--sub);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dir .go{font-size:12px;color:var(--pt);font-weight:700;white-space:nowrap}
+/* 업계 기회 (낮은 비중, 촘촘) */
+.opp .row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line)}
+.opp .row .t{font-size:14px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.opp .row:hover .t{color:var(--pt)}
+.opp .row .sub{font-size:11.5px;color:var(--sub-2);margin-top:2px}
+.opp .row .tag{font-size:11.5px;font-weight:700;color:var(--pt);white-space:nowrap}
+.opp .row .tag.warm{color:#E4612B}
+/* ===== 6) PR 자료 (도서·교육 작은 카드) ===== */
+.res-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.book{display:block}
+.book .cv{aspect-ratio:3/4;border-radius:5px;background:linear-gradient(160deg,#14224a,#0E1B3A);position:relative;overflow:hidden;box-shadow:2px 3px 0 rgba(14,27,58,.1)}
+.book .cv::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--pt)}
+.book .cv .ini{position:absolute;left:10px;bottom:10px;color:#7E9BFF;font-weight:800;font-size:19px;z-index:0}
+.book .cv img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;display:block}
+.book .t{font-size:12.5px;font-weight:700;line-height:1.35;margin-top:8px}.book:hover .t{color:var(--pt)}
+.book .c{font-size:11px;color:var(--sub-2);margin-top:2px}
+.book.edu .cv{background:linear-gradient(160deg,#1b2f52,#12203f)}
+.book.edu .cv .ini{color:#8FE3C6}
+/* ===== 7) 가입 유도 ===== */
+.join{background:var(--navy)}
+.join .in{max-width:1000px;margin:0 auto;padding:48px 24px;text-align:center}
+.join h2{color:#fff;font-size:clamp(22px,2.6vw,28px);font-weight:800;letter-spacing:-.03em}
+.join p{color:#AEB4C0;font-size:15px;line-height:1.7;max-width:52ch;margin:12px auto 0}
+.join .btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+.join .b1{background:var(--pt);color:#fff;font-weight:700;font-size:15px;border-radius:8px;padding:14px 26px}.join .b1:hover{background:#4A6BFF}
+.join .b2{color:#fff;font-weight:700;font-size:15px;border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:14px 26px}.join .b2:hover{border-color:#fff}
+@media (max-width:960px){
+  .comm{grid-template-columns:1fr}
+  .comm .side{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .comm .side .box{margin-bottom:0}
+  .mag{grid-template-columns:1fr;gap:26px}
+  .two{grid-template-columns:1fr;gap:26px}
+  .newsgrid{grid-template-columns:1fr}
+  .aiband{flex-direction:column;align-items:flex-start}
+  .res-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:600px){
+  .posts a{grid-template-columns:minmax(0,1fr) auto}
+  .posts a .cat{grid-column:1;grid-row:1}
+  .posts a .stat{grid-column:2;grid-row:1;align-self:start}
+  .comm .side{grid-template-columns:1fr}
+  .res-grid{grid-template-columns:repeat(3,1fr)}
+}
+</style>
+</head>
+<body>
+<div id="mag-header"></div>
+
+<!-- 1) 히어로 -->
+<section class="hero"><div class="in">
+  <span class="eyebrow">언론홍보 실무 커뮤니티 · 전문 매거진</span>
+  <h1>언론홍보 실무자들이<br>정보와 경험을 나누는 곳</h1>
+  <p class="lead">홍보담당자, 언론인, PR대행사 실무자가 함께 업계 인사이트와 실무 경험을 공유합니다.</p>
+  <form class="hero-search" action="community/index.html" method="get">
+    <span class="fld"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4" stroke-linecap="round"/></svg><input name="q" placeholder="커뮤니티 글과 매거진 콘텐츠를 검색하세요"></span>
+    <button type="submit">검색</button>
+  </form>
+  <div class="hero-meta">
+    <span>회원 <b>294</b>명</span><i></i><span>게시글 <b>11,200</b></span><i></i><span>오늘 새 글 <b>80+</b></span>
+  </div>
+  <div class="hero-ai">
+    <a href="tools/pr-agent/index.html?start=write">✨ 보도자료를 AI로 작성·배포하기 <span class="tag">AI 워크스페이스</span><span class="arr">→</span></a>
+  </div>
+</div></section>
+
+<!-- 보조 탐색 (서비스 축소) -->
+<nav class="quicknav" aria-label="업계 정보 바로가기"><div class="in">
+  <a href="directory/agencies.html"><svg viewBox="0 0 24 24"><path d="M5 21V5a1 1 0 011-1h8a1 1 0 011 1v16"/><path d="M15 10h3a1 1 0 011 1v10"/><path d="M8.5 8h3M8.5 12h3M8.5 16h3M3 21h18"/></svg>PR회사</a>
+  <a href="directory/media.html"><svg viewBox="0 0 24 24"><path d="M4 5h13a1 1 0 011 1v12a2 2 0 002-2V8"/><path d="M4 5a1 1 0 00-1 1v12a2 2 0 002 2h13"/><path d="M7 9h7M7 13h7M7 17h4"/></svg>언론사</a>
+  <a href="career/index.html"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5.5A1.5 1.5 0 019.5 4h5A1.5 1.5 0 0116 5.5V7M3 12h18"/></svg>구인구직</a>
+  <a href="projects/index.html"><svg viewBox="0 0 24 24"><path d="M4 11v2a1 1 0 001 1h2l4 4V6L7 10H5a1 1 0 00-1 1z"/><path d="M15 8a4 4 0 010 8"/></svg>홍보대행 의뢰</a>
+  <a href="resources/books.html"><svg viewBox="0 0 24 24"><path d="M3 8.5L12 4l9 4.5-9 4.5-9-4.5z"/><path d="M7 11v4.5c0 1.1 2.2 2 5 2s5-.9 5-2V11"/></svg>도서·교육</a>
+  <a href="tools/index.html"><svg viewBox="0 0 24 24"><path d="M14.5 5.5a3.5 3.5 0 01-4.6 4.6L5 15l4 4 4.9-4.9a3.5 3.5 0 004.6-4.6l-2.2 2.2-2.1-.6-.6-2.1z"/></svg>PR 도구</a>
+</div></nav>
+
+<!-- PR 업계 뉴스 (한국PR협회 뉴스룸) — 메인 배너 바로 아래 -->
+<div class="wrap"><section class="sec newslead">
+  <div class="klab">PR 업계 뉴스</div>
+  <div class="sec-head"><h2>지금 PR 업계에서는 — 더피알 최신 기사</h2><a class="more" href="https://www.the-pr.co.kr" target="_blank" rel="noopener">더피알 더보기 ↗</a></div>
+  <div class="newsgrid" id="news"></div>
+</section></div>
+
+<!-- 2) 커뮤니티 (최대 비중) -->
+<div class="wrap"><section class="sec">
+  <div class="klab">커뮤니티</div>
+  <div class="sec-head"><h2>지금 실무자들이 나누는 이야기</h2><a class="more" href="community/index.html">커뮤니티 전체 <span class="ar"></span></a></div>
+  <div class="comm">
+    <div class="feed">
+      <div class="ctabs">
+        <button class="on" onclick="ctab('hot',this)">인기글</button>
+        <button onclick="ctab('new',this)">최신글</button>
+        <button onclick="ctab('qa',this)">질문·답변</button>
+        <button onclick="ctab('data',this)">실무자료</button>
+      </div>
+      <div class="posts" id="posts"></div>
+    </div>
+    <aside class="side">
+      <div class="box"><h3>인기 주제</h3>
+        <div class="topics">
+          <a href="community/index.html?cat=qa">#보도자료<b>128</b></a>
+          <a href="community/index.html?cat=news">#생성형검색<b>96</b></a>
+          <a href="community/index.html?cat=knowhow">#기자컨택<b>84</b></a>
+          <a href="community/index.html?cat=case">#위기관리<b>71</b></a>
+          <a href="community/index.html?cat=qa">#미디어리스트<b>63</b></a>
+          <a href="community/index.html?cat=knowhow">#오너드미디어<b>52</b></a>
+        </div>
+      </div>
+      <div class="box"><h3>활발한 작성자</h3>
+        <a class="au" href="community/profile.html"><span class="av" style="background:#315CFF">서</span><span><div class="nm">서지현</div><div class="mt">PR 전략가 · 미디어스퀘어</div></span><span class="cnt">글 128</span></a>
+        <a class="au" href="community/profile.html"><span class="av" style="background:#3E4B63">김</span><span><div class="nm">김도윤</div><div class="mt">전 경제일간지 산업부</div></span><span class="cnt">글 96</span></a>
+        <a class="au" href="community/profile.html"><span class="av" style="background:#6D5DF0">이</span><span><div class="nm">이수민</div><div class="mt">인하우스 홍보팀장</div></span><span class="cnt">글 74</span></a>
+        <a class="au" href="community/profile.html"><span class="av" style="background:#0FA6C0">박</span><span><div class="nm">박준호</div><div class="mt">대행사 AE · 테크·B2B</div></span><span class="cnt">글 61</span></a>
+      </div>
+    </aside>
+  </div>
+</section></div>
+
+<!-- 3) PR 매거진 -->
+<div class="sec alt"><div class="wrap">
+  <div class="klab">PR 매거진</div>
+  <div class="sec-head"><h2>편집팀이 정리한 언론홍보 인사이트</h2><a class="more" href="insights/index.html">매거진 전체 <span class="ar"></span></a></div>
+  <div class="mag-cats">
+    <a href="insights/index.html?cat=pr">언론홍보 전략</a>
+    <a href="insights/index.html?cat=pr">보도자료 작성</a>
+    <a href="insights/index.html?cat=media">기자 커뮤니케이션</a>
+    <a href="insights/index.html?cat=pr">위기관리</a>
+    <a href="insights/index.html?cat=case">성공사례</a>
+    <a href="insights/index.html?cat=geo">AEO·GEO</a>
+  </div>
+  <div class="mag">
+    <a class="feature" href="insights/article.html">
+      <div class="cv"><span class="bar"></span><span class="lb">AI × PR</span><span class="k">AI READS<br><u>PR</u></span><span class="rl"></span></div>
+      <span class="cat">언론홍보 전략</span>
+      <h3>AI가 보도자료를 읽는 시대, 기업 PR은 무엇을 준비해야 하나</h3>
+      <p class="sum">생성형 AI가 보도자료를 요약·인용하기 시작하면서, 홍보실의 문장 하나가 검색과 AI 답변으로 확산된다. 지금 준비할 것을 짚었다.</p>
+      <div class="byl">PRCOME 편집팀 · 2026.07.20 · 10분 읽기</div>
+    </a>
+    <div class="mag-latest">
+      <a href="insights/article.html"><span class="th"><span class="b"></span></span><span><span class="cat">보도자료 작성</span><span class="t">기자가 실제로 읽는 보도자료의 첫 문장</span><span class="m">PRCOME 편집팀 · 2026.07.19</span></span></a>
+      <a href="insights/article.html"><span class="th"><span class="b"></span></span><span><span class="cat">위기관리</span><span class="t">브랜드 위기 대응, 최초 30분이 중요한 이유</span><span class="m">PRCOME 편집팀 · 2026.07.18</span></span></a>
+      <a href="insights/article.html"><span class="th"><span class="b"></span></span><span><span class="cat">기자 커뮤니케이션</span><span class="t">기자의 메일함에서 살아남는 피치 메일</span><span class="m">PRCOME 편집팀 · 2026.07.17</span></span></a>
+      <a href="insights/article.html"><span class="th"><span class="b"></span></span><span><span class="cat">AEO·GEO</span><span class="t">검색에서 답변으로, GEO가 바꾸는 기업 홍보</span><span class="m">PRCOME 편집팀 · 2026.07.16</span></span></a>
+    </div>
+  </div>
+</div></div>
+
+<!-- AI 워크스페이스 (보도자료 작성·배포 AI 데모) -->
+<div class="wrap"><section class="aiband">
+  <div class="ai-l">
+    <span class="kl">PRCOME AI PR 워크스페이스</span>
+    <h3>보도자료, AI로 작성하고 배포하세요</h3>
+    <p>초안 작성부터 매체 매칭·배포까지 — PR 실무를 돕는 AI 도구를 지금 사용해 보세요.</p>
+  </div>
+  <div class="ai-r">
+    <a class="ai-btn pri" href="tools/pr-agent/index.html?start=write">보도자료 작성 <span class="tag">AI</span></a>
+    <a class="ai-btn gh" href="tools/pr-agent/index.html?start=distribute">보도자료 배포 <span class="tag">AI</span></a>
+  </div>
+</section></div>
+
+<!-- 4) 업계 정보 (PR회사 + 언론사) -->
+<div class="wrap"><section class="sec">
+  <div class="klab">업계 정보</div>
+  <div class="sec-head sm"><h2>업계를 움직이는 회사와 매체</h2></div>
+  <div class="two">
+    <div>
+      <div class="colhead"><h3>추천 PR회사</h3><a href="directory/agencies.html">전체 →</a></div>
+      <div class="dir">
+        <a href="directory/detail.html"><span class="lg">브</span><span><div class="nm">브릿지커뮤니케이션즈</div><div class="ty">종합PR · 서울 · IT·B2B 미디어 릴레이션</div></span><span class="go">프로필</span></a>
+        <a href="directory/detail.html"><span class="lg">미</span><span><div class="nm">미디어웨이브</div><div class="ty">종합PR · 서울 · 금융·위기관리</div></span><span class="go">프로필</span></a>
+        <a href="directory/detail.html"><span class="lg">스</span><span><div class="nm">스토리브릭스</div><div class="ty">콘텐츠 · 서울 · 브랜드 저널리즘</div></span><span class="go">프로필</span></a>
+        <a href="directory/detail.html"><span class="lg">한</span><span><div class="nm">한결피알</div><div class="ty">공공·지역 · 부산 · 지역 언론 네트워크</div></span><span class="go">프로필</span></a>
+      </div>
+    </div>
+    <div>
+      <div class="colhead"><h3>추천 언론사</h3><a href="directory/media.html">전체 →</a></div>
+      <div class="dir">
+        <a href="directory/media.html"><span class="lg">경</span><span><div class="nm">경제산업신문</div><div class="ty">경제일간지 · 산업·유통부</div></span><span class="go">매체</span></a>
+        <a href="directory/media.html"><span class="lg">테</span><span><div class="nm">테크리포트</div><div class="ty">IT 전문지 · 스타트업팀</div></span><span class="go">매체</span></a>
+        <a href="directory/media.html"><span class="lg">데</span><span><div class="nm">데일리커머스</div><div class="ty">유통·소비재 전문</div></span><span class="go">매체</span></a>
+        <a href="directory/media.html"><span class="lg">바</span><span><div class="nm">바이오헬스뉴스</div><div class="ty">제약·바이오 전문지</div></span><span class="go">매체</span></a>
+      </div>
+    </div>
+  </div>
+</section></div>
+
+<!-- 5) 업계 기회 (채용 + 홍보대행 의뢰) -->
+<div class="sec alt tight"><div class="wrap">
+  <div class="klab">업계 기회</div>
+  <div class="sec-head sm"><h2>채용과 홍보대행 의뢰</h2></div>
+  <div class="two opp">
+    <div>
+      <div class="colhead"><h3>최신 채용</h3><a href="career/index.html">전체 →</a></div>
+      <a class="row" href="career/detail.html"><span><div class="t">PR·콘텐츠 마케터 (경력 3년+)</div><div class="sub">브릿지커뮤니케이션즈 · 서울 강남 · 정규직</div></span><span class="tag">D-9</span></a>
+      <a class="row" href="career/detail.html"><span><div class="t">커뮤니케이션 매니저 (위기관리 우대)</div><div class="sub">미디어웨이브 · 서울 여의도 · 정규직</div></span><span class="tag">D-20</span></a>
+      <a class="row" href="career/detail.html"><span><div class="t">브랜드 콘텐츠 에디터</div><div class="sub">스토리브릭스 · 서울 마포 · 계약직</div></span><span class="tag warm">D-5</span></a>
+      <a class="row" href="career/detail.html"><span><div class="t">보도자료 작성 프리랜서 (재택)</div><div class="sub">다수 클라이언트 · 원격 · 프리랜서</div></span><span class="tag">상시</span></a>
+    </div>
+    <div>
+      <div class="colhead"><h3>홍보대행 의뢰</h3><a href="projects/index.html">전체 →</a></div>
+      <a class="row" href="projects/detail.html"><span><div class="t">식품 브랜드 신제품 언론홍보 대행사 모집</div><div class="sub">언론홍보 · 월 300~500만원 · 3개월</div></span><span class="tag">모집중</span></a>
+      <a class="row" href="projects/detail.html"><span><div class="t">B2B 기업 홈페이지 SEO·AEO 개선</div><div class="sub">SEO·GEO · 1,000~1,500만원 · 2개월</div></span><span class="tag">모집중</span></a>
+      <a class="row" href="projects/detail.html"><span><div class="t">스타트업 오너드미디어 콘텐츠 제작</div><div class="sub">콘텐츠 · 월 200~300만원 · 6개월</div></span><span class="tag warm">마감임박</span></a>
+      <a class="row" href="projects/detail.html"><span><div class="t">투자유치 보도자료 작성·배포 (단건)</div><div class="sub">보도자료 · 80~150만원 · 2주</div></span><span class="tag">모집중</span></a>
+    </div>
+  </div>
+</div></div>
+
+<!-- 6) PR 자료 (도서·교육) -->
+<div class="wrap"><section class="sec tight">
+  <div class="klab">PR 자료</div>
+  <div class="sec-head sm"><h2>실무에 힘이 되는 도서·교육</h2><a class="more" href="resources/books.html">도서·교육 <span class="ar"></span></a></div>
+  <div class="res-grid">
+    <a class="book" href="resources/books.html"><div class="cv"><span class="ini">디</span><img src="assets/img/books/book-139836151.png" alt="디지털 시대의 PR 용어 300 표지" loading="lazy" onerror="this.remove()"></div><div class="t">디지털 시대의 PR 용어 300</div><div class="c">PR 이론·용어</div></a>
+    <a class="book" href="resources/books.html"><div class="cv"><span class="ini">AI</span><img src="assets/img/books/book-168372118.png" alt="AI와 PR회사에서 일하기 표지" loading="lazy" onerror="this.remove()"></div><div class="t">AI와 PR회사에서 일하기</div><div class="c">AI·트렌드</div></a>
+    <a class="book" href="resources/books.html"><div class="cv"><span class="ini">블</span><img src="assets/img/books/book-17178674.jpg" alt="블랙스완 시대의 PR 표지" loading="lazy" onerror="this.remove()"></div><div class="t">블랙스완 시대의 PR</div><div class="c">위기·사례</div></a>
+    <a class="book edu" href="events/index.html?type=course"><div class="cv"><span class="ini">실</span></div><div class="t">PR 실무 입문 4주 과정</div><div class="c">교육 · 온라인</div></a>
+    <a class="book edu" href="events/index.html?type=seminar"><div class="cv"><span class="ini">AI</span></div><div class="t">생성형 AI 보도자료 세미나</div><div class="c">세미나 · 무료</div></a>
+    <a class="book edu" href="events/index.html?type=conference"><div class="cv"><span class="ini">브</span></div><div class="t">브랜드 커뮤니케이션 컨퍼런스</div><div class="c">행사 · 코엑스</div></a>
+  </div>
+</section></div>
+
+<!-- 7) 가입 유도 (커뮤니티 참여) -->
+<section class="join"><div class="in">
+  <h2>업계 동료들과 함께, PRCOME에서</h2>
+  <p>커뮤니티에 실무 질문을 남기고, 유용한 자료와 기사를 저장하고, 같은 고민을 하는 실무자와 연결되세요. 가입하면 더 많은 정보를 확인할 수 있습니다.</p>
+  <div class="btns">
+    <a class="b1" href="auth/signup.html">커뮤니티 참여하기</a>
+    <a class="b2" href="insights/index.html">매거진 먼저 읽기</a>
+  </div>
+</div></section>
+
+<div id="mag-footer"></div>
+<script src="assets/js/magazine-header.js"></script>
+<script>
+/* 커뮤니티 홈 피드 (탭: 인기글/최신글/질문·답변/실무자료) */
+var CN={qa:'질문·답변',news:'업계 소식',knowhow:'실무 노하우',case:'언론홍보 사례',free:'자유게시판',jobs:'구인구직',agency:'홍보대행 의뢰'};
+/* [cat, 제목, 작성자, 소속직무, 시간, 조회, 댓글, 인기점수] */
+var POSTS=[
+ ['qa','보도자료 배포 후 기사화 가능성을 높이는 방법이 있을까요?','이수민','홍보팀장','2시간 전',340,12,98],
+ ['news','[정보공유] 산업별 전문지 담당 부서 정리해봤습니다','김도윤','전 산업부 기자','5시간 전',880,20,96],
+ ['case','[사례] 지방 식품 브랜드의 전국지 데뷔, 90일의 기록','서지현','PR 전략가','어제',720,15,92],
+ ['qa','대표님이 "우리도 신문에 나오게 해달라"고 하시는데','정하늘','1인 홍보','어제',610,18,88],
+ ['knowhow','[노하우] 기자 컨택 이메일 제목, 이렇게 쓰니 열림률이 올랐어요','박준호','대행사 AE','2일 전',530,9,85],
+ ['news','요즘 생성형 검색 때문에 홍보실 분위기 어떤가요','최유진','B2B 마케터','3일 전',410,14,80],
+ ['knowhow','[자료] 배포 리스트, 넓히기보다 좁혀서 관리하는 법','인하우스PR','시니어 홍보','3일 전',470,8,78],
+ ['case','[사례] 지역 환경 캠페인, 지역지·지역방송 확산 리뷰','오세라','홍보 매니저','5일 전',350,10,64],
+ ['qa','엠바고 걸린 보도자료, 실무에서 어떻게 관리하세요','한지훈','인하우스 PR','6일 전',300,9,60],
+ ['knowhow','[자료] 기업 메시지 하우스 설계 템플릿 공유','서지현','PR 전략가','1주 전',420,11,72]
+];
+function ava(n){return n.charAt(0);}
+function rowHtml(p){
+ return '<a href="community/post.html"><span class="cat">'+CN[p[0]]+'</span>'+
+  '<span><span class="t">'+p[1]+'</span><span class="by">'+p[2]+' · '+p[3]+' · '+p[4]+'</span></span>'+
+  '<span class="stat">조회 <b>'+p[5]+'</b> · 댓글 <b>'+p[6]+'</b></span></a>';
+}
+function ctab(mode,btn){
+ if(btn){document.querySelectorAll('.ctabs button').forEach(function(b){b.classList.remove('on');});btn.classList.add('on');}
+ var list=POSTS.slice();
+ if(mode==='hot')list.sort(function(a,b){return b[7]-a[7];});
+ else if(mode==='new'){/* 입력 순서가 최신순에 가깝게 유지 */}
+ else if(mode==='qa')list=list.filter(function(p){return p[0]==='qa';});
+ else if(mode==='data')list=list.filter(function(p){return p[0]==='knowhow';});
+ list=list.slice(0,7);
+ document.getElementById('posts').innerHTML=list.map(rowHtml).join('')||'<div style="padding:24px 0;color:var(--sub)">아직 글이 없습니다.</div>';
+}
+ctab('hot');
+/* PR 업계 뉴스 (한국PR협회 뉴스룸 newsroom-prnews) */
+/* 더피알(the-pr.co.kr) 실제 최신 기사 — 클릭 시 원문 기사로 이동 */
+var NEWS=[
+ ['61998','스파이더맨이 폰 부수는 광고를 찍었다…새 갤럭시 폴더블은 버틸 수 있을까?','art-61998.jpg'],
+ ['61968','팔로워는 죽었다…2026 월드컵이 보여준 새 소셜미디어 법칙','art-61968.jpg'],
+ ['61977','PR Newswire “AI도 오디언스다”…AI가 바꾸는 PR의 역할','art-61977.jpg'],
+ ['62000','고려아연, 9월 주주총회 열고 이사회 정상화…미래 성장투자 병행','art-62000.jpg'],
+ ['61999','코웨이, ‘2026 코디 스타 어워즈’ 개최…‘스타 코디’ 26인의 경쟁력','art-61999.jpg'],
+ ['61995','“요리도 배우고 운동도 하고”…동대문구, 아동 비만 예방 프로그램 운영','art-61995.jpg']
+];
+document.getElementById('news').innerHTML=NEWS.map(function(n){
+ return '<a href="https://www.the-pr.co.kr/news/articleView.html?idxno='+n[0]+'" target="_blank" rel="noopener">'+
+  '<span class="thumb"><img src="assets/img/news/'+n[2]+'" alt="더피알 기사 이미지" loading="lazy"></span>'+
+  '<span><span class="t">'+n[1]+'</span><span class="m"><b>더피알</b> · the-pr.co.kr</span><span class="read">원문 보기 ↗</span></span></a>';
+}).join('');
+</script>
+</body>
+</html>

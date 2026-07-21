@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>마케팅 비용 계산기 (CPC·CPM·ROAS) — PRCOME 마케팅 도구</title>
+<meta name="description" content="CPC, CPM, ROAS를 즉시 계산합니다. 광고비·클릭·노출·매출을 입력하면 핵심 지표를 자동으로 산출합니다.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="../assets/css/magazine-system.css">
+<script>window.MAG={root:'../',home:'../index.html',catBase:'../insights/index.html'};</script>
+<style>
+.tw{max-width:820px}
+.subhead{padding:30px 0 6px}
+.subhead .crumb{font-size:12.5px;color:var(--sub);margin-bottom:12px}
+.subhead h1{font-size:clamp(22px,2.7vw,30px);font-weight:800;letter-spacing:-.03em;display:flex;align-items:center;gap:12px}
+.subhead h1 .tick{width:26px;height:3px;background:var(--pt);border-radius:2px}
+.subhead .desc{font-size:15px;color:var(--sub);margin-top:10px;line-height:1.6}
+.tabs{display:flex;gap:8px;margin-top:22px}
+.tabs button{flex:1;height:46px;border:1px solid var(--line-2);background:var(--surf);border-radius:8px;font-family:inherit;font-size:14.5px;font-weight:700;color:var(--sub);cursor:pointer}
+.tabs button.on{background:var(--pt);color:#fff;border-color:var(--pt)}
+.panel{background:var(--surf);border:1px solid var(--line);border-radius:12px;padding:24px;margin-top:14px}
+.desc2{font-size:13px;color:var(--sub);margin-bottom:16px;line-height:1.6}
+.f{margin-bottom:14px}
+.f label{display:block;font-size:13px;font-weight:700;margin-bottom:7px}
+.f .inp{position:relative}
+.f input{width:100%;height:48px;border:1px solid var(--line-2);border-radius:6px;padding:0 44px 0 13px;font-family:inherit;font-size:15px;outline:0}
+.f input:focus{border-color:var(--pt);box-shadow:0 0 0 3px var(--pt-soft)}
+.f .unit{position:absolute;right:13px;top:50%;transform:translateY(-50%);font-size:13px;color:var(--sub-2)}
+.calc{width:100%;height:52px;background:var(--pt);color:#fff;border:0;border-radius:8px;font-family:inherit;font-size:16px;font-weight:800;cursor:pointer;margin-top:4px}
+.calc:hover{background:var(--pt-2)}
+.out{margin-top:20px;display:none;text-align:center;padding:26px;background:var(--pt-soft);border-radius:12px}
+.out.on{display:block}
+.out .v{font-size:44px;font-weight:800;color:var(--pt);letter-spacing:-.03em;line-height:1}
+.out .l{font-size:13px;color:var(--sub);margin-top:8px}
+.out .sub{font-size:13px;color:var(--ink);margin-top:12px;line-height:1.6}
+.note{font-size:12.5px;color:var(--sub-2);margin-top:16px;line-height:1.6}
+</style>
+</head>
+<body>
+<div id="mag-header"></div>
+<div class="wrap tw">
+  <section class="subhead">
+    <div class="crumb"><a href="../index.html">홈</a> / <a href="index.html">마케팅 도구</a> / 마케팅 비용 계산기</div>
+    <h1><span class="tick"></span>마케팅 비용 계산기</h1>
+    <p class="desc">광고 성과의 핵심 지표 CPC·CPM·ROAS를 즉시 계산합니다. 탭을 선택하고 값을 입력하세요.</p>
+  </section>
+
+  <div class="tabs">
+    <button class="on" data-m="cpc" onclick="setM('cpc')">CPC</button>
+    <button data-m="cpm" onclick="setM('cpm')">CPM</button>
+    <button data-m="roas" onclick="setM('roas')">ROAS</button>
+  </div>
+
+  <div class="panel">
+    <div class="desc2" id="d2"></div>
+    <div id="fields"></div>
+    <button class="calc" onclick="run()">계산하기</button>
+    <div class="out" id="out"><div class="v" id="ov">-</div><div class="l" id="ol"></div><div class="sub" id="os"></div></div>
+  </div>
+  <p class="note">※ CPC = 광고비 ÷ 클릭수 · CPM = 광고비 ÷ 노출수 × 1,000 · ROAS = 광고 매출 ÷ 광고비 × 100(%). ROAS 100%는 손익분기, 300% 이상이면 일반적으로 양호한 수준으로 봅니다.</p>
+  <div style="height:60px"></div>
+</div>
+<div id="mag-footer"></div>
+<script src="../assets/js/magazine-header.js"></script>
+<script>
+var M={
+ cpc:{d:'클릭당 비용(Cost Per Click). 광고비와 클릭수를 입력하세요.',f:[['cost','광고비','원'],['click','클릭수','회']]},
+ cpm:{d:'1,000회 노출당 비용(Cost Per Mille). 광고비와 노출수를 입력하세요.',f:[['cost','광고비','원'],['imp','노출수','회']]},
+ roas:{d:'광고비 대비 매출(Return On Ad Spend). 광고 매출과 광고비를 입력하세요.',f:[['rev','광고 매출','원'],['cost','광고비','원']]}
+};
+var cur='cpc';
+function won(n){return Math.round(n).toLocaleString('ko-KR');}
+function render(){
+ var m=M[cur];document.getElementById('d2').textContent=m.d;
+ document.getElementById('fields').innerHTML=m.f.map(function(f){
+  return '<div class="f"><label>'+f[1]+'</label><div class="inp"><input id="'+f[0]+'" type="number" inputmode="numeric" placeholder="0"><span class="unit">'+f[2]+'</span></div></div>';
+ }).join('');
+ document.getElementById('out').classList.remove('on');
+}
+function setM(m){cur=m;document.querySelectorAll('.tabs button').forEach(function(b){b.classList.toggle('on',b.dataset.m===m);});render();}
+function val(id){var v=parseFloat((document.getElementById(id)||{}).value);return isNaN(v)?0:v;}
+function run(){
+ var v,l,s;
+ if(cur==='cpc'){var c=val('cost'),k=val('click');if(k<=0){alert('클릭수를 입력하세요.');return;}v=won(c/k)+'원';l='클릭당 비용 (CPC)';s='클릭 1회에 평균 '+won(c/k)+'원이 들었습니다.';}
+ else if(cur==='cpm'){var c2=val('cost'),i=val('imp');if(i<=0){alert('노출수를 입력하세요.');return;}v=won(c2/i*1000)+'원';l='1,000회 노출당 비용 (CPM)';s='1,000회 노출에 평균 '+won(c2/i*1000)+'원이 들었습니다.';}
+ else{var r=val('rev'),c3=val('cost');if(c3<=0){alert('광고비를 입력하세요.');return;}var roas=r/c3*100;v=Math.round(roas)+'%';l='광고비 대비 매출 (ROAS)';s=roas>=300?'광고비 1원당 '+(Math.round(roas/100*10)/10)+'원의 매출 — 양호한 수준입니다.':roas>=100?'손익분기 이상입니다. 타겟·소재 최적화로 개선 여지가 있습니다.':'손익분기 미만입니다. 타겟·랜딩·소재를 점검하세요.';}
+ document.getElementById('ov').textContent=v;
+ document.getElementById('ol').textContent=l;
+ document.getElementById('os').textContent=s;
+ document.getElementById('out').classList.add('on');
+}
+render();
+</script>
+</body>
+</html>

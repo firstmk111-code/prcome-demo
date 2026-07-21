@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>전문가 등록 — PRCOME 기업·미디어</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="../assets/css/magazine-system.css">
+<script>window.MAG={root:'../',home:'../index.html',catBase:'../insights/index.html'};</script>
+<style>
+.subhead{padding:30px 0 6px}.subhead .crumb{font-size:12.5px;color:var(--sub);margin-bottom:12px}
+.subhead h1{font-size:clamp(24px,3vw,32px);font-weight:800;letter-spacing:-.03em;display:flex;align-items:center;gap:12px}
+.subhead h1 .tick{width:26px;height:3px;background:var(--pt);border-radius:2px}
+.subhead .desc{font-size:15.5px;color:var(--sub);margin-top:10px;max-width:56ch;line-height:1.6}
+.form{max-width:760px;padding:24px 0}
+.note{background:var(--pt-soft);border:1px solid #cdd8ff;color:var(--pt-2);border-radius:6px;padding:12px 15px;font-size:13.5px;margin-bottom:20px}
+.fr{margin-bottom:16px}.fr label{display:block;font-size:13px;font-weight:700;margin-bottom:6px}
+.fr .req{color:var(--pt)}
+.fr input,.fr select,.fr textarea{width:100%;border:1px solid var(--line-2);border-radius:4px;padding:11px 13px;font-family:inherit;font-size:14.5px}
+.fr input,.fr select{height:48px}.fr textarea{min-height:110px;resize:vertical}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.actions{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:18px;margin-top:8px}
+.btn{height:44px;border-radius:4px;font-weight:700;font-size:14.5px;padding:0 20px;border:1px solid var(--line-2);background:#fff}
+.btn.pri{background:var(--pt);color:#fff;border-color:var(--pt)}
+@media (max-width:640px){.g2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="mag-header"></div>
+<div class="wrap">
+  <section class="subhead">
+    <div class="crumb"><a href="../index.html">홈</a> / <a href="index.html">기업·미디어</a> / 전문가 등록</div>
+    <h1><span class="tick"></span>전문가 등록</h1>
+    <p class="desc">PR·마케팅·SEO·브랜딩 분야 전문가로 디렉터리에 등록하고, 프로젝트·자문 기회와 연결되세요.</p>
+  </section>
+  <form class="form" onsubmit="event.preventDefault();alert('준비 중인 기능입니다. 등록·심사는 회원 로그인 후 제공됩니다. (1차 정적 가안)');">
+    <div class="note">1차 정적 가안입니다. 실제 등록·저장은 준비 중이며, 아래는 입력 흐름 확인용입니다.</div>
+    <div class="g2">
+      <div class="fr"><label>이름/활동명 <span class="req">*</span></label><input placeholder="예: 이서준"></div>
+      <div class="fr"><label>전문 분야 <span class="req">*</span></label><select><option>PR 전략</option><option>위기관리</option><option>미디어 릴레이션</option><option>브랜드·콘텐츠</option><option>디지털·퍼포먼스</option><option>SEO·AEO·GEO</option></select></div>
+    </div>
+    <div class="g2">
+      <div class="fr"><label>경력</label><select><option>3~5년</option><option>6~10년</option><option>11~20년</option><option>20년 이상</option></select></div>
+      <div class="fr"><label>소속(선택)</label><input placeholder="회사/프리랜서"></div>
+    </div>
+    <div class="fr"><label>한 줄 소개 <span class="req">*</span></label><input placeholder="예: 전 대기업 홍보실장, 위기관리 20년"></div>
+    <div class="fr"><label>주요 이력·레퍼런스</label><textarea placeholder="대표 프로젝트, 강연·기고, 자문 이력 등을 적어주세요."></textarea></div>
+    <div class="fr"><label>연락 이메일 <span class="req">*</span></label><input type="email" placeholder="name@example.com"></div>
+    <div class="actions"><a class="btn" href="index.html?type=expert">취소</a><button type="submit" class="btn pri">등록 신청</button></div>
+  </form>
+  <div style="height:50px"></div>
+</div>
+<div id="mag-footer"></div>
+<script src="../assets/js/magazine-header.js"></script>
+</body>
+</html>
