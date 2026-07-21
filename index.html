@@ -103,9 +103,8 @@
 .newsgrid .thumb img{width:100%;height:100%;object-fit:cover;display:block}
 .newsgrid .t{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:16px;font-weight:700;line-height:1.4;color:var(--ink)}
 .newsgrid a:hover .t{color:var(--pt)}
-.newsgrid .m{display:block;font-size:13px;color:var(--sub);margin-top:7px}
-.newsgrid .m b{color:var(--pt);font-weight:700}
-.newsgrid .read{display:inline-block;margin-top:9px;font-size:12.5px;font-weight:700;color:var(--pt)}
+.newsgrid .nsrc{display:inline-block;font-size:11px;font-weight:800;color:var(--pt);background:var(--pt-soft);border-radius:4px;padding:2px 8px;margin-bottom:6px}
+.newsgrid .read{display:inline-block;margin-top:8px;font-size:12.5px;font-weight:700;color:var(--pt)}
 /* ===== AI 워크스페이스 밴드 ===== */
 .aiband{display:flex;align-items:center;justify-content:space-between;gap:24px;background:var(--navy);border-radius:14px;padding:26px 30px;flex-wrap:wrap;margin:8px 0}
 .aiband .ai-l .kl{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:800;color:#7E9BFF;letter-spacing:.02em}
@@ -205,7 +204,7 @@
 <!-- PR 업계 뉴스 (한국PR협회 뉴스룸) — 메인 배너 바로 아래 -->
 <div class="wrap"><section class="sec newslead">
   <div class="klab">PR 업계 뉴스</div>
-  <div class="sec-head"><h2>지금 PR 업계에서는 — 더피알 최신 기사</h2><a class="more" href="https://www.the-pr.co.kr" target="_blank" rel="noopener">더피알 더보기 ↗</a></div>
+  <div class="sec-head"><h2>지금 PR 업계에서는 — 주요 매체 최신 기사</h2><a class="more" href="https://www.koreapr.org/newsroom-prnews" target="_blank" rel="noopener">PR 뉴스 더보기 ↗</a></div>
   <div class="newsgrid" id="news"></div>
 </section></div>
 
@@ -394,19 +393,22 @@ function ctab(mode,btn){
 }
 ctab('hot');
 /* PR 업계 뉴스 (한국PR협회 뉴스룸 newsroom-prnews) */
-/* 더피알(the-pr.co.kr) 실제 최신 기사 — 클릭 시 원문 기사로 이동 */
+/* 주요 PR·광고 매체 실제 최신 기사 (더피알·브랜드브리프·매드타임스·AP신문) — 클릭 시 원문 기사로 이동 */
+/* [원문URL, 제목, 썸네일파일, 매체명] */
 var NEWS=[
- ['61998','스파이더맨이 폰 부수는 광고를 찍었다…새 갤럭시 폴더블은 버틸 수 있을까?','art-61998.jpg'],
- ['61968','팔로워는 죽었다…2026 월드컵이 보여준 새 소셜미디어 법칙','art-61968.jpg'],
- ['61977','PR Newswire “AI도 오디언스다”…AI가 바꾸는 PR의 역할','art-61977.jpg'],
- ['62000','고려아연, 9월 주주총회 열고 이사회 정상화…미래 성장투자 병행','art-62000.jpg'],
- ['61999','코웨이, ‘2026 코디 스타 어워즈’ 개최…‘스타 코디’ 26인의 경쟁력','art-61999.jpg'],
- ['61995','“요리도 배우고 운동도 하고”…동대문구, 아동 비만 예방 프로그램 운영','art-61995.jpg']
+ ['https://www.the-pr.co.kr/news/articleView.html?idxno=61998','스파이더맨이 폰 부수는 광고를 찍었다…새 갤럭시 폴더블은 버틸 수 있을까?','art-61998.jpg','더피알'],
+ ['https://www.brandbrief.co.kr/news/articleView.html?idxno=10115','현대차가 개구리 울음 소리로 칸라이언즈 그랑프리를 수상한 전략은?','bb-10115.jpg','브랜드브리프'],
+ ['https://www.madtimes.org/news/articleView.html?idxno=28398','[MAD Relay] 어깨에 힘을 뺀 광고들에 대하여','mt-28398.jpg','매드타임스'],
+ ['https://www.apnews.kr/news/articleView.html?idxno=3049845','日 주도 아시아 온체인 금융 본격화…韓 넥써쓰, 원스토어 앞세워 "새 판 짠다"','ap-3049845.jpg','AP신문'],
+ ['https://www.the-pr.co.kr/news/articleView.html?idxno=61968','팔로워는 죽었다…2026 월드컵이 보여준 새 소셜미디어 법칙','art-61968.jpg','더피알'],
+ ['https://www.madtimes.org/news/articleView.html?idxno=28384','신념의 시대는 끝났다: 오틀리(Oatly)가 쏘아 올린 ‘브랜드 법정’과 증거의 마케팅','mt-28384.jpg','매드타임스'],
+ ['https://www.apnews.kr/news/articleView.html?idxno=3049769','[이재현의 청년 사다리①] K-푸드·뷰티 키운 청년…CJ가 주역으로 세운다','ap-3049769.jpg','AP신문'],
+ ['https://www.the-pr.co.kr/news/articleView.html?idxno=61977','PR Newswire “AI도 오디언스다”…AI가 바꾸는 PR의 역할','art-61977.jpg','더피알']
 ];
 document.getElementById('news').innerHTML=NEWS.map(function(n){
- return '<a href="https://www.the-pr.co.kr/news/articleView.html?idxno='+n[0]+'" target="_blank" rel="noopener">'+
-  '<span class="thumb"><img src="assets/img/news/'+n[2]+'" alt="더피알 기사 이미지" loading="lazy"></span>'+
-  '<span><span class="t">'+n[1]+'</span><span class="m"><b>더피알</b> · the-pr.co.kr</span><span class="read">원문 보기 ↗</span></span></a>';
+ return '<a href="'+n[0]+'" target="_blank" rel="noopener">'+
+  '<span class="thumb"><img src="assets/img/news/'+n[2]+'" alt="'+n[3]+' 기사 이미지" loading="lazy"></span>'+
+  '<span><span class="nsrc">'+n[3]+'</span><span class="t">'+n[1]+'</span><span class="read">원문 보기 ↗</span></span></a>';
 }).join('');
 </script>
 </body>
