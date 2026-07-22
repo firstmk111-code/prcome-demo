@@ -106,6 +106,46 @@
     '<a href="'+u('legal/terms.html')+'">이용약관</a><a href="'+u('legal/privacy.html')+'">개인정보처리방침</a></span>'+
   '</div></footer>';
 
+  /* =====================================================
+     SEO / AEO / GEO — 사이트 공통 구조화 데이터 자동 주입
+     - 모든 페이지: canonical · OpenGraph · Twitter · Organization · WebSite · BreadcrumbList(.crumb 자동 파싱)
+     - window.SEO 설정 시: FAQPage / Article 스키마 + #faqList 아코디언 자동 렌더
+     ===================================================== */
+  function injectSEO(){
+    var head=document.head, loc=location, url=loc.origin+loc.pathname, origin=loc.origin;
+    function metaC(n){var m=document.querySelector('meta[name="'+n+'"]');return m?m.getAttribute('content'):'';}
+    var title=document.title||'PRCOME';
+    var desc=metaC('description')||'언론홍보(PR) 실무자 커뮤니티이자 전문 매거진 — PRCOME(피알컴).';
+    function esc(v){return String(v).replace(/"/g,'&quot;');}
+    function add(html){head.insertAdjacentHTML('beforeend',html);}
+    function mp(prop,val,attr){if(!val)return;add('<meta '+(attr||'property')+'="'+prop+'" content="'+esc(val)+'">');}
+    function ld(obj){var s=document.createElement('script');s.type='application/ld+json';s.textContent=JSON.stringify(obj);head.appendChild(s);}
+    if(!document.querySelector('link[rel="canonical"]')) add('<link rel="canonical" href="'+esc(url)+'">');
+    mp('og:type',(window.SEO&&window.SEO.ogType)||'website');mp('og:site_name','PRCOME');mp('og:title',title);
+    mp('og:description',desc);mp('og:url',url);mp('og:locale','ko_KR');
+    mp('twitter:card','summary_large_image','name');mp('twitter:title',title,'name');mp('twitter:description',desc,'name');
+    if(!window.__prcomeOrg){window.__prcomeOrg=1;
+      ld({"@context":"https://schema.org","@type":"Organization","name":"PRCOME","alternateName":"피알컴","url":origin+"/","description":"언론홍보(PR) 실무자 커뮤니티이자 전문 매거진 플랫폼","knowsAbout":["PR","언론홍보","보도자료","미디어 커뮤니케이션","위기관리","브랜드 저널리즘","AEO","GEO"]});
+      ld({"@context":"https://schema.org","@type":"WebSite","name":"PRCOME","url":origin+"/","inLanguage":"ko","potentialAction":{"@type":"SearchAction","target":origin+"/community/index.html?q={search_term_string}","query-input":"required name=search_term_string"}});
+    }
+    var crumb=document.querySelector('.crumb');
+    if(crumb){var parts=[];
+      Array.prototype.forEach.call(crumb.childNodes,function(n){
+        if(n.nodeType===1&&n.tagName==='A'){var href=n.getAttribute('href')||'';parts.push({name:n.textContent.trim(),item:href?new URL(href,url).href:''});}
+        else if(n.nodeType===3){var t=n.textContent.replace(/\//g,'').trim();if(t)parts.push({name:t});}
+      });
+      parts=parts.filter(function(p){return p.name;});
+      if(parts.length>1) ld({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":parts.map(function(p,i){var e={"@type":"ListItem","position":i+1,"name":p.name};if(p.item)e.item=p.item;return e;})});
+    }
+    var S=window.SEO||{};
+    if(S.faq&&S.faq.length){
+      ld({"@context":"https://schema.org","@type":"FAQPage","mainEntity":S.faq.map(function(f){return {"@type":"Question","name":f.q,"acceptedAnswer":{"@type":"Answer","text":String(f.a).replace(/<[^>]+>/g,'')}};})});
+      var box=document.getElementById('faqList');
+      if(box) box.innerHTML=S.faq.map(function(f){return '<details class="faq-item"><summary>'+f.q+'</summary><div class="faq-a">'+f.a+'</div></details>';}).join('');
+    }
+    if(S.article){var a=S.article,art={"@context":"https://schema.org","@type":"Article","headline":title,"description":desc,"inLanguage":"ko","author":{"@type":"Organization","name":"PRCOME"},"publisher":{"@type":"Organization","name":"PRCOME","url":origin+"/"},"mainEntityOfPage":url};for(var k in a){if(a.hasOwnProperty(k))art[k]=a[k];}ld(art);}
+  }
+
   function mount(){
     var h=document.getElementById('mag-header'), f=document.getElementById('mag-footer');
     if(h) h.outerHTML=header;
@@ -113,6 +153,7 @@
     var b=document.getElementById('magMbtn'), p=document.getElementById('magMpanel');
     if(b&&p){ b.addEventListener('click',function(){ var o=p.classList.toggle('open'); b.setAttribute('aria-expanded',o?'true':'false'); }); }
     document.querySelectorAll('#magMpanel .m-acc-hd').forEach(function(hd){ hd.addEventListener('click',function(){ hd.parentNode.classList.toggle('open'); }); });
+    try{ injectSEO(); }catch(e){}
   }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',mount); else mount();
 })();
