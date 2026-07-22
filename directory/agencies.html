@@ -172,7 +172,7 @@ window.SEO={
     <!-- 7. 디렉토리 (실제 목록) -->
     <section class="hsec" id="directory">
       <h2><span class="n">07</span>PR회사 디렉토리 <span style="font-size:13px;font-weight:700;color:var(--sub-2)">· 한국PR협회 기준</span></h2>
-      <p>국내외 주요 PR·커뮤니케이션 회사 목록입니다. <strong>회사명 또는 ‘홈페이지’를 누르면 각 사 공식 홈페이지로 이동</strong>합니다. 업태·업종과 대표자를 함께 표기했습니다.</p>
+      <p>국내외 주요 PR·커뮤니케이션 회사 목록입니다. <strong>회사를 누르면 PRCOME 상세 소개 페이지</strong>로 이동하고, 상세 페이지 하단에서 각 사 <strong>공식 홈페이지로 연결</strong>됩니다. 업태·업종과 대표자를 함께 표기했습니다.</p>
       <div class="topbar">
         <div class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4" stroke-linecap="round"/></svg><input id="q" placeholder="회사명·대표자 검색" oninput="render()"></div>
         <div class="tabs">
@@ -241,10 +241,11 @@ window.SEO={
   <div style="height:50px"></div>
 </div>
 <div id="mag-footer"></div>
+<script src="companies.js?v=2"></script>
 <script src="../assets/js/magazine-header.js?v=2"></script>
 <script>
-/* 한국PR협회 PR회사 실데이터 — [회사명, 대표, 홈페이지] */
-var CO=[
+/* 데이터: companies.js (window.PR_COMPANIES / window.PR_GLOBAL) 공용 */
+var CO=window.PR_COMPANIES, GLOBAL=window.PR_GLOBAL, _IGN=[
  ['굿미디어','윤연희','http://www.goodmedia21.com/'],
  ['굿윌커뮤니케이션즈㈜','박용집','http://www.goodwillpr.co.kr'],
  ['㈜그레이프피알앤컨설팅','최승기','http://www.grapepr.com/'],
@@ -312,8 +313,6 @@ var CO=[
  ['함샤우트 글로벌 & 딜라이트','김재희','http://www.hahmshout.com/'],
  ['함파트너스','함시원','http://www.hahmshout.com/']
 ];
-/* 외국계·글로벌 네트워크 대행사 */
-var GLOBAL={'에델만코리아':1,'웨버샌드윅코리아':1,'플레시먼힐러드코리아':1,'호프만에이전시코리아':1,'앨리슨+파트너스코리아':1,'브로더에이피(브로더파트너즈)':1,'코콤포터노벨리㈜':1,'㈜시너지힐앤놀튼':1,'피알 뉴스와이어(PR Newswire)':1};
 function ini(n){var s=n.replace(/^[㈜（）()주\s]+/,'');return s.charAt(0)||n.charAt(0);}
 function esc(s){return s.replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
 function hl(s,q){if(!q)return esc(s);return esc(s).replace(new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig'),'<mark>$1</mark>');}
@@ -329,11 +328,11 @@ function render(){
  document.getElementById('cnt').innerHTML='등록 PR회사 <b>'+list.length+'</b>곳';
  document.getElementById('dlist').innerHTML=list.map(function(c){
   var g=!!GLOBAL[c[0]];
-  return '<a class="drow" href="'+c[2]+'" target="_blank" rel="noopener">'+
+  return '<a class="drow" href="company.html?c='+CO.indexOf(c)+'">'+
    '<span class="lg">'+ini(c[0])+'</span>'+
    '<span><div class="nm">'+hl(c[0],q)+(g?'<span class="gbadge">글로벌</span>':'')+'</div><div class="rep">대표 '+hl(c[1],q)+'</div></span>'+
    '<span class="biz"><b>업태</b>서비스업 · <b>업종</b>'+(g?'PR·커뮤니케이션(글로벌 네트워크)':'PR·커뮤니케이션(광고·홍보 대행)')+'</span>'+
-   '<span class="go">홈페이지 →</span></a>';
+   '<span class="go">자세히 →</span></a>';
  }).join('')||'<div class="empty">조건에 맞는 회사가 없습니다.</div>';
 }
 render();
