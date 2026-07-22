@@ -49,10 +49,10 @@
     { label:'도서·교육', href:'resources/books.html', ic:IC.books, act:['/resources/','/events/'], cols:1, items:[
       ['resources/books.html','PR 도서'],['events/index.html','교육·행사'] ]},
     { label:'더보기', href:'more/index.html', ic:IC.more, act:['/more/','/tools/','/notice/','/help/','/legal/'], cols:2, items:[
-      ['tools/index.html','PR 실무 도구'],['tools/press-release.html','보도자료 작성 AI'],
-      ['tools/distribute.html','보도자료 배포 AI'],['events/index.html','교육·행사'],
-      ['notice/index.html','공지사항'],['help/guide.html','이용안내'],
-      ['more/index.html?tab=calendar','업계 캘린더'],['help/contact.html','광고·제휴 문의'] ]},
+      ['tools/index.html','PR 도구'],['more/index.html?tab=calendar','PR 캘린더'],
+      ['projects/portfolio.html','포트폴리오'],['more/index.html?tab=badges','배지/업적'],
+      ['more/index.html?tab=friends','친구추천'],['more/index.html?tab=messages','쪽지'],
+      ['help/guide.html','이용가이드'] ]},
   ];
 
   function navActive(n){

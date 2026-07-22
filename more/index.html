@@ -50,7 +50,7 @@
 <div id="mag-footer"></div>
 <script src="../assets/js/magazine-header.js"></script>
 <script>
-var TABS=[['calendar','캘린더'],['badges','활동 배지'],['ranking','회원 랭킹'],['messages','쪽지'],['notifications','알림'],['faq','FAQ']];
+var TABS=[['calendar','캘린더'],['badges','활동 배지'],['ranking','회원 랭킹'],['friends','친구추천'],['messages','쪽지'],['notifications','알림'],['faq','FAQ']];
 var p=new URLSearchParams(location.search),tab=p.get('tab')||'calendar'; if(!TABS.some(function(x){return x[0]===tab;}))tab='calendar';
 document.getElementById('mTitle').textContent=(TABS.filter(function(x){return x[0]===tab;})[0]||['','더보기'])[1];
 document.getElementById('mtabs').innerHTML=TABS.map(function(x){return '<button class="'+(x[0]===tab?'on':'')+'" onclick="location.href=\'index.html?tab='+x[0]+'\'">'+x[1]+'</button>';}).join('');
@@ -73,6 +73,10 @@ if(tab==='calendar'){
   html='<div class="cal">'+
    [['가입은 어떻게 하나요?','상단 회원가입에서 이메일 또는 소셜 계정으로 가입합니다. (준비 중)'],['기사 제보는 어떻게 하나요?','헤더의 ‘기사 제보’에서 제보 내용을 보낼 수 있습니다.'],['보도자료 작성 AI는 무료인가요?','1차 서비스의 기본 도구는 무료로 제공됩니다.'],['기자 개인 연락처를 제공하나요?','제공하지 않으며, 매체·담당 부서 단위 정보만 안내합니다.']]
    .map(function(r){return '<div class="row"><span class="dt">Q</span><span><b>'+r[0]+'</b><div style="color:var(--sub);font-size:13.5px;margin-top:4px">'+r[1]+'</div></span></div>';}).join('')+'</div>';
+}else if(tab==='friends'){
+  html=login()+'<div class="cal">'+
+   [['코드','<b>PRCOME-2026</b> · 내 추천 코드'],['보상','추천 1인당 1,000P · 가입 즉시 양쪽 지급'],['방법','코드를 공유하고 친구가 가입 시 코드를 입력하면 완료'],['현황','추천 완료 0명 · 대기 0명 (기능 준비 중)']]
+   .map(function(r){return '<div class="row"><span class="dt">'+r[0]+'</span><span>'+r[1]+'</span></div>';}).join('')+'</div>';
 }else{ /* messages / notifications */
   html=login()+'<div class="stub"><b>'+(tab==='messages'?'쪽지함':'알림함')+'</b>'+(tab==='messages'?'회원 간 쪽지 기능은 준비 중입니다.':'활동 알림 기능은 준비 중입니다.')+'</div>';
 }
