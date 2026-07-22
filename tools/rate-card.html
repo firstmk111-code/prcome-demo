@@ -3,94 +3,121 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>마케팅 단가표 — PRCOME 마케팅 도구</title>
-<meta name="description" content="블로그·인스타·유튜브·보도자료·퍼포먼스 광고의 채널별 시세를 한눈에. 견적·협상 전 참고용 마케팅 단가표.">
+<title>PR 단가표 (매체별 보도자료 배포) — PRCOME PR 도구</title>
+<meta name="description" content="언론사·매체별 보도자료 배포 단가를 한눈에. 종합일간지부터 경제·전문·인터넷 매체까지 금액대별로 정리한 PR 단가표.">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <link rel="stylesheet" href="../assets/css/magazine-system.css">
 <script>window.MAG={root:'../',home:'../index.html',catBase:'../insights/index.html'};</script>
 <style>
-.tw{max-width:920px}
+.tw{max-width:960px}
 .subhead{padding:30px 0 6px}
 .subhead .crumb{font-size:12.5px;color:var(--sub);margin-bottom:12px}
 .subhead h1{font-size:clamp(22px,2.7vw,30px);font-weight:800;letter-spacing:-.03em;display:flex;align-items:center;gap:12px}
 .subhead h1 .tick{width:26px;height:3px;background:var(--pt);border-radius:2px}
+.subhead h1 .hot{font-size:10px;font-weight:800;color:#E4612B;background:#FDECE4;border-radius:4px;padding:2px 6px;vertical-align:middle}
 .subhead .desc{font-size:15px;color:var(--sub);margin-top:10px;line-height:1.6}
-.tabs{display:flex;gap:18px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-top:22px;overflow-x:auto;scrollbar-width:none}
-.tabs::-webkit-scrollbar{display:none}
-.tabs button{background:none;border:0;font-family:inherit;padding:12px 0;font-size:14px;font-weight:700;color:var(--sub);white-space:nowrap;position:relative;cursor:pointer}
-.tabs button.on{color:var(--pt)}.tabs button.on::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--pt)}
-.tbl{width:100%;border-collapse:collapse;margin-top:18px}
+.subhead .src{font-size:12.5px;color:var(--sub-2);margin-top:8px}.subhead .src a{color:var(--pt);font-weight:600}
+.topbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:20px 0 8px}
+.search{flex:1;min-width:200px;display:flex;align-items:center;gap:10px;border:1px solid var(--line-2);border-radius:8px;padding:0 14px;height:46px;background:var(--surf)}
+.search:focus-within{border-color:var(--pt);box-shadow:0 0 0 3px var(--pt-soft)}
+.search svg{width:17px;height:17px;stroke:var(--sub);fill:none;stroke-width:1.8;flex:none}
+.search input{flex:1;min-width:0;border:0;outline:0;background:transparent;font-family:inherit;font-size:14.5px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap}
+.tabs button{height:46px;border:1px solid var(--line-2);background:var(--surf);border-radius:8px;font-family:inherit;font-size:13.5px;font-weight:700;color:var(--sub);padding:0 15px;cursor:pointer;white-space:nowrap}
+.tabs button.on{background:var(--pt);color:#fff;border-color:var(--pt)}
+.cnt{font-size:13px;color:var(--sub);margin:4px 0}.cnt b{color:var(--ink)}
+.tbl{width:100%;border-collapse:collapse}
 .tbl thead th{font-size:12px;font-weight:800;color:var(--sub);text-align:left;padding:12px 14px;border-bottom:2px solid var(--ink);white-space:nowrap}
-.tbl thead th.r,.tbl td.r{text-align:right}
-.tbl td{font-size:14px;padding:14px;border-bottom:1px solid var(--line);vertical-align:top}
-.tbl td.item{font-weight:700}
-.tbl td .sub{font-size:12px;color:var(--sub);margin-top:3px;font-weight:400}
-.tbl td.price{font-weight:800;color:var(--navy);white-space:nowrap}
+.tbl thead th.r{text-align:right}
+.tbl td{font-size:14px;padding:13px 14px;border-bottom:1px solid var(--line);vertical-align:middle}
 .tbl tr:hover td{background:var(--bg)}
-.note{font-size:12.5px;color:var(--sub-2);margin-top:18px;line-height:1.6}
-@media (max-width:600px){.tbl td.hidem,.tbl th.hidem{display:none}}
+.tbl .media{font-weight:700}
+.tbl .tier{display:inline-block;font-size:10.5px;font-weight:800;border-radius:4px;padding:2px 7px;margin-left:8px;vertical-align:middle}
+.tier.p{background:#EEF2FF;color:var(--pt)}.tier.s{background:#EAF6EE;color:#2FA96A}.tier.b{background:var(--grey-2);color:var(--sub)}
+.tbl .price{font-weight:800;color:var(--navy);white-space:nowrap;text-align:right;font-size:15px}
+.ch{display:inline-flex;gap:4px}
+.ch span{font-size:10.5px;font-weight:700;color:var(--sub);border:1px solid var(--line);border-radius:4px;padding:2px 6px}
+.ch span.on{color:#03C75A;border-color:#03C75A22;background:#03C75A11}
+.ch span.d{color:#1263F3}.ch span.na{color:#7A50E6}
+.tbl mark{background:#FFF3C4;border-radius:2px}
+.note{font-size:12.5px;color:var(--sub-2);line-height:1.7;margin:22px 0 60px;padding-top:18px;border-top:1px solid var(--line)}
+.note a{color:var(--pt);font-weight:600}
+@media (max-width:640px){.tbl td.hidem,.tbl th.hidem{display:none}.tw{max-width:100%}}
 </style>
 </head>
 <body>
 <div id="mag-header"></div>
 <div class="wrap tw">
   <section class="subhead">
-    <div class="crumb"><a href="../index.html">홈</a> / <a href="index.html">마케팅 도구</a> / 마케팅 단가표</div>
-    <h1><span class="tick"></span>마케팅 단가표</h1>
-    <p class="desc">채널별 광고·콘텐츠·홍보의 대략적인 시세입니다. 견적 협상과 예산 수립 전 기준선으로 참고하세요.</p>
+    <div class="crumb"><a href="../index.html">홈</a> / <a href="index.html">PR 도구</a> / PR 단가표</div>
+    <h1><span class="tick"></span>PR 단가표 <span class="hot">HOT</span></h1>
+    <p class="desc">언론사·매체별 <b>보도자료 배포 단가</b>입니다. 종합일간지부터 경제·전문·인터넷 매체까지 금액대별로 정리했습니다. 배포·견적 전 기준선으로 참고하세요.</p>
+    <div class="src">금액 출처 · <a href="https://newspartner.co.kr/bbs/board.php?bo_table=pressform" target="_blank" rel="noopener">뉴스파트너</a> · <a href="https://www.newsonwire.co.kr/" target="_blank" rel="noopener">뉴스온와이어</a> · <a href="https://mediap.kr/" target="_blank" rel="noopener">미디어P</a> · <a href="https://www.jebowang.com/" target="_blank" rel="noopener">제보왕</a> 등 배포 대행 공개가 기준</div>
   </section>
 
-  <nav class="tabs" id="tabs"></nav>
+  <div class="topbar">
+    <div class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4" stroke-linecap="round"/></svg><input id="q" placeholder="매체명 검색" oninput="render()"></div>
+    <div class="tabs">
+      <button class="on" data-t="all" onclick="setT('all')">전체</button>
+      <button data-t="p" onclick="setT('p')">프리미엄 25만~</button>
+      <button data-t="s" onclick="setT('s')">스탠다드 12~23만</button>
+      <button data-t="b" onclick="setT('b')">베이직 ~10만</button>
+    </div>
+  </div>
+  <div class="cnt" id="cnt"></div>
+
   <table class="tbl">
-    <thead><tr><th>항목</th><th class="hidem">규격·조건</th><th class="r">시세(부가세 별도)</th></tr></thead>
+    <thead><tr><th>매체</th><th class="hidem">노출 채널</th><th class="r">배포 단가</th></tr></thead>
     <tbody id="tb"></tbody>
   </table>
-  <p class="note">※ 본 단가표는 업계 일반 시세를 바탕으로 한 참고용 예시(1차 데모)이며, 실제 단가는 매체·인플루언서 규모, 기간, 산업군, 성과 조건에 따라 크게 달라집니다. 정확한 견적은 <a href="../projects/new.html" style="color:var(--pt);font-weight:700">프로젝트 의뢰</a>로 받아보세요.</p>
-  <div style="height:60px"></div>
+
+  <p class="note">※ 본 단가표는 보도자료 <b>배포 대행 서비스의 공개 단가</b>를 정리한 참고용 자료입니다(1건·기명식 온라인 배포 기준). 매체·시점·기명/무기명·패키지·부가세 여부에 따라 실제 금액은 달라지며, 상세·최신 금액과 신청은 각 서비스에서 로그인 후 확인하세요 —
+  <a href="https://newspartner.co.kr/bbs/board.php?bo_table=pressform" target="_blank" rel="noopener">뉴스파트너</a> ·
+  <a href="https://mediap.kr/newsix/order3" target="_blank" rel="noopener">미디어P</a> ·
+  <a href="https://www.jebowang.com/com/com-5.html" target="_blank" rel="noopener">제보왕</a> ·
+  <a href="https://www.newsonwire.co.kr/" target="_blank" rel="noopener">뉴스온와이어</a>.
+  정확한 언론홍보 견적은 <a href="../projects/new.html">프로젝트 의뢰</a>로 받아보세요.</p>
+  <div style="height:20px"></div>
 </div>
 <div id="mag-footer"></div>
 <script src="../assets/js/magazine-header.js"></script>
 <script>
-var DATA={
- '블로그':[
-  ['체험단 리뷰 (일반 블로거)','방문/배송형 · 원고 1건','5만~15만원'],
-  ['상위 블로거 리뷰','일 방문 1만+ · 최적화','30만~80만원'],
-  ['블로그 기자단 운영','월 10~20건 패키지','150만~400만원/월'],
-  ['블로그 상위노출 대행','키워드 난이도별','30만~150만원/건']
- ],
- '인스타':[
-  ['나노 인플루언서','팔로워 1천~1만 · 피드 1건','5만~20만원'],
-  ['마이크로 인플루언서','팔로워 1만~10만 · 피드 1건','30만~150만원'],
-  ['매크로 인플루언서','팔로워 10만~100만 · 피드 1건','200만~800만원'],
-  ['릴스 제작·업로드','기획·촬영·편집 포함','50만~300만원/건']
- ],
- '유튜브':[
-  ['유튜브 PPL·리뷰','구독 1만~10만 채널','100만~500만원'],
-  ['유튜브 PPL·리뷰','구독 10만~50만 채널','500만~2,000만원'],
-  ['쇼츠 제작','기획·편집 포함','30만~120만원/건'],
-  ['브랜드 영상 제작','60초 · 촬영 포함','300만~1,500만원']
- ],
- '보도자료':[
-  ['보도자료 작성','A4 1~2매 · 1건','15만~40만원'],
-  ['보도자료 배포 (온라인)','30~80개 매체','20만~60만원'],
-  ['기자간담회·미디어데이','기획·운영 포함','300만~1,500만원'],
-  ['월간 언론홍보 대행','작성·배포·리포트','200만~600만원/월']
- ],
- '퍼포먼스':[
-  ['네이버 검색광고 대행','광고비 별도 · 운영 수수료','광고비의 10~15%'],
-  ['메타(인스타·페북) 광고 대행','광고비 별도 · 운영','광고비의 10~20%'],
-  ['광고 소재 제작','이미지·카피 세트','10만~50만원/세트'],
-  ['랜딩페이지 제작','기획·디자인·퍼블','80만~400만원']
- ]
-};
-var KEYS=Object.keys(DATA);var cur=KEYS[0];
-document.getElementById('tabs').innerHTML=KEYS.map(function(k){return '<button class="'+(k===cur?'on':'')+'" onclick="setT(\''+k+'\')">'+k+'</button>';}).join('');
+/* 매체별 보도자료 배포 단가 (뉴스파트너 등 공개가 기준) — [매체, 금액(원), 노출채널] */
+var M=[
+ ['중앙일보',350000,'네이버 다음 네이트'],['동아일보',350000,'네이버 다음 네이트'],['경향신문',350000,'네이버 다음 네이트'],['H경제',350000,'네이버 다음 네이트'],['C비즈',350000,'네이버'],
+ ['땅집고',300000,'네이버 다음 네이트'],['아시아경제',300000,'네이버 다음 네이트'],['디지틀조선일보',300000,'네이버 다음 네이트'],['국민일보',300000,'네이버 다음 네이트'],['스포츠서울',300000,'네이버'],['서울신문',300000,'네이버 다음 네이트'],['조선에듀',300000,'네이버 다음 네이트'],
+ ['헤럴드경제',260000,'네이버 다음 네이트'],['한국경제TV',260000,'네이버 다음 네이트'],['세계일보',260000,'네이버 다음 네이트'],
+ ['파이낸셜뉴스',250000,'네이버 다음 네이트'],['중앙SUNDAY',250000,'네이버'],['IT조선',250000,'네이버'],['데일리안',250000,'네이버 다음 네이트'],['마이데일리',250000,'네이버 다음 네이트'],['한경비즈니스',250000,'네이버 다음 네이트'],['이코노미스트',250000,'네이버'],['미주중앙일보',250000,'네이버'],
+ ['비즈워크',230000,'네이버 다음 네이트'],['일간스포츠',230000,'네이버 다음 네이트'],['월간암',230000,'네이버 다음 네이트'],['디지털타임스',230000,'네이버 다음 네이트'],
+ ['포브스코리아',200000,'네이버 다음 네이트'],['텐아시아',200000,'네이버 다음 네이트'],['대한경제',200000,'네이버 다음 네이트'],['국토일보',200000,'네이버 다음 네이트'],['MK스포츠',200000,'네이버 다음 네이트'],
+ ['한경머니',160000,'네이버 다음 네이트'],['한경잡앤조이',160000,'네이버 다음 네이트'],['월간중앙',160000,'네이버 다음 네이트'],['이투데이',160000,'네이버 다음 네이트'],['아시아투데이',160000,'네이버'],['이로운넷',160000,'네이버 다음 네이트'],['키즈맘',160000,'네이버 다음 네이트'],
+ ['이넷뉴스',150000,'네이버 다음 네이트'],['로리더',150000,'네이버'],['스포츠월드',150000,'네이버'],
+ ['패션비즈',120000,'네이버'],['더드라이브',120000,'네이버'],['잡포스트',120000,'네이버'],['스마트투데이',120000,'네이버'],['더쎈뉴스',120000,'네이버 다음 네이트'],['뉴스핌',120000,'네이버 다음 네이트'],['딜라이트닷넷',120000,'네이버'],['데이터넷',120000,'네이버 다음 네이트'],['이투뉴스',120000,'네이버 다음 네이트'],['IT비즈뉴스',120000,'네이버'],['미디어파인',120000,'네이버 다음 네이트'],
+ ['비지니스코리아',100000,'네이버 다음 네이트'],['인터뷰365',100000,'네이버'],['어린이동아',100000,'네이버 다음 네이트'],['파이낸스투데이',100000,'네이버'],['더퍼스트',100000,'네이버'],['HBN뉴스',100000,'네이버 다음 네이트'],['농기자재신문',100000,'네이버'],['로이슈',100000,'네이버'],['한국영농신문',100000,'네이버'],['PPSS(ㅍㅍㅅㅅ)',100000,'네이버'],['매일안전신문',100000,'네이버 다음 네이트'],['더파워',100000,'네이버 다음 네이트'],['굿모닝경제',100000,'네이버 다음 네이트'],['뉴스컬처',100000,'네이버 다음 네이트'],['컨슈머타임스',100000,'네이버'],['메가경제',100000,'네이버 다음 네이트'],['테크월드',100000,'네이버'],['E동아',100000,'네이버 다음 네이트'],['증권경제신문',100000,'네이버 다음 네이트'],['세계비즈',100000,'네이버 다음 네이트'],['소셜밸류',100000,'네이버'],['경북신문',100000,'네이버'],['한국강사신문',100000,'네이버 다음 네이트'],['트래블바이크뉴스',100000,'다음 네이트'],
+ ['더퍼블릭',60000,'네이버'],['비즈월드',60000,'네이버 다음 네이트'],['핸드메이커',60000,'네이버'],['내외경제TV',60000,'네이버'],['공감신문',60000,'네이버 다음 네이트'],['시선뉴스',60000,'네이버 다음 네이트'],['시민일보',60000,'네이버 다음 네이트'],['SWTV',60000,'네이버'],['데일리경제',60000,'네이버'],['대학저널',60000,'네이버 다음 네이트'],['하이뉴스',60000,'네이버'],['피앤피뉴스',60000,'네이버 다음 네이트'],
+ ['한국목재신문',40000,'네이버 다음 네이트']
+];
+function tierOf(p){return p>=250000?'p':(p>=120000?'s':'b');}
+function esc(s){return s.replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
+function hl(s,q){if(!q)return esc(s);return esc(s).replace(new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig'),'<mark>$1</mark>');}
+function chips(c){var o='';o+='<span class="'+(c.indexOf('네이버')>-1?'on':'')+'">N</span>';o+='<span class="d'+(c.indexOf('다음')>-1?' onx':'')+'" style="'+(c.indexOf('다음')>-1?'':'opacity:.3')+'">D</span>';o+='<span class="na" style="'+(c.indexOf('네이트')>-1?'':'opacity:.3')+'">Na</span>';return '<span class="ch">'+o+'</span>';}
+var TL={p:'프리미엄',s:'스탠다드',b:'베이직'};
+var cur='all';
+function setT(t){cur=t;document.querySelectorAll('.tabs button').forEach(function(b){b.classList.toggle('on',b.dataset.t===t);});render();}
 function render(){
- document.getElementById('tb').innerHTML=DATA[cur].map(function(r){
-  return '<tr><td class="item">'+r[0]+'</td><td class="hidem"><span class="sub">'+r[1]+'</span></td><td class="r price">'+r[2]+'</td></tr>';
- }).join('');
+ var q=(document.getElementById('q').value||'').trim().toLowerCase();
+ var list=M.filter(function(m){
+  if(cur!=='all'&&tierOf(m[1])!==cur)return false;
+  if(q&&m[0].toLowerCase().indexOf(q)<0)return false; return true;
+ });
+ document.getElementById('cnt').innerHTML='매체 <b>'+list.length+'</b>곳 · 1건 온라인 배포 기준(부가세 별도)';
+ document.getElementById('tb').innerHTML=list.map(function(m){
+  var t=tierOf(m[1]);
+  return '<tr><td class="media">'+hl(m[0],q)+'<span class="tier '+t+'">'+TL[t]+'</span></td>'+
+   '<td class="hidem">'+chips(m[2])+'</td>'+
+   '<td class="price">'+m[1].toLocaleString('ko-KR')+'원</td></tr>';
+ }).join('')||'<tr><td colspan="3" style="padding:30px 0;color:var(--sub-2)">조건에 맞는 매체가 없습니다.</td></tr>';
 }
-function setT(k){cur=k;document.querySelectorAll('#tabs button').forEach(function(b){b.classList.toggle('on',b.textContent===k);});render();}
 render();
 </script>
 </body>
