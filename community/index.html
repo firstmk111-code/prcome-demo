@@ -3,11 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>커뮤니티 — PRCOME</title>
-<meta name="description" content="홍보담당자·언론인·PR회사 종사자가 교류하는 전문 네트워크 커뮤니티. 질문·답변, 업계 소식, 실무 노하우, 언론홍보 사례, 구인구직, 홍보대행 의뢰.">
+<title>PR 커뮤니티 — 언론홍보 실무자 질문·노하우·사례 | PRCOME</title>
+<meta name="description" content="홍보담당자·언론인·PR회사 실무자가 교류하는 언론홍보 전문 커뮤니티. 질문·답변, 업계 소식, 실무 노하우, 언론홍보 사례, 구인구직, 홍보대행 의뢰까지 — 같은 고민을 하는 동료와 연결되세요. PRCOME.">
+<meta name="keywords" content="PR 커뮤니티, 언론홍보, 홍보 실무, 보도자료 질문, PR 노하우, 홍보담당자 모임">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <link rel="stylesheet" href="../assets/css/magazine-system.css?v=2">
 <script>window.MAG={root:'../',home:'../index.html',catBase:'../insights/index.html'};</script>
+<script>
+window.SEO={
+  faq:[
+    {q:'PRCOME 커뮤니티는 누가 이용하나요?',a:'기업 홍보담당자(인하우스), PR·커뮤니케이션 대행사 실무자, 프리랜서 홍보인, 언론인, 마케터 등 언론홍보와 관련된 실무자들이 이용합니다.'},
+    {q:'어떤 글을 올릴 수 있나요?',a:'질문·답변, 업계 소식, 실무 노하우, 언론홍보 사례, 자유게시판, 구인구직, 홍보대행 의뢰 등 카테고리별로 글을 올릴 수 있습니다. 실무에 도움이 되는 정보 공유와 질의응답을 지향합니다.'},
+    {q:'홍보대행 의뢰도 커뮤니티에서 하나요?',a:'네. <a href="index.html?cat=agency">홍보대행 의뢰 게시판</a>에서 필요한 업무를 남기고 업체·전문가의 제안을 받을 수 있습니다. 정식 프로젝트 등록은 <a href="../projects/new.html">홍보대행 의뢰</a>를 이용하세요.'},
+    {q:'실무 노하우·자료는 어디서 보나요?',a:'<a href="index.html?cat=knowhow">실무 노하우</a> 카테고리와 <a href="../insights/index.html">인사이트 매거진</a>에서 보도자료 작성·기자 컨택·위기관리 등 실무 콘텐츠를 확인할 수 있습니다.'},
+    {q:'가입해야 글을 쓸 수 있나요?',a:'열람은 자유롭게 가능하며, 글쓰기·댓글 등 참여 기능은 가입 후 이용할 수 있습니다(1차 서비스).'},
+    {q:'기자에게 직접 질문할 수 있나요?',a:'커뮤니티에는 현직·전직 언론인도 참여합니다. 다만 개인 연락처 요청보다는 공개 질문·노하우 공유 형태의 교류를 권장합니다.'}
+  ]
+};
+</script>
 <style>
 /* ── 3분할 레이아웃 (좌 카테고리 · 중앙 피드 · 우 추천) ── */
 .cwrap{display:grid;grid-template-columns:220px minmax(0,1fr) 312px;gap:32px;padding:24px 0 60px;align-items:start}
@@ -180,6 +193,36 @@
 
   </div>
 </div>
+<div class="wrap"><div class="hub">
+  <section class="hsec" id="about-comm">
+    <h2><span class="n">◎</span>PRCOME 커뮤니티 안내</h2>
+    <p><strong>언론홍보(PR) 실무는 혼자 하기 어렵습니다.</strong> 어느 매체에 보낼지, 이 이슈를 어떻게 대응할지, 대행사를 어떻게 고를지 — 실무의 판단은 결국 <strong>경험의 공유</strong>에서 옵니다. PRCOME 커뮤니티는 홍보담당자·대행사 실무자·언론인이 모여 질문하고, 노하우와 사례를 나누고, 함께 일할 사람을 찾는 공간입니다.</p>
+    <h3>게시판 구성</h3>
+    <ul class="bul">
+      <li><a href="index.html?cat=qa"><strong>질문·답변</strong></a> — 보도자료·매체·계약 등 실무 궁금증 해결</li>
+      <li><a href="index.html?cat=news"><strong>업계 소식</strong></a> · <a href="index.html?cat=knowhow"><strong>실무 노하우</strong></a> · <a href="index.html?cat=case"><strong>언론홍보 사례</strong></a></li>
+      <li><a href="index.html?cat=jobs"><strong>구인구직</strong></a> · <a href="index.html?cat=agency"><strong>홍보대행 의뢰</strong></a> · <a href="index.html?cat=free"><strong>자유게시판</strong></a></li>
+    </ul>
+  </section>
+  <section class="hsec" id="faq">
+    <h2><span class="n">Q</span>자주 묻는 질문</h2>
+    <div class="faq" id="faqList"></div>
+  </section>
+  <section class="hsec" id="related">
+    <h2><span class="n">↔</span>관련 콘텐츠</h2>
+    <div class="relgrid">
+      <a class="relcard" href="../insights/index.html?cat=pr"><div class="k">인사이트</div><div class="t">언론홍보 전략 가이드</div><div class="d">실무에 바로 쓰는 PR 프레임워크</div><span class="arw">읽어보기 →</span></a>
+      <a class="relcard" href="../directory/agencies.html"><div class="k">PR회사</div><div class="t">홍보대행사 찾기</div><div class="d">업종·예산별 PR회사 디렉토리</div><span class="arw">보기 →</span></a>
+      <a class="relcard" href="../tools/pr-agent/index.html"><div class="k">AI 도구</div><div class="t">보도자료 AI 작성</div><div class="d">질문만 하지 말고 바로 만들어 보기</div><span class="arw">이용 →</span></a>
+    </div>
+  </section>
+  <section class="cta">
+    <div class="ct-l"><h2>지금 커뮤니티에 참여하세요</h2><p>실무 질문을 남기고, 노하우를 저장하고, 같은 고민을 하는 동료와 연결되세요.</p></div>
+    <div class="ct-b"><a class="btn pri" href="write.html">글쓰기</a><a class="btn sec" href="../auth/signup.html">회원가입</a><a class="btn sec" href="../insights/index.html">매거진 보기</a></div>
+  </section>
+  <div class="tagrow" aria-label="관련 태그"><a class="tg" href="index.html?cat=qa">질문답변</a><a class="tg" href="index.html?cat=knowhow">실무노하우</a><a class="tg" href="index.html?cat=case">홍보사례</a><a class="tg" href="index.html?cat=agency">홍보대행</a></div>
+</div></div>
+<div style="height:40px"></div>
 <div id="mag-footer"></div>
 <script src="../assets/js/magazine-header.js?v=2"></script>
 <script>

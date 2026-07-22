@@ -3,11 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>구인구직 — PRCOME(피알컴)</title>
-<meta name="description" content="PR·마케팅 채용과 프리랜서·외주 매칭. 홍보담당자, 마케터, 콘텐츠·SEO 실무자 커리어를 PRCOME에서.">
+<title>PR 구인구직 — 홍보 채용·직무·연봉·필요 역량 가이드 | PRCOME</title>
+<meta name="description" content="PR·홍보·마케팅 채용과 프리랜서·외주 매칭. PR 직무 소개, 연봉 수준, 필요 역량, 커리어 경로와 자주 묻는 질문까지 — 홍보담당자·대행사 실무자 커리어는 PRCOME에서.">
+<meta name="keywords" content="PR 채용, 홍보 구인구직, PR 직무, 홍보담당자 연봉, PR 역량, 홍보 프리랜서">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <link rel="stylesheet" href="../assets/css/magazine-system.css?v=2">
 <script>window.MAG={root:'../',home:'../index.html',catBase:'../insights/index.html'};</script>
+<script>
+window.SEO={
+  faq:[
+    {q:'PR·홍보 직무에는 어떤 종류가 있나요?',a:'인하우스 홍보담당자(기업 커뮤니케이션), PR 대행사 AE/AM, 미디어 릴레이션, 콘텐츠·오너드미디어, 위기관리, 디지털/소셜 PR, 사내 커뮤니케이션 등이 있습니다. 최근에는 검색·AI 노출(AEO/GEO)을 다루는 역할도 늘고 있습니다.'},
+    {q:'PR 담당자 연봉은 어느 정도인가요?',a:'회사 규모·경력에 따라 편차가 큽니다. 신입~주니어는 대체로 3,000만원 안팎에서 시작하며, 대행사 중간 관리자(AM)나 인하우스 시니어는 4,000만~7,000만원대, 팀장·임원급은 그 이상입니다(2026년 시장 참고치).'},
+    {q:'PR 직무에 필요한 역량은?',a:'글쓰기(보도자료·메시지), 미디어 이해와 기자 커뮤니케이션, 기획력, 위기 대응 순발력, 데이터·성과 측정, 그리고 최근에는 AI 도구 활용과 검색 최적화(AEO/GEO) 감각이 중요합니다.'},
+    {q:'비전공자도 PR로 취업할 수 있나요?',a:'가능합니다. 언론·광고·마케팅 전공이 유리하지만, 글쓰기·콘텐츠 경험과 포트폴리오(보도자료·캠페인 사례)가 있으면 비전공자도 진입할 수 있습니다. <a href="../resources/books.html">PR 도서</a>와 <a href="../events/index.html">교육·행사</a>로 기초를 쌓아보세요.'},
+    {q:'프리랜서·외주로도 일할 수 있나요?',a:'네. 보도자료 작성, 콘텐츠, 단발 캠페인 등은 프리랜서·외주 형태로 많이 진행됩니다. <a href="index.html?type=freelance">프리랜서·외주</a> 탭에서 확인하세요.'},
+    {q:'채용 공고는 어떻게 등록하나요?',a:'<a href="index.html?post=1">채용 등록</a>에서 포지션·자격·처우를 입력해 등록할 수 있습니다.'}
+  ]
+};
+</script>
 <style>
 .subhead{padding:30px 0 6px}
 .subhead .top{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
@@ -71,7 +84,40 @@
   <div class="rescount" id="rescount"></div>
   <div class="dlist" id="dlist"></div>
   <div class="pager"><a>‹</a><a class="on">1</a><a href="index.html">2</a><a href="index.html">3</a><a>›</a></div>
-  <div style="height:50px"></div>
+  <div style="height:20px"></div>
+  <div class="hub">
+    <section class="hsec" id="jobs-about">
+      <h2><span class="n">◎</span>PR 직무 이해하기</h2>
+      <p>PR·홍보 커리어는 <strong>인하우스(기업 홍보)</strong>와 <strong>대행사(에이전시)</strong>로 크게 나뉩니다. 인하우스는 한 브랜드의 커뮤니케이션을 깊게, 대행사는 여러 클라이언트를 폭넓게 다룹니다.</p>
+      <table class="deftable">
+        <thead><tr><th>직무</th><th>하는 일</th><th>핵심 역량</th></tr></thead>
+        <tbody>
+          <tr><td>미디어 릴레이션</td><td>보도자료·기자 관계·취재 대응</td><td>글쓰기·네트워크</td></tr>
+          <tr><td>브랜드/콘텐츠 PR</td><td>스토리텔링·오너드미디어</td><td>기획·콘텐츠</td></tr>
+          <tr><td>위기관리</td><td>이슈 모니터링·대응</td><td>순발력·판단</td></tr>
+          <tr><td>디지털/검색 PR</td><td>소셜·온라인 평판·AEO/GEO</td><td>데이터·AI 활용</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section class="hsec" id="faq">
+      <h2><span class="n">Q</span>자주 묻는 질문</h2>
+      <div class="faq" id="faqList"></div>
+    </section>
+    <section class="hsec" id="related">
+      <h2><span class="n">↔</span>커리어에 도움되는 콘텐츠</h2>
+      <div class="relgrid">
+        <a class="relcard" href="../resources/books.html"><div class="k">도서</div><div class="t">PR 입문·실무 도서</div><div class="d">기초부터 실무까지 추천 도서</div><span class="arw">보기 →</span></a>
+        <a class="relcard" href="../events/index.html"><div class="k">교육·행사</div><div class="t">PR 교육·세미나</div><div class="d">실무 역량을 키우는 과정</div><span class="arw">보기 →</span></a>
+        <a class="relcard" href="../insights/index.html?cat=pr"><div class="k">인사이트</div><div class="t">언론홍보 실무 가이드</div><div class="d">현장에 바로 쓰는 노하우</div><span class="arw">읽기 →</span></a>
+      </div>
+    </section>
+    <section class="cta">
+      <div class="ct-l"><h2>PR 커리어, PRCOME에서 시작하세요</h2><p>채용 공고를 확인하거나 등록하고, 커뮤니티에서 현직자에게 조언을 구하세요.</p></div>
+      <div class="ct-b"><a class="btn pri" href="index.html?post=1">채용 등록</a><a class="btn sec" href="../community/index.html?cat=jobs">커리어 커뮤니티</a><a class="btn sec" href="../resources/books.html">PR 도서</a></div>
+    </section>
+    <div class="tagrow" aria-label="관련 태그"><a class="tg" href="index.html?type=freelance">프리랜서</a><a class="tg" href="../resources/books.html">PR도서</a><a class="tg" href="../events/index.html">PR교육</a><a class="tg" href="../community/index.html?cat=jobs">커리어</a></div>
+  </div>
+  <div style="height:40px"></div>
 </div>
 <div id="mag-footer"></div>
 <script src="../assets/js/magazine-header.js?v=2"></script>
