@@ -3,59 +3,76 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PR 단가표 (매체별 보도자료 배포) — PRCOME PR 도구</title>
-<meta name="description" content="언론사·매체별 보도자료 배포 단가를 한눈에. 종합일간지부터 경제·전문·인터넷 매체까지 금액대별로 정리한 PR 단가표.">
+<title>PR 단가표 (작업별 · 매체별) — PRCOME PR 도구</title>
+<meta name="description" content="보도자료·언론홍보·AI 디지털 PR·위기관리·콘텐츠 등 PR 작업별 서비스 단가와, 언론사·매체별 보도자료 배포 단가를 한곳에서.">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <link rel="stylesheet" href="../assets/css/magazine-system.css">
 <script>window.MAG={root:'../',home:'../index.html',catBase:'../insights/index.html'};</script>
 <style>
-.tw{max-width:960px}
+.tw{max-width:980px}
 .subhead{padding:30px 0 6px}
 .subhead .crumb{font-size:12.5px;color:var(--sub);margin-bottom:12px}
 .subhead h1{font-size:clamp(22px,2.7vw,30px);font-weight:800;letter-spacing:-.03em;display:flex;align-items:center;gap:12px}
 .subhead h1 .tick{width:26px;height:3px;background:var(--pt);border-radius:2px}
 .subhead h1 .hot{font-size:10px;font-weight:800;color:#E4612B;background:#FDECE4;border-radius:4px;padding:2px 6px;vertical-align:middle}
 .subhead .desc{font-size:15px;color:var(--sub);margin-top:10px;line-height:1.6}
-.subhead .src{font-size:12.5px;color:var(--sub-2);margin-top:8px}.subhead .src a{color:var(--pt);font-weight:600}
-/* 카테고리(매체 유형)별 평균 단가 비교 막대그래프 */
-.compare{background:var(--surf);border:1px solid var(--line);border-radius:12px;padding:22px;margin:20px 0}
-.compare h2{font-size:16px;font-weight:800;letter-spacing:-.02em;display:flex;align-items:center;gap:9px}
-.compare h2 .em{font-size:15px}
-.compare .csub{font-size:12.5px;color:var(--sub);margin:6px 0 18px}
-.crow{margin-bottom:15px}.crow:last-child{margin-bottom:0}
+.seclab{font-size:16px;font-weight:800;letter-spacing:-.02em;display:flex;align-items:center;gap:9px;margin:36px 0 14px}
+.seclab .n{width:22px;height:22px;border-radius:6px;background:var(--pt);color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center}
+/* 작업 유형 탭 (marketslab형) */
+.stabs{display:flex;gap:8px;flex-wrap:wrap;background:var(--surf);border:1px solid var(--line);border-radius:12px;padding:8px;margin-bottom:16px}
+.stabs button{flex:1;min-width:110px;display:inline-flex;align-items:center;justify-content:center;gap:7px;height:46px;border:0;background:transparent;border-radius:9px;font-family:inherit;font-size:14px;font-weight:700;color:var(--sub);cursor:pointer;white-space:nowrap}
+.stabs button.on{background:var(--pt);color:#fff}
+.stabs button .ic{font-size:15px}
+/* 카테고리 카드 */
+.ccard{background:var(--surf);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:16px}
+.ccard .ch{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 22px;border-bottom:1px solid var(--line)}
+.ccard .ch .cn{font-size:17px;font-weight:800;display:flex;align-items:center;gap:10px}
+.ccard .ch .cn .ci{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:17px;color:#fff}
+.ccard .ch .cnt{font-size:12.5px;color:var(--sub)}
+.rtbl{width:100%;border-collapse:collapse}
+.rtbl thead th{font-size:12px;font-weight:700;color:var(--sub-2);text-align:left;padding:12px 22px;background:var(--bg)}
+.rtbl td{font-size:14px;padding:15px 22px;border-top:1px solid var(--line);vertical-align:middle}
+.rtbl .item{font-weight:700}
+.rtbl .range{white-space:nowrap}
+.rtbl .range .low{color:#2FA96A;font-weight:700}.rtbl .range .sep{color:var(--sub-2);margin:0 6px}.rtbl .range .high{color:#d43f2e;font-weight:700}
+.rtbl .avg .b{display:inline-block;font-size:13.5px;font-weight:800;color:var(--pt);background:var(--pt-soft);border-radius:6px;padding:5px 12px;white-space:nowrap}
+.rtbl .memo{font-size:12.5px;color:var(--sub)}
+.rtbl .memo .i{display:inline-flex;width:14px;height:14px;border-radius:50%;background:var(--grey-2);color:var(--sub-2);font-size:9px;font-weight:800;align-items:center;justify-content:center;margin-right:5px}
+/* 전체 비교 막대 */
+.compare{padding:6px 22px 20px}
+.crow{margin:15px 0}
 .crow .top{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:7px}
 .crow .lab{font-size:14px;font-weight:700;display:flex;align-items:center;gap:8px}
 .crow .lab .dot{width:10px;height:10px;border-radius:3px;flex:none}
-.crow .lab .g{font-size:11.5px;color:var(--sub-2);font-weight:600}
 .crow .val{font-size:15px;font-weight:800;color:var(--navy);white-space:nowrap}
 .crow .bar{height:13px;background:var(--grey-2);border-radius:7px;overflow:hidden}
 .crow .bar i{display:block;height:100%;border-radius:7px;transition:width .5s cubic-bezier(.2,.7,.2,1)}
-.topbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:20px 0 8px}
+/* 매체별 표 */
+.topbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:14px 0 8px}
 .search{flex:1;min-width:200px;display:flex;align-items:center;gap:10px;border:1px solid var(--line-2);border-radius:8px;padding:0 14px;height:46px;background:var(--surf)}
 .search:focus-within{border-color:var(--pt);box-shadow:0 0 0 3px var(--pt-soft)}
 .search svg{width:17px;height:17px;stroke:var(--sub);fill:none;stroke-width:1.8;flex:none}
 .search input{flex:1;min-width:0;border:0;outline:0;background:transparent;font-family:inherit;font-size:14.5px}
-.tabs{display:flex;gap:8px;flex-wrap:wrap}
-.tabs button{height:46px;border:1px solid var(--line-2);background:var(--surf);border-radius:8px;font-family:inherit;font-size:13.5px;font-weight:700;color:var(--sub);padding:0 15px;cursor:pointer;white-space:nowrap}
-.tabs button.on{background:var(--pt);color:#fff;border-color:var(--pt)}
+.mtabs{display:flex;gap:8px;flex-wrap:wrap}
+.mtabs button{height:46px;border:1px solid var(--line-2);background:var(--surf);border-radius:8px;font-family:inherit;font-size:13.5px;font-weight:700;color:var(--sub);padding:0 15px;cursor:pointer;white-space:nowrap}
+.mtabs button.on{background:var(--pt);color:#fff;border-color:var(--pt)}
 .cnt{font-size:13px;color:var(--sub);margin:4px 0}.cnt b{color:var(--ink)}
-.tbl{width:100%;border-collapse:collapse}
-.tbl thead th{font-size:12px;font-weight:800;color:var(--sub);text-align:left;padding:12px 14px;border-bottom:2px solid var(--ink);white-space:nowrap}
-.tbl thead th.r{text-align:right}
-.tbl td{font-size:14px;padding:13px 14px;border-bottom:1px solid var(--line);vertical-align:middle}
-.tbl tr:hover td{background:var(--bg)}
-.tbl .media{font-weight:700}
-.tbl .tier{display:inline-block;font-size:10.5px;font-weight:800;border-radius:4px;padding:2px 7px;margin-left:8px;vertical-align:middle}
+.mtbl{width:100%;border-collapse:collapse}
+.mtbl thead th{font-size:12px;font-weight:800;color:var(--sub);text-align:left;padding:12px 14px;border-bottom:2px solid var(--ink);white-space:nowrap}
+.mtbl thead th.r{text-align:right}
+.mtbl td{font-size:14px;padding:13px 14px;border-bottom:1px solid var(--line)}
+.mtbl tr:hover td{background:var(--bg)}
+.mtbl .media{font-weight:700}
+.mtbl .tier{display:inline-block;font-size:10.5px;font-weight:800;border-radius:4px;padding:2px 7px;margin-left:8px;vertical-align:middle}
 .tier.p{background:#EEF2FF;color:var(--pt)}.tier.s{background:#EAF6EE;color:#2FA96A}.tier.b{background:var(--grey-2);color:var(--sub)}
-.tbl .price{font-weight:800;color:var(--navy);white-space:nowrap;text-align:right;font-size:15px}
-.ch{display:inline-flex;gap:4px}
-.ch span{font-size:10.5px;font-weight:700;color:var(--sub);border:1px solid var(--line);border-radius:4px;padding:2px 6px}
-.ch span.on{color:#03C75A;border-color:#03C75A22;background:#03C75A11}
-.ch span.d{color:#1263F3}.ch span.na{color:#7A50E6}
-.tbl mark{background:#FFF3C4;border-radius:2px}
-.note{font-size:12.5px;color:var(--sub-2);line-height:1.7;margin:22px 0 60px;padding-top:18px;border-top:1px solid var(--line)}
+.mtbl .price{font-weight:800;color:var(--navy);white-space:nowrap;text-align:right;font-size:15px}
+.ch2{display:inline-flex;gap:4px}
+.ch2 span{font-size:10.5px;font-weight:700;border-radius:4px;padding:2px 6px;border:1px solid var(--line);color:var(--sub-2)}
+.ch2 span.on{color:#03C75A;border-color:#03C75A55}
+.mtbl mark,.rtbl mark{background:#FFF3C4;border-radius:2px}
+.note{font-size:12.5px;color:var(--sub-2);line-height:1.7;margin:26px 0 60px;padding-top:18px;border-top:1px solid var(--line)}
 .note a{color:var(--pt);font-weight:600}
-@media (max-width:640px){.tbl td.hidem,.tbl th.hidem{display:none}.tw{max-width:100%}}
+@media (max-width:680px){.tw{max-width:100%}.rtbl .memo,.rtbl th.memoh,.mtbl .hidem,.mtbl th.hidem{display:none}.stabs button{min-width:auto;flex:1 1 30%}}
 </style>
 </head>
 <body>
@@ -64,19 +81,19 @@
   <section class="subhead">
     <div class="crumb"><a href="../index.html">홈</a> / <a href="index.html">PR 도구</a> / PR 단가표</div>
     <h1><span class="tick"></span>PR 단가표 <span class="hot">HOT</span></h1>
-    <p class="desc">언론사·매체별 <b>보도자료 배포 단가</b>입니다. 종합일간지부터 경제·전문·인터넷 매체까지 금액대별로 정리했습니다. 배포·견적 전 기준선으로 참고하세요.</p>
-    <div class="src">금액 출처 · <a href="https://newspartner.co.kr/bbs/board.php?bo_table=pressform" target="_blank" rel="noopener">뉴스파트너</a> · <a href="https://www.newsonwire.co.kr/" target="_blank" rel="noopener">뉴스온와이어</a> · <a href="https://mediap.kr/" target="_blank" rel="noopener">미디어P</a> · <a href="https://www.jebowang.com/" target="_blank" rel="noopener">제보왕</a> 등 배포 대행 공개가 기준</div>
+    <p class="desc">보도자료·언론홍보·<b>AI 디지털 PR·위기관리</b>·콘텐츠 등 <b>작업(서비스) 유형별 단가</b>와, 언론사·<b>매체별 보도자료 배포 단가</b>를 한곳에 정리했습니다. 견적·협상 전 기준선으로 참고하세요.</p>
   </section>
 
-  <div class="compare">
-    <h2><span class="em">📊</span>매체 유형별 평균 배포 단가 비교</h2>
-    <div class="csub">매체 유형별 평균 시세를 비교합니다 (단위: 원 · 1건 온라인 배포 기준)</div>
-    <div id="compare"></div>
-  </div>
+  <!-- ① 작업(서비스) 유형별 단가표 -->
+  <div class="seclab"><span class="n">1</span>PR 작업(서비스) 유형별 단가표</div>
+  <div class="stabs" id="stabs"></div>
+  <div id="svcPanel"></div>
 
+  <!-- ② 매체별 보도자료 배포 단가 -->
+  <div class="seclab"><span class="n">2</span>매체별 보도자료 배포 단가</div>
   <div class="topbar">
-    <div class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4" stroke-linecap="round"/></svg><input id="q" placeholder="매체명 검색" oninput="render()"></div>
-    <div class="tabs">
+    <div class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4" stroke-linecap="round"/></svg><input id="q" placeholder="매체명 검색" oninput="renderMedia()"></div>
+    <div class="mtabs">
       <button class="on" data-t="all" onclick="setT('all')">전체</button>
       <button data-t="p" onclick="setT('p')">프리미엄 25만~</button>
       <button data-t="s" onclick="setT('s')">스탠다드 12~23만</button>
@@ -84,24 +101,99 @@
     </div>
   </div>
   <div class="cnt" id="cnt"></div>
+  <table class="mtbl"><thead><tr><th>매체</th><th class="hidem">노출 채널</th><th class="r">배포 단가</th></tr></thead><tbody id="tb"></tbody></table>
 
-  <table class="tbl">
-    <thead><tr><th>매체</th><th class="hidem">노출 채널</th><th class="r">배포 단가</th></tr></thead>
-    <tbody id="tb"></tbody>
-  </table>
-
-  <p class="note">※ 본 단가표는 보도자료 <b>배포 대행 서비스의 공개 단가</b>를 정리한 참고용 자료입니다(1건·기명식 온라인 배포 기준). 매체·시점·기명/무기명·패키지·부가세 여부에 따라 실제 금액은 달라지며, 상세·최신 금액과 신청은 각 서비스에서 로그인 후 확인하세요 —
+  <p class="note">※ 본 단가표는 PR 업계 일반 시세와 배포 대행 <b>공개 단가</b>를 정리한 참고용 자료입니다. 작업 범위·산업군·매체·기간·부가세 여부에 따라 실제 금액은 달라집니다. 매체별 배포가 출처·확인 —
   <a href="https://newspartner.co.kr/bbs/board.php?bo_table=pressform" target="_blank" rel="noopener">뉴스파트너</a> ·
   <a href="https://mediap.kr/newsix/order3" target="_blank" rel="noopener">미디어P</a> ·
   <a href="https://www.jebowang.com/com/com-5.html" target="_blank" rel="noopener">제보왕</a> ·
   <a href="https://www.newsonwire.co.kr/" target="_blank" rel="noopener">뉴스온와이어</a>.
-  정확한 언론홍보 견적은 <a href="../projects/new.html">프로젝트 의뢰</a>로 받아보세요.</p>
+  정확한 견적은 <a href="../projects/new.html">프로젝트 의뢰</a>로 받아보세요.</p>
   <div style="height:20px"></div>
 </div>
 <div id="mag-footer"></div>
 <script src="../assets/js/magazine-header.js"></script>
 <script>
-/* 매체별 보도자료 배포 단가 (뉴스파트너 등 공개가 기준) — [매체, 금액(원), 노출채널] */
+/* ===== ① 작업(서비스) 유형별 단가 ===== */
+/* 카테고리: [key, 이름, 아이콘, 색] */
+var CATS=[['pr','보도자료','📰','#315CFF'],['media','언론홍보','🎤','#E4612B'],['ai','AI·디지털','🤖','#6D5DF0'],['crisis','위기관리','🛡️','#d43f2e'],['content','콘텐츠','🎨','#2FA96A'],['etc','기타','🧭','#0FA6C0']];
+/* 항목: [서비스 항목, 최저, 최고, 평균, 비고] */
+var SVC={
+ pr:[
+  ['보도자료 작성 (일반)',150000,400000,250000,'A4 1~2매 · 1건 기준'],
+  ['보도자료 작성 (전문·기술)',300000,600000,400000,'의료·금융·IT 등 전문 분야'],
+  ['보도자료 배포 (온라인)',200000,600000,350000,'30~80개 매체 배포'],
+  ['영문 보도자료 번역',100000,250000,150000,'A4 1매 기준'],
+  ['보도용 사진·인포그래픽',100000,300000,180000,'컷·건별']
+ ],
+ media:[
+  ['월간 언론홍보 대행',2000000,6000000,3500000,'작성·배포·리포트 포함 (월)'],
+  ['기자간담회·미디어데이',3000000,15000000,6000000,'기획·운영·현장'],
+  ['인터뷰·기고 세팅',500000,1500000,800000,'매체 섭외 포함 (건)'],
+  ['기획기사·애드버토리얼',1000000,5000000,2500000,'매체·지면별'],
+  ['미디어 트레이닝',1500000,4000000,2500000,'임원 대상 반일 과정']
+ ],
+ ai:[
+  ['AI 보도자료 작성 (초안)',30000,150000,80000,'AI 생성 + 실무 감수'],
+  ['검색 가시성 진단 (SEO·AEO·GEO)',500000,1500000,900000,'1회 진단 리포트'],
+  ['생성형 검색 최적화 (GEO)',1000000,4000000,2000000,'월 운영 기준'],
+  ['오너드미디어(뉴스룸) 구축',3000000,10000000,5000000,'기획·구축 (프로젝트)'],
+  ['디지털 모니터링·리포트',500000,2000000,1000000,'월 기준']
+ ],
+ crisis:[
+  ['위기 대응 자문 (건별)',3000000,10000000,5000000,'이슈 1건 대응'],
+  ['위기관리 리테이너 (월)',3000000,8000000,5000000,'상시 자문·모니터링'],
+  ['이슈 모니터링·조기경보',1000000,3000000,1800000,'월 기준'],
+  ['사과문·입장문 작성',500000,2000000,1000000,'건별 · 긴급'],
+  ['온라인 평판관리 (ORM)',1500000,5000000,3000000,'월 기준']
+ ],
+ content:[
+  ['브랜드 스토리·콘텐츠',500000,2000000,1000000,'건별'],
+  ['뉴스레터 기획·운영',500000,1500000,900000,'월 2회 기준'],
+  ['카드뉴스·인포그래픽',150000,500000,300000,'건별'],
+  ['홍보 영상 (1~2분)',1000000,5000000,2500000,'기획·촬영·편집'],
+  ['리브랜딩·메시지 컨설팅',5000000,30000000,15000000,'프로젝트']
+ ],
+ etc:[
+  ['PR 전략 컨설팅',3000000,15000000,6000000,'프로젝트'],
+  ['임원 스피치·PT 코칭',1000000,3000000,1800000,'회당'],
+  ['미디어 리스트 구축',300000,1000000,600000,'산업별'],
+  ['성과 리포트·측정',500000,2000000,1000000,'월/분기']
+ ]
+};
+function won(n){return n.toLocaleString('ko-KR')+'원';}
+var scur='all';
+document.getElementById('stabs').innerHTML='<button class="on" data-c="all" onclick="setS(\'all\')"><span class="ic">▦</span>전체</button>'+
+ CATS.map(function(c){return '<button data-c="'+c[0]+'" onclick="setS(\''+c[0]+'\')"><span class="ic">'+c[2]+'</span>'+c[1]+'</button>';}).join('');
+function setS(c){scur=c;document.querySelectorAll('#stabs button').forEach(function(b){b.classList.toggle('on',b.dataset.c===c);});renderSvc();}
+function catCard(c){
+ var items=SVC[c[0]];
+ var rows=items.map(function(r){
+  return '<tr><td class="item">'+r[0]+'</td>'+
+   '<td class="range"><span class="low">'+won(r[1])+'</span><span class="sep">~</span><span class="high">'+won(r[2])+'</span></td>'+
+   '<td class="avg"><span class="b">'+won(r[3])+'</span></td>'+
+   '<td class="memo"><span class="i">i</span>'+r[4]+'</td></tr>';
+ }).join('');
+ return '<div class="ccard"><div class="ch"><span class="cn"><span class="ci" style="background:'+c[3]+'">'+c[2]+'</span>'+c[1]+' 단가</span><span class="cnt">'+items.length+'개 항목</span></div>'+
+  '<table class="rtbl"><thead><tr><th>서비스 항목</th><th>단가 (최저 ~ 최고)</th><th>평균 시세</th><th class="memoh">비고</th></tr></thead><tbody>'+rows+'</tbody></table></div>';
+}
+function renderSvc(){
+ var el=document.getElementById('svcPanel');
+ if(scur==='all'){
+  // 카테고리별 평균 단가 비교 (평균 시세들의 평균)
+  var data=CATS.map(function(c){var a=SVC[c[0]].map(function(r){return r[3];});return {c:c,avg:Math.round(a.reduce(function(x,y){return x+y;},0)/a.length)};}).sort(function(a,b){return b.avg-a.avg;});
+  var max=Math.max.apply(null,data.map(function(x){return x.avg;}));
+  el.innerHTML='<div class="ccard"><div class="ch"><span class="cn"><span class="ci" style="background:var(--navy)">▦</span>카테고리별 평균 단가 비교</span><span class="cnt">단위: 원</span></div>'+
+   '<div class="compare">'+data.map(function(x){
+    return '<div class="crow"><div class="top"><span class="lab"><span class="dot" style="background:'+x.c[3]+'"></span>'+x.c[2]+' '+x.c[1]+'</span><span class="val">'+won(x.avg)+'</span></div><div class="bar"><i style="width:'+Math.round(x.avg/max*100)+'%;background:'+x.c[3]+'"></i></div></div>';
+   }).join('')+'</div></div>';
+ }else{
+  el.innerHTML=catCard(CATS.filter(function(c){return c[0]===scur;})[0]);
+ }
+}
+renderSvc();
+
+/* ===== ② 매체별 보도자료 배포 단가 ===== */
 var M=[
  ['중앙일보',350000,'네이버 다음 네이트'],['동아일보',350000,'네이버 다음 네이트'],['경향신문',350000,'네이버 다음 네이트'],['H경제',350000,'네이버 다음 네이트'],['C비즈',350000,'네이버'],
  ['땅집고',300000,'네이버 다음 네이트'],['아시아경제',300000,'네이버 다음 네이트'],['디지틀조선일보',300000,'네이버 다음 네이트'],['국민일보',300000,'네이버 다음 네이트'],['스포츠서울',300000,'네이버'],['서울신문',300000,'네이버 다음 네이트'],['조선에듀',300000,'네이버 다음 네이트'],
@@ -116,48 +208,21 @@ var M=[
  ['더퍼블릭',60000,'네이버'],['비즈월드',60000,'네이버 다음 네이트'],['핸드메이커',60000,'네이버'],['내외경제TV',60000,'네이버'],['공감신문',60000,'네이버 다음 네이트'],['시선뉴스',60000,'네이버 다음 네이트'],['시민일보',60000,'네이버 다음 네이트'],['SWTV',60000,'네이버'],['데일리경제',60000,'네이버'],['대학저널',60000,'네이버 다음 네이트'],['하이뉴스',60000,'네이버'],['피앤피뉴스',60000,'네이버 다음 네이트'],
  ['한국목재신문',40000,'네이버 다음 네이트']
 ];
-/* 매체 유형 분류 */
-var CATMAP={};
-function setcat(cat,arr){arr.forEach(function(m){CATMAP[m]=cat;});}
-setcat('종합일간지',['중앙일보','동아일보','경향신문','국민일보','서울신문','세계일보','디지틀조선일보','미주중앙일보','E동아','어린이동아','중앙SUNDAY','조선에듀']);
-setcat('경제·비즈니스',['H경제','C비즈','아시아경제','헤럴드경제','파이낸셜뉴스','이코노미스트','한경비즈니스','한경머니','한경잡앤조이','대한경제','포브스코리아','이투데이','아시아투데이','비즈워크','비지니스코리아','세계비즈','증권경제신문','컨슈머타임스','굿모닝경제','메가경제','파이낸스투데이','더파워','소셜밸류','잡포스트','땅집고','국토일보']);
-setcat('스포츠·연예',['스포츠서울','일간스포츠','MK스포츠','스포츠월드','마이데일리','텐아시아','인터뷰365','뉴스컬처','키즈맘','패션비즈','더드라이브']);
-setcat('방송·통신',['한국경제TV','내외경제TV','SWTV','뉴스핌','데일리안']);
-setcat('IT·산업 전문지',['IT조선','디지털타임스','테크월드','IT비즈뉴스','데이터넷','딜라이트닷넷','스마트투데이','미디어파인','로리더','로이슈','대학저널','한국강사신문']);
-function catOf(n){return CATMAP[n]||'인터넷·생활';}
-function renderCompare(){
- var g={};M.forEach(function(m){var c=catOf(m[0]);(g[c]=g[c]||[]).push(m[1]);});
- var COLORS={'종합일간지':'#315CFF','스포츠·연예':'#E4612B','경제·비즈니스':'#2FA96A','방송·통신':'#0FA6C0','IT·산업 전문지':'#6D5DF0','인터넷·생활':'#8A93A3'};
- var data=Object.keys(g).map(function(k){var a=g[k];return {name:k,avg:Math.round(a.reduce(function(x,y){return x+y;},0)/a.length),n:a.length,color:COLORS[k]||'#8A93A3'};}).sort(function(a,b){return b.avg-a.avg;});
- var max=Math.max.apply(null,data.map(function(x){return x.avg;}));
- document.getElementById('compare').innerHTML=data.map(function(x){
-  return '<div class="crow"><div class="top"><span class="lab"><span class="dot" style="background:'+x.color+'"></span>'+x.name+' <span class="g">'+x.n+'곳</span></span><span class="val">'+x.avg.toLocaleString('ko-KR')+'원</span></div>'+
-   '<div class="bar"><i style="width:'+Math.round(x.avg/max*100)+'%;background:'+x.color+'"></i></div></div>';
- }).join('');
-}
 function tierOf(p){return p>=250000?'p':(p>=120000?'s':'b');}
 function esc(s){return s.replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
 function hl(s,q){if(!q)return esc(s);return esc(s).replace(new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig'),'<mark>$1</mark>');}
-function chips(c){var o='';o+='<span class="'+(c.indexOf('네이버')>-1?'on':'')+'">N</span>';o+='<span class="d'+(c.indexOf('다음')>-1?' onx':'')+'" style="'+(c.indexOf('다음')>-1?'':'opacity:.3')+'">D</span>';o+='<span class="na" style="'+(c.indexOf('네이트')>-1?'':'opacity:.3')+'">Na</span>';return '<span class="ch">'+o+'</span>';}
-var TL={p:'프리미엄',s:'스탠다드',b:'베이직'};
-var cur='all';
-function setT(t){cur=t;document.querySelectorAll('.tabs button').forEach(function(b){b.classList.toggle('on',b.dataset.t===t);});render();}
-function render(){
+function chips(c){var o='<span class="'+(c.indexOf('네이버')>-1?'on':'')+'">N</span>';o+='<span style="'+(c.indexOf('다음')>-1?'':'opacity:.35')+'">D</span>';o+='<span style="'+(c.indexOf('네이트')>-1?'':'opacity:.35')+'">Na</span>';return '<span class="ch2">'+o+'</span>';}
+var TL={p:'프리미엄',s:'스탠다드',b:'베이직'};var mcur='all';
+function setT(t){mcur=t;document.querySelectorAll('.mtabs button').forEach(function(b){b.classList.toggle('on',b.dataset.t===t);});renderMedia();}
+function renderMedia(){
  var q=(document.getElementById('q').value||'').trim().toLowerCase();
- var list=M.filter(function(m){
-  if(cur!=='all'&&tierOf(m[1])!==cur)return false;
-  if(q&&m[0].toLowerCase().indexOf(q)<0)return false; return true;
- });
+ var list=M.filter(function(m){if(mcur!=='all'&&tierOf(m[1])!==mcur)return false;if(q&&m[0].toLowerCase().indexOf(q)<0)return false;return true;});
  document.getElementById('cnt').innerHTML='매체 <b>'+list.length+'</b>곳 · 1건 온라인 배포 기준(부가세 별도)';
- document.getElementById('tb').innerHTML=list.map(function(m){
-  var t=tierOf(m[1]);
-  return '<tr><td class="media">'+hl(m[0],q)+'<span class="tier '+t+'">'+TL[t]+'</span></td>'+
-   '<td class="hidem">'+chips(m[2])+'</td>'+
-   '<td class="price">'+m[1].toLocaleString('ko-KR')+'원</td></tr>';
+ document.getElementById('tb').innerHTML=list.map(function(m){var t=tierOf(m[1]);
+  return '<tr><td class="media">'+hl(m[0],q)+'<span class="tier '+t+'">'+TL[t]+'</span></td><td class="hidem">'+chips(m[2])+'</td><td class="price">'+won(m[1])+'</td></tr>';
  }).join('')||'<tr><td colspan="3" style="padding:30px 0;color:var(--sub-2)">조건에 맞는 매체가 없습니다.</td></tr>';
 }
-renderCompare();
-render();
+renderMedia();
 </script>
 </body>
 </html>
