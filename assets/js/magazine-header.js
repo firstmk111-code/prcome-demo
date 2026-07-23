@@ -21,38 +21,40 @@
     career:'<svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5.5A1.5 1.5 0 019.5 4h5A1.5 1.5 0 0116 5.5V7M3 12h18"/></svg>',
     project:'<svg viewBox="0 0 24 24"><path d="M4 11v2a1 1 0 001 1h2l4 4V6L7 10H5a1 1 0 00-1 1z"/><path d="M15 8a4 4 0 010 8"/></svg>',
     books:'<svg viewBox="0 0 24 24"><path d="M3 8.5L12 4l9 4.5-9 4.5-9-4.5z"/><path d="M7 11v4.5c0 1.1 2.2 2 5 2s5-.9 5-2V11"/></svg>',
-    more:'<svg viewBox="0 0 24 24"><circle cx="5.5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="18.5" cy="12" r="1.6"/></svg>'
+    more:'<svg viewBox="0 0 24 24"><circle cx="5.5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="18.5" cy="12" r="1.6"/></svg>',
+    ai:'<svg viewBox="0 0 24 24"><path d="M12 3l1.7 4.3L18 9l-4.3 1.7L12 15l-1.7-4.3L6 9l4.3-1.7z"/><path d="M18.5 14l.9 2.1 2.1.9-2.1.9-.9 2.1-.9-2.1-2.1-.9 2.1-.9z"/></svg>',
+    bell:'<svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg>'
   };
   /* 대분류 · act=현재위치 활성 판별 substring들 · items 없으면 단일 링크 · ic=구분 아이콘 */
   var NAV = [
-    { label:'홈', href:'index.html', ic:IC.home, home:true },
-    { label:'커뮤니티', href:'community/index.html', ic:IC.comm, act:['/community/'], cols:2, items:[
-      ['community/index.html','전체 피드'],['community/index.html?cat=qa','질문·답변'],
-      ['community/index.html?cat=news','업계 소식'],['community/index.html?cat=knowhow','실무 노하우'],
-      ['community/index.html?cat=case','언론홍보 사례'],['community/index.html?cat=free','자유게시판'],
-      ['community/index.html?cat=jobs','구인구직'],['community/index.html?cat=agency','홍보대행 의뢰'] ]},
-    { label:'인사이트', href:'insights/index.html', ic:IC.insight, act:['/insights/'], cols:2, items:[
-      ['insights/index.html?cat=pr','언론홍보 전략'],['insights/index.html?cat=media','기자 커뮤니케이션'],
-      ['insights/index.html?cat=pr','보도자료·위기관리'],['insights/index.html?cat=case','성공사례'],
-      ['insights/index.html?cat=geo','AEO·GEO'],['insights/index.html?cat=trend','홍보 트렌드'],
-      ['insights/index.html?cat=marketing','마케팅'],['insights/index.html?cat=term','용어사전'] ]},
-    { label:'PR회사', href:'directory/agencies.html', ic:IC.agency, act:['/directory/agencies','/directory/register','/directory/detail','/directory/expert','/directory/index'], cols:1, items:[
-      ['directory/agencies.html','PR·마케팅회사'],['directory/index.html?type=expert','전문가'],
-      ['directory/register.html','회사 등록'] ]},
-    { label:'언론사', href:'directory/media.html', ic:IC.media, act:['/directory/media'] },
-    { label:'구인구직', href:'career/index.html', ic:IC.career, act:['/career/'], cols:1, items:[
-      ['career/index.html','채용 공고'],['career/index.html?type=freelance','프리랜서·외주'],
-      ['career/index.html?post=1','채용 등록'] ]},
-    { label:'홍보대행 의뢰', href:'projects/index.html', ic:IC.project, act:['/projects/'], cols:1, items:[
-      ['projects/index.html','의뢰 찾기'],['projects/new.html','의뢰 등록'],
-      ['projects/portfolio.html','포트폴리오'] ]},
-    { label:'도서·교육', href:'resources/books.html', ic:IC.books, act:['/resources/','/events/'], cols:1, items:[
-      ['resources/books.html','PR 도서'],['events/index.html','교육·행사'] ]},
-    { label:'더보기', href:'more/index.html', ic:IC.more, act:['/more/','/tools/','/notice/','/help/','/legal/'], cols:2, items:[
-      ['tools/index.html','PR 도구'],['more/index.html?tab=calendar','PR 캘린더'],
-      ['projects/portfolio.html','포트폴리오'],['more/index.html?tab=badges','배지/업적'],
-      ['more/index.html?tab=friends','친구추천'],['more/index.html?tab=messages','쪽지'],
-      ['help/guide.html','이용가이드'] ]},
+    { label:'HOME', href:'index.html', ic:IC.home, home:true },
+    { label:'DIRECTORY', href:'directory/index.html', ic:IC.agency, act:['/directory/'], cols:1, items:[
+      ['directory/index.html','기업'],['directory/agencies.html','PR회사'],
+      ['directory/media.html','언론사'],['directory/media.html','기자'],
+      ['directory/index.html?type=expert','전문가'] ]},
+    { label:'CONTENTS', href:'insights/index.html', ic:IC.insight, act:['/insights/'], cols:1, items:[
+      ['insights/index.html?cat=pr','PR 가이드'],['insights/index.html','PR 뉴스'],
+      ['insights/index.html?cat=media','인터뷰'],['insights/index.html?cat=case','성공사례'],
+      ['insights/index.html?cat=trend','트렌드 리포트'] ]},
+    { label:'AI DEMO', href:'tools/pr-agent/index.html', ic:IC.ai, act:['/tools/pr-agent','/tools/media-recommend','/tools/pitch-mail','/tools/coverage-check','/tools/visibility'], cols:1, items:[
+      ['tools/pr-agent/index.html?start=write','AI 보도자료 작성'],['tools/media-recommend.html','AI 기자 추천'],
+      ['tools/pitch-mail.html','AI Pitch Mail'],['tools/coverage-check.html','AI PR 진단'],
+      ['tools/visibility.html','AI SEO/AEO 분석'] ]},
+    { label:'COMMUNITY', href:'community/index.html', ic:IC.comm, act:['/community/'], cols:1, items:[
+      ['community/index.html?cat=free','자유게시판'],['community/index.html?cat=qa','질문과 답변'],
+      ['community/index.html?cat=knowhow','홍보 노하우'],['events/index.html','행사/세미나'],
+      ['community/index.html?cat=agency','파트너 모집'] ]},
+    { label:'MARKETING', href:'projects/index.html', ic:IC.media, act:['/projects/','/tools/distribute'], cols:1, items:[
+      ['projects/index.html','애드버토리얼'],['tools/distribute.html','보도자료 배포'],
+      ['projects/new.html','PR 컨설팅'],['projects/index.html','콘텐츠 제작'] ]},
+    { label:'JOB', href:'career/index.html', ic:IC.career, act:['/career/'], cols:1, items:[
+      ['career/index.html','채용공고'],['career/index.html?type=seeker','구직'],
+      ['career/index.html?type=freelance','프리랜서'] ]},
+    { label:'NOTICE', href:'notice/index.html', ic:IC.bell, act:['/notice/'] },
+    { label:'MORE', href:'more/index.html', ic:IC.more, act:['/more/','/resources/','/events/','/help/','/legal/'], cols:1, items:[
+      ['resources/books.html','도서'],['events/index.html','교육'],
+      ['more/index.html?tab=faq','FAQ'],['help/contact.html','문의하기'],
+      ['help/guide.html','회사소개'] ]},
   ];
 
   function navActive(n){
