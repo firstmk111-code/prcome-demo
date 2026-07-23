@@ -48,10 +48,8 @@
       ['projects/new.html','PR 컨설팅'],['projects/index.html','콘텐츠 제작'],
       ['projects/new.html','홍보대행 의뢰하기'] ]},
     { label:'PR도구', href:'tools/index.html', ic:IC.ai, act:['/tools/'], cols:1, items:[
-      ['tools/press-release.html','AI 보도자료 자동화'],['tools/media-send.html','언론사 송출'],
-      ['tools/pr-diagnosis.html','AI 노출등급 진단'],
-      ['https://firstmk111-code.github.io/messeze-mvp/','AI 기자추천·피치메일'],
-      ['https://firstmk111-code.github.io/messeze-mvp/','AI SEO·AEO·GEO 분석'] ]},
+      ['tools/press-release.html','AI 보도자료 작성'],['tools/pr-diagnosis.html','AI 노출등급 진단'],
+      ['tools/journalist-match.html','AI 기자추천·피치메일'],['tools/seo-aeo.html','AI SEO·AEO·GEO 분석'] ]},
     { label:'도서·교육', href:'resources/books.html', ic:IC.books, act:['/resources/','/events/'], cols:1, items:[
       ['resources/books.html','PR 도서'],['resources/books.html','마케팅 도서'],
       ['events/index.html','온라인 교육'],['events/index.html','오프라인 교육'],
