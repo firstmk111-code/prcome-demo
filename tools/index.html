@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PR도구 — PRCOME</title>
-<meta name="description" content="홍보 실무에 필요한 AI 기반 PR 기능을 한곳에서 확인할 수 있습니다. AI 보도자료 작성·기자 추천·피치메일·PR 진단·SEO·AEO 분석.">
+<meta name="description" content="홍보 실무에 필요한 AI 기반 PR 기능을 한곳에서 확인할 수 있습니다. AI 보도자료 자동화·언론사 송출·노출등급 진단·기자추천·피치메일·SEO·AEO·GEO 분석.">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <link rel="stylesheet" href="../assets/css/magazine-system.css?v=2">
 <script>window.MAG={root:'../',home:'../index.html',catBase:'../insights/index.html'};</script>
@@ -16,13 +16,15 @@
 .subhead h1 .tick{width:26px;height:3px;background:var(--pt);border-radius:2px}
 .subhead .desc{font-size:15.5px;color:var(--sub);margin-top:10px;max-width:60ch;line-height:1.6}
 .tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:26px 0}
-.tcard{display:flex;flex-direction:column;background:var(--surf);border:1px solid var(--line);border-radius:12px;padding:22px}
+.tcard{display:flex;flex-direction:column;background:var(--surf);border:1px solid var(--line);border-radius:12px;padding:22px;position:relative}
 .tcard .ic{width:46px;height:46px;border-radius:12px;background:var(--pt-soft);color:var(--pt);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:12px}
 .tcard .nm{font-size:16px;font-weight:700;color:var(--ink)}
 .tcard .ds{font-size:13px;color:var(--sub);margin-top:6px;line-height:1.55;flex:1}
 .tcard .tbtn{align-self:flex-start;margin-top:14px;font-size:13px;font-weight:700;color:#fff;background:var(--pt);border-radius:8px;padding:9px 16px;transition:background var(--dur) var(--ease),transform var(--dur) var(--ease)}
+.tcard .tag{position:absolute;top:16px;right:16px;font-size:10px;font-weight:800;letter-spacing:.02em;border-radius:5px;padding:3px 8px;background:var(--navy);color:#fff}
 .tcard:hover{border-color:var(--pt);box-shadow:var(--shadow-md);transform:translateY(-2px);transition:border-color var(--dur) var(--ease),box-shadow var(--dur-2) var(--ease),transform var(--dur-2) var(--ease)}
 .tcard:hover .tbtn{background:var(--pt-2)}
+.glab{font-size:13px;font-weight:800;color:var(--sub-2);letter-spacing:.02em;margin:8px 2px 2px}
 @media (max-width:900px){.tgrid{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:560px){.tgrid{grid-template-columns:1fr}}
 </style>
@@ -36,36 +38,39 @@
     <p class="desc">홍보 실무에 필요한 AI 기반 PR 기능을 한곳에서 확인할 수 있습니다.</p>
   </section>
 
+  <div class="glab">기능별 도구</div>
   <div class="tgrid">
     <div class="tcard">
       <div class="ic">📰</div>
       <div class="nm">AI 보도자료 자동화</div>
-      <div class="ds">기업 정보만 입력하면 보도자료 작성·기자 추천·발송까지 한 번에 자동화합니다.</div>
+      <div class="ds">기업 정보만 입력하면 보도자료 초안을 자동으로 작성합니다.</div>
       <a class="tbtn" href="press-release.html">바로가기 →</a>
     </div>
     <div class="tcard">
-      <div class="ic">🎯</div>
-      <div class="nm">AI 기자 추천</div>
-      <div class="ds">업종과 홍보 주제에 맞는 기자를 추천하는 기능입니다.</div>
-      <a class="tbtn" href="journalist-match.html">바로가기 →</a>
+      <div class="ic">📤</div>
+      <div class="nm">언론사 송출</div>
+      <div class="ds">200개 이상 매체 중 선택해 보도자료를 송출하는 기능입니다.</div>
+      <a class="tbtn" href="media-send.html">바로가기 →</a>
     </div>
     <div class="tcard">
-      <div class="ic">✉️</div>
-      <div class="nm">AI 피치메일 작성</div>
-      <div class="ds">기자에게 전달할 맞춤형 피치메일 초안을 작성하는 기능입니다.</div>
-      <a class="tbtn" href="pitch-mail.html">바로가기 →</a>
-    </div>
-    <div class="tcard">
-      <div class="ic">🩺</div>
-      <div class="nm">AI PR 진단</div>
-      <div class="ds">기업의 현재 PR 상태와 개선 방향을 진단하는 기능입니다.</div>
+      <div class="ic">📊</div>
+      <div class="nm">AI 노출등급 진단</div>
+      <div class="ds">네이버 뉴스 기준 콘텐츠 노출 등급을 진단하는 기능입니다.</div>
       <a class="tbtn" href="pr-diagnosis.html">바로가기 →</a>
     </div>
     <div class="tcard">
+      <span class="tag">MVP</span>
+      <div class="ic">🎯</div>
+      <div class="nm">AI 기자추천·피치메일</div>
+      <div class="ds">주제에 맞는 기자를 추천하고 맞춤 피치메일을 자동 작성합니다.</div>
+      <a class="tbtn" href="https://firstmk111-code.github.io/messeze-mvp/" target="_blank" rel="noopener">바로가기 ↗</a>
+    </div>
+    <div class="tcard">
+      <span class="tag">MVP</span>
       <div class="ic">🌐</div>
-      <div class="nm">AI SEO·AEO 분석</div>
-      <div class="ds">기업 콘텐츠의 검색 및 AI 노출 상태를 분석하는 기능입니다.</div>
-      <a class="tbtn" href="seo-aeo.html">바로가기 →</a>
+      <div class="nm">AI SEO·AEO·GEO 분석</div>
+      <div class="ds">검색엔진·생성형 AI에서의 콘텐츠 노출 상태를 분석합니다.</div>
+      <a class="tbtn" href="https://firstmk111-code.github.io/messeze-mvp/" target="_blank" rel="noopener">바로가기 ↗</a>
     </div>
   </div>
   <div style="height:40px"></div>

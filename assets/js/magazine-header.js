@@ -9,7 +9,8 @@
   var C = window.MAG || {};
   var root = (typeof C.root==='string') ? C.root : '';
   var home = C.home || (root+'index.html');
-  function u(p){ return (p.charAt(0)==='#') ? p : root + p; }
+  function u(p){ return (p.charAt(0)==='#'||/^https?:/.test(p)) ? p : root + p; }
+  function ext(p){ return /^https?:/.test(p) ? ' target="_blank" rel="noopener"' : ''; }
 
   /* 구분용 라인 아이콘(currentColor) */
   var IC={
@@ -47,9 +48,10 @@
       ['projects/new.html','PR 컨설팅'],['projects/index.html','콘텐츠 제작'],
       ['projects/new.html','홍보대행 의뢰하기'] ]},
     { label:'PR도구', href:'tools/index.html', ic:IC.ai, act:['/tools/'], cols:1, items:[
-      ['tools/press-release.html','AI 보도자료 자동화'],['tools/journalist-match.html','AI 기자 추천'],
-      ['tools/pitch-mail.html','AI 피치메일 작성'],['tools/pr-diagnosis.html','AI PR 진단'],
-      ['tools/seo-aeo.html','AI SEO·AEO 분석'] ]},
+      ['tools/press-release.html','AI 보도자료 자동화'],['tools/media-send.html','언론사 송출'],
+      ['tools/pr-diagnosis.html','AI 노출등급 진단'],
+      ['https://firstmk111-code.github.io/messeze-mvp/','AI 기자추천·피치메일'],
+      ['https://firstmk111-code.github.io/messeze-mvp/','AI SEO·AEO·GEO 분석'] ]},
     { label:'도서·교육', href:'resources/books.html', ic:IC.books, act:['/resources/','/events/'], cols:1, items:[
       ['resources/books.html','PR 도서'],['resources/books.html','마케팅 도서'],
       ['events/index.html','온라인 교육'],['events/index.html','오프라인 교육'],
@@ -71,7 +73,7 @@
   var navHtml = NAV.map(function(n){
     var has = !!n.items;
     var mega = has ? ('<div class="mega'+(n.cols===3?' c3':'')+'"><div class="mega-grid">'+
-      n.items.map(function(it){ return '<a href="'+u(it[0])+'">'+it[1]+'</a>'; }).join('')+'</div></div>') : '';
+      n.items.map(function(it){ return '<a href="'+u(it[0])+'"'+ext(it[0])+'>'+it[1]+'</a>'; }).join('')+'</div></div>') : '';
     return '<div class="nav-item'+(has?' has-mega':'')+'">'+
       '<a class="nav-link'+(navActive(n)?' on':'')+'" href="'+u(n.href)+'"'+(has?' aria-haspopup="true"':'')+'>'+
         (n.ic?'<span class="nic">'+n.ic+'</span>':'')+n.label+(has?CHEV:'')+'</a>'+mega+'</div>';
@@ -82,7 +84,7 @@
     if(!n.items) return '<a class="m-link" href="'+u(n.href)+'">'+lead+n.label+'</a>';
     return '<div class="m-acc"><button class="m-acc-hd" type="button">'+lead+n.label+CHEV+'</button>'+
       '<div class="m-acc-body"><a href="'+u(n.href)+'">'+n.label+' 전체</a>'+
-      n.items.map(function(it){ return '<a href="'+u(it[0])+'">'+it[1]+'</a>'; }).join('')+'</div></div>';
+      n.items.map(function(it){ return '<a href="'+u(it[0])+'"'+ext(it[0])+'>'+it[1]+'</a>'; }).join('')+'</div></div>';
   }).join('');
 
   var header =
