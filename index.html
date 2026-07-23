@@ -23,6 +23,7 @@ window.SEO={
   ]
 };
 </script>
+<script>try{if(window.matchMedia&&!matchMedia('(prefers-reduced-motion:reduce)').matches&&'IntersectionObserver'in window){document.documentElement.classList.add('reveal-js');}}catch(e){}</script>
 <style>
 /* ===== 히어로 (차분한 에디토리얼) ===== */
 .hero{background:var(--surf);border-bottom:1px solid var(--line)}
@@ -182,7 +183,47 @@ window.SEO={
   .posts a .stat{grid-column:2;grid-row:1;align-self:start}
   .comm .side{grid-template-columns:1fr}
   .res-grid{grid-template-columns:repeat(3,1fr)}
+  .hero .in{padding:40px 20px 36px}
+  .sec{padding:34px 0}
+  .quicknav .in{justify-content:flex-start}
 }
+@media (max-width:400px){ .res-grid{grid-template-columns:repeat(2,1fr)} }
+
+/* ===== UX 폴리시 (hover·motion·elevation 정리) ===== */
+/* 부드러운 색 전환 */
+.posts a .t,.mag-latest .t,.dir .nm,.opp .row .t,.au .nm,.book .t,.feature h3,.newsgrid .t,
+.topics a,.mag-cats a,.quicknav a,.colhead a{transition:color var(--dur) var(--ease),border-color var(--dur) var(--ease),background var(--dur) var(--ease)}
+/* 뉴스 카드: 대칭 전환 + 토큰 그림자 */
+.newsgrid a{transition:border-color var(--dur) var(--ease),box-shadow var(--dur-2) var(--ease),transform var(--dur-2) var(--ease)}
+.newsgrid a:hover{border-color:var(--pt);box-shadow:var(--shadow-md);transform:translateY(-3px)}
+.newsgrid a:active{transform:translateY(-1px)}
+.newsgrid .thumb img{transition:transform .4s var(--ease)}
+.newsgrid a:hover .thumb img{transform:scale(1.04)}
+/* 커뮤니티/디렉토리 행: hover 시 살짝 들여쓰기 느낌 */
+.posts a,.mag-latest a,.dir a{transition:background var(--dur) var(--ease)}
+.posts a:hover,.mag-latest a:hover,.dir a:hover{background:linear-gradient(90deg,var(--pt-soft),transparent 60%)}
+/* 사이드 박스 */
+.comm .side .box{transition:border-color var(--dur) var(--ease),box-shadow var(--dur-2) var(--ease)}
+.comm .side .box:hover{border-color:var(--line-2);box-shadow:var(--shadow-sm)}
+/* 도서 카드 리프트 */
+.book .cv{transition:transform var(--dur-2) var(--ease),box-shadow var(--dur-2) var(--ease)}
+.book:hover .cv{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+/* 버튼 전환 + 미세 리프트 */
+.hero-search button,.hero-ai a,.aiband .ai-btn,.join .b1,.join .b2{transition:background var(--dur) var(--ease),border-color var(--dur) var(--ease),box-shadow var(--dur) var(--ease),transform var(--dur) var(--ease)}
+.hero-search button:hover,.aiband .ai-btn.pri:hover,.join .b1:hover{transform:translateY(-1px);box-shadow:var(--shadow-md)}
+.hero-ai a:hover{transform:translateY(-1px)}
+/* Empty State */
+.empty-st{display:flex;flex-direction:column;align-items:center;text-align:center;gap:5px;padding:44px 20px;border:1px dashed var(--line-2);border-radius:12px;background:var(--bg)}
+.empty-st .ic{font-size:26px;margin-bottom:4px;opacity:.9}
+.empty-st b{font-size:15px;color:var(--ink)}
+.empty-st span{font-size:13px;color:var(--sub)}
+.empty-st a{margin-top:10px;font-size:13.5px;font-weight:700;color:#fff;background:var(--pt);border-radius:8px;padding:9px 18px;transition:background var(--dur) var(--ease)}
+.empty-st a:hover{background:var(--pt-2)}
+/* 스크롤 진입 리빌(섹션 단위) */
+.reveal-js .sec,.reveal-js .newslead{opacity:0;transform:translateY(18px);
+  transition:opacity .55s var(--ease-out),transform .55s var(--ease-out)}
+.reveal-js .sec.in,.reveal-js .newslead.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal-js .sec,.reveal-js .newslead{opacity:1!important;transform:none!important}}
 </style>
 </head>
 <body>
@@ -409,7 +450,7 @@ function ctab(mode,btn){
  else if(mode==='qa')list=list.filter(function(p){return p[0]==='qa';});
  else if(mode==='data')list=list.filter(function(p){return p[0]==='knowhow';});
  list=list.slice(0,7);
- document.getElementById('posts').innerHTML=list.map(rowHtml).join('')||'<div style="padding:24px 0;color:var(--sub)">아직 글이 없습니다.</div>';
+ document.getElementById('posts').innerHTML=list.map(rowHtml).join('')||'<div class="empty-st"><span class="ic">💬</span><b>아직 등록된 글이 없어요</b><span>이 카테고리의 첫 이야기를 남겨보세요.</span><a href="community/write.html">글쓰기 →</a></div>';
 }
 ctab('hot');
 /* PR 업계 뉴스 (한국PR협회 뉴스룸 newsroom-prnews) */
@@ -430,6 +471,15 @@ document.getElementById('news').innerHTML=NEWS.map(function(n){
   '<span class="thumb"><img src="assets/img/news/'+n[2]+'" alt="'+n[3]+' 기사 이미지" loading="lazy"></span>'+
   '<span><span class="nsrc">'+n[3]+'</span><span class="t">'+n[1]+'</span><span class="read">원문 보기 ↗</span></span></a>';
 }).join('');
+/* 스크롤 진입 리빌 (+ 콘텐츠가 숨은 채 남지 않도록 failsafe) */
+(function(){
+ if(!document.documentElement.classList.contains('reveal-js'))return;
+ var els=[].slice.call(document.querySelectorAll('.sec,.newslead'));
+ var reveal=function(el){el.classList.add('in');};
+ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){reveal(e.target);io.unobserve(e.target);}});},{threshold:.06,rootMargin:'0px 0px -6% 0px'});
+ els.forEach(function(el){io.observe(el);});
+ setTimeout(function(){els.forEach(reveal);},1800);
+})();
 </script>
 </body>
 </html>

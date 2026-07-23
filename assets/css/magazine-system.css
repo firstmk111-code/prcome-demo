@@ -283,5 +283,37 @@ body{background:var(--background);color:var(--text-primary);font-family:var(--sa
 /* 태그 행 */
 .tagrow{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
 .tagrow .tg{font-size:12.5px;font-weight:600;color:var(--sub);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 13px}
-.tagrow .tg:hover{color:var(--pt);border-color:var(--pt)}
+.tagrow .tg{transition:color var(--dur) var(--ease),border-color var(--dur) var(--ease),background var(--dur) var(--ease)}
+.tagrow .tg:hover{color:var(--pt);border-color:var(--pt);background:var(--pt-soft)}
 .tagrow .tg::before{content:"#";color:var(--pt);margin-right:2px}
+
+/* =========================================================
+   UX 폴리시 기반 — 접근성 · 모션 · 엘리베이션 토큰 (전 페이지 공통)
+   ========================================================= */
+:root{
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --dur:.18s; --dur-2:.32s;
+  --shadow-sm:0 1px 2px rgba(17,24,39,.05), 0 1px 3px rgba(17,24,39,.05);
+  --shadow-md:0 4px 12px rgba(17,24,39,.06), 0 2px 5px rgba(17,24,39,.04);
+  --shadow-lg:0 14px 34px rgba(17,24,39,.10), 0 5px 12px rgba(17,24,39,.05);
+}
+html{scroll-behavior:smooth}
+::selection{background:var(--pt);color:#fff}
+::-moz-selection{background:var(--pt);color:#fff}
+/* 키보드 포커스 링(마우스 클릭 시엔 노출 안 함) */
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
+select:focus-visible,summary:focus-visible,[tabindex]:focus-visible{
+  outline:2px solid var(--pt); outline-offset:2px; border-radius:5px}
+a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
+/* 스크롤 진입 리빌(플래시 방지: <head>에서 .reveal-js 게이트, JS 없으면 항상 노출) */
+.reveal-js .reveal{opacity:0;transform:translateY(16px);will-change:opacity,transform;
+  transition:opacity .5s var(--ease-out), transform .5s var(--ease-out)}
+.reveal-js .reveal.in{opacity:1;transform:none}
+/* 모션 최소화 선호 존중 */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:.001ms!important}
+  .reveal-js .reveal{opacity:1!important;transform:none!important}
+}
