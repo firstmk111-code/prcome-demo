@@ -27,31 +27,31 @@
   };
   /* 대분류 · act=현재위치 활성 판별 substring들 · items 없으면 단일 링크 · ic=구분 아이콘 */
   var NAV = [
-    { label:'HOME', href:'index.html', ic:IC.home, home:true },
-    { label:'DIRECTORY', href:'directory/index.html', ic:IC.agency, act:['/directory/'], cols:1, items:[
+    { label:'홈', href:'index.html', ic:IC.home, home:true },
+    { label:'기업정보', href:'directory/index.html', ic:IC.agency, act:['/directory/'], cols:1, items:[
       ['directory/index.html','기업'],['directory/agencies.html','PR회사'],
       ['directory/media.html','언론사'],['directory/media.html','기자'],
       ['directory/index.html?type=expert','전문가'] ]},
-    { label:'CONTENTS', href:'insights/index.html', ic:IC.insight, act:['/insights/'], cols:1, items:[
+    { label:'콘텐츠', href:'insights/index.html', ic:IC.insight, act:['/insights/'], cols:1, items:[
       ['insights/index.html?cat=pr','PR 가이드'],['insights/index.html','PR 뉴스'],
       ['insights/index.html?cat=media','인터뷰'],['insights/index.html?cat=case','성공사례'],
       ['insights/index.html?cat=trend','트렌드 리포트'] ]},
-    { label:'AI DEMO', href:'tools/pr-agent/index.html', ic:IC.ai, act:['/tools/pr-agent','/tools/media-recommend','/tools/pitch-mail','/tools/coverage-check','/tools/visibility'], cols:1, items:[
+    { label:'AI 데모', href:'tools/pr-agent/index.html', ic:IC.ai, act:['/tools/pr-agent','/tools/media-recommend','/tools/pitch-mail','/tools/coverage-check','/tools/visibility'], cols:1, items:[
       ['tools/pr-agent/index.html?start=write','AI 보도자료 작성'],['tools/media-recommend.html','AI 기자 추천'],
       ['tools/pitch-mail.html','AI Pitch Mail'],['tools/coverage-check.html','AI PR 진단'],
       ['tools/visibility.html','AI SEO/AEO 분석'] ]},
-    { label:'COMMUNITY', href:'community/index.html', ic:IC.comm, act:['/community/'], cols:1, items:[
+    { label:'커뮤니티', href:'community/index.html', ic:IC.comm, act:['/community/'], cols:1, items:[
       ['community/index.html?cat=free','자유게시판'],['community/index.html?cat=qa','질문과 답변'],
       ['community/index.html?cat=knowhow','홍보 노하우'],['events/index.html','행사/세미나'],
       ['community/index.html?cat=agency','파트너 모집'] ]},
-    { label:'MARKETING', href:'projects/index.html', ic:IC.media, act:['/projects/','/tools/distribute'], cols:1, items:[
+    { label:'마케팅', href:'projects/index.html', ic:IC.media, act:['/projects/','/tools/distribute'], cols:1, items:[
       ['projects/index.html','애드버토리얼'],['tools/distribute.html','보도자료 배포'],
       ['projects/new.html','PR 컨설팅'],['projects/index.html','콘텐츠 제작'] ]},
-    { label:'JOB', href:'career/index.html', ic:IC.career, act:['/career/'], cols:1, items:[
+    { label:'구인구직', href:'career/index.html', ic:IC.career, act:['/career/'], cols:1, items:[
       ['career/index.html','채용공고'],['career/index.html?type=seeker','구직'],
       ['career/index.html?type=freelance','프리랜서'] ]},
-    { label:'NOTICE', href:'notice/index.html', ic:IC.bell, act:['/notice/'] },
-    { label:'MORE', href:'more/index.html', ic:IC.more, act:['/more/','/resources/','/events/','/help/','/legal/'], cols:1, items:[
+    { label:'공지사항', href:'notice/index.html', ic:IC.bell, act:['/notice/'] },
+    { label:'더보기', href:'more/index.html', ic:IC.more, act:['/more/','/resources/','/events/','/help/','/legal/'], cols:1, items:[
       ['resources/books.html','도서'],['events/index.html','교육'],
       ['more/index.html?tab=faq','FAQ'],['help/contact.html','문의하기'],
       ['help/guide.html','회사소개'] ]},
