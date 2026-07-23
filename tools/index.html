@@ -3,118 +3,72 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PR 도구 — 보도자료 AI·배포·단가표·검색 가시성 | PRCOME</title>
-<meta name="description" content="보도자료 AI 작성·배포, 뉴스 가치 진단, 제목 생성, 피치 메일, 매체 추천, PR 단가표, 검색 가시성(SEO·AEO·GEO) 진단까지 — PR 실무를 위한 무료 도구 모음. PRCOME.">
-<meta name="keywords" content="보도자료 작성, 보도자료 배포, PR 도구, 뉴스 가치, PR 단가표, 검색 가시성, AEO, GEO">
+<title>PR도구 — PRCOME</title>
+<meta name="description" content="홍보 실무에 필요한 AI 기반 PR 기능을 한곳에서 확인할 수 있습니다. AI 보도자료 작성·기자 추천·피치메일·PR 진단·SEO·AEO 분석.">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <link rel="stylesheet" href="../assets/css/magazine-system.css?v=2">
 <script>window.MAG={root:'../',home:'../index.html',catBase:'../insights/index.html'};</script>
-<script>
-window.SEO={
-  faq:[
-    {q:'PR 도구는 무료인가요?',a:'네. PRCOME의 PR·마케팅 실무 도구는 1차 서비스로 무료 제공됩니다. 일부 고급 기능은 추후 회원 전용으로 전환될 수 있습니다.'},
-    {q:'보도자료를 AI로 작성할 수 있나요?',a:'네. <a href="pr-agent/index.html">AI PR 워크스페이스</a> 또는 <a href="press-release.html">보도자료 작성 도구</a>에서 아이템 정보를 입력하면 초안을 생성하고 제목·리드를 다듬을 수 있습니다.'},
-    {q:'작성한 보도자료를 배포까지 할 수 있나요?',a:'<a href="distribute.html">보도자료 배포 도구</a>에서 아이템에 맞는 매체를 매칭하고 배포를 진행할 수 있습니다. 매체별 비용은 <a href="rate-card.html">PR 단가표</a>를 참고하세요.'},
-    {q:'기사화 가능성을 미리 알 수 있나요?',a:'<a href="coverage-check.html">뉴스 가치 진단</a>으로 새로움·시의성·구체성 등을 점검해 기사화 가능성을 사전에 확인할 수 있습니다.'},
-    {q:'AI 검색(AEO/GEO) 노출도 점검할 수 있나요?',a:'<a href="visibility.html">검색 가시성 점검</a>에서 SEO·AEO·GEO 관점의 브랜드 노출 상태를 진단합니다.'},
-    {q:'성과 관리(모니터링)는 어떻게 하나요?',a:'배포 후 보도 현황·검색 노출·언급을 추적해 성과를 관리합니다. 검색 가시성 진단과 매거진의 측정 가이드를 함께 활용하세요.'}
-  ]
-};
-</script>
 <style>
 .subhead{padding:30px 0 6px}
 .subhead .crumb{font-size:12.5px;color:var(--sub);margin-bottom:12px}
+.subhead .crumb a:hover{color:var(--pt)}
 .subhead h1{font-size:clamp(24px,3vw,32px);font-weight:800;letter-spacing:-.03em;display:flex;align-items:center;gap:12px}
 .subhead h1 .tick{width:26px;height:3px;background:var(--pt);border-radius:2px}
 .subhead .desc{font-size:15.5px;color:var(--sub);margin-top:10px;max-width:60ch;line-height:1.6}
-.grp{margin-top:30px}
-.grp h2{font-size:16px;font-weight:800;letter-spacing:-.02em;display:flex;align-items:center;gap:9px;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--ink)}
-.grp h2 .c{font-size:12px;font-weight:700;color:var(--sub-2)}
-.tgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.tcard{display:block;background:var(--surf);border:1px solid var(--line);border-radius:12px;padding:20px;position:relative}
-.tcard:hover{border-color:var(--pt);transform:translateY(-2px);transition:.2s}
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:26px 0}
+.tcard{display:flex;flex-direction:column;background:var(--surf);border:1px solid var(--line);border-radius:12px;padding:22px}
 .tcard .ic{width:46px;height:46px;border-radius:12px;background:var(--pt-soft);color:var(--pt);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:12px}
-.tcard .nm{font-size:15px;font-weight:700}.tcard:hover .nm{color:var(--pt)}
-.tcard .ds{font-size:12.5px;color:var(--sub);margin-top:5px;line-height:1.5}
-.tcard .bdg{position:absolute;top:12px;right:12px;font-size:9px;font-weight:800;border-radius:3px;padding:2px 6px}
-.tcard .bdg.hot{background:#FDECE4;color:#E4612B}.tcard .bdg.new{background:#EAF6EE;color:#2FA96A}.tcard .bdg.ai{background:var(--pt-soft);color:var(--pt)}
+.tcard .nm{font-size:16px;font-weight:700;color:var(--ink)}
+.tcard .ds{font-size:13px;color:var(--sub);margin-top:6px;line-height:1.55;flex:1}
+.tcard .tbtn{align-self:flex-start;margin-top:14px;font-size:13px;font-weight:700;color:#fff;background:var(--pt);border-radius:8px;padding:9px 16px;transition:background var(--dur) var(--ease),transform var(--dur) var(--ease)}
+.tcard:hover{border-color:var(--pt);box-shadow:var(--shadow-md);transform:translateY(-2px);transition:border-color var(--dur) var(--ease),box-shadow var(--dur-2) var(--ease),transform var(--dur-2) var(--ease)}
+.tcard:hover .tbtn{background:var(--pt-2)}
 @media (max-width:900px){.tgrid{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:520px){.tgrid{grid-template-columns:1fr}}
+@media (max-width:560px){.tgrid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <div id="mag-header"></div>
 <div class="wrap">
   <section class="subhead">
-    <div class="crumb"><a href="../index.html">홈</a> / 마케팅 도구</div>
-    <h1><span class="tick"></span>PR 도구</h1>
-    <p class="desc">보도자료 <strong>작성 → 배포 → 성과 관리</strong>까지 PR 실무 전 과정을 돕는 무료 도구 모음입니다. 뉴스 가치 진단·제목 생성·피치 메일·매체 추천·PR 단가표, 그리고 SEO·AEO·GEO 검색 가시성 진단과 마케팅 분석 도구까지 한 곳에서 이용하세요.</p>
+    <div class="crumb"><a href="../index.html">홈</a> / PR도구</div>
+    <h1><span class="tick"></span>PR도구</h1>
+    <p class="desc">홍보 실무에 필요한 AI 기반 PR 기능을 한곳에서 확인할 수 있습니다.</p>
   </section>
 
-  <div class="grp">
-    <h2>마케팅 도구 <span class="c">· 검색·SNS·성과 분석</span></h2>
-    <div class="tgrid">
-      <a class="tcard" href="blog-index.html"><span class="bdg ai">AI</span><span class="ic">📈</span><div class="nm">블로그 지수 체커</div><div class="ds">네이버 블로그 등급·최적화 상태 진단</div></a>
-      <a class="tcard" href="keyword-analyzer.html"><span class="ic">🔍</span><div class="nm">키워드 분석기</div><div class="ds">검색량·경쟁도·연관 키워드 분석</div></a>
-      <a class="tcard" href="keyword-trend.html"><span class="bdg new">NEW</span><span class="ic">📊</span><div class="nm">키워드 트렌드</div><div class="ds">기간별 검색 관심도 추이</div></a>
-      <a class="tcard" href="insta-calculator.html"><span class="ic">📸</span><div class="nm">인스타 참여율 계산기</div><div class="ds">engagement rate 자동 계산</div></a>
-      <a class="tcard" href="cost-calculator.html"><span class="ic">💰</span><div class="nm">마케팅 비용 계산기</div><div class="ds">CPC·CPM·ROAS 계산</div></a>
-      <a class="tcard" href="rate-card.html"><span class="bdg hot">HOT</span><span class="ic">📋</span><div class="nm">PR 단가표</div><div class="ds">매체별 보도자료 배포 단가</div></a>
-      <a class="tcard" href="hashtag-generator.html"><span class="ic">#️⃣</span><div class="nm">해시태그 생성기</div><div class="ds">주제 기반 추천 해시태그</div></a>
-      <a class="tcard" href="visibility.html"><span class="ic">🌐</span><div class="nm">검색 가시성 점검</div><div class="ds">SEO·AEO·GEO 노출 진단</div></a>
+  <div class="tgrid">
+    <div class="tcard">
+      <div class="ic">📰</div>
+      <div class="nm">AI 보도자료 작성</div>
+      <div class="ds">기업 정보를 바탕으로 보도자료 초안을 작성하는 기능입니다.</div>
+      <a class="tbtn" href="press-release.html">바로가기 →</a>
+    </div>
+    <div class="tcard">
+      <div class="ic">🎯</div>
+      <div class="nm">AI 기자 추천</div>
+      <div class="ds">업종과 홍보 주제에 맞는 기자를 추천하는 기능입니다.</div>
+      <a class="tbtn" href="journalist-match.html">바로가기 →</a>
+    </div>
+    <div class="tcard">
+      <div class="ic">✉️</div>
+      <div class="nm">AI 피치메일 작성</div>
+      <div class="ds">기자에게 전달할 맞춤형 피치메일 초안을 작성하는 기능입니다.</div>
+      <a class="tbtn" href="pitch-mail.html">바로가기 →</a>
+    </div>
+    <div class="tcard">
+      <div class="ic">🩺</div>
+      <div class="nm">AI PR 진단</div>
+      <div class="ds">기업의 현재 PR 상태와 개선 방향을 진단하는 기능입니다.</div>
+      <a class="tbtn" href="pr-diagnosis.html">바로가기 →</a>
+    </div>
+    <div class="tcard">
+      <div class="ic">🌐</div>
+      <div class="nm">AI SEO·AEO 분석</div>
+      <div class="ds">기업 콘텐츠의 검색 및 AI 노출 상태를 분석하는 기능입니다.</div>
+      <a class="tbtn" href="seo-aeo.html">바로가기 →</a>
     </div>
   </div>
-
-  <div class="grp">
-    <h2>PR 실무 도구 <span class="c">· 보도자료·미디어</span></h2>
-    <div class="tgrid">
-      <a class="tcard" href="press-release.html"><span class="bdg ai">AI</span><span class="ic">📰</span><div class="nm">보도자료 작성</div><div class="ds">AI 초안 작성 어시스턴트</div></a>
-      <a class="tcard" href="distribute.html"><span class="bdg ai">AI</span><span class="ic">📤</span><div class="nm">보도자료 배포</div><div class="ds">매체 매칭·배포 지원</div></a>
-      <a class="tcard" href="coverage-check.html"><span class="ic">🎯</span><div class="nm">뉴스 가치 진단</div><div class="ds">기사화 가능성 점검</div></a>
-      <a class="tcard" href="title-generator.html"><span class="ic">✏️</span><div class="nm">제목 생성기</div><div class="ds">채택되는 제목 추천</div></a>
-      <a class="tcard" href="pitch-mail.html"><span class="ic">✉️</span><div class="nm">피치 메일 작성</div><div class="ds">기자 컨택 메일 템플릿</div></a>
-      <a class="tcard" href="checklist.html"><span class="ic">✅</span><div class="nm">보도자료 체크리스트</div><div class="ds">배포 전 최종 점검</div></a>
-      <a class="tcard" href="media-recommend.html"><span class="ic">📚</span><div class="nm">매체 추천</div><div class="ds">아이템별 매체 매칭</div></a>
-      <a class="tcard" href="../directory/media.html"><span class="ic">🏢</span><div class="nm">언론사 리스트</div><div class="ds">매체·담당 부서 디렉토리</div></a>
-    </div>
-  </div>
-  <div class="hub">
-    <section class="hsec" id="workflow">
-      <h2><span class="n">→</span>PR 도구 이렇게 이어집니다</h2>
-      <p>각 도구는 단독으로도 쓰지만, <strong>보도자료 작성 → 매체 매칭·배포 → 기사화 점검 → 검색 가시성 관리</strong>로 이어지는 하나의 워크플로로 연결됩니다.</p>
-      <ul class="bul">
-        <li><strong>작성</strong> — <a href="press-release.html">보도자료 작성</a> · <a href="title-generator.html">제목 생성</a> · <a href="checklist.html">체크리스트</a></li>
-        <li><strong>배포·메일링</strong> — <a href="distribute.html">보도자료 배포</a> · <a href="media-recommend.html">매체 추천</a> · <a href="pitch-mail.html">피치 메일</a> · <a href="../directory/media.html">언론사 리스트</a></li>
-        <li><strong>점검·성과관리</strong> — <a href="coverage-check.html">뉴스 가치 진단</a> · <a href="visibility.html">검색 가시성(SEO·AEO·GEO)</a> · <a href="rate-card.html">PR 단가표</a></li>
-      </ul>
-    </section>
-
-    <section class="hsec" id="faq">
-      <h2><span class="n">Q</span>자주 묻는 질문</h2>
-      <div class="faq" id="faqList"></div>
-    </section>
-
-    <section class="cta">
-      <div class="ct-l">
-        <h2>지금 보도자료부터 만들어 보세요</h2>
-        <p>AI PR 워크스페이스에서 초안 작성 → 매체 매칭 → 배포를 한 번에. 대행이 필요하면 프로젝트로 의뢰할 수도 있습니다.</p>
-      </div>
-      <div class="ct-b">
-        <a class="btn pri" href="pr-agent/index.html">AI PR 워크스페이스</a>
-        <a class="btn sec" href="rate-card.html">PR 단가표</a>
-        <a class="btn sec" href="../projects/new.html">홍보대행 의뢰</a>
-      </div>
-    </section>
-
-    <div class="tagrow" aria-label="관련 태그">
-      <a class="tg" href="press-release.html">보도자료작성</a>
-      <a class="tg" href="distribute.html">배포</a>
-      <a class="tg" href="visibility.html">검색가시성</a>
-      <a class="tg" href="rate-card.html">PR단가</a>
-      <a class="tg" href="../directory/media.html">언론사</a>
-    </div>
-  </div>
-  <div style="height:50px"></div>
+  <div style="height:40px"></div>
 </div>
 <div id="mag-footer"></div>
 <script src="../assets/js/magazine-header.js?v=2"></script>

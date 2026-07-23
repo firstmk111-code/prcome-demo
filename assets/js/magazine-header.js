@@ -28,32 +28,36 @@
   /* 대분류 · act=현재위치 활성 판별 substring들 · items 없으면 단일 링크 · ic=구분 아이콘 */
   var NAV = [
     { label:'홈', href:'index.html', ic:IC.home, home:true },
-    { label:'기업정보', href:'directory/agencies.html', ic:IC.agency, act:['/directory/'], cols:1, items:[
-      ['directory/media.html','언론사'],
-      ['directory/agencies.html','PR기업'] ]},
-    { label:'콘텐츠', href:'insights/index.html', ic:IC.insight, act:['/insights/'], cols:1, items:[
+    { label:'커뮤니티', href:'community/index.html', ic:IC.comm, act:['/community/'], cols:1, items:[
+      ['community/index.html?cat=free','자유게시판'],['community/index.html?cat=qa','질문과 답변'],
+      ['community/index.html?cat=knowhow','홍보 노하우'],['events/index.html','행사·세미나'],
+      ['community/index.html?cat=agency','파트너 모집'] ]},
+    { label:'인사이트', href:'insights/index.html', ic:IC.insight, act:['/insights/'], cols:1, items:[
       ['insights/index.html?cat=pr','PR 가이드'],['insights/index.html','PR 뉴스'],
       ['insights/index.html?cat=media','인터뷰'],['insights/index.html?cat=case','성공사례'],
       ['insights/index.html?cat=trend','트렌드 리포트'] ]},
-    { label:'AI 데모', href:'tools/pr-agent/index.html', ic:IC.ai, act:['/tools/pr-agent','/tools/media-recommend','/tools/pitch-mail','/tools/coverage-check','/tools/visibility'], cols:1, items:[
-      ['tools/pr-agent/index.html?start=write','AI 보도자료 작성'],['tools/media-recommend.html','AI 기자 추천'],
-      ['tools/pitch-mail.html','AI Pitch Mail'],['tools/coverage-check.html','AI PR 진단'],
-      ['tools/visibility.html','AI SEO/AEO 분석'] ]},
-    { label:'커뮤니티', href:'community/index.html', ic:IC.comm, act:['/community/'], cols:1, items:[
-      ['community/index.html?cat=free','자유게시판'],['community/index.html?cat=qa','질문과 답변'],
-      ['community/index.html?cat=knowhow','홍보 노하우'],['events/index.html','행사/세미나'],
-      ['community/index.html?cat=agency','파트너 모집'] ]},
-    { label:'마케팅', href:'projects/index.html', ic:IC.media, act:['/projects/','/tools/distribute'], cols:1, items:[
-      ['projects/index.html','애드버토리얼'],['tools/distribute.html','보도자료 배포'],
-      ['projects/new.html','PR 컨설팅'],['projects/index.html','콘텐츠 제작'] ]},
+    { label:'기업정보', href:'directory/agencies.html', ic:IC.agency, act:['/directory/'], cols:1, items:[
+      ['directory/media.html','언론사'],
+      ['directory/agencies.html','PR기업'] ]},
     { label:'구인구직', href:'career/index.html', ic:IC.career, act:['/career/'], cols:1, items:[
-      ['career/index.html','채용공고'],['career/index.html?type=seeker','구직'],
-      ['career/index.html?type=freelance','프리랜서'] ]},
-    { label:'공지사항', href:'notice/index.html', ic:IC.bell, act:['/notice/'] },
-    { label:'더보기', href:'more/index.html', ic:IC.more, act:['/more/','/resources/','/events/','/help/','/legal/'], cols:1, items:[
-      ['resources/books.html','도서'],['events/index.html','교육'],
+      ['career/index.html','채용공고'],['career/index.html?post=1','구직 등록'],
+      ['career/index.html?type=freelance','프리랜서'],['career/index.html?type=talent','인재 찾기'] ]},
+    { label:'홍보대행 의뢰', href:'projects/index.html', ic:IC.project, act:['/projects/','/tools/distribute'], cols:1, items:[
+      ['tools/distribute.html','보도자료 배포'],['projects/index.html','애드버토리얼'],
+      ['projects/new.html','PR 컨설팅'],['projects/index.html','콘텐츠 제작'],
+      ['projects/new.html','홍보대행 의뢰하기'] ]},
+    { label:'PR도구', href:'tools/index.html', ic:IC.ai, act:['/tools/'], cols:1, items:[
+      ['tools/press-release.html','AI 보도자료 작성'],['tools/journalist-match.html','AI 기자 추천'],
+      ['tools/pitch-mail.html','AI 피치메일 작성'],['tools/pr-diagnosis.html','AI PR 진단'],
+      ['tools/seo-aeo.html','AI SEO·AEO 분석'] ]},
+    { label:'도서·교육', href:'resources/books.html', ic:IC.books, act:['/resources/','/events/'], cols:1, items:[
+      ['resources/books.html','PR 도서'],['resources/books.html','마케팅 도서'],
+      ['events/index.html','온라인 교육'],['events/index.html','오프라인 교육'],
+      ['events/index.html','교육기관'] ]},
+    { label:'더보기', href:'more/index.html', ic:IC.more, act:['/more/','/help/','/notice/','/legal/','/directory/index'], cols:1, items:[
+      ['directory/index.html?type=expert','전문가'],['notice/index.html','공지사항'],
       ['more/index.html?tab=faq','FAQ'],['help/contact.html','문의하기'],
-      ['help/guide.html','회사소개'] ]},
+      ['help/guide.html','PRCOME 소개'] ]},
   ];
 
   function navActive(n){
