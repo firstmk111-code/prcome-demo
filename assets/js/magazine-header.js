@@ -28,10 +28,9 @@
   /* 대분류 · act=현재위치 활성 판별 substring들 · items 없으면 단일 링크 · ic=구분 아이콘 */
   var NAV = [
     { label:'홈', href:'index.html', ic:IC.home, home:true },
-    { label:'기업정보', href:'directory/index.html', ic:IC.agency, act:['/directory/'], cols:1, items:[
-      ['directory/index.html','기업'],['directory/agencies.html','PR회사'],
-      ['directory/media.html','언론사'],['directory/media.html','기자'],
-      ['directory/index.html?type=expert','전문가'] ]},
+    { label:'기업정보', href:'directory/agencies.html', ic:IC.agency, act:['/directory/'], cols:1, items:[
+      ['directory/media.html','언론사'],
+      ['directory/agencies.html','PR기업'] ]},
     { label:'콘텐츠', href:'insights/index.html', ic:IC.insight, act:['/insights/'], cols:1, items:[
       ['insights/index.html?cat=pr','PR 가이드'],['insights/index.html','PR 뉴스'],
       ['insights/index.html?cat=media','인터뷰'],['insights/index.html?cat=case','성공사례'],
