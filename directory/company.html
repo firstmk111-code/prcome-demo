@@ -9,27 +9,163 @@
 <link rel="stylesheet" href="../assets/css/magazine-system.css?v=2">
 <script>window.MAG={root:'../',home:'../index.html',catBase:'../insights/index.html'};</script>
 <style>
-.subhead{padding:30px 0 6px}.subhead .crumb{font-size:12.5px;color:var(--sub);margin-bottom:12px}
-.subhead .crumb a:hover{color:var(--pt)}
-.chead{display:flex;align-items:center;gap:16px;margin-top:6px}
-.chead .lg{width:60px;height:60px;flex:none;border-radius:14px;background:var(--pt-soft);color:var(--pt);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px}
-.chead h1{font-size:clamp(24px,3vw,32px);font-weight:800;letter-spacing:-.03em;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.chead .gbadge{font-size:11px;font-weight:800;color:#fff;background:var(--navy);border-radius:5px;padding:3px 9px}
-.chead .rep{font-size:13.5px;color:var(--sub);margin-top:6px}
-.homebtn{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:800;color:#fff;background:var(--pt);border-radius:9px;padding:13px 22px}
-.homebtn:hover{background:var(--pt-2)}
-.homewrap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--surf);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:14px 0}
-.homewrap .u{font-size:13px;color:var(--sub);word-break:break-all}
+.subhead{padding:26px 0 4px}
+.crumb{font-size:12.5px;color:var(--sub);margin-bottom:16px}
+.crumb a{transition:color var(--dur) var(--ease)}.crumb a:hover{color:var(--pt)}
+
+/* ── 히어로 ── */
+.chero{display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap}
+.chero .lg{width:72px;height:72px;flex:none;border-radius:18px;background:linear-gradient(135deg,var(--pt-soft),#fff);
+  border:1px solid var(--line);color:var(--pt);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:26px;box-shadow:var(--shadow-sm)}
+.chero .ci{flex:1;min-width:260px}
+.chero h1{font-size:clamp(24px,3.2vw,34px);font-weight:800;letter-spacing:-.035em;line-height:1.15;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.chero .oneline{font-size:15px;color:var(--sub);line-height:1.6;margin-top:10px;max-width:60ch}
+.badges{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.bdgt{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;border-radius:999px;padding:5px 12px;border:1px solid var(--line)}
+.bdgt.navy{background:var(--navy);color:#fff;border-color:var(--navy)}
+.bdgt.soft{background:var(--pt-soft);color:var(--pt-2);border-color:#cdd8ff}
+.bdgt.ok{background:#EAF6EE;color:#1E7A45;border-color:#bfe6cd}
+.bdgt svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2}
+.hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;border-radius:10px;padding:12px 20px;
+  transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease),background var(--dur) var(--ease),border-color var(--dur) var(--ease)}
+.btn.pri{background:var(--pt);color:#fff}.btn.pri:hover{background:var(--pt-2);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.btn.line{background:var(--surf);color:var(--ink);border:1px solid var(--line-2)}.btn.line:hover{border-color:var(--pt);color:var(--pt);transform:translateY(-2px)}
+.btn .ar{transition:transform var(--dur) var(--ease)}.btn:hover .ar{transform:translateX(3px)}
+
+/* ── 통계 스트립 ── */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:26px 0 8px}
+.stat{background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:18px;transition:border-color var(--dur) var(--ease),box-shadow var(--dur-2) var(--ease),transform var(--dur-2) var(--ease)}
+.stat:hover{border-color:var(--line-2);box-shadow:var(--shadow-sm);transform:translateY(-2px)}
+.stat .k{font-size:11.5px;font-weight:800;letter-spacing:.03em;color:var(--sub-2);text-transform:uppercase}
+.stat .v{font-size:20px;font-weight:800;color:var(--navy);margin-top:7px;letter-spacing:-.02em;line-height:1.2}
+.stat .s{font-size:12px;color:var(--sub);margin-top:3px}
+
+/* ── 2열 레이아웃 ── */
+.cgrid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:32px;align-items:start;margin-top:14px}
+.aside{position:sticky;top:20px;display:grid;gap:16px}
+
+/* ── 카드 공통 ── */
+.card{background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:22px 24px}
+.card h2,.card h3{font-size:16px;font-weight:800;letter-spacing:-.02em;margin-bottom:14px;display:flex;align-items:center;gap:9px}
+.card h2 .n,.card h3 .n{width:24px;height:24px;flex:none;border-radius:7px;background:var(--pt-soft);color:var(--pt);display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:800}
+.card p{font-size:14.5px;line-height:1.8;color:#3B4453}
+.card p strong{color:var(--ink);font-weight:700}
+.stack{display:grid;gap:18px}
+
+/* 정보 테이블(사이드) */
+.info-card .row{display:flex;justify-content:space-between;gap:14px;padding:11px 0;border-top:1px solid var(--line);font-size:13.5px}
+.info-card .row:first-of-type{border-top:0}
+.info-card .row .l{color:var(--sub);font-weight:600;flex:none}
+.info-card .row .r{color:var(--ink);font-weight:700;text-align:right;word-break:break-all}
+.info-card .row .r a{color:var(--pt)}
+
+/* CTA 카드(사이드) */
+.cta-card{background:linear-gradient(150deg,var(--navy),#1b2f5e);color:#fff;border:0}
+.cta-card h3{color:#fff;margin-bottom:6px}
+.cta-card p{color:rgba(255,255,255,.82);font-size:13px;line-height:1.6;margin-bottom:14px}
+.cta-card .btn.pri{width:100%;justify-content:center;background:#fff;color:var(--navy)}
+.cta-card .btn.pri:hover{background:var(--pt-soft)}
+.cta-card .btn.ghost{width:100%;justify-content:center;background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.26);margin-top:8px}
+.cta-card .btn.ghost:hover{background:rgba(255,255,255,.18);transform:translateY(-2px)}
+
+/* 서비스 카드 그리드 */
+.svc{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.svc .it{border:1px solid var(--line);border-radius:12px;padding:15px 16px;transition:border-color var(--dur) var(--ease),box-shadow var(--dur-2) var(--ease),transform var(--dur-2) var(--ease)}
+.svc .it:hover{border-color:var(--pt);box-shadow:var(--shadow-sm);transform:translateY(-2px)}
+.svc .it .ic{width:34px;height:34px;border-radius:9px;background:var(--pt-soft);color:var(--pt);display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:9px}
+.svc .it b{display:block;font-size:14px;font-weight:700;color:var(--ink)}
+.svc .it span{display:block;font-size:12.5px;color:var(--sub);margin-top:4px;line-height:1.55}
+
+/* 신뢰 요소 */
+.trust{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+.trust .t{display:flex;align-items:center;gap:9px;font-size:13px;color:#3B4453;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:11px 14px}
+.trust .t .ck{width:20px;height:20px;flex:none;border-radius:50%;background:#EAF6EE;color:#1E7A45;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800}
+
+/* 공식 홈페이지 밴드 */
+.homewrap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:20px 24px}
+.homewrap .u{font-size:13px;color:var(--sub);word-break:break-all;margin-top:2px}
+.homewrap .lab{font-size:11.5px;font-weight:800;color:var(--sub-2);letter-spacing:.03em}
+.homebtn{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:800;color:#fff;background:var(--pt);border-radius:10px;padding:13px 22px;
+  transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease),background var(--dur) var(--ease)}
+.homebtn:hover{background:var(--pt-2);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.homebtn .ar{transition:transform var(--dur) var(--ease)}.homebtn:hover .ar{transform:translateX(3px)}
+
+/* FAQ 카드 래핑 */
+#faqList .faq-item:first-child{border-top:0}
+
+/* 관련 회사 */
+.relgrid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.rc{display:block;background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:16px;transition:border-color var(--dur) var(--ease),box-shadow var(--dur-2) var(--ease),transform var(--dur-2) var(--ease)}
+.rc:hover{border-color:var(--pt);box-shadow:var(--shadow-md);transform:translateY(-3px)}
+.rc .rl{width:36px;height:36px;border-radius:9px;background:var(--pt-soft);color:var(--pt);display:flex;align-items:center;justify-content:center;font-weight:800;margin-bottom:10px}
+.rc b{font-size:14px;font-weight:700;color:var(--ink);display:block}.rc:hover b{color:var(--pt)}
+.rc span{font-size:12px;color:var(--sub);margin-top:3px;display:block}
+.rc .arw{font-size:12px;font-weight:700;color:var(--pt);margin-top:9px;display:inline-block}
+
+/* CTA 밴드 */
+.ctaband{background:linear-gradient(135deg,var(--navy),#1b2f5e);border-radius:18px;padding:34px;margin-top:30px;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:22px;flex-wrap:wrap}
+.ctaband h2{font-size:22px;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+.ctaband p{color:rgba(255,255,255,.82);font-size:14px;line-height:1.6;max-width:52ch}
+.ctaband .bwrap{display:flex;gap:10px;flex-wrap:wrap}
+.ctaband .btn.pri{background:#fff;color:var(--navy)}.ctaband .btn.pri:hover{background:var(--pt-soft)}
+.ctaband .btn.ghost{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.28)}.ctaband .btn.ghost:hover{background:rgba(255,255,255,.18);transform:translateY(-2px)}
+
+/* ── Skeleton ── */
+@keyframes shimmer{100%{background-position:-200% 0}}
+.sk{background:linear-gradient(90deg,#eef1f5 25%,#f6f8fa 37%,#eef1f5 63%);background-size:200% 100%;animation:shimmer 1.3s var(--ease) infinite;border-radius:8px}
+.sk-line{height:14px;margin:8px 0}
+@media (prefers-reduced-motion:reduce){.sk{animation:none}}
+
+/* ── Empty / Not found ── */
+.notfound{max-width:520px;margin:40px auto;text-align:center;background:var(--surf);border:1px solid var(--line);border-radius:18px;padding:48px 28px}
+.notfound .ic{font-size:40px;margin-bottom:12px}
+.notfound h2{font-size:20px;font-weight:800;margin-bottom:8px}
+.notfound p{font-size:14px;color:var(--sub);line-height:1.7;margin-bottom:20px}
+
+/* ── 리빌 ── */
+.reveal-js .rv{opacity:0;transform:translateY(16px);transition:opacity .5s var(--ease-out),transform .5s var(--ease-out)}
+.reveal-js .rv.in{opacity:1;transform:none}
+
+/* ── 반응형 ── */
+@media (max-width:900px){
+  .cgrid{grid-template-columns:1fr}
+  .aside{position:static;grid-template-columns:1fr 1fr;display:grid}
+  .stats{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  .relgrid3{grid-template-columns:1fr}
+  .svc{grid-template-columns:1fr}
+  .aside{grid-template-columns:1fr}
+  .chero .lg{width:60px;height:60px;font-size:22px}
+  .ctaband{padding:26px 22px}
+}
 </style>
 </head>
 <body>
+<script>try{if(window.matchMedia&&!matchMedia('(prefers-reduced-motion:reduce)').matches&&'IntersectionObserver'in window){document.documentElement.classList.add('reveal-js');}}catch(e){}</script>
 <div id="mag-header"></div>
 <div class="wrap">
   <section class="subhead">
     <div class="crumb" id="crumb"><a href="../index.html">홈</a> / <a href="index.html">기업·미디어</a> / <a href="agencies.html">PR회사</a></div>
-    <div class="chead" id="chead"></div>
+    <div id="stage">
+      <!-- Skeleton (JS 렌더 전/미동작 시 노출) -->
+      <div class="chero" id="skhero">
+        <div class="sk" style="width:72px;height:72px;border-radius:18px"></div>
+        <div class="ci">
+          <div class="sk sk-line" style="width:48%;height:26px"></div>
+          <div class="sk sk-line" style="width:70%"></div>
+          <div class="sk sk-line" style="width:40%"></div>
+        </div>
+      </div>
+      <div class="stats" id="skstats">
+        <div class="sk" style="height:88px;border-radius:14px"></div>
+        <div class="sk" style="height:88px;border-radius:14px"></div>
+        <div class="sk" style="height:88px;border-radius:14px"></div>
+        <div class="sk" style="height:88px;border-radius:14px"></div>
+      </div>
+    </div>
   </section>
-  <div class="hub" id="hub"></div>
   <div style="height:50px"></div>
 </div>
 <div id="mag-footer"></div>
@@ -39,83 +175,146 @@
   var CO=window.PR_COMPANIES||[], GLOBAL=window.PR_GLOBAL||{};
   var idx=parseInt(new URLSearchParams(location.search).get('c'),10);
   var co=CO[idx];
-  if(!co){ location.replace('agencies.html'); return; }
-  var name=co[0], rep=co[1], url=co[2], g=!!GLOBAL[name];
-  function ini(n){var s=n.replace(/^[㈜（）()주\s]+/,'');return s.charAt(0)||n.charAt(0);}
+  var stage=document.getElementById('stage');
+
   function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function ini(n){var s=String(n).replace(/^[㈜（）()주\s]+/,'');return s.charAt(0)||String(n).charAt(0);}
+
+  /* ── Not Found (Empty State) ── */
+  if(!co){
+    document.title='회사를 찾을 수 없습니다 | PRCOME';
+    stage.innerHTML='<div class="notfound"><div class="ic">🔍</div>'+
+      '<h2>회사를 찾을 수 없어요</h2>'+
+      '<p>요청하신 PR회사 정보가 없거나 주소가 변경되었을 수 있습니다.<br>디렉토리에서 다시 찾아보세요.</p>'+
+      '<a class="btn pri" href="agencies.html">PR회사 디렉토리로 →</a></div>';
+    return;
+  }
+
+  var name=co[0], rep=co[1], url=co[2], g=!!GLOBAL[name];
   var kind=g?'글로벌 네트워크 PR·커뮤니케이션 회사':'국내 PR·커뮤니케이션(광고·홍보 대행) 회사';
 
-  /* --- SEO: title / description / FAQ (헤더 injectSEO 전에 설정) --- */
+  /* ── SEO (헤더 injectSEO 전에 설정) ── */
   document.title=name+' — PR회사 소개·정보·홈페이지 | PRCOME';
   var descTxt=name+'은(는) 대표 '+rep+'가 이끄는 '+kind+'입니다. 제공 서비스, 업종·업태, 공식 홈페이지, 홍보대행 의뢰 방법과 자주 묻는 질문을 PRCOME에서 확인하세요.';
   var md=document.querySelector('meta[name="description"]'); if(md) md.setAttribute('content',descTxt);
   window.SEO={ faq:[
     {q:name+'은(는) 어떤 회사인가요?',a:name+'은(는) '+kind+'입니다. 언론홍보(보도자료·미디어 릴레이션), 브랜드 커뮤니케이션, 위기관리, 콘텐츠·디지털 PR 등 PR 전반의 서비스를 제공합니다.'},
     {q:name+'의 대표는 누구인가요?',a:'공개 자료 기준 대표(대표자)는 '+rep+'입니다. 최신 정보는 공식 홈페이지에서 확인하세요.'},
-    {q:name+'에 홍보대행을 의뢰하려면 어떻게 하나요?',a:'공식 홈페이지를 통해 직접 문의하거나, PRCOME <a href="../projects/new.html">홍보대행 의뢰 등록</a>에서 업무·예산을 남기면 적합한 회사와 매칭됩니다. 예상 비용은 <a href="../tools/rate-card.html">PR 단가표</a>를 참고하세요.'},
+    {q:name+'에 홍보대행을 의뢰하려면 어떻게 하나요?',a:'공식 홈페이지로 직접 문의하거나, PRCOME <a href="../projects/new.html">홍보대행 의뢰 등록</a>에서 업무·예산을 남기면 적합한 회사와 매칭됩니다. 예상 비용은 <a href="../tools/rate-card.html">PR 단가표</a>를 참고하세요.'},
     {q:name+'은(는) 국내사인가요, 글로벌사인가요?',a:g?name+'은(는) 글로벌 네트워크를 갖춘 외국계 PR회사로, 해외 진출·다국가 캠페인·글로벌 위기관리에 강점이 있습니다.':name+'은(는) 국내 PR·커뮤니케이션 회사로, 한국 미디어 환경과 기자 관계에 대한 이해가 강점입니다.'},
-    {q:'비슷한 PR회사와 비교하려면?',a:'<a href="agencies.html">PR회사 디렉토리</a>에서 업종·예산·국내/글로벌 기준으로 다른 회사를 비교하고, 선택 기준 체크리스트를 확인할 수 있습니다.'}
+    {q:'비슷한 PR회사와 비교하려면?',a:'<a href="agencies.html">PR회사 디렉토리</a>에서 업종·예산·국내/글로벌 기준으로 다른 회사를 비교하고 선택 기준 체크리스트를 확인할 수 있습니다.'}
   ]};
 
-  /* --- Organization 구조화 데이터 (회사) --- */
+  /* ── Organization 구조화 데이터 ── */
   var ld=document.createElement('script'); ld.type='application/ld+json';
   ld.textContent=JSON.stringify({"@context":"https://schema.org","@type":"Organization","name":name,"url":url,"description":kind,"founder":rep,"areaServed":"KR","knowsAbout":["PR","언론홍보","보도자료","브랜드 커뮤니케이션","위기관리"]});
   document.head.appendChild(ld);
 
-  /* --- breadcrumb에 회사명 추가 --- */
+  /* ── breadcrumb ── */
   document.getElementById('crumb').insertAdjacentHTML('beforeend',' / '+esc(name));
 
-  /* --- 헤더(회사명/대표/배지) --- */
-  document.getElementById('chead').innerHTML=
-    '<span class="lg">'+esc(ini(name))+'</span>'+
-    '<div><h1>'+esc(name)+(g?'<span class="gbadge">글로벌</span>':'')+'</h1>'+
-    '<div class="rep">대표 '+esc(rep)+' · '+(g?'외국계·글로벌':'국내')+' PR회사</div></div>';
+  var arrow='<svg class="ar" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  var ext='<svg class="ar" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>';
+  var chk='<svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>';
 
-  /* --- 관련 회사 3곳 (같은 구분 우선) --- */
+  /* ── 서비스 카드 ── */
+  var SVC=[
+    ['📰','언론홍보','보도자료 작성·배포, 기자 관계, 인터뷰·기고'],
+    ['🎯','브랜드 커뮤니케이션','메시지 전략, 스토리텔링, 캠페인 기획'],
+    ['🛡️','위기관리','이슈 모니터링, 대응 시나리오, 리스크 커뮤니케이션'],
+    ['🌐','디지털·검색 PR','오너드미디어, 소셜, SEO·AEO·GEO 노출']
+  ];
+  var svcHtml=SVC.map(function(s){return '<div class="it"><div class="ic">'+s[0]+'</div><b>'+s[1]+'</b><span>'+s[2]+'</span></div>';}).join('');
+
+  /* ── 관련 회사 ── */
   var rel=[]; for(var i=0;i<CO.length && rel.length<3;i++){ if(i===idx)continue; if(!!GLOBAL[CO[i][0]]===g) rel.push(i); }
   for(var j=0;j<CO.length && rel.length<3;j++){ if(j!==idx && rel.indexOf(j)<0) rel.push(j); }
-  var relHtml=rel.map(function(i){var c=CO[i];return '<a class="relcard" href="company.html?c='+i+'"><div class="k">PR회사</div><div class="t">'+esc(c[0])+'</div><div class="d">대표 '+esc(c[1])+' · '+(!!GLOBAL[c[0]]?'글로벌':'국내')+'</div><span class="arw">자세히 →</span></a>';}).join('');
+  var relHtml=rel.map(function(i){var c=CO[i];return '<a class="rc" href="company.html?c='+i+'"><div class="rl">'+esc(ini(c[0]))+'</div><b>'+esc(c[0])+'</b><span>대표 '+esc(c[1])+' · '+(!!GLOBAL[c[0]]?'글로벌':'국내')+'</span><span class="arw">자세히 →</span></a>';}).join('');
 
-  /* --- 본문 --- */
-  document.getElementById('hub').innerHTML=
-    '<div class="homewrap"><div><div style="font-size:12px;font-weight:800;color:var(--sub-2);letter-spacing:.03em">공식 홈페이지</div><div class="u">'+esc(url)+'</div></div>'+
-      '<a class="homebtn" href="'+esc(url)+'" target="_blank" rel="noopener nofollow">공식 홈페이지 방문 →</a></div>'+
+  /* ── 렌더 ── */
+  stage.innerHTML=
+    /* 히어로 */
+    '<div class="chero rv">'+
+      '<div class="lg">'+esc(ini(name))+'</div>'+
+      '<div class="ci">'+
+        '<h1>'+esc(name)+'</h1>'+
+        '<p class="oneline">'+esc(name)+'은(는) 대표 '+esc(rep)+'가 이끄는 '+kind+'입니다.</p>'+
+        '<div class="badges">'+
+          '<span class="bdgt '+(g?'navy':'soft')+'">'+(g?'외국계·글로벌':'국내 PR회사')+'</span>'+
+          '<span class="bdgt soft">PR·커뮤니케이션</span>'+
+          '<span class="bdgt ok">'+chk+' 한국PR협회 등록</span>'+
+        '</div>'+
+        '<div class="hero-cta">'+
+          '<a class="btn pri" href="'+esc(url)+'" target="_blank" rel="noopener nofollow">공식 홈페이지 '+ext+'</a>'+
+          '<a class="btn line" href="../projects/new.html">홍보대행 문의 '+arrow+'</a>'+
+        '</div>'+
+      '</div>'+
+    '</div>'+
 
-    '<section class="hsec" id="intro"><h2><span class="n">01</span>회사 소개</h2>'+
-    '<p><strong>'+esc(name)+'</strong>은(는) 대표 '+esc(rep)+'가 이끄는 '+kind+'입니다. 기업·브랜드·기관을 대신해 <strong>언론과 대중과의 관계</strong>를 설계하고, 보도자료·미디어 릴레이션부터 브랜드 커뮤니케이션 전략, 위기관리, 콘텐츠·디지털 PR까지 PR 전반을 지원합니다.</p>'+
-    (g?'<div class="callout"><b>글로벌 네트워크</b> — 해외 미디어·다국가 캠페인·글로벌 위기관리에 강점이 있는 외국계 PR회사입니다. 해외 진출·글로벌 브랜딩을 검토 중이라면 우선 후보로 고려할 수 있습니다.</div>':'')+
-    '</section>'+
+    /* 통계 스트립 */
+    '<div class="stats rv">'+
+      '<div class="stat"><div class="k">구분</div><div class="v">'+(g?'글로벌':'국내')+'</div><div class="s">'+(g?'외국계 네트워크':'국내 대행사')+'</div></div>'+
+      '<div class="stat"><div class="k">업종</div><div class="v">PR</div><div class="s">커뮤니케이션 대행</div></div>'+
+      '<div class="stat"><div class="k">서비스 영역</div><div class="v">4+</div><div class="s">언론홍보·위기관리 등</div></div>'+
+      '<div class="stat"><div class="k">비교 가능</div><div class="v">'+CO.length+'곳</div><div class="s">디렉토리 PR회사</div></div>'+
+    '</div>'+
 
-    '<section class="hsec" id="info"><h2><span class="n">02</span>회사 정보</h2>'+
-    '<table class="deftable"><tbody>'+
-    '<tr><th style="width:130px">회사명</th><td><b>'+esc(name)+'</b></td></tr>'+
-    '<tr><th>대표자</th><td>'+esc(rep)+'</td></tr>'+
-    '<tr><th>업태</th><td>서비스업</td></tr>'+
-    '<tr><th>업종</th><td>'+(g?'PR·커뮤니케이션(글로벌 네트워크)':'PR·커뮤니케이션(광고·홍보 대행)')+'</td></tr>'+
-    '<tr><th>구분</th><td>'+(g?'외국계·글로벌':'국내')+'</td></tr>'+
-    '<tr><th>공식 홈페이지</th><td><a href="'+esc(url)+'" target="_blank" rel="noopener nofollow" style="color:var(--pt);font-weight:600">'+esc(url)+'</a></td></tr>'+
-    '</tbody></table><p style="font-size:12.5px;color:var(--sub-2)">※ 한국PR협회 공개 자료 기준 참고용 정보이며 변동될 수 있습니다.</p></section>'+
+    /* 2열 */
+    '<div class="cgrid">'+
+      '<div class="stack">'+
+        '<div class="card rv"><h2><span class="n">01</span>회사 소개</h2>'+
+          '<p><strong>'+esc(name)+'</strong>은(는) 대표 '+esc(rep)+'가 이끄는 '+kind+'입니다. 기업·브랜드·기관을 대신해 <strong>언론과 대중과의 관계</strong>를 설계하고, 보도자료·미디어 릴레이션부터 브랜드 커뮤니케이션 전략, 위기관리, 콘텐츠·디지털 PR까지 PR 전반을 지원합니다.</p>'+
+          (g?'<p style="margin-top:10px">해외 미디어·다국가 캠페인·글로벌 위기관리에 강점이 있는 <strong>외국계 네트워크사</strong>로, 해외 진출·글로벌 브랜딩을 검토 중이라면 우선 후보로 고려할 수 있습니다.</p>':'')+
+        '</div>'+
+        '<div class="card rv"><h2><span class="n">02</span>제공 서비스</h2><div class="svc">'+svcHtml+'</div>'+
+          '<p style="font-size:12px;color:var(--sub-2);margin-top:12px">※ 실제 제공 서비스·전문 분야는 회사마다 다릅니다. 정확한 범위는 공식 홈페이지에서 확인하세요.</p></div>'+
+        '<div class="card rv"><h2><span class="n">03</span>신뢰 정보</h2>'+
+          '<div class="trust">'+
+            '<div class="t"><span class="ck">'+chk+'</span>한국PR협회 공개 자료 등록사</div>'+
+            '<div class="t"><span class="ck">'+chk+'</span>대표자·홈페이지 정보 표기</div>'+
+            '<div class="t"><span class="ck">'+chk+'</span>공식 채널 직접 연결</div>'+
+          '</div>'+
+          '<p style="font-size:12.5px;color:var(--sub-2);margin-top:12px">출처 · <a href="https://www.koreapr.org/pr-company" target="_blank" rel="noopener" style="color:var(--pt);font-weight:600">한국PR협회 PR회사</a> · 참고용 정보이며 변동될 수 있습니다.</p></div>'+
+        '<div class="card rv"><h2><span class="n">04</span>자주 묻는 질문</h2><div class="faq" id="faqList"></div></div>'+
+        '<div class="rv"><h2 style="font-size:16px;font-weight:800;letter-spacing:-.02em;margin:6px 2px 14px">비슷한 PR회사</h2><div class="relgrid3">'+relHtml+'</div></div>'+
+      '</div>'+
 
-    '<section class="hsec" id="services"><h2><span class="n">03</span>제공 서비스(일반)</h2>'+
-    '<ul class="bul">'+
-    '<li><strong>언론홍보</strong> — 보도자료 작성·배포, 기자 관계, 인터뷰·기고, 취재 대응</li>'+
-    '<li><strong>브랜드 커뮤니케이션</strong> — 메시지 전략, 스토리텔링, 캠페인 기획</li>'+
-    '<li><strong>위기관리</strong> — 이슈 모니터링, 대응 시나리오, 리스크 커뮤니케이션</li>'+
-    '<li><strong>콘텐츠·디지털 PR</strong> — 오너드미디어, 소셜, 검색·AI 노출(SEO·AEO·GEO)</li>'+
-    '</ul><p style="font-size:12.5px;color:var(--sub-2)">※ 실제 제공 서비스·전문 분야는 회사마다 다릅니다. 정확한 범위는 공식 홈페이지에서 확인하세요.</p></section>'+
+      /* 사이드 */
+      '<aside class="aside">'+
+        '<div class="card info-card rv"><h3>회사 정보</h3>'+
+          '<div class="row"><span class="l">회사명</span><span class="r">'+esc(name)+'</span></div>'+
+          '<div class="row"><span class="l">대표자</span><span class="r">'+esc(rep)+'</span></div>'+
+          '<div class="row"><span class="l">업태</span><span class="r">서비스업</span></div>'+
+          '<div class="row"><span class="l">업종</span><span class="r">'+(g?'PR(글로벌)':'PR·커뮤니케이션')+'</span></div>'+
+          '<div class="row"><span class="l">구분</span><span class="r">'+(g?'외국계·글로벌':'국내')+'</span></div>'+
+          '<div class="row"><span class="l">홈페이지</span><span class="r"><a href="'+esc(url)+'" target="_blank" rel="noopener nofollow">바로가기 ↗</a></span></div>'+
+        '</div>'+
+        '<div class="card cta-card rv"><h3>협업을 검토 중이신가요?</h3>'+
+          '<p>업종·예산에 맞는 PR회사와 매칭해 드립니다. 비용은 단가표에서 먼저 확인하세요.</p>'+
+          '<a class="btn pri" href="../projects/new.html">홍보대행 의뢰</a>'+
+          '<a class="btn ghost" href="../tools/rate-card.html">PR 단가표 보기</a>'+
+        '</div>'+
+      '</aside>'+
+    '</div>'+
 
-    '<section class="hsec" id="faq"><h2><span class="n">04</span>자주 묻는 질문</h2><div class="faq" id="faqList"></div></section>'+
+    /* 공식 홈페이지 밴드 */
+    '<div class="homewrap rv" style="margin-top:26px"><div><div class="lab">'+esc(name)+' 공식 홈페이지</div><div class="u">'+esc(url)+'</div></div>'+
+      '<a class="homebtn" href="'+esc(url)+'" target="_blank" rel="noopener nofollow">공식 홈페이지 방문 '+ext+'</a></div>'+
 
-    '<section class="hsec" id="related"><h2><span class="n">05</span>비슷한 PR회사</h2><div class="relgrid">'+relHtml+'</div></section>'+
+    /* CTA 밴드 */
+    '<div class="ctaband rv"><div><h2>PR회사를 찾고 계신가요?</h2>'+
+      '<p>프로젝트를 등록하면 '+esc(name)+' 같은 회사들의 제안을 받아 비교할 수 있습니다. 다른 회사도 함께 살펴보세요.</p></div>'+
+      '<div class="bwrap"><a class="btn pri" href="../projects/new.html">프로젝트 등록 '+arrow+'</a><a class="btn ghost" href="agencies.html">다른 회사 비교</a></div></div>'+
 
-    '<section class="cta"><div class="ct-l"><h2>이 회사와 협업을 검토 중이신가요?</h2>'+
-    '<p>PRCOME에서 홍보대행을 의뢰하면 업종·예산에 맞는 회사와 매칭됩니다. 비용은 단가표에서, 비교는 디렉토리에서 확인하세요.</p></div>'+
-    '<div class="ct-b"><a class="btn pri" href="../projects/new.html">홍보대행 의뢰</a><a class="btn sec" href="agencies.html">다른 회사 비교</a><a class="btn sec" href="../tools/rate-card.html">PR 단가표</a></div></section>'+
+    '<div class="tagrow" style="margin-top:22px"><a class="tg" href="agencies.html">PR회사</a><a class="tg" href="../projects/new.html">홍보대행</a><a class="tg" href="../tools/rate-card.html">PR단가</a><a class="tg" href="media.html">언론사</a></div>';
 
-    '<div class="homewrap"><div><div style="font-size:12px;font-weight:800;color:var(--sub-2);letter-spacing:.03em">'+esc(name)+' 공식 홈페이지</div><div class="u">'+esc(url)+'</div></div>'+
-      '<a class="homebtn" href="'+esc(url)+'" target="_blank" rel="noopener nofollow">공식 홈페이지 방문 →</a></div>'+
-
-    '<div class="tagrow"><a class="tg" href="agencies.html">PR회사</a><a class="tg" href="../projects/new.html">홍보대행</a><a class="tg" href="../tools/rate-card.html">PR단가</a><a class="tg" href="../directory/media.html">언론사</a></div>';
+  /* ── 리빌 옵저버 (+failsafe) ── */
+  if(document.documentElement.classList.contains('reveal-js')){
+    var els=[].slice.call(stage.querySelectorAll('.rv'));
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.05,rootMargin:'0px 0px -5% 0px'});
+    els.forEach(function(el){io.observe(el);});
+    setTimeout(function(){els.forEach(function(el){el.classList.add('in');});},1800);
+  }
 })();
 </script>
 <script src="../assets/js/magazine-header.js?v=2"></script>
