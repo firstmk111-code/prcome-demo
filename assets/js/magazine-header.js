@@ -47,7 +47,7 @@
       ['projects/new.html','PR 컨설팅'],['projects/index.html','콘텐츠 제작'],
       ['projects/new.html','홍보대행 의뢰하기'] ]},
     { label:'PR도구', href:'tools/index.html', ic:IC.ai, act:['/tools/'], cols:1, items:[
-      ['tools/press-release.html','AI 보도자료 작성'],['tools/journalist-match.html','AI 기자 추천'],
+      ['tools/press-release.html','AI 보도자료 자동화'],['tools/journalist-match.html','AI 기자 추천'],
       ['tools/pitch-mail.html','AI 피치메일 작성'],['tools/pr-diagnosis.html','AI PR 진단'],
       ['tools/seo-aeo.html','AI SEO·AEO 분석'] ]},
     { label:'도서·교육', href:'resources/books.html', ic:IC.books, act:['/resources/','/events/'], cols:1, items:[
