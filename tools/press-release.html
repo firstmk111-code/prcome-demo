@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI 자동화 기사배포 — 작성부터 기자매칭·발송까지 | PRCOME PR도구</title>
-<meta name="description" content="기업 정보만 입력하면 AI가 뉴스 가치를 판단하고, 보도자료를 자동 작성하고, 맞춤 기자를 추천해 피치메일과 함께 발송까지 자동화합니다. 정보입력 → 뉴스가치 판단 → 기자추천 → 보도자료·메일 → 검수·발송. (데모 프레임)">
+<title>AI 자동화 기사배포 — 기업 정보 입력만으로 뉴스가치 분석 | PRCOME PR도구</title>
+<meta name="description" content="기업 정보만 입력하면 AI가 기업 유형을 분석하고, 기사 후보를 뉴스 가치로 채점합니다. 보도자료 작성·기자 추천·발송까지 이어지는 AI 자동화 기사배포. PRCOME.">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <link rel="stylesheet" href="../assets/css/magazine-system.css?v=2">
 <script>window.MAG={root:'../',home:'../index.html',catBase:'../insights/index.html'};</script>
@@ -15,51 +15,64 @@
 .ptitle{font-size:clamp(22px,3vw,30px);font-weight:800;letter-spacing:-.03em;display:flex;align-items:center;gap:11px;margin-bottom:6px}
 .ptitle .tick{width:26px;height:3px;background:var(--pt);border-radius:2px}
 .pdesc{font-size:14.5px;color:var(--sub);line-height:1.6;margin-bottom:20px;max-width:64ch}
-/* 스텝 인디케이터 (자동화 5단계) */
+/* 스텝 */
 .stepper{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 22px}
 .stepper .s{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--sub-2)}
 .stepper .s .n{width:25px;height:25px;border-radius:50%;background:var(--surf);border:1.5px solid var(--line-2);color:var(--sub-2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800}
 .stepper .s.on{color:var(--pt)}.stepper .s.on .n{background:var(--pt);border-color:var(--pt);color:#fff}
 .stepper .line{flex:1;min-width:14px;height:1.5px;background:var(--line)}
-.merge-note{background:var(--pt-soft);border:1px solid #cdd8ff;border-radius:10px;padding:13px 16px;font-size:13px;color:var(--pt-2);margin-bottom:14px;line-height:1.6}
+.merge-note{background:var(--pt-soft);border:1px solid #cdd8ff;border-radius:10px;padding:13px 16px;font-size:13px;color:var(--pt-2);margin-bottom:18px;line-height:1.6}
 .merge-note b{color:var(--navy)}
-.demo-note{background:var(--bg);border:1px dashed var(--line-2);border-radius:10px;padding:12px 15px;font-size:12.5px;color:var(--sub);margin-bottom:22px}
-/* 작성 방식 탭 */
-.wtabs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
-.wtab{border:1.5px solid var(--line-2);border-radius:12px;padding:15px 18px;cursor:pointer;background:var(--surf);transition:border-color var(--dur) var(--ease),background var(--dur) var(--ease)}
-.wtab.on{border-color:var(--pt);background:var(--pt-soft)}
-.wtab b{display:block;font-size:14.5px;font-weight:800;color:var(--ink)}
-.wtab span{display:block;font-size:12.5px;color:var(--sub);margin-top:3px}
 /* 폼 */
 .card{background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:24px}
-.sec-lab{font-size:13px;font-weight:800;color:var(--sub-2);letter-spacing:.02em;margin:30px 2px 12px}
-.field{margin-bottom:18px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{margin-bottom:16px}
+.field.full{grid-column:1/-1}
 .field>label{display:block;font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:7px}
 .field .req{color:#d43f2e;margin-left:2px}
 .field input[type=text],.field textarea{width:100%;border:1px solid var(--line-2);border-radius:9px;padding:11px 13px;font-family:inherit;font-size:14px;background:var(--bg);color:var(--ink)}
 .field input[type=text]:focus,.field textarea:focus{outline:none;border-color:var(--pt);box-shadow:0 0 0 3px var(--pt-soft);background:#fff}
-.field textarea{min-height:84px;resize:vertical;line-height:1.6}
+.field textarea{min-height:82px;resize:vertical;line-height:1.6}
 .field .hint{font-size:12px;color:var(--sub-2);margin-top:6px}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chips .chip{font-size:13px;font-weight:600;color:var(--sub);background:var(--bg);border:1px solid var(--line-2);border-radius:999px;padding:8px 14px;cursor:pointer;transition:all var(--dur) var(--ease)}
-.chips .chip.on{color:#fff;background:var(--pt);border-color:var(--pt)}
-.drop{border:1.5px dashed var(--line-2);border-radius:12px;padding:24px;text-align:center;color:var(--sub);font-size:13.5px;background:var(--bg)}
-.drop .ic{font-size:24px;margin-bottom:6px}
-.drop .sm{font-size:12px;color:var(--sub-2);margin-top:4px}
-.foot{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:22px;padding-top:20px;border-top:1px solid var(--line)}
-.foot .note{font-size:13px;color:var(--sub)}
-.btn{display:inline-flex;align-items:center;gap:8px;font-size:14.5px;font-weight:800;border-radius:11px;padding:13px 24px;cursor:pointer;border:0;font-family:inherit;transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease),background var(--dur) var(--ease)}
+.runbar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:20px;padding-top:18px;border-top:1px solid var(--line)}
+.runbar .note{font-size:12.5px;color:var(--sub-2)}
+.btn{display:inline-flex;align-items:center;gap:8px;font-size:14.5px;font-weight:800;border-radius:11px;padding:13px 24px;cursor:pointer;border:0;font-family:inherit;transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease),background var(--dur) var(--ease),border-color var(--dur) var(--ease)}
 .btn.pri{background:var(--pt);color:#fff}.btn.pri:hover{background:var(--pt-2);transform:translateY(-1px);box-shadow:var(--shadow-md)}
+.btn.line{background:var(--surf);color:var(--ink);border:1px solid var(--line-2)}.btn.line:hover{border-color:var(--pt);color:var(--pt)}
+.btn .ar{transition:transform var(--dur) var(--ease)}.btn:hover .ar{transform:translateX(3px)}
 .hide{display:none}
-/* 자동화 이후 단계 카드 */
-.flow{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.flow .fc{background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:20px;transition:border-color var(--dur) var(--ease),box-shadow var(--dur-2) var(--ease)}
-.flow .fc:hover{border-color:var(--pt);box-shadow:var(--shadow-sm)}
-.flow .fc .st{font-size:11.5px;font-weight:800;color:var(--pt);letter-spacing:.03em}
-.flow .fc b{display:block;font-size:15px;font-weight:800;margin:6px 0 5px}
-.flow .fc p{font-size:13px;color:var(--sub);line-height:1.6}
-.flow .fc .tag{display:inline-block;margin-top:10px;font-size:11.5px;font-weight:700;color:var(--sub-2);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:4px 9px}
-@media (max-width:640px){.wtabs{grid-template-columns:1fr}.flow{grid-template-columns:1fr}}
+/* 결과 */
+.rsec{margin-top:26px}
+.rlab{font-size:13px;font-weight:800;color:var(--sub-2);letter-spacing:.02em;margin:0 2px 12px}
+/* 기업 분석 카드 */
+.an{background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:22px 24px}
+.an .h{font-size:15px;font-weight:800;color:var(--navy);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.an .g{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.an .g .c .k{font-size:11.5px;font-weight:800;color:var(--sub-2)}
+.an .g .c b{display:block;font-size:15px;font-weight:800;color:var(--ink);margin-top:4px;line-height:1.35}
+.an .g .c .s{font-size:12px;color:var(--sub);margin-top:2px}
+.an .svc{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:13px;color:var(--sub)}
+.an .svc .chip{display:inline-block;font-size:12.5px;font-weight:700;color:var(--pt);background:var(--pt-soft);border-radius:999px;padding:5px 12px;margin:0 6px 6px 0}
+/* 뉴스가치 후보 */
+.ideas{border-top:2px solid var(--ink);margin-top:6px}
+.idea{display:grid;grid-template-columns:38px 1fr auto;gap:14px;align-items:center;padding:16px 4px;border-bottom:1px solid var(--line)}
+.idea .rk{font-size:15px;font-weight:800;color:var(--sub-2);text-align:center}
+.idea.best{background:linear-gradient(90deg,var(--pt-soft),transparent 70%);border-radius:10px}
+.idea.best .rk{color:var(--pt)}
+.idea .t{font-size:15.5px;font-weight:700;color:var(--ink);line-height:1.4}
+.idea .why{font-size:12.5px;color:var(--sub);margin-top:5px;line-height:1.5}
+.idea .best-tag{display:inline-block;font-size:10px;font-weight:800;color:#fff;background:var(--pt);border-radius:4px;padding:2px 7px;margin-left:7px;vertical-align:middle}
+.idea .sc{text-align:center;min-width:78px}
+.idea .nv{font-size:24px;font-weight:800;color:var(--navy);letter-spacing:-.02em;line-height:1}
+.idea .nv small{font-size:12px;color:var(--sub-2);font-weight:700}
+.idea .st{font-size:11px;font-weight:800;border-radius:5px;padding:3px 8px;margin-top:6px;display:inline-block}
+.idea .st.ok{background:#EAF6EE;color:#1E7A45}.idea .st.info{background:var(--pt-soft);color:var(--pt-2)}.idea .st.warn{background:#FDECE4;color:#c0492a}
+/* 다음 단계 */
+.next{background:linear-gradient(135deg,var(--navy),#1b2f5e);border-radius:16px;padding:28px;color:#fff;margin-top:24px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.next h3{font-size:18px;font-weight:800;margin-bottom:6px;color:#fff}
+.next p{font-size:13.5px;color:rgba(255,255,255,.82);line-height:1.6;max-width:52ch}
+.next .btn.pri{background:#fff;color:var(--navy)}.next .btn.pri:hover{background:var(--pt-soft)}
+@media (max-width:760px){.grid2{grid-template-columns:1fr}.an .g{grid-template-columns:1fr 1fr}.idea{grid-template-columns:30px 1fr;gap:10px}.idea .sc{grid-column:2;text-align:left;display:flex;align-items:center;gap:10px;margin-top:4px}.idea .st{margin-top:0}}
 </style>
 </head>
 <body>
@@ -68,122 +81,86 @@
   <section class="subhead">
     <div class="crumb"><a href="../index.html">홈</a> / <a href="index.html">PR도구</a> / AI 자동화 기사배포</div>
     <h1 class="ptitle"><span class="tick"></span>AI 자동화 기사배포</h1>
-    <p class="pdesc">기업 정보만 입력하면 AI가 뉴스 가치를 판단하고, 보도자료를 자동 작성하고, 맞춤 기자를 추천해 피치메일과 함께 발송까지 이어갑니다.</p>
+    <p class="pdesc">기업 정보만 입력하면 AI가 기업 유형을 분석하고, 어떤 기사가 될지 <b>뉴스 가치로 채점</b>합니다.</p>
   </section>
 
-  <div class="merge-note">🔗 <b>보도자료 작성 + 기자 추천 + 피치메일 + 발송</b>을 하나의 자동화 흐름으로 통합했습니다.</div>
+  <div class="merge-note">🔗 <b>보도자료 작성 + 기자 추천 + 피치메일 + 발송</b>을 하나의 자동화 흐름으로 통합했습니다. — <b>1단계(기업 분석 · 뉴스가치 판단)</b>가 이 페이지에서 바로 동작합니다.</div>
 
-  <!-- 자동화 5단계 -->
   <div class="stepper">
     <span class="s on"><span class="n">1</span>정보 입력</span><span class="line"></span>
-    <span class="s"><span class="n">2</span>뉴스가치 판단</span><span class="line"></span>
+    <span class="s on"><span class="n">2</span>뉴스가치 판단</span><span class="line"></span>
     <span class="s"><span class="n">3</span>기자 추천</span><span class="line"></span>
     <span class="s"><span class="n">4</span>보도자료·메일</span><span class="line"></span>
     <span class="s"><span class="n">5</span>검수·발송</span>
   </div>
 
-  <div class="demo-note" style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;background:var(--pt-soft);border-style:solid;border-color:#cdd8ff;color:var(--pt-2)">
-    <span>▶ <b>실제 동작 데모</b>가 준비되어 있습니다 — 기업 분석 · 뉴스가치 채점 · 기자 매칭 · 보도자료 생성 · 데스크 평가까지 직접 체험하세요. <span style="color:var(--sub-2)">(발송은 데모 시연으로 처리)</span></span>
-    <a href="#demoWrap" onclick="runInline();return false;" style="flex:none;font-weight:800;color:#fff;background:var(--pt);border-radius:9px;padding:11px 20px;white-space:nowrap">이 페이지에서 실행 →</a>
-  </div>
-
-  <!-- STEP 1: 정보 입력 -->
-  <div class="wtabs">
-    <div class="wtab on" id="tab-ai" onclick="switchTab('ai')"><b>🤖 AI 자동 작성</b><span>정보만 입력하면 AI가 완성</span></div>
-    <div class="wtab" id="tab-manual" onclick="switchTab('manual')"><b>✏️ 직접 입력</b><span>제목·본문을 직접 작성</span></div>
-  </div>
-
-  <div class="card" id="form-ai">
-    <div class="field"><label>기업명 <span class="req">*</span></label><input type="text" placeholder="예: 주식회사 피알컴"></div>
-    <div class="field"><label>업종 <span class="req">*</span></label><input type="text" placeholder="예: IT·소프트웨어"></div>
-    <div class="field"><label>기사 유형 <span class="req">*</span></label>
-      <div class="chips" id="types">
-        <span class="chip" onclick="tog(this)">기업·브랜드 소식</span>
-        <span class="chip" onclick="tog(this)">제품·서비스 출시</span>
-        <span class="chip" onclick="tog(this)">행사·이벤트</span>
-        <span class="chip" onclick="tog(this)">수상·인증</span>
-        <span class="chip" onclick="tog(this)">투자·제휴</span>
-        <span class="chip" onclick="tog(this)">실적·성과</span>
-        <span class="chip" onclick="tog(this)">캠페인·CSR</span>
-        <span class="chip" onclick="tog(this)">기타</span>
-      </div>
+  <!-- 입력 폼 -->
+  <div class="card">
+    <div class="grid2">
+      <div class="field"><label>기업명 <span class="req">*</span></label><input type="text" id="f_name" value="(주)케이베딩"></div>
+      <div class="field"><label>업종</label><input type="text" id="f_ind" value="침장·섬유 제조업"></div>
+      <div class="field full"><label>기사 주제</label><input type="text" id="f_topic" value="2025 K-Bedding 베트남 수출상담회 개최"></div>
+      <div class="field full"><label>핵심 사실 · 성과</label><textarea id="f_case">참가기업 5개사 확정, 9월 18일 호치민 니코사이공에서 상담회 개최. 대구광역시 호치민사무소 협력, 강남마트 52개 매장·연 200억 원 수입 유통망 연계.</textarea></div>
+      <div class="field full"><label>기업 소개 · 배경</label><textarea id="f_about">침구·침장 제품을 생산하는 제조기업으로, 국내외 유통망 확대와 수출을 추진하고 있다.</textarea></div>
+      <div class="field full"><label>핵심 키워드</label><input type="text" id="f_kw" value="수출, 베트남, 침장, 상담회, 유통망"><div class="hint">쉼표(,)로 구분해 입력</div></div>
     </div>
-    <div class="field"><label>기사 주제 <span class="req">*</span></label><input type="text" placeholder="이 기사를 한 줄로 정리하면?"></div>
-    <div class="field"><label>핵심 사실 <span class="req">*</span></label><textarea placeholder="반드시 들어가야 할 핵심 사실·수치·일정 등"></textarea></div>
-    <div class="field"><label>강조 포인트</label><input type="text" placeholder="가장 강조하고 싶은 내용"></div>
-    <div class="field"><label>배경·스토리</label><textarea placeholder="기사의 배경이나 맥락"></textarea></div>
-    <div class="field"><label>관계자 멘트</label><textarea placeholder="인용할 대표·담당자 발언"></textarea></div>
-    <div class="field"><label>회사 소개</label><textarea placeholder="기사 말미에 들어갈 회사 소개"></textarea></div>
-    <div class="field"><label>핵심 키워드</label><input type="text" placeholder="쉼표(,)로 구분해 입력"><div class="hint">예: 스타트업, 투자유치, AI</div></div>
-    <div class="field"><label>사진 첨부</label>
-      <div class="drop"><div class="ic">🖼️</div>이미지를 끌어다 놓거나 클릭해 업로드<div class="sm">JPG·PNG · 최대 10MB</div></div>
-    </div>
-    <div class="foot">
-      <span class="note">🤖 다음 단계에서 AI가 뉴스 가치를 판단합니다.</span>
-      <button class="btn pri" onclick="next()">AI 분석 시작 →</button>
+    <div class="runbar">
+      <span class="note">입력값을 바탕으로 AI가 기업 유형을 분석하고 기사 후보를 뉴스가치로 채점합니다. (샘플이 미리 입력되어 있습니다)</span>
+      <button class="btn pri" onclick="runAnalysis()">AI 분석 시작 <span class="ar">→</span></button>
     </div>
   </div>
 
-  <div class="card hide" id="form-manual">
-    <div class="field"><label>제목 <span class="req">*</span></label><input type="text" placeholder="보도자료 제목"></div>
-    <div class="field"><label>기사 내용 <span class="req">*</span></label><textarea style="min-height:220px" placeholder="보도자료 본문을 직접 작성하세요"></textarea></div>
-    <div class="field"><label>사진 첨부</label>
-      <div class="drop"><div class="ic">🖼️</div>이미지를 끌어다 놓거나 클릭해 업로드<div class="sm">JPG·PNG · 최대 10MB</div></div>
+  <!-- 결과 -->
+  <div id="result" class="hide">
+    <div class="rsec">
+      <div class="rlab">STEP 1 · AI 기업 분석</div>
+      <div class="an" id="anBox"></div>
     </div>
-    <div class="foot">
-      <span class="note">작성한 원고로 기자 추천·발송 단계로 이어갑니다.</span>
-      <button class="btn pri" onclick="next()">다음 단계 →</button>
+    <div class="rsec">
+      <div class="rlab">STEP 2 · AI 기사 기획 회의 — 뉴스가치 채점</div>
+      <div class="ideas" id="ideaBox"></div>
+    </div>
+    <div class="next">
+      <div><h3>다음 단계 — 기자 추천 · 보도자료 · 발송</h3><p>선택한 기사 후보로 맞춤 기자를 추천하고, 보도자료·피치메일 생성과 검수·발송까지 이어집니다. (이 페이지에 순차 이식 중)</p></div>
+      <a class="btn pri" href="pr-agent/index.html">전체 흐름 이어보기 →</a>
     </div>
   </div>
-
-  <!-- 인라인 데모 (이 페이지에서 직접 실행) -->
-  <div id="demoWrap" class="hide" style="margin-top:24px">
-    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:0 2px 10px">
-      <div style="font-size:13px;font-weight:800;color:var(--pt)">▶ AI 자동화 기사배포 — 이 페이지에서 실행 중</div>
-      <button onclick="closeInline()" style="border:1px solid var(--line-2);background:var(--surf);border-radius:8px;padding:7px 13px;font-family:inherit;font-size:12.5px;font-weight:700;color:var(--sub);cursor:pointer">닫기 ✕</button>
-    </div>
-    <iframe id="demoFrame" title="AI 자동화 기사배포 데모" style="width:100%;border:1px solid var(--line);border-radius:14px;height:1400px;background:#fff;display:block"></iframe>
-  </div>
-
-  <!-- 이후 자동화 단계 (MVP 흐름) -->
-  <div class="sec-lab">AI가 이어서 자동으로 처리합니다</div>
-  <div class="flow">
-    <div class="fc"><div class="st">STEP 2</div><b>뉴스가치 판단</b><p>입력한 내용의 뉴스 가치를 점수화하고, 보완이 필요한 부분과 추천 기사 형식을 제시합니다.</p><span class="tag">뉴스가치 점수 0~100</span></div>
-    <div class="fc"><div class="st">STEP 3</div><b>기자 추천</b><p>업종·주제에 맞는 기자를 매칭률순으로 추천합니다. 명단은 내려받아 활용할 수 있습니다.</p><span class="tag">매칭 기자 TOP 5</span></div>
-    <div class="fc"><div class="st">STEP 4</div><b>보도자료·피치메일 생성</b><p>보도자료 초안과 기자 맞춤 피치메일을 자동 생성합니다. 여러 버전으로 비교할 수 있습니다.</p><span class="tag">보도자료 3버전 · 메일</span></div>
-    <div class="fc"><div class="st">STEP 5</div><b>검수·발송</b><p>발송 전 체크리스트로 검수한 뒤, 내부 검수를 거쳐 선택한 기자에게 발송하고 결과를 추적합니다.</p><span class="tag">2단계 발송 · 이력 추적</span></div>
-  </div>
-
   <div style="height:44px"></div>
 </div>
 <div id="mag-footer"></div>
+<script src="pr-agent-core.js?v=1"></script>
 <script src="../assets/js/magazine-header.js?v=2"></script>
 <script>
-function switchTab(t){
-  document.getElementById('tab-ai').classList.toggle('on',t==='ai');
-  document.getElementById('tab-manual').classList.toggle('on',t==='manual');
-  document.getElementById('form-ai').classList.toggle('hide',t!=='ai');
-  document.getElementById('form-manual').classList.toggle('hide',t!=='manual');
+function esc(s){return String(s==null?'':s).replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
+function runAnalysis(){
+  if(!_val('f_name')){ alert('기업명을 입력하세요.'); return; }
+  try{ buildIdeas(); }catch(e){ alert('분석 중 오류가 발생했습니다: '+e.message); return; }
+  var biz=CTX.biz||analyzeCompany();
+  /* 기업 분석 */
+  document.getElementById('anBox').innerHTML=
+    '<div class="h">🏢 이 기업을 이렇게 이해했습니다</div>'+
+    '<div class="g">'+
+      '<div class="c"><span class="k">기업 유형</span><b>'+esc(biz.typeLabel)+'</b><span class="s">'+esc(biz.cat)+'</span></div>'+
+      '<div class="c"><span class="k">주요 고객</span><b>'+esc(biz.customer)+'</b></div>'+
+      '<div class="c"><span class="k">역할</span><b>'+esc(biz.role)+'</b></div>'+
+      '<div class="c"><span class="k">기사 초점</span><b>'+esc(biz.focus)+'</b></div>'+
+    '</div>'+
+    '<div class="svc"><b style="color:var(--sub-2);font-size:11.5px;font-weight:800">주요 서비스</b><br>'+
+      (biz.services||[]).map(function(s){return '<span class="chip">'+esc(s)+'</span>';}).join('')+'</div>';
+  /* 뉴스가치 후보 */
+  var best=IDEAS[0]||{};
+  document.getElementById('ideaBox').innerHTML=IDEAS.map(function(it,i){
+    return '<div class="idea'+(i===0?' best':'')+'">'+
+      '<div class="rk">'+(i+1)+'</div>'+
+      '<div><div class="t">'+esc(it.title)+(i===0?'<span class="best-tag">최고 후보</span>':'')+'</div>'+
+        '<div class="why">💡 '+esc((it.why&&it.why[0])||it.ex||'')+'</div></div>'+
+      '<div class="sc"><div class="nv">'+it.newsValue+'<small>점</small></div>'+
+        '<span class="st '+esc(it.stType)+'">'+esc(it.status)+'</span></div>'+
+    '</div>';
+  }).join('');
+  var r=document.getElementById('result'); r.classList.remove('hide');
+  document.querySelector('.rsec').scrollIntoView({behavior:'smooth',block:'start'});
 }
-function tog(el){el.classList.toggle('on');}
-function runInline(){
-  var wrap=document.getElementById('demoWrap');
-  var fr=document.getElementById('demoFrame');
-  if(!fr.getAttribute('src')){ fr.setAttribute('src','pr-agent/index.html?embed=1'); }
-  wrap.classList.remove('hide');
-  wrap.scrollIntoView({behavior:'smooth',block:'start'});
-  /* 같은 도메인 → iframe 높이를 콘텐츠에 맞춰 자동 조절(아코디언 확장 대응) */
-  if(!window._drt){ window._drt=setInterval(function(){
-    try{ var h=fr.contentDocument.body.scrollHeight; if(h && Math.abs(h-(fr._h||0))>4){ fr.style.height=(h+24)+'px'; fr._h=h; } }catch(e){}
-  }, 500); }
-}
-function closeInline(){
-  var wrap=document.getElementById('demoWrap');
-  wrap.classList.add('hide');
-  if(window._drt){ clearInterval(window._drt); window._drt=null; }
-  document.querySelector('.stepper').scrollIntoView({behavior:'smooth',block:'start'});
-}
-function next(){ runInline(); }
 </script>
 </body>
 </html>
