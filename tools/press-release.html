@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI 자동화 기사배포 — 기업 정보 입력만으로 뉴스가치 분석 | PRCOME PR도구</title>
-<meta name="description" content="기업 정보만 입력하면 AI가 기업 유형을 분석하고, 기사 후보를 뉴스 가치로 채점합니다. 보도자료 작성·기자 추천·발송까지 이어지는 AI 자동화 기사배포. PRCOME.">
+<title>AI 자동화 기사배포 — 기업정보 입력→뉴스가치→기자추천→보도자료→발송 | PRCOME PR도구</title>
+<meta name="description" content="기업 정보만 입력하면 AI가 기업 유형을 분석하고, 기사 후보를 뉴스가치로 채점하고, 맞춤 기자를 추천하고, 보도자료·피치메일을 생성해 검수·발송까지 이어지는 AI 자동화 기사배포. PRCOME.">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <link rel="stylesheet" href="../assets/css/magazine-system.css?v=2">
 <script>window.MAG={root:'../',home:'../index.html',catBase:'../insights/index.html'};</script>
@@ -14,20 +14,17 @@
 .crumb a{transition:color var(--dur) var(--ease)}.crumb a:hover{color:var(--pt)}
 .ptitle{font-size:clamp(22px,3vw,30px);font-weight:800;letter-spacing:-.03em;display:flex;align-items:center;gap:11px;margin-bottom:6px}
 .ptitle .tick{width:26px;height:3px;background:var(--pt);border-radius:2px}
-.pdesc{font-size:14.5px;color:var(--sub);line-height:1.6;margin-bottom:20px;max-width:64ch}
-/* 스텝 */
+.pdesc{font-size:14.5px;color:var(--sub);line-height:1.6;margin-bottom:20px;max-width:66ch}
 .stepper{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 22px}
 .stepper .s{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--sub-2)}
 .stepper .s .n{width:25px;height:25px;border-radius:50%;background:var(--surf);border:1.5px solid var(--line-2);color:var(--sub-2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800}
 .stepper .s.on{color:var(--pt)}.stepper .s.on .n{background:var(--pt);border-color:var(--pt);color:#fff}
-.stepper .line{flex:1;min-width:14px;height:1.5px;background:var(--line)}
+.stepper .line{flex:1;min-width:12px;height:1.5px;background:var(--line)}
 .merge-note{background:var(--pt-soft);border:1px solid #cdd8ff;border-radius:10px;padding:13px 16px;font-size:13px;color:var(--pt-2);margin-bottom:18px;line-height:1.6}
 .merge-note b{color:var(--navy)}
-/* 폼 */
 .card{background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:24px}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.field{margin-bottom:16px}
-.field.full{grid-column:1/-1}
+.field{margin-bottom:16px}.field.full{grid-column:1/-1}
 .field>label{display:block;font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:7px}
 .field .req{color:#d43f2e;margin-left:2px}
 .field input[type=text],.field textarea{width:100%;border:1px solid var(--line-2);border-radius:9px;padding:11px 13px;font-family:inherit;font-size:14px;background:var(--bg);color:var(--ink)}
@@ -39,12 +36,13 @@
 .btn{display:inline-flex;align-items:center;gap:8px;font-size:14.5px;font-weight:800;border-radius:11px;padding:13px 24px;cursor:pointer;border:0;font-family:inherit;transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease),background var(--dur) var(--ease),border-color var(--dur) var(--ease)}
 .btn.pri{background:var(--pt);color:#fff}.btn.pri:hover{background:var(--pt-2);transform:translateY(-1px);box-shadow:var(--shadow-md)}
 .btn.line{background:var(--surf);color:var(--ink);border:1px solid var(--line-2)}.btn.line:hover{border-color:var(--pt);color:var(--pt)}
+.btn.sm{font-size:12.5px;padding:8px 14px;border-radius:8px}
+.btn:disabled{opacity:.5;cursor:not-allowed}
 .btn .ar{transition:transform var(--dur) var(--ease)}.btn:hover .ar{transform:translateX(3px)}
 .hide{display:none}
-/* 결과 */
 .rsec{margin-top:26px}
 .rlab{font-size:13px;font-weight:800;color:var(--sub-2);letter-spacing:.02em;margin:0 2px 12px}
-/* 기업 분석 카드 */
+/* 기업 분석 */
 .an{background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:22px 24px}
 .an .h{font-size:15px;font-weight:800;color:var(--navy);margin-bottom:16px;display:flex;align-items:center;gap:8px}
 .an .g{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
@@ -55,24 +53,57 @@
 .an .svc .chip{display:inline-block;font-size:12.5px;font-weight:700;color:var(--pt);background:var(--pt-soft);border-radius:999px;padding:5px 12px;margin:0 6px 6px 0}
 /* 뉴스가치 후보 */
 .ideas{border-top:2px solid var(--ink);margin-top:6px}
-.idea{display:grid;grid-template-columns:38px 1fr auto;gap:14px;align-items:center;padding:16px 4px;border-bottom:1px solid var(--line)}
+.idea{display:grid;grid-template-columns:34px 1fr auto auto;gap:14px;align-items:center;padding:15px 4px;border-bottom:1px solid var(--line)}
 .idea .rk{font-size:15px;font-weight:800;color:var(--sub-2);text-align:center}
-.idea.best{background:linear-gradient(90deg,var(--pt-soft),transparent 70%);border-radius:10px}
-.idea.best .rk{color:var(--pt)}
-.idea .t{font-size:15.5px;font-weight:700;color:var(--ink);line-height:1.4}
+.idea.sel{background:linear-gradient(90deg,var(--pt-soft),transparent 70%);border-radius:10px}
+.idea.sel .rk{color:var(--pt)}
+.idea .t{font-size:15px;font-weight:700;color:var(--ink);line-height:1.4}
 .idea .why{font-size:12.5px;color:var(--sub);margin-top:5px;line-height:1.5}
 .idea .best-tag{display:inline-block;font-size:10px;font-weight:800;color:#fff;background:var(--pt);border-radius:4px;padding:2px 7px;margin-left:7px;vertical-align:middle}
-.idea .sc{text-align:center;min-width:78px}
-.idea .nv{font-size:24px;font-weight:800;color:var(--navy);letter-spacing:-.02em;line-height:1}
-.idea .nv small{font-size:12px;color:var(--sub-2);font-weight:700}
-.idea .st{font-size:11px;font-weight:800;border-radius:5px;padding:3px 8px;margin-top:6px;display:inline-block}
+.idea .sc{text-align:center;min-width:66px}
+.idea .nv{font-size:22px;font-weight:800;color:var(--navy);letter-spacing:-.02em;line-height:1}
+.idea .nv small{font-size:11px;color:var(--sub-2);font-weight:700}
+.idea .st{font-size:10.5px;font-weight:800;border-radius:5px;padding:3px 7px;margin-top:5px;display:inline-block}
 .idea .st.ok{background:#EAF6EE;color:#1E7A45}.idea .st.info{background:var(--pt-soft);color:var(--pt-2)}.idea .st.warn{background:#FDECE4;color:#c0492a}
-/* 다음 단계 */
-.next{background:linear-gradient(135deg,var(--navy),#1b2f5e);border-radius:16px;padding:28px;color:#fff;margin-top:24px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
-.next h3{font-size:18px;font-weight:800;margin-bottom:6px;color:#fff}
-.next p{font-size:13.5px;color:rgba(255,255,255,.82);line-height:1.6;max-width:52ch}
-.next .btn.pri{background:#fff;color:var(--navy)}.next .btn.pri:hover{background:var(--pt-soft)}
-@media (max-width:760px){.grid2{grid-template-columns:1fr}.an .g{grid-template-columns:1fr 1fr}.idea{grid-template-columns:30px 1fr;gap:10px}.idea .sc{grid-column:2;text-align:left;display:flex;align-items:center;gap:10px;margin-top:4px}.idea .st{margin-top:0}}
+/* 기자 추천 */
+.reps{display:grid;gap:10px}
+.rep{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;background:var(--surf);border:1px solid var(--line);border-radius:12px;padding:14px 16px;cursor:pointer;transition:border-color var(--dur) var(--ease),box-shadow var(--dur-2) var(--ease)}
+.rep:hover{border-color:var(--pt);box-shadow:var(--shadow-sm)}
+.rep.sel{border-color:var(--pt);box-shadow:0 0 0 2px var(--pt-soft)}
+.rep .av{width:40px;height:40px;border-radius:10px;background:var(--pt-soft);color:var(--pt);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px}
+.rep .nm{font-size:14.5px;font-weight:800;color:var(--ink)}
+.rep .nm .md{font-weight:600;color:var(--sub);font-size:12.5px;margin-left:6px}
+.rep .rs{font-size:12px;color:var(--sub);margin-top:4px;line-height:1.5}
+.rep .tone{display:inline-block;font-size:10.5px;font-weight:800;color:var(--pt-2);background:var(--pt-soft);border-radius:5px;padding:2px 7px;margin-right:6px}
+.rep .em{font-size:11px;color:var(--sub-2);margin-top:3px}
+.rep .mt{text-align:center;min-width:56px}
+.rep .mt .p{font-size:20px;font-weight:800;color:var(--pt);line-height:1}.rep .mt .l{font-size:10.5px;color:var(--sub-2);font-weight:700}
+.repfoot{font-size:12.5px;color:var(--sub-2);margin-top:12px}
+/* 보도자료·메일 */
+.doc textarea{width:100%;border:1px solid var(--line-2);border-radius:10px;padding:15px;font-family:inherit;font-size:13.5px;line-height:1.7;background:var(--bg);color:var(--ink);min-height:260px;resize:vertical}
+.doc textarea.mail{min-height:180px}
+.doc .lab{font-size:12px;font-weight:800;color:var(--sub-2);margin:0 2px 7px}
+.mailhead{display:flex;gap:10px;align-items:center;margin-bottom:10px}
+.mailhead input{flex:1;border:1px solid var(--line-2);border-radius:9px;padding:10px 12px;font-family:inherit;font-size:13.5px;background:var(--bg)}
+/* 검수 */
+.review{display:grid;gap:9px}
+.rvi{display:flex;align-items:center;gap:11px;background:var(--surf);border:1px solid var(--line);border-radius:10px;padding:12px 15px;cursor:pointer}
+.rvi input{width:18px;height:18px;accent-color:var(--pt);flex:none}
+.rvi b{font-size:13.5px;font-weight:700;color:var(--ink)}
+.rvi span{font-size:12px;color:var(--sub);margin-left:auto}
+/* 발송·이력 */
+.sendbar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:16px}
+.toast{background:#EAF6EE;border:1px solid #bfe6cd;border-radius:10px;padding:13px 16px;font-size:13.5px;color:#1E7A45;margin-top:14px}
+.hist{border-top:2px solid var(--ink);margin-top:14px}
+.hrow{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:13px 4px;border-bottom:1px solid var(--line)}
+.hrow .b{font-size:11px;font-weight:800;color:#1E7A45;background:#EAF6EE;border-radius:5px;padding:3px 8px}
+.hrow .t{font-size:13.5px;font-weight:700;color:var(--ink)}
+.hrow .m{font-size:12px;color:var(--sub);margin-top:2px}
+.hrow .d{font-size:12px;color:var(--sub-2);white-space:nowrap}
+.privacy{font-size:12px;color:var(--sub-2);background:var(--bg);border:1px dashed var(--line-2);border-radius:8px;padding:10px 13px;margin-top:12px;line-height:1.6}
+@media (max-width:760px){.grid2{grid-template-columns:1fr}.an .g{grid-template-columns:1fr 1fr}
+ .idea{grid-template-columns:28px 1fr;gap:9px}.idea .sc{grid-column:2}.idea>.btn{grid-column:2;justify-self:start}
+ .rep{grid-template-columns:auto 1fr}.rep .mt{grid-column:2;text-align:left;display:flex;gap:8px;align-items:center}}
 </style>
 </head>
 <body>
@@ -81,20 +112,20 @@
   <section class="subhead">
     <div class="crumb"><a href="../index.html">홈</a> / <a href="index.html">PR도구</a> / AI 자동화 기사배포</div>
     <h1 class="ptitle"><span class="tick"></span>AI 자동화 기사배포</h1>
-    <p class="pdesc">기업 정보만 입력하면 AI가 기업 유형을 분석하고, 어떤 기사가 될지 <b>뉴스 가치로 채점</b>합니다.</p>
+    <p class="pdesc">기업 정보만 입력하면 <b>기업 분석 → 뉴스가치 채점 → 기자 추천 → 보도자료·피치메일 생성 → 검수·발송</b>까지 이 페이지에서 이어집니다.</p>
   </section>
 
-  <div class="merge-note">🔗 <b>보도자료 작성 + 기자 추천 + 피치메일 + 발송</b>을 하나의 자동화 흐름으로 통합했습니다. — <b>1단계(기업 분석 · 뉴스가치 판단)</b>가 이 페이지에서 바로 동작합니다.</div>
+  <div class="merge-note">🔗 <b>보도자료 작성 · 기자 추천 · 피치메일 · 발송</b>을 하나의 자동화 흐름으로 통합했습니다.</div>
 
-  <div class="stepper">
-    <span class="s on"><span class="n">1</span>정보 입력</span><span class="line"></span>
-    <span class="s on"><span class="n">2</span>뉴스가치 판단</span><span class="line"></span>
-    <span class="s"><span class="n">3</span>기자 추천</span><span class="line"></span>
-    <span class="s"><span class="n">4</span>보도자료·메일</span><span class="line"></span>
-    <span class="s"><span class="n">5</span>검수·발송</span>
+  <div class="stepper" id="stepper">
+    <span class="s on" data-s="1"><span class="n">1</span>정보 입력</span><span class="line"></span>
+    <span class="s" data-s="2"><span class="n">2</span>뉴스가치</span><span class="line"></span>
+    <span class="s" data-s="3"><span class="n">3</span>기자 추천</span><span class="line"></span>
+    <span class="s" data-s="4"><span class="n">4</span>보도자료·메일</span><span class="line"></span>
+    <span class="s" data-s="5"><span class="n">5</span>검수·발송</span>
   </div>
 
-  <!-- 입력 폼 -->
+  <!-- 입력 -->
   <div class="card">
     <div class="grid2">
       <div class="field"><label>기업명 <span class="req">*</span></label><input type="text" id="f_name" value="(주)케이베딩"></div>
@@ -105,61 +136,174 @@
       <div class="field full"><label>핵심 키워드</label><input type="text" id="f_kw" value="수출, 베트남, 침장, 상담회, 유통망"><div class="hint">쉼표(,)로 구분해 입력</div></div>
     </div>
     <div class="runbar">
-      <span class="note">입력값을 바탕으로 AI가 기업 유형을 분석하고 기사 후보를 뉴스가치로 채점합니다. (샘플이 미리 입력되어 있습니다)</span>
+      <span class="note">AI가 기업 유형을 분석하고 기사 후보를 뉴스가치로 채점합니다. (샘플이 미리 입력되어 있습니다)</span>
       <button class="btn pri" onclick="runAnalysis()">AI 분석 시작 <span class="ar">→</span></button>
     </div>
   </div>
 
   <!-- 결과 -->
   <div id="result" class="hide">
-    <div class="rsec">
-      <div class="rlab">STEP 1 · AI 기업 분석</div>
-      <div class="an" id="anBox"></div>
+    <div class="rsec"><div class="rlab">STEP 1 · AI 기업 분석</div><div class="an" id="anBox"></div></div>
+    <div class="rsec"><div class="rlab">STEP 2 · 뉴스가치 채점 — 후보에서 <b style="color:var(--pt)">진행할 기사</b>를 선택하세요</div><div class="ideas" id="ideaBox"></div></div>
+  </div>
+
+  <!-- STEP 3~5 (후보 선택 후) -->
+  <div id="flow" class="hide">
+    <div class="rsec"><div class="rlab">STEP 3 · 맞춤 기자 추천 <span id="repCount" style="color:var(--sub-2)"></span></div>
+      <div class="reps" id="repBox"></div>
+      <div class="repfoot" id="repFoot"></div>
+      <div class="privacy">🔒 개인정보 보호를 위해 기자 이메일은 <b>마스킹</b> 표시됩니다(데모). 실제 발송은 승인된 백엔드에서만 이뤄집니다.</div>
     </div>
-    <div class="rsec">
-      <div class="rlab">STEP 2 · AI 기사 기획 회의 — 뉴스가치 채점</div>
-      <div class="ideas" id="ideaBox"></div>
+    <div class="rsec"><div class="rlab">STEP 4 · 보도자료 초안</div>
+      <div class="card doc"><div class="lab">AI 생성 보도자료 (수정 가능)</div><textarea id="pr_body"></textarea></div>
     </div>
-    <div class="next">
-      <div><h3>다음 단계 — 기자 추천 · 보도자료 · 발송</h3><p>선택한 기사 후보로 맞춤 기자를 추천하고, 보도자료·피치메일 생성과 검수·발송까지 이어집니다. (이 페이지에 순차 이식 중)</p></div>
-      <a class="btn pri" href="pr-agent/index.html">전체 흐름 이어보기 →</a>
+    <div class="rsec"><div class="rlab">STEP 4 · 기자 맞춤 피치메일</div>
+      <div class="card doc">
+        <div class="mailhead"><span class="lab" style="margin:0">제목</span><input type="text" id="mail_subj"></div>
+        <textarea class="mail" id="mail_body"></textarea>
+      </div>
+    </div>
+    <div class="rsec"><div class="rlab">STEP 5 · 발송 전 검수</div>
+      <div class="card"><div class="review" id="reviewBox"></div></div>
+    </div>
+    <div class="rsec"><div class="rlab">STEP 5 · 발송 (데모)</div>
+      <div class="card">
+        <div class="sendbar">
+          <span class="note" style="font-size:12.5px;color:var(--sub-2)" id="sendHint">기자를 선택하면 발송할 수 있습니다.</span>
+          <button class="btn pri" id="sendBtn" onclick="sendDemo()" disabled>선택 기자에게 발송 (데모)</button>
+        </div>
+        <div id="sendToast" class="toast hide"></div>
+        <div id="histWrap" class="hide"><div class="rlab" style="margin-top:18px">발송 이력</div><div class="hist" id="histBox"></div></div>
+      </div>
     </div>
   </div>
   <div style="height:44px"></div>
 </div>
 <div id="mag-footer"></div>
-<script src="pr-agent-core.js?v=1"></script>
+<script src="pr-agent-core.js?v=2"></script>
 <script src="../assets/js/magazine-header.js?v=2"></script>
 <script>
 function esc(s){return String(s==null?'':s).replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
+function _two(n){return(n<10?'0':'')+n;}
+function _nowStr(){var d=window.__now||new Date(2026,6,24,10,0);return d.getFullYear()+'-'+_two(d.getMonth()+1)+'-'+_two(d.getDate())+' '+_two(d.getHours())+':'+_two(d.getMinutes());}
+function maskEmail(e){e=String(e||'');var at=e.indexOf('@');if(at<1)return '이메일 보유';return e.charAt(0)+'***@'+'***';}
+function setStep(n){document.querySelectorAll('#stepper .s').forEach(function(el){el.classList.toggle('on',+el.getAttribute('data-s')<=n);});}
+var HISTORY=[];
+
 function runAnalysis(){
   if(!_val('f_name')){ alert('기업명을 입력하세요.'); return; }
-  try{ buildIdeas(); }catch(e){ alert('분석 중 오류가 발생했습니다: '+e.message); return; }
+  try{ buildIdeas(); }catch(e){ alert('분석 오류: '+e.message); return; }
   var biz=CTX.biz||analyzeCompany();
-  /* 기업 분석 */
   document.getElementById('anBox').innerHTML=
-    '<div class="h">🏢 이 기업을 이렇게 이해했습니다</div>'+
-    '<div class="g">'+
-      '<div class="c"><span class="k">기업 유형</span><b>'+esc(biz.typeLabel)+'</b><span class="s">'+esc(biz.cat)+'</span></div>'+
-      '<div class="c"><span class="k">주요 고객</span><b>'+esc(biz.customer)+'</b></div>'+
-      '<div class="c"><span class="k">역할</span><b>'+esc(biz.role)+'</b></div>'+
-      '<div class="c"><span class="k">기사 초점</span><b>'+esc(biz.focus)+'</b></div>'+
-    '</div>'+
+    '<div class="h">🏢 이 기업을 이렇게 이해했습니다</div><div class="g">'+
+    '<div class="c"><span class="k">기업 유형</span><b>'+esc(biz.typeLabel)+'</b><span class="s">'+esc(biz.cat)+'</span></div>'+
+    '<div class="c"><span class="k">주요 고객</span><b>'+esc(biz.customer)+'</b></div>'+
+    '<div class="c"><span class="k">역할</span><b>'+esc(biz.role)+'</b></div>'+
+    '<div class="c"><span class="k">기사 초점</span><b>'+esc(biz.focus)+'</b></div></div>'+
     '<div class="svc"><b style="color:var(--sub-2);font-size:11.5px;font-weight:800">주요 서비스</b><br>'+
-      (biz.services||[]).map(function(s){return '<span class="chip">'+esc(s)+'</span>';}).join('')+'</div>';
-  /* 뉴스가치 후보 */
-  var best=IDEAS[0]||{};
+    (biz.services||[]).map(function(s){return '<span class="chip">'+esc(s)+'</span>';}).join('')+'</div>';
   document.getElementById('ideaBox').innerHTML=IDEAS.map(function(it,i){
-    return '<div class="idea'+(i===0?' best':'')+'">'+
+    return '<div class="idea'+(i===selIdea?' sel':'')+'" id="idea'+i+'">'+
       '<div class="rk">'+(i+1)+'</div>'+
       '<div><div class="t">'+esc(it.title)+(i===0?'<span class="best-tag">최고 후보</span>':'')+'</div>'+
-        '<div class="why">💡 '+esc((it.why&&it.why[0])||it.ex||'')+'</div></div>'+
-      '<div class="sc"><div class="nv">'+it.newsValue+'<small>점</small></div>'+
-        '<span class="st '+esc(it.stType)+'">'+esc(it.status)+'</span></div>'+
+        '<div class="why">💡 '+esc((it.why&&it.why[0])||'')+'</div></div>'+
+      '<div class="sc"><div class="nv">'+it.newsValue+'<small>점</small></div><span class="st '+esc(it.stType)+'">'+esc(it.status)+'</span></div>'+
+      '<button class="btn '+(i===0?'pri':'line')+' sm" onclick="proceed('+i+')">이 후보로 진행 →</button>'+
     '</div>';
   }).join('');
-  var r=document.getElementById('result'); r.classList.remove('hide');
-  document.querySelector('.rsec').scrollIntoView({behavior:'smooth',block:'start'});
+  document.getElementById('result').classList.remove('hide');
+  setStep(2);
+  document.querySelector('#result .rsec').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function proceed(i){
+  selIdea=i;
+  document.querySelectorAll('.idea').forEach(function(el,idx){el.classList.toggle('sel',idx===i);});
+  try{ buildMatches(); }catch(e){ alert('기자 매칭 오류: '+e.message); return; }
+  var top=REPS.slice(0,5);
+  document.getElementById('repCount').textContent='· 매칭 '+matchTotal+'명 중 상위 5명';
+  document.getElementById('repBox').innerHTML=top.map(function(r,idx){
+    return '<div class="rep'+(idx===selRep?' sel':'')+'" id="rep'+idx+'" onclick="pickRep('+idx+')">'+
+      '<div class="av">'+esc((r.name||'?').charAt(0))+'</div>'+
+      '<div><div class="nm">'+esc(r.name)+'<span class="md">'+esc(r.media)+'</span></div>'+
+        '<div class="rs"><span class="tone">'+esc(r.tone)+'</span>'+esc((r.reasons||[]).slice(0,2).join(' · '))+'</div>'+
+        '<div class="em">✉ '+esc(maskEmail(r.email))+'</div></div>'+
+      '<div class="mt"><div class="p">'+r.score+'</div><div class="l">매칭점수</div></div>'+
+    '</div>';
+  }).join('');
+  document.getElementById('repFoot').textContent='추천 기자는 입력 키워드·업종과 기자 담당 분야의 일치도로 정렬됩니다.';
+  genPress(); genMail(); renderReview();
+  document.getElementById('flow').classList.remove('hide');
+  setStep(4);
+  document.getElementById('repBox').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function pickRep(i){ selRep=i; repChosen=true;
+  document.querySelectorAll('.rep').forEach(function(el,idx){el.classList.toggle('sel',idx===i);});
+  genMail();
+  var b=document.getElementById('sendBtn'); b.disabled=false;
+  document.getElementById('sendHint').textContent=REPS[i].name+' 기자('+REPS[i].media+') 선택됨 · 발송 가능';
+}
+
+function genPress(){
+  var it=IDEAS[selIdea]||{}, name=CTX.company||_val('f_name'), topic=CTX.topic||_val('f_topic');
+  var facts=_val('f_case'), about=_val('f_about'), kws=(CTX.keywords||[]).slice(0,6).join(', ');
+  var title=(it.title||name+' 소식');
+  var lines=[
+    '[제목] '+title,
+    '[부제] '+ (topic||name+' 관련 소식'),
+    '',
+    '('+name+' 보도자료) '+name+_eun(name)+' '+topic+_eul(topic)+' 추진한다고 밝혔다.',
+    '',
+    '■ 주요 내용',
+    facts||(name+'의 최근 활동 내용이 여기에 정리됩니다.'),
+    '',
+    '■ 배경',
+    about||(name+'는 관련 분야에서 사업을 이어오고 있다.'),
+    '',
+    '■ 의미',
+    '이번 소식은 '+((it.why&&it.why[0])||'해당 분야에서 주목할 만한 사례')+'.',
+    '',
+    '한편, '+name+_eun(name)+' 향후에도 관련 활동을 지속할 계획이다.',
+    '',
+    '※ 핵심 키워드: '+kws
+  ];
+  document.getElementById('pr_body').value=lines.join('\n');
+}
+function genMail(){
+  var it=IDEAS[selIdea]||{}, repName=(repChosen&&REPS[selRep])?REPS[selRep].name:'○○';
+  document.getElementById('mail_subj').value=it.subject||('[보도자료] '+(CTX.company||''));
+  var body=(it.body||'').replace(/\{name\}/g,repName).replace(/\n?\{tone\}\n?/g,'\n');
+  document.getElementById('mail_body').value=body;
+}
+var REVIEW_LIST=[
+  ['담당자 연락처','발신자·문의처가 포함되었는가'],
+  ['제목 확정','기사 헤드라인으로 적절한가'],
+  ['사진·자료 첨부','기사화에 필요한 이미지·근거가 있는가'],
+  ['인용문 확인','대표·관계자 멘트가 정확한가'],
+  ['스팸성 표현 점검','과장·광고성 표현이 없는가'],
+  ['내부 검수 발송','내부 수신함에서 최종 확인했는가']
+];
+function renderReview(){
+  document.getElementById('reviewBox').innerHTML=REVIEW_LIST.map(function(r,i){
+    return '<label class="rvi"><input type="checkbox" id="rv'+i+'"><b>'+esc(r[0])+'</b><span>'+esc(r[1])+'</span></label>';
+  }).join('');
+}
+function sendDemo(){
+  if(!repChosen){ alert('기자를 먼저 선택하세요.'); return; }
+  var r=REPS[selRep], it=IDEAS[selIdea]||{};
+  HISTORY.unshift({name:r.name,media:r.media,subj:document.getElementById('mail_subj').value||it.subject,score:it.newsValue,at:_nowStr()});
+  document.getElementById('histBox').innerHTML=HISTORY.map(function(h){
+    return '<div class="hrow"><span class="b">발송 완료</span>'+
+      '<div><div class="t">'+esc(h.name)+' 기자 · '+esc(h.media)+'</div><div class="m">'+esc(h.subj)+' · 뉴스가치 '+h.score+'점</div></div>'+
+      '<div class="d">'+esc(h.at)+'</div></div>';
+  }).join('');
+  document.getElementById('histWrap').classList.remove('hide');
+  var t=document.getElementById('sendToast');
+  t.classList.remove('hide');
+  t.innerHTML='✅ <b>발송 완료 (데모)</b> — 데모 환경에서는 실제 메일이 발송되지 않고 흐름만 시연됩니다. ('+esc(r.name)+' 기자 · '+esc(r.media)+')';
+  setStep(5);
+  document.getElementById('sendToast').scrollIntoView({behavior:'smooth',block:'center'});
 }
 </script>
 </body>
