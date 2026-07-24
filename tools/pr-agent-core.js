@@ -420,3 +420,301 @@ var REPORTERS=[
 {name:'김현미',media:'경남신문',email:'masked@demo',field:'정치, 국회, 정당'},
 {name:'노윤주',media:'경남신문',email:'masked@demo',field:'충남'}
 ];
+
+/* ===== 보도자료 생성기 (원본 데모 buildPressRelease + _polishPR 재사용) ===== */
+var PR_STYLE='economy';
+var PR_STYLES={
+ economy:{label:'경제신문', tag:'A', lead:'판로 확대에 나섰다',
+  valueFn:function(c){return '이번 '+c.ev+'로 '+c.actor+'는 '+(c.reg||'해외')+' 유통망과 직접 거래 채널을 확보한다.'+(c.amt?(' 목표 거래 규모는 연 '+c.amt+'이다.'):(c.firmN?(' 참가 기업은 '+c.firmN+'다.'):''));}},
+ local:{label:'지역신문', tag:'B', lead:'공동 판로 개척에 나섰다',
+  valueFn:function(c){return '이번 '+c.ev+'는 개별 기업 단위로는 뚫기 어려운 '+(c.reg||'해외')+' 판로를 '+(c.city?c.city+' ':'')+c.indCore+'기업이 공동으로 확보하는 사례다.'+(c.firmN?(' '+c.firmN+'가 함께 참여한다.'):'');}},
+ it:{label:'산업·IT 전문지', tag:'C', lead:'유통망 확대에 나섰다',
+  valueFn:function(c){return '이번 '+c.ev+'는 오프라인 매장 입점과 함께 온라인·플랫폼 기반 판매 채널을 확보하는 방식으로 진행된다.'+(c.stores?(' 연계 대상은 '+c.venue+' '+c.stores+(_hasJong(c.stores)?'이다.':'다.')):'');}},
+ startup:{label:'스타트업 전문지', tag:'', lead:'신규 시장 진출에 나섰다',
+  valueFn:function(c){return '이번 '+c.ev+'는 '+c.actor+'가 '+(c.reg||'해외')+' 시장에 처음으로 진입하는 사업이다.'+(c.amt?(' 초기 목표 규모는 연 '+c.amt+'이다.'):'');}},
+ corp:{label:'기업 보도자료', tag:'', lead:'시장 공략을 본격화했다',
+  valueFn:function(c){return '이번 '+c.ev+'로 '+c.actor+'는 '+(c.reg||'신규')+' 시장에서 거래처를 확대한다.'+(c.firmN?(' 참가 기업은 '+c.firmN+'다.'):'');}}
+};
+function _jEN(s){return _hasJong(s)?'은':'는';}
+function _prFacts(){
+ var about=_val('f_about'), caseTxt=_val('f_case'), blob=about+' '+caseTxt+' '+(CTX.topic||'');
+ function g(re){var x=blob.match(re);return x?x[0]:'';}
+ var region=_findKw(/베트남|해외|글로벌|미국|중국|일본|유럽|아세안|인도|동남아/,'');
+ var venue=_findKw(/[가-힣A-Za-z]*마트|[가-힣]+유통|[가-힣]+플랫폼|[가-힣]+몰/,'');
+ var event=_findKw(/[가-힣A-Za-z]*상담회|[가-힣]*박람회|[가-힣]*전시회|[가-힣]*미팅/,'');
+ return {
+  region:region, venue:venue, event:event||'행사',
+  city:(blob.match(/(대구|부산|광주|대전|울산|인천|세종|서울|경기|강원|충북|충남|전북|전남|경북|경남|제주)/)||[''])[0],
+  pubOrg:((blob.match(/[가-힣]+(?:광역시|특별시|시|도|군|구)\s?[가-힣]*사무소/)||[''])[0])||'',
+  stores:g(/[0-9]+\s*개\s*(?:소매\s*)?매장/),
+  amount:g(/[0-9,]+\s*억\s*원?/),
+  firms:g(/참가기업\s*[0-9]+\s*개사|[0-9]+\s*개사/),
+  date:g(/[0-9]{1,2}월\s*[0-9]{1,2}일/),
+  place:g(/[가-힣]{0,3}호텔\s*[가-힣A-Za-z]+|니코사이공|[가-힣]{2,8}컨벤션센터/).replace(/(에서는|에서|에는|에)$/,''),
+  lead:g(/이사장\s*[가-힣]{2,4}|대표\s*[가-힣]{2,4}|회장\s*[가-힣]{2,4}/)
+ };
+}
+function _indCore(){
+ var toks=String(CTX.industry).split(/[,\n]/).map(function(s){return s.trim();}).filter(Boolean);
+ var f='';for(var i=0;i<toks.length;i++){if(/산업$/.test(toks[i])){f=toks[i];break;}}
+ if(!f)f=toks[toks.length-1]||'산업';
+ return f.replace(/산업$/,'')||toks[0]||((CTX.keywords||[])[0])||'산업';
+}
+/* 서비스·비제조 기업용 사실 추출 (제조·수출 프레임을 쓰지 않는다) */
+function _bizFacts(){
+ var blob=_val('f_about')+' '+_val('f_case')+' '+(CTX.topic||'');
+ function g(re){var m=blob.match(re);return m?m[0].replace(/\s+/g,' ').trim():'';} /* 내부 공백은 1칸 유지 */
+ return {
+  firms:g(/[0-9,]+\s*개\s*(?:중소기업|고객사|업체|기관|기업|사)/),
+  cases:g(/[0-9,]+\s*건/),
+  amount:g(/[0-9,]+\s*억\s*원?|[0-9,]+\s*만\s*원/),
+  people:g(/[0-9,]+\s*명/),
+  year:g(/(?:19|20)[0-9]{2}\s*년/),
+  region:(blob.match(/베트남|해외|글로벌|미국|중국|일본|유럽|아세안|동남아|인도네시아/)||[''])[0],
+  lead:g(/대표이사\s*[가-힣]{2,4}|대표\s*[가-힣]{2,4}|원장\s*[가-힣]{2,4}|이사장\s*[가-힣]{2,4}|회장\s*[가-힣]{2,4}|센터장\s*[가-힣]{2,4}/)
+ };
+}
+/* 기업 유형별 기사 생성 (제조/수출이 아닌 홍보대행·서비스·스타트업·병원·교육·공공) */
+/* ===== 인터뷰에서 수집한 취재 내용 추출 =====
+   기사는 회사 소개가 아니라, 인터뷰에서 확인된 코멘트·수치·사례를 중심으로 쓴다. */
+function _interviewFacts(){
+ var qt=ANSWER_TEXT.quote||'', quote='';
+ var m=qt.match(/[""]([^""]{4,})[""]|"([^"]{4,})"/);
+ if(m) quote=(m[1]||m[2]);
+ var speaker=(qt.match(/(이사장|대표이사|대표|원장|회장|센터장|팀장|본부장)\s*[가-힣]{2,4}|[가-힣]{2,4}\s*(이사장|대표|원장|회장|센터장)/)||[''])[0].trim();
+ return {
+  quote:quote, speaker:speaker,
+  num:(ANSWER_TEXT.num||'').trim(),
+  caseText:(ANSWER_TEXT.case||'').trim(),
+  plan:(ANSWER_TEXT.plan||'').trim(),
+  diff:(ANSWER_TEXT.diff||'').trim(),
+  has:function(){return !!(quote||ANSWER_TEXT.num||ANSWER_TEXT.case);}
+ };
+}
+/* 경어체·구어체 답변을 기사체(–다)로 변환 */
+function _toArticleStyle(s){
+ s=String(s||'').replace(/\n+/g,' ').trim();
+ s=s.replace(/하였습니다/g,'했다').replace(/했습니다/g,'했다').replace(/합니다/g,'한다')
+    .replace(/됩니다/g,'된다').replace(/입니다/g,'이다').replace(/였습니다/g,'였다')
+    .replace(/있습니다/g,'있다').replace(/없습니다/g,'없다').replace(/드립니다/g,'다')
+    .replace(/십니다/g,'다').replace(/ㅂ니다/g,'다').replace(/습니다/g,'다')
+    .replace(/이에요|예요|에요/g,'다').replace(/\s{2,}/g,' ').trim();
+ if(s && !/[.。!?]$/.test(s)) s+='.';
+ return s;
+}
+/* 관계자 코멘트: 인터뷰에서 받은 실제 코멘트를 우선 사용 (인용부 안은 기사체로) */
+function _articleComment(defSpeaker, defQuote){
+ var iv=_interviewFacts();
+ var sp=iv.speaker||defSpeaker;
+ var quote=String(iv.quote||defQuote).replace(/^["""]|["""]$/g,'').replace(/[.。]$/,'').trim();
+ quote=quote.replace(/했습니다/g,'하겠다').replace(/합니다/g,'한다').replace(/입니다/g,'이다').replace(/습니다/g,'다');
+ return _eun(sp)+' "'+quote+'"고 말했다.';
+}
+/* 본문에 넣을 취재 사실(수치·사례) 문장 — 기사체로 변환, 중복 최소화 */
+function _ivBodyLine(){
+ var iv=_interviewFacts(), out=[];
+ if(iv.num) out.push(_toArticleStyle(_firstSent(iv.num)));
+ if(iv.caseText){ var c=_toArticleStyle(_firstSent(iv.caseText)); if(out.indexOf(c)<0 && c.replace(/[0-9]/g,'')!==(out[0]||'').replace(/[0-9]/g,'')) out.push(c); }
+ return out.join(' ').trim();
+}
+/* 리드 첫 문장 = '사건/성과' (회사 소개가 아니라, 최근 발생한 성과·계약·선정·지원 사례로 시작) */
+function _leadEvent(biz,f,ang){
+ var firms=f.firms,cases=f.cases,amount=f.amount,people=f.people,region=f.region;
+ var strong=firms||cases||people||amount||'';
+ if(ang==='deal') return (region?region+' ':'')+'시장 공급 계약이 체결됐다.';
+ if(ang==='cert') return '공인 인증·정부 선정 성과가 나왔다.';
+ switch(biz.type){
+  case 'agency':
+   if(firms) return firms+(_hasJong(firms)?'이':'가')+' 정부지원사업을 통해 '+(region||'해외')+' 시장 진출에 나섰다.';
+   if(cases) return (region||'해외')+' 바이어 상담 '+cases+(_hasJong(cases)?'이':'가')+' 성사됐다.';
+   return '중소기업의 '+(region||'해외')+' 마케팅 지원 성과가 나왔다.';
+  case 'hospital':
+   if(strong) return (f.year?f.year+' ':'지난해 ')+strong+' 규모의 진료·치료 성과가 집계됐다.';
+   return '지역 의료 서비스 성과가 공개됐다.';
+  case 'education':
+   if(people||firms) return (f.year?f.year+' ':'')+'수료생 '+(people||firms)+'이 배출됐다.';
+   return '교육 프로그램 운영 성과가 나왔다.';
+  case 'startup':
+   if(amount) return (f.year?f.year+' ':'')+amount+' 규모의 투자 유치·성장 성과가 나왔다.';
+   if(people) return '서비스 이용자가 '+people+'을 넘어섰다.';
+   return '기술 기반 서비스의 성장 성과가 공개됐다.';
+  case 'public':
+   if(firms) return firms+(_hasJong(firms)?'이':'가')+' 지원사업 수혜를 받았다.';
+   return '지역기업 지원 성과가 나왔다.';
+  default:
+   if(strong) return strong+' 규모의 사업 성과가 나왔다.';
+   return biz.typeLabel+' 분야 사업 성과가 공개됐다.';
+ }
+}
+function _prBiz(biz){
+ var f=_bizFacts(), name=CTX.company||'해당 기업';
+ var nameShort=name.replace(/주식회사|㈜|\(주\)/g,'').trim()||name;
+ var svc=(biz.services||[]).filter(Boolean).slice(0,4), svcTxt=svc.slice(0,3).join('·')||biz.typeLabel;
+ var scale=[];if(f.firms)scale.push(f.firms);if(f.cases)scale.push(f.cases);if(f.amount)scale.push(f.amount);if(f.people)scale.push(f.people);
+ /* 제목 = 사명 + (정량 팩트) + 유형별 헤드라인 명사. 홍보문구·수식어·중복어 배제 */
+ var HEAD={agency:'해외 진출 지원 성과', public:'지원사업 성과', hospital:'진료 성과 공개',
+   education:'교육 성과 공개', startup:'투자유치·성장 성과', service:'사업 성과 공개',
+   manufacturer:'사업 성과 공개'}[biz.type]||'사업 성과 공개';
+ var factBit=f.firms||f.cases||f.amount||f.people||'';
+ var L=[];
+ /* 제목 */
+ L.push('[제목] '+nameShort+', '+(factBit?factBit+' ':(svc[0]?svc[0]+' ':''))+HEAD);
+ /* 부제목: 핵심 서비스 + 정량 팩트 */
+ L.push('[부제목] '+svcTxt+(scale.length?(' · '+scale.slice(0,2).join(', ')):(' · '+biz.typeLabel)));
+ L.push('');
+ /* 리드: 문장1 = '사건/성과'로 시작(회사 소개 아님), 문장2 = 주체·서비스·출처(밝혔다) */
+ var ang=(typeof IDEAS!=='undefined'&&IDEAS[selIdea])?IDEAS[selIdea].angleKey:'';
+ L.push('[리드]');
+ L.push(_leadEvent(biz,f,ang));
+ L.push(name+(f.lead?'('+f.lead+')':'')+_jEN(name)+' '+_eul(svcTxt)+' 통해 '+biz.customer+'의 '+biz.act+'고 밝혔다.');
+ L.push('');
+ /* 본문: 인터뷰에서 확인된 취재 사실(수치·사례) 우선, 그 다음 서비스 배경 */
+ L.push('■ 본문');
+ var iv=_interviewFacts(), ivLine=_ivBodyLine();
+ var scaleVerb=(biz.type==='hospital'||biz.type==='startup'||biz.type==='manufacturer')?'기록했다':'지원했다';
+ var b='';
+ if(ivLine) b+=ivLine+' ';       /* 인터뷰 취재 내용을 본문 앞에 */
+ b+=name+_jEN(name)+' '+_eul(svc.join('·')||svcTxt)+' 주요 서비스로 제공한다. ';
+ if(scale.length && !ivLine){var sj=scale.join(', ');b+=(f.year?f.year+' ':'')+(f.region&&biz.type==='agency'?'해외 진출을 목표로 ':'')+sj+(_hasJong(sj)?'을':'를')+' '+scaleVerb+'.';}
+ L.push(b.trim());
+ L.push('');
+ /* 배경 설명 */
+ L.push('■ 배경 설명');
+ L.push(_eun(name)+' '+biz.role+(_hasJong(biz.role)?'이다.':'다.'));
+ L.push('');
+ /* 기사 가치 */
+ L.push('■ 기사 가치');
+ L.push(biz.valueFrame+'.');
+ L.push('');
+ /* 향후 일정 (인터뷰의 향후 계획 우선) */
+ L.push('■ 향후 일정');
+ L.push(iv.plan? _toArticleStyle(_firstSent(iv.plan)) : (_eun(name)+' '+_eul(biz.customer)+' 대상으로 '+_eul(svc[0]||'지원')+' 확대한다.'));
+ L.push('');
+ /* 관계자 코멘트 (인터뷰에서 받은 실제 코멘트 우선) */
+ L.push('■ 관계자 코멘트');
+ L.push(_articleComment(f.lead||(name+' 관계자'), biz.customer+'의 실질적인 성과를 만드는 데 집중하겠다'));
+ L.push('');
+ /* 기관 소개 (배경 설명과 중복되지 않게 서비스·고객 중심으로 기술) */
+ L.push('■ '+nameShort+' 소개');
+ L.push(name+_jEN(name)+' '+_eul(svc.join('·')||svcTxt)+' '+biz.customer+'에게 제공하는 '+biz.typeLabel+(_hasJong(biz.typeLabel)?'이다.':'다.'));
+ L.push('');
+ /* 문의처 */
+ L.push('■ 문의처');
+ L.push(name+' 홍보담당 / 전화 010-1234-5678 / 이메일 work@firstmkt.co.kr');
+ L.push('');
+ /* 첨부자료 (유형별 보완자료에서) */
+ L.push('[첨부자료]');
+ (biz.mats||[]).slice(0,5).forEach(function(a){L.push('· '+a);});
+ return L.join('\n');
+}
+function buildPressRelease(){
+ buildContext();
+ var biz=CTX.biz||analyzeCompany();
+ var _fx=_prFacts();
+ /* 실제 수출 행사(유통망+행사)가 있는 제조·공공기관만 기존 '수출상담회' 서사, 그 외엔 유형별 기사 */
+ var useExport=(_fx.venue||(_fx.event&&_fx.event!=='행사'))&&(biz.type==='manufacturer'||biz.type==='public');
+ if(!useExport) return _prBiz(biz);
+ var f=_prFacts(), name=CTX.company||'해당 기관', prod=CTX.product||'신규 사업';
+ var indCore=_indCore(), nameShort=name.replace(/협동조합$|조합$/,'').trim()||name;
+ var st=PR_STYLES[PR_STYLE]||PR_STYLES.economy;
+ var ev=(f.event&&f.event!=='행사')?f.event:prod, isEvent=(f.event&&f.event!=='행사');
+ var amt=f.amount?f.amount.replace(/\s+/g,''):'', reg=f.region||'', firmN=(f.firms||'').replace(/참가기업\s*/,'');
+ /* 주체(제목·리드의 첫 주어): 컨소시엄이면 '지역+업종+규모', 단일기업이면 사명 */
+ var actorHead = (firmN&&f.city&&indCore) ? (f.city+' '+indCore+'기업 '+firmN)
+               : (firmN&&indCore)        ? (indCore+'기업 '+firmN)
+               : (f.city&&indCore)        ? (f.city+' '+indCore+'업계')
+               : nameShort;
+ var actorShort = (f.city&&indCore)?(f.city+' '+indCore+'업계'):nameShort;
+ var c={ev:ev,reg:reg,amt:amt,firmN:firmN,city:f.city,venue:f.venue,stores:f.stores,indCore:indCore,actor:actorShort};
+ var L=[];
+ /* ── 제목: 홍보문이 아니라 기사 헤드라인 (주체+구체행위, 수식어 없이) ──
+    예) 대구 침장기업 5개사, 베트남 강남마트와 수출상담회 추진 */
+ L.push('[제목] '+actorHead+', '+(reg?reg+' ':'')+(f.venue?f.venue+'와 ':'')+(isEvent?f.event:(prod+' 사업'))+' 추진');
+ /* ── 부제목: 핵심 수치·일정 팩트 2개 ── */
+ var sub=[];
+ if(f.date)sub.push((reg?reg+' ':'')+f.date+' 개최');
+ if(firmN&&sub.length<2)sub.push(indCore+'기업 '+firmN+' 참가');
+ if(f.stores&&amt&&sub.length<2)sub.push(f.venue+' '+f.stores+'·연 '+amt+' 수입망 연계');
+ else{ if(f.stores&&sub.length<2)sub.push(f.venue+' '+f.stores+' 연계'); if(amt&&sub.length<2)sub.push('연 '+amt+' 규모'); }
+ L.push('[부제목] '+(sub.slice(0,2).join(', ')||(indCore+'업계 '+(reg||'신규')+' 판로 개척')));
+ L.push('');
+ /* ── 리드: 첫 두 문장에 6하원칙(누가·언제·어디서·무엇을·왜·얼마나) ── */
+ L.push('[리드]');
+ /* 문장1 = 누가 + 무엇을/왜 (한 눈에 사건 요약) */
+ L.push(actorHead+_jEN(actorHead)+' '+(reg?reg+' 시장 ':'')+st.lead+'.');
+ /* 문장2 = 언제·어디서·무엇을·누가(주체 사명)·규모 + 출처(밝혔다) */
+ var lead2=name+(f.lead?'('+f.lead+')':'')+_jEN(name)+' ';
+ if(f.venue)lead2+=f.venue+'와 함께 ';
+ if(f.date)lead2+=f.date+' ';
+ if(f.place)lead2+=f.place+'에서 ';
+ lead2+="'"+ev+"'를 "+(isEvent?'연다고 ':'추진한다고 ');
+ if(firmN)lead2+='밝혔다. '+(f.city?f.city+' ':'')+indCore+'기업 '+firmN+'가 참가한다.';
+ else lead2+='밝혔다.';
+ L.push(lead2.trim());
+ L.push('');
+ /* ── 본문: 사실 나열 (참가 규모·사전 협의·개최 장소) ── */
+ L.push('■ 본문');
+ var b='';
+ if(f.venue)b+=name+_jEN(name)+' 앞서 '+f.venue+' 관계자를 '+(f.city||'국내')+'로 초청해 사전 협의를 진행했다. ';
+ if(firmN)b+='참가 기업은 '+(f.city?f.city+' ':'')+indCore+'기업 '+firmN+'다. ';
+ if(f.place)b+=ev+'는 '+f.place+'에서 열린다.';
+ L.push(b.trim()||_firstSent(_val('f_about'))||(name+'가 '+(reg||'신규')+' 시장 진출을 추진하고 있다.'));
+ L.push('');
+ /* ── 배경 설명 ── */
+ L.push('■ 배경 설명');
+ var bgp=[];if(f.stores)bgp.push(f.stores+'을 운영');if(amt)bgp.push('연 '+amt+' 규모의 한국 제품을 수입');
+ var bg=(f.venue&&bgp.length)?(f.venue+_jEN(f.venue)+' '+(reg?reg+'에서 ':'')+bgp.join('하고, ')+'하는 유통망이다. '):'';
+ L.push((bg+'이번 협력은 양측이 맺은 업무협약(MOU)에 따른 첫 사업이다.').trim());
+ L.push('');
+ /* ── 기사 가치: 매체 관점별 사실 서술 (예측어 없이) ── */
+ L.push('■ 기사 가치');
+ L.push(st.valueFn(c));
+ L.push('');
+ /* ── 향후 일정 (인터뷰의 향후 계획 우선) ── */
+ var ivx=_interviewFacts();
+ L.push('■ 향후 일정');
+ L.push(ivx.plan? _toArticleStyle(_firstSent(ivx.plan)) : (name+_jEN(name)+' '+(f.pubOrg?f.pubOrg+'와 협력해 ':'')+(f.date?f.date+' '+ev+' 이후 ':'')+'현지 판로를 단계적으로 확대한다.'));
+ L.push('');
+ /* ── 관계자 코멘트: 인터뷰에서 받은 실제 코멘트 우선 ── */
+ L.push('■ 관계자 코멘트');
+ L.push(_articleComment(f.lead||(name+' 관계자'), (reg||'현지')+' 시장은 '+indCore+' 수요가 늘고 있는 곳이며, 이번 '+ev+'에서 구체적인 수출 계약을 마무리하겠다'));
+ L.push('');
+ /* ── 기관 소개 ── */
+ L.push('■ '+nameShort+' 소개');
+ L.push(name+_jEN(name)+' '+indCore+' 분야 '+(firmN?'참여기업의 공동 사업과 ':'')+'판로 개척을 지원한다.');
+ L.push('');
+ /* ── 문의처 ── */
+ L.push('■ 문의처');
+ L.push(name+' 홍보담당 / 전화 010-1234-5678 / 이메일 work@firstmkt.co.kr');
+ L.push('');
+ /* ── 첨부자료 ── */
+ L.push('[첨부자료]');
+ (f.venue?[f.venue+' 매장 사진']:[]).concat([(firmN?'참가기업':'주요')+' 제품 사진',(f.venue?'사전 협의':'행사')+' 현장 사진',(f.lead||'대표')+' 코멘트 전문','목표 수출액·규모 자료']).forEach(function(a){L.push('· '+a);});
+ return L.join('\n');
+}
+
+function _polishPR(t){
+ /* ① 광고성·과장 수식어 삭제 */
+ t=t.replace(/(업계\s*최고의?|최고의|최강의?|국내\s*최초|세계\s*최초|업계\s*최초|유일무이한?|획기적인?|혁신적인?|명품|최고급|압도적인?|놀라운|엄청난|대박|자랑하는?|열풍|돌풍|각광|화제)/g,'');
+ var seen={};
+ t=t.split('\n').map(function(line){
+  var head=line.trim();
+  if(/^(■|\[|·|□)/.test(head)||!head)return line; /* 헤더·라벨·첨부 줄 보존 */
+  /* ② GPT가 즐겨 쓰는 군더더기 접속어·모호한 수식어 제거 (문장 뜻은 유지).
+        인접한 상투어가 연달아 나와도 모두 지워지도록 변화가 없을 때까지 반복. */
+  var prev;
+  do{ prev=line;
+   line=line.replace(/(^|[\s.,])\s*(한편|특히|또한|아울러|무엇보다|앞으로도?|나아가|이를\s*통해|다양한|적극적으로|적극)\s*,?\s*/g,'$1');
+  }while(line!==prev);
+  line=line.replace(/\s*크게\s*(?=늘|증가|성장|확대)/g,' ');
+  /* ③ 90자 초과 문장을 절 단위로 분할 */
+  if(line.length>90)line=line.replace(/하며\s/g,'한다. ').replace(/으며\s/g,'다. ').replace(/이며\s/g,'이다. ').replace(/\s그리고\s/g,'. ').replace(/,\s(?=[가-힣]{6,})/g,'. ');
+  line=line.replace(/[ \t]{2,}/g,' ').replace(/\s+([.,])/g,'$1').trim();
+  /* ④ 중복 문장 제거 */
+  var k=line.replace(/\s/g,'');if(k.length>=8){if(seen[k])return '';seen[k]=1;}
+  return line;
+ }).join('\n');
+ return t.replace(/\n{3,}/g,'\n\n');
+}
+
+var ANSWER_TEXT={}, answers={}, HELD_MATERIALS=[];
