@@ -84,7 +84,7 @@
 
   <div class="demo-note" style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;background:var(--pt-soft);border-style:solid;border-color:#cdd8ff;color:var(--pt-2)">
     <span>▶ <b>실제 동작 데모</b>가 준비되어 있습니다 — 기업 분석 · 뉴스가치 채점 · 기자 매칭 · 보도자료 생성 · 데스크 평가까지 직접 체험하세요. <span style="color:var(--sub-2)">(발송은 데모 시연으로 처리)</span></span>
-    <a href="pr-agent/index.html" style="flex:none;font-weight:800;color:#fff;background:var(--pt);border-radius:9px;padding:11px 20px;white-space:nowrap">데모 실행하기 →</a>
+    <a href="#demoWrap" onclick="runInline();return false;" style="flex:none;font-weight:800;color:#fff;background:var(--pt);border-radius:9px;padding:11px 20px;white-space:nowrap">이 페이지에서 실행 →</a>
   </div>
 
   <!-- STEP 1: 정보 입력 -->
@@ -136,6 +136,15 @@
     </div>
   </div>
 
+  <!-- 인라인 데모 (이 페이지에서 직접 실행) -->
+  <div id="demoWrap" class="hide" style="margin-top:24px">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:0 2px 10px">
+      <div style="font-size:13px;font-weight:800;color:var(--pt)">▶ AI 자동화 기사배포 — 이 페이지에서 실행 중</div>
+      <button onclick="closeInline()" style="border:1px solid var(--line-2);background:var(--surf);border-radius:8px;padding:7px 13px;font-family:inherit;font-size:12.5px;font-weight:700;color:var(--sub);cursor:pointer">닫기 ✕</button>
+    </div>
+    <iframe id="demoFrame" title="AI 자동화 기사배포 데모" style="width:100%;border:1px solid var(--line);border-radius:14px;height:1400px;background:#fff;display:block"></iframe>
+  </div>
+
   <!-- 이후 자동화 단계 (MVP 흐름) -->
   <div class="sec-lab">AI가 이어서 자동으로 처리합니다</div>
   <div class="flow">
@@ -157,7 +166,24 @@ function switchTab(t){
   document.getElementById('form-manual').classList.toggle('hide',t!=='manual');
 }
 function tog(el){el.classList.toggle('on');}
-function next(){ location.href='pr-agent/index.html'; }
+function runInline(){
+  var wrap=document.getElementById('demoWrap');
+  var fr=document.getElementById('demoFrame');
+  if(!fr.getAttribute('src')){ fr.setAttribute('src','pr-agent/index.html?embed=1'); }
+  wrap.classList.remove('hide');
+  wrap.scrollIntoView({behavior:'smooth',block:'start'});
+  /* 같은 도메인 → iframe 높이를 콘텐츠에 맞춰 자동 조절(아코디언 확장 대응) */
+  if(!window._drt){ window._drt=setInterval(function(){
+    try{ var h=fr.contentDocument.body.scrollHeight; if(h && Math.abs(h-(fr._h||0))>4){ fr.style.height=(h+24)+'px'; fr._h=h; } }catch(e){}
+  }, 500); }
+}
+function closeInline(){
+  var wrap=document.getElementById('demoWrap');
+  wrap.classList.add('hide');
+  if(window._drt){ clearInterval(window._drt); window._drt=null; }
+  document.querySelector('.stepper').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function next(){ runInline(); }
 </script>
 </body>
 </html>
