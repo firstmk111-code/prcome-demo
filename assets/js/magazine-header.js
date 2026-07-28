@@ -30,28 +30,23 @@
   var NAV = [
     { label:'홈', href:'index.html', ic:IC.home, home:true },
     { label:'커뮤니티', href:'community/index.html', ic:IC.comm, act:['/community/'], cols:1, items:[
-      ['community/index.html?cat=free','자유게시판'],['community/index.html?cat=qa','질문과 답변'],
-      ['community/index.html?cat=knowhow','홍보 노하우'],['events/index.html','행사·세미나'],
-      ['community/index.html?cat=agency','파트너 모집'] ]},
-    { label:'인사이트', href:'insights/index.html', ic:IC.insight, act:['/insights/'], cols:1, items:[
-      ['insights/index.html?cat=pr','PR 가이드'],['insights/index.html','PR 뉴스'],
-      ['insights/index.html?cat=media','인터뷰'],['insights/index.html?cat=case','성공사례'],
-      ['insights/index.html?cat=trend','트렌드 리포트'] ]},
-    { label:'기업정보', href:'directory/agencies.html', ic:IC.agency, act:['/directory/'], cols:1, items:[
-      ['directory/media.html','언론사'],
-      ['directory/agencies.html','PR회사 찾기'],
-      ['directory/pr-directory.html','PR회사 디렉토리'] ]},
-    { label:'PR도구', href:'tools/index.html', ic:IC.ai, act:['/tools/'], cols:1, items:[
-      ['tools/press-release.html','AI 자동화 기사배포'],['tools/pr-diagnosis.html','AI 노출등급 진단'],
-      ['tools/seo-aeo.html','AI SEO·AEO·GEO 분석'] ]},
-    { label:'도서·교육', href:'resources/books.html', ic:IC.books, act:['/resources/','/events/'], cols:1, items:[
-      ['resources/books.html','PR 도서'],['resources/books.html','마케팅 도서'],
-      ['events/index.html','온라인 교육'],['events/index.html','오프라인 교육'],
-      ['events/index.html','교육기관'] ]},
-    { label:'더보기', href:'more/index.html', ic:IC.more, act:['/more/','/help/','/notice/','/legal/','/projects/','/career/','/directory/index'], cols:1, items:[
-      ['projects/index.html','홍보대행 의뢰'],['directory/index.html?type=expert','전문가'],['notice/index.html','공지사항'],
-      ['more/index.html?tab=faq','FAQ'],['help/contact.html','문의하기'],
-      ['help/guide.html','PRCOME 소개'] ]},
+      ['community/index.html','1'],['community/index.html','2'],['community/index.html','3'],
+      ['community/index.html','4'],['community/index.html','5'] ]},
+    { label:'정보공유', href:'insights/index.html', ic:IC.insight, act:['/insights/'], cols:1, items:[
+      ['insights/index.html','1'],['insights/index.html','2'],['insights/index.html','3'],
+      ['insights/index.html','4'],['insights/index.html','5'] ]},
+    { label:'보도자료 배포 AI', href:'tools/press-release.html', ic:IC.ai, act:['/tools/press-release','/tools/pr-diagnosis','/tools/seo-aeo'], cols:1, items:[
+      ['tools/press-release.html','1'],['tools/press-release.html','2'],['tools/press-release.html','3'],
+      ['tools/press-release.html','4'],['tools/press-release.html','5'] ]},
+    { label:'언론홍보', href:'directory/media.html', ic:IC.media, act:['/directory/media'], cols:1, items:[
+      ['directory/media.html','1'],['directory/media.html','2'],['directory/media.html','3'],
+      ['directory/media.html','4'],['directory/media.html','5'] ]},
+    { label:'디렉토리', href:'directory/pr-directory.html', ic:IC.agency, act:['/directory/'], cols:1, items:[
+      ['directory/pr-directory.html','1'],['directory/pr-directory.html','2'],['directory/pr-directory.html','3'],
+      ['directory/pr-directory.html','4'],['directory/pr-directory.html','5'] ]},
+    { label:'PR도구', href:'tools/index.html', ic:IC.project, act:['/tools/index','/tools/rate-card'], cols:1, items:[
+      ['tools/index.html','1'],['tools/index.html','2'],['tools/index.html','3'],
+      ['tools/index.html','4'],['tools/index.html','5'] ]},
   ];
 
   function navActive(n){
