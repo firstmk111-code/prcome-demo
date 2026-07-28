@@ -29,9 +29,7 @@
   /* 대분류 · act=현재위치 활성 판별 substring들 · items 없으면 단일 링크 · ic=구분 아이콘 */
   var NAV = [
     { label:'홈', href:'index.html', ic:IC.home, home:true },
-    { label:'커뮤니티', href:'community/index.html', ic:IC.comm, act:['/community/'], cols:1, items:[
-      ['community/index.html','1'],['community/index.html','2'],['community/index.html','3'],
-      ['community/index.html','4'],['community/index.html','5'] ]},
+    { label:'커뮤니티', href:'community/index.html', ic:IC.comm, act:['/community/'] },
     { label:'정보공유', href:'insights/index.html', ic:IC.insight, act:['/insights/'], cols:1, items:[
       ['insights/index.html','1'],['insights/index.html','2'],['insights/index.html','3'],
       ['insights/index.html','4'],['insights/index.html','5'] ]},
