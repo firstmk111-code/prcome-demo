@@ -30,7 +30,7 @@
   var NAV = [
     { label:'홈', href:'index.html', ic:IC.home, home:true },
     { label:'커뮤니티', href:'community/index.html', ic:IC.comm, act:['/community/'] },
-    { label:'정보공유', href:'insights/index.html', ic:IC.insight, act:['/insights/'], cols:1, items:[
+    { label:'게시판', href:'insights/index.html', ic:IC.insight, act:['/insights/'], cols:1, items:[
       ['insights/index.html','1'],['insights/index.html','2'],['insights/index.html','3'],
       ['insights/index.html','4'],['insights/index.html','5'] ]},
     { label:'보도자료 배포 AI', href:'tools/press-release.html', ic:IC.ai, act:['/tools/press-release','/tools/pr-diagnosis','/tools/seo-aeo'], cols:1, items:[
