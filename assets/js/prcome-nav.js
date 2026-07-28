@@ -30,9 +30,12 @@
   var NAV = [
     { label:'홈', href:'index.html', ic:IC.home, home:true },
     { label:'커뮤니티', href:'community/index.html', ic:IC.comm, act:['/community/'] },
-    { label:'매거진', href:'insights/index.html', ic:IC.insight, act:['/insights/'], cols:1, items:[
-      ['insights/index.html','1'],['insights/index.html','2'],['insights/index.html','3'],
-      ['insights/index.html','4'],['insights/index.html','5'] ]},
+    { label:'매거진', href:'insights/magazine.html', ic:IC.insight, act:['/insights/'], cols:1, items:[
+      ['insights/magazine.html','매거진'],
+      ['insights/pr.html','PR·언론홍보'],
+      ['insights/media.html','미디어'],
+      ['insights/aeo-seo.html','AEO·GEO·SEO'],
+      ['insights/marketing.html','마케팅'] ]},
     { label:'보도자료 배포 AI', href:'tools/press-release.html', ic:IC.ai, act:['/tools/press-release','/tools/pr-diagnosis','/tools/seo-aeo'] },
     { label:'언론홍보', href:'directory/media.html', ic:IC.media, act:['/directory/media'] },
     { label:'디렉토리', href:'directory/pr-directory.html', ic:IC.agency, act:['/directory/'], cols:1, items:[
