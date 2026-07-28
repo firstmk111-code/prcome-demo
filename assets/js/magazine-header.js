@@ -39,14 +39,8 @@
       ['insights/index.html?cat=trend','트렌드 리포트'] ]},
     { label:'기업정보', href:'directory/agencies.html', ic:IC.agency, act:['/directory/'], cols:1, items:[
       ['directory/media.html','언론사'],
-      ['directory/agencies.html','PR기업'] ]},
-    { label:'구인구직', href:'career/index.html', ic:IC.career, act:['/career/'], cols:1, items:[
-      ['career/index.html','채용공고'],['career/index.html?post=1','구직 등록'],
-      ['career/index.html?type=freelance','프리랜서'],['career/index.html?type=talent','인재 찾기'] ]},
-    { label:'홍보대행 의뢰', href:'projects/index.html', ic:IC.project, act:['/projects/','/tools/distribute'], cols:1, items:[
-      ['tools/distribute.html','보도자료 배포'],['projects/index.html','애드버토리얼'],
-      ['projects/new.html','PR 컨설팅'],['projects/index.html','콘텐츠 제작'],
-      ['projects/new.html','홍보대행 의뢰하기'] ]},
+      ['directory/agencies.html','PR회사 찾기'],
+      ['directory/pr-directory.html','PR회사 디렉토리'] ]},
     { label:'PR도구', href:'tools/index.html', ic:IC.ai, act:['/tools/'], cols:1, items:[
       ['tools/press-release.html','AI 자동화 기사배포'],['tools/pr-diagnosis.html','AI 노출등급 진단'],
       ['tools/seo-aeo.html','AI SEO·AEO·GEO 분석'] ]},
@@ -54,8 +48,8 @@
       ['resources/books.html','PR 도서'],['resources/books.html','마케팅 도서'],
       ['events/index.html','온라인 교육'],['events/index.html','오프라인 교육'],
       ['events/index.html','교육기관'] ]},
-    { label:'더보기', href:'more/index.html', ic:IC.more, act:['/more/','/help/','/notice/','/legal/','/directory/index'], cols:1, items:[
-      ['directory/index.html?type=expert','전문가'],['notice/index.html','공지사항'],
+    { label:'더보기', href:'more/index.html', ic:IC.more, act:['/more/','/help/','/notice/','/legal/','/projects/','/career/','/directory/index'], cols:1, items:[
+      ['projects/index.html','홍보대행 의뢰'],['directory/index.html?type=expert','전문가'],['notice/index.html','공지사항'],
       ['more/index.html?tab=faq','FAQ'],['help/contact.html','문의하기'],
       ['help/guide.html','PRCOME 소개'] ]},
   ];
