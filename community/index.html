@@ -44,32 +44,26 @@ window.SEO={
 .sortbar button{background:none;border:0;font-family:inherit;font-size:13px;font-weight:700;color:var(--sub-2);cursor:pointer;padding:2px 0;position:relative}
 .sortbar button.on{color:var(--ink)}.sortbar button.on::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;background:var(--pt)}
 .sortbar .cnt{margin-left:auto;font-size:12.5px;color:var(--sub-2)}
-/* 게시물 카드 */
-.fcard{background:var(--surf);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin-top:14px}
-.fcard:hover{border-color:var(--line-2)}
-.fc-top{display:flex;align-items:center;gap:11px}
-.ava{width:42px;height:42px;border-radius:50%;color:#fff;font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;flex:none}
-.who{min-width:0;flex:1}
-.who .nm{font-size:14.5px;font-weight:700;color:var(--ink);display:inline-flex;align-items:center;gap:7px;flex-wrap:wrap}
-.who .nm:hover{color:var(--pt)}
-.who .role{font-size:11.5px;font-weight:700;color:var(--pt);background:var(--pt-soft);border-radius:4px;padding:2px 7px}
-.who .org{font-size:12.5px;color:var(--sub);margin-top:2px}
-.fc-badge{font-size:11.5px;font-weight:800;color:var(--sub);border:1px solid var(--line);border-radius:999px;padding:4px 11px;white-space:nowrap;flex:none}
-.fc-body{display:block;margin-top:13px}
-.fc-body h3{font-size:17px;font-weight:700;letter-spacing:-.02em;line-height:1.4}
-.fcard:hover .fc-body h3{color:var(--pt)}
-.fc-body p{font-size:14px;color:#4a5568;line-height:1.65;margin-top:7px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.fc-body .thumb{margin-top:13px;border:1px solid var(--line);border-radius:8px;overflow:hidden;display:flex;align-items:center;gap:12px;padding:12px;background:var(--bg)}
-.fc-body .thumb .ph{width:64px;height:64px;border-radius:6px;background:var(--navy);color:#9DB4FF;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:11px;letter-spacing:.05em;flex:none;text-align:center;line-height:1.2}
-.fc-body .thumb .tx b{font-size:13px;font-weight:700;color:var(--ink);display:block}
-.fc-body .thumb .tx span{font-size:12px;color:var(--sub)}
-.fc-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:13px}
-.fc-tags a{font-size:12px;color:var(--sub);background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:3px 9px}
-.fc-tags a:hover{color:var(--pt);border-color:var(--pt)}
-.fc-act{display:flex;align-items:center;gap:16px;margin-top:14px;padding-top:13px;border-top:1px solid var(--line)}
-.fc-act span{font-size:12.5px;color:var(--sub);display:inline-flex;align-items:center;gap:5px;font-weight:600}
-.fc-act .views{margin-left:auto;color:var(--sub-2);font-weight:500}
-.fc-act .em{width:14px;height:14px;stroke:var(--sub);fill:none;stroke-width:1.8}
+/* 게시물 리스트 (추천 · 썸네일 · 제목[댓글]) */
+.flist{border-top:2px solid var(--ink);margin-top:4px}
+.frow{display:flex;align-items:center;gap:14px;padding:12px 8px;border-bottom:1px solid var(--line);transition:background var(--dur) var(--ease)}
+.frow:hover{background:var(--surf)}
+.frow .vote{width:46px;flex:none;display:flex;flex-direction:column;align-items:center;gap:1px}
+.frow .vote .up{font-size:10px;color:var(--sub-2);line-height:1}
+.frow .vote .n{font-size:15px;font-weight:800;color:var(--sub);line-height:1.15}
+.frow .vote.hot .n,.frow .vote.hot .up{color:var(--pt)}
+.frow .thumb{width:58px;height:58px;flex:none;border-radius:9px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:23px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}
+.frow .thumb .clip{position:absolute;right:3px;bottom:2px;font-size:10px;background:rgba(0,0,0,.4);border-radius:4px;padding:1px 4px;line-height:1.4}
+.frow .main{min-width:0;flex:1}
+.frow .main .t{font-size:15px;font-weight:600;color:var(--ink);line-height:1.45;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:block}
+.frow:hover .main .t{color:var(--pt)}
+.frow .main .t .cm{color:var(--pt);font-weight:800;margin-left:5px;font-size:13.5px}
+.frow .main .t .nw{font-size:9.5px;font-weight:800;color:#fff;background:#E4612B;border-radius:3px;padding:1px 5px;margin-left:6px;vertical-align:middle;letter-spacing:.02em}
+.frow .main .meta{font-size:12px;color:var(--sub-2);margin-top:6px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.frow .main .meta .cat{font-weight:800;color:var(--pt)}
+.frow .main .meta .sep{width:2px;height:2px;border-radius:50%;background:var(--line-2)}
+.frow .main .meta .st{color:var(--sub);font-weight:600}
+@media (max-width:560px){.frow{gap:11px}.frow .thumb{width:48px;height:48px;font-size:19px}.frow .vote{width:36px}.frow .main .t{white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}}
 .pager{display:flex;gap:6px;justify-content:center;margin-top:28px}
 .pager a{min-width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:6px;font-weight:600;color:var(--sub);font-size:13px}
 .pager a.on{background:var(--pt);color:#fff;border-color:var(--pt)}
@@ -271,25 +265,25 @@ document.getElementById('cnav').innerHTML=BOARDS.map(function(b){
 document.title=NAME[key]+' — PRCOME 커뮤니티';
 document.getElementById('bName').textContent=NAME[key];
 document.getElementById('bDesc').textContent=DESC[key];
-var heart='<svg class="em" viewBox="0 0 24 24"><path d="M12 21C5 15.5 3 12 3 8.5 3 6 5 4 7.5 4c1.7 0 3.2 1 4.5 2.5C13.3 5 14.8 4 16.5 4 19 4 21 6 21 8.5c0 3.5-2 7-9 12.5z"/></svg>';
-var chat='<svg class="em" viewBox="0 0 24 24"><path d="M21 12a8 8 0 01-11.5 7.2L4 20l.8-5.5A8 8 0 1121 12z"/></svg>';
-var book='<svg class="em" viewBox="0 0 24 24"><path d="M6 4h12v16l-6-4-6 4z"/></svg>';
-var share='<svg class="em" viewBox="0 0 24 24"><path d="M4 12v7a1 1 0 001 1h14a1 1 0 001-1v-7M16 6l-4-4-4 4M12 2v14" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+function esc(s){return String(s==null?'':s).replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
+var CATEMO={qa:'❓',news:'📰',knowhow:'💡',case:'📈',free:'💬',jobs:'💼',agency:'🤝'};
+var CATBG={qa:'linear-gradient(135deg,#4A6BFF,#1E40E8)',news:'linear-gradient(135deg,#4B5A73,#0E1B3A)',knowhow:'linear-gradient(135deg,#7E6EF5,#4A3FD0)',case:'linear-gradient(135deg,#34B978,#1E7A45)',free:'linear-gradient(135deg,#16B4CE,#0A7A8C)',jobs:'linear-gradient(135deg,#EC7038,#c0492a)',agency:'linear-gradient(135deg,#4A6BFF,#7E6EF5)'};
 function render(){
  var list=key==='all'?P.slice():P.filter(function(p){return p[0]===key;});
  if(sort==='hot')list.sort(function(a,b){return b[14]-a[14];});
  document.getElementById('cnt').textContent=NAME[key]+' · '+list.length+'건';
- document.getElementById('feed').innerHTML=list.map(function(p,i){
-  var att=p[12]?('<div class="thumb"><span class="ph">FILE</span><div class="tx"><b>'+p[12].split('|')[0]+'</b><span>'+(p[12].split('|')[1]||'')+'</span></div></div>'):'';
-  return '<article class="fcard">'+
-   '<div class="fc-top"><a href="profile.html">'+ava(p[1],i)+'</a>'+
-    '<div class="who"><a class="nm" href="profile.html">'+p[1]+'<span class="role">'+p[2]+'</span></a><div class="org">'+p[3]+' · '+p[11]+'</div></div>'+
-    '<span class="fc-badge">'+NAME[p[0]]+'</span></div>'+
-   '<a class="fc-body" href="post.html"><h3>'+p[4]+'</h3><p>'+p[5]+'</p>'+att+'</a>'+
-   '<div class="fc-tags">'+p[6].map(function(t){return '<a href="index.html?cat='+key+'">#'+t+'</a>';}).join('')+'</div>'+
-   '<div class="fc-act"><span>'+heart+'공감 '+p[7]+'</span><span>'+chat+'댓글 '+p[8]+'</span><span>'+book+'저장 '+p[9]+'</span><span>'+share+'공유</span><span class="views">조회 '+p[10]+'</span></div>'+
-   '</article>';
- }).join('')||'<div style="padding:40px 0;color:var(--sub)">아직 글이 없습니다. 첫 글을 남겨보세요.</div>';
+ document.getElementById('feed').innerHTML='<div class="flist">'+list.map(function(p){
+  var hot=p[7]>=30;
+  var isNew=/(시간|분) 전/.test(p[11]);
+  var clip=p[12]?'<span class="clip">📎</span>':'';
+  return '<a class="frow" href="post.html">'+
+    '<span class="vote'+(hot?' hot':'')+'"><span class="up">▲</span><span class="n">'+p[7]+'</span></span>'+
+    '<span class="thumb" style="background:'+(CATBG[p[0]]||CATBG.qa)+'">'+(CATEMO[p[0]]||'📌')+clip+'</span>'+
+    '<span class="main">'+
+      '<span class="t">'+esc(p[4])+' <span class="cm">['+p[8]+']</span>'+(isNew?'<span class="nw">NEW</span>':'')+'</span>'+
+      '<span class="meta"><span class="cat">'+NAME[p[0]]+'</span><span class="sep"></span><span class="st">'+esc(p[1])+'</span><span class="sep"></span>'+esc(p[11])+' · 조회 '+p[10]+'</span>'+
+    '</span></a>';
+ }).join('')+'</div>'||'<div style="padding:40px 0;color:var(--sub)">아직 글이 없습니다. 첫 글을 남겨보세요.</div>';
 }
 function setSort(s){sort=s;document.getElementById('sHot').classList.toggle('on',s==='hot');document.getElementById('sNew').classList.toggle('on',s==='new');render();}
 render();
