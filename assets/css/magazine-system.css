@@ -84,7 +84,7 @@ a:hover .h,.h:hover{background-size:100% 1.5px}
 .mbtn{display:none;width:42px;height:42px;border:1px solid var(--line-2);border-radius:8px;background:var(--surf);align-items:center;justify-content:center}
 .mbtn svg{width:20px;height:20px;stroke:var(--ink);fill:none;stroke-width:1.8}
 .hd .r2{border-top:1px solid var(--line)}
-.hd .r2 .in{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad);height:46px;display:flex;align-items:center;overflow-x:auto;scrollbar-width:none}
+.hd .r2 .in{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad);height:46px;display:flex;align-items:center;overflow:visible}
 .hd .r2 .in::-webkit-scrollbar{display:none}
 .hd .cats{display:flex;align-items:center;gap:18px;white-space:nowrap}
 .hd .cats a{font-size:14.5px;font-weight:700;color:var(--ink);padding:12px 0;position:relative}
