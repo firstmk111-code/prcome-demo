@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>산업별 전문지 담당 부서 정리해봤습니다 — PRCOME 커뮤니티</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="../assets/css/magazine-system.css?v=4">
+<script>window.MAG={root:'../',home:'../index.html',catBase:'../insights/index.html'};</script>
+<style>
+.crumb{font-size:12.5px;color:var(--sub);padding:26px 0 14px}.crumb a:hover{color:var(--pt)}
+.psplit{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:36px;align-items:start;padding-bottom:60px}
+.pmain{background:var(--surf);border:1px solid var(--line);border-radius:12px;padding:28px}
+.pbadge{font-size:12px;font-weight:800;color:var(--pt);background:var(--pt-soft);border-radius:5px;padding:5px 11px;display:inline-block}
+.pmain h1{font-size:clamp(22px,2.6vw,28px);font-weight:800;letter-spacing:-.03em;line-height:1.35;margin:14px 0 16px}
+.pauthor{display:flex;align-items:center;gap:12px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.pauthor .ava{width:46px;height:46px;border-radius:50%;background:#3E4B63;color:#fff;font-weight:800;font-size:17px;display:flex;align-items:center;justify-content:center;flex:none}
+.pauthor .nm{font-size:15px;font-weight:700;display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap}
+.pauthor .nm:hover{color:var(--pt)}
+.pauthor .role{font-size:11.5px;font-weight:700;color:var(--pt);background:var(--pt-soft);border-radius:4px;padding:2px 8px}
+.pauthor .org{font-size:12.5px;color:var(--sub);margin-top:2px}
+.pauthor .stat{margin-left:auto;font-size:12.5px;color:var(--sub-2);white-space:nowrap}
+.prose{margin-top:20px}
+.prose p{font-size:16px;color:#2d3748;line-height:1.85;margin:0 0 14px}
+.prose b{color:var(--ink)}
+.pfile{display:flex;align-items:center;gap:12px;margin-top:8px;padding:14px 16px;border:1px solid var(--line);border-radius:9px;background:var(--bg)}
+.pfile .ic{width:38px;height:38px;border-radius:8px;background:var(--pt-soft);color:var(--pt);display:flex;align-items:center;justify-content:center;font-size:17px;flex:none}
+.pfile .fn{font-size:13.5px;font-weight:700;color:var(--ink)}.pfile .fm{font-size:11.5px;color:var(--sub-2);margin-top:2px}
+.pfile .dl{margin-left:auto;font-size:12.5px;font-weight:700;color:var(--pt);border:1px solid var(--pt);border-radius:6px;padding:7px 13px;white-space:nowrap}
+.ptags{display:flex;gap:7px;flex-wrap:wrap;margin-top:22px}
+.ptags a{font-size:12.5px;color:var(--sub);background:var(--bg);border:1px solid var(--line);border-radius:5px;padding:4px 10px}
+.ptags a:hover{color:var(--pt);border-color:var(--pt)}
+.pact{display:flex;gap:10px;margin-top:20px;padding-top:18px;border-top:1px solid var(--line);flex-wrap:wrap}
+.pact button{display:inline-flex;align-items:center;gap:7px;font-family:inherit;font-size:13.5px;font-weight:700;color:var(--ink);background:var(--surf);border:1px solid var(--line-2);border-radius:6px;padding:9px 15px;cursor:pointer}
+.pact button:hover{border-color:var(--pt);color:var(--pt)}
+.pact button.like{background:var(--pt);color:#fff;border-color:var(--pt)}
+.pact .views{margin-left:auto;align-self:center;font-size:12.5px;color:var(--sub-2)}
+.answers{margin-top:28px}
+.answers .ah{font-size:18px;font-weight:800;letter-spacing:-.02em;margin-bottom:14px}
+.acard{background:var(--surf);border:1px solid var(--line);border-radius:10px;padding:20px;margin-bottom:12px}
+.atop{display:flex;align-items:center;gap:11px}
+.atop .ava{width:38px;height:38px;border-radius:50%;color:#fff;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;flex:none}
+.atop .nm{font-size:14px;font-weight:700;display:inline-flex;align-items:center;gap:7px;flex-wrap:wrap}.atop .nm:hover{color:var(--pt)}
+.atop .org{font-size:12px;color:var(--sub);margin-top:2px}
+.acard .txt{font-size:15px;color:#2d3748;line-height:1.8;margin-top:13px}
+.acard .txt a{color:var(--pt);font-weight:700}
+.acard .ab{margin-top:14px}
+.acard .ab button{font-family:inherit;font-size:12.5px;font-weight:700;color:var(--sub);background:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px;cursor:pointer}
+.acard .ab button:hover{border-color:var(--pt);color:var(--pt)}
+.awrite{background:var(--surf);border:1px solid var(--line);border-radius:10px;padding:20px;margin-top:20px}
+.awrite h4{font-size:15px;font-weight:800;margin-bottom:12px}
+.awrite textarea{width:100%;min-height:110px;font-family:inherit;font-size:14.5px;color:var(--ink);border:1px solid var(--line-2);border-radius:6px;padding:13px;line-height:1.6;outline:0;resize:vertical}
+.awrite textarea:focus{border-color:var(--pt);box-shadow:0 0 0 3px var(--pt-soft)}
+.awrite .row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;flex-wrap:wrap}
+.awrite .row .g{font-size:12.5px;color:var(--sub)}
+.awrite .row a{background:var(--pt);color:#fff;font-weight:700;font-size:14px;border-radius:6px;padding:11px 22px}.awrite .row a:hover{background:var(--pt-2)}
+.side .sbox{background:var(--surf);border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:16px}
+.side.col-side{position:sticky;top:80px}
+.acard-mini .ava{width:52px;height:52px;border-radius:50%;background:#3E4B63;color:#fff;font-weight:800;font-size:20px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+.acard-mini .nm{font-size:15px;font-weight:800}.acard-mini .role{font-size:12px;color:var(--pt);font-weight:700;margin-top:3px}
+.acard-mini .org{font-size:12.5px;color:var(--sub);margin-top:2px}
+.acard-mini .mini-st{display:flex;gap:16px;margin:14px 0}
+.acard-mini .mini-st div{font-size:12px;color:var(--sub)}.acard-mini .mini-st b{display:block;font-size:16px;font-weight:800;color:var(--navy)}
+.acard-mini .fbtn{display:block;text-align:center;background:var(--pt);color:#fff;font-weight:700;font-size:13.5px;border-radius:6px;padding:10px}
+.acard-mini .fbtn:hover{background:var(--pt-2)}
+.side h4{font-size:13px;font-weight:800;color:var(--navy);margin-bottom:6px}
+.side .rel a{display:block;padding:11px 0;border-top:1px solid var(--line);font-size:13.5px;font-weight:600;line-height:1.45;color:var(--ink)}
+.side .rel a:first-of-type{border-top:0}.side .rel a:hover{color:var(--pt)}
+.side .rel a .m{font-size:11.5px;color:var(--sub-2);font-weight:500;margin-top:3px}
+.backrow{margin:20px 0 60px}
+.backrow a{font-size:13.5px;font-weight:700;color:var(--sub)}.backrow a:hover{color:var(--pt)}
+@media (max-width:900px){.psplit{grid-template-columns:1fr}.side.col-side{position:static}}
+</style>
+</head>
+<body>
+<div id="mag-header"></div>
+
+<div class="wrap">
+  <div class="crumb"><a href="../index.html">홈</a> / <a href="index.html">커뮤니티</a> / <a href="index.html?cat=news">업계 소식</a></div>
+
+  <div class="psplit">
+    <main>
+      <article class="pmain">
+        <span class="pbadge">업계 소식</span>
+        <h1>[정보공유] 산업별 전문지 담당 부서 정리해봤습니다</h1>
+        <div class="pauthor">
+          <a href="profile.html"><span class="ava">김</span></a>
+          <div>
+            <a class="nm" href="profile.html">김도윤 <span class="role">전 산업부 기자</span></a>
+            <div class="org">미디어 칼럼니스트 · 2026.07.24 11:20</div>
+          </div>
+          <span class="stat">조회 880 · 댓글 20</span>
+        </div>
+        <div class="prose">
+          <p>배포 리스트를 다듬을 때마다 “이 아이템은 어느 매체 어느 부서에 보내야 하나”가 늘 고민이시죠. 기자 생활과 이후 컨설팅을 하며 정리해 둔 <b>산업별 전문지·담당 부서 맵</b>을 공유합니다.</p>
+          <p>핵심은 매체 수를 늘리는 게 아니라 <b>담당 부서를 정확히 겨냥</b>하는 것입니다. 같은 경제지라도 산업부·유통부·금융부의 관심사가 전혀 다릅니다. 식품·유통·IT·금융·바이오까지 주요 전문지의 담당 부서와 제보 창구를 표로 정리했으니, 각자 산업에 맞게 가공해서 쓰시면 됩니다.</p>
+          <p>개인 연락처는 담기지 않았습니다. 부서·제보 채널 단위로만 정리했으니, 실제 컨택은 각 매체 기사 하단 기자 이메일과 <a href="../directory/media.html">언론사 디렉토리</a>를 함께 참고하세요.</p>
+        </div>
+        <div class="pfile">
+          <span class="ic">▤</span>
+          <div><div class="fn">산업별 전문지 담당부서 정리표.xlsx</div><div class="fm">첨부파일 · 표 1종 · 커뮤니티 참고용</div></div>
+          <button class="dl" onclick="alert('첨부파일 다운로드는 로그인 후 이용할 수 있습니다. (1차 서비스)');return false;">다운로드</button>
+        </div>
+        <div class="ptags"><a href="index.html?cat=news">#미디어리스트</a><a href="index.html?cat=news">#전문지</a><a href="index.html?cat=news">#제보</a></div>
+        <div class="pact">
+          <button class="like">♥ 공감 52</button>
+          <button>🔖 저장 41</button>
+          <button>↗ 공유</button>
+          <span class="views">조회 880</span>
+        </div>
+      </article>
+
+      <section class="answers">
+        <div class="ah">댓글 20</div>
+
+        <div class="acard">
+          <div class="atop"><a href="profile.html"><span class="ava" style="background:#315CFF">이</span></a>
+            <div><a class="nm" href="profile.html">이수민</a><div class="org">중소 제조기업 인하우스 · 3시간 전</div></div></div>
+          <div class="txt"><p>이거 진짜 필요했어요. 산업부에만 뿌리다가 유통부가 따로 있는 걸 몰라서 헛발질한 적이 많았습니다. 저장해두고 분기마다 갱신해서 쓰겠습니다 🙏</p></div>
+          <div class="ab"><button>♥ 12</button></div>
+        </div>
+
+        <div class="acard">
+          <div class="atop"><a href="profile.html"><span class="ava" style="background:#0FA6C0">박</span></a>
+            <div><a class="nm" href="profile.html">박준호</a><div class="org">종합PR대행사 AE · 4시간 전</div></div></div>
+          <div class="txt"><p>부서 단위로 정리하신 게 포인트네요. 저는 여기에 매체별 마감시간까지 붙여서 씁니다. 마감 임박에 보내면 아무리 좋은 아이템도 묻히더라고요.</p></div>
+          <div class="ab"><button>♥ 9</button></div>
+        </div>
+
+        <div class="acard">
+          <div class="atop"><a href="profile.html"><span class="ava" style="background:#6D5DF0">정</span></a>
+            <div><a class="nm" href="profile.html">정하늘</a><div class="org">헬스케어 스타트업 1인 홍보 · 5시간 전</div></div></div>
+          <div class="txt"><p>바이오·헬스케어 쪽도 포함해 주셔서 감사합니다. 전문지 접근이 늘 막막했는데 큰 도움이 됩니다.</p></div>
+          <div class="ab"><button>♥ 6</button></div>
+        </div>
+
+        <div class="awrite">
+          <h4>댓글 남기기</h4>
+          <textarea placeholder="정보에 대한 의견이나 보완할 내용을 남겨주세요. (로그인 후 등록됩니다)"></textarea>
+          <div class="row"><span class="g">비방·광고성 댓글은 제한될 수 있습니다.</span><a href="../auth/login.html">댓글 등록</a></div>
+        </div>
+      </section>
+    </main>
+
+    <aside class="side col-side">
+      <div class="sbox acard-mini">
+        <a href="profile.html"><span class="ava">김</span></a>
+        <div class="nm">김도윤</div><div class="role">전 산업부 기자</div>
+        <div class="org">미디어 칼럼니스트</div>
+        <div class="mini-st"><div><b>76</b>작성 글</div><div><b>140</b>댓글</div><div><b>512</b>팔로워</div></div>
+        <a class="fbtn" href="profile.html">프로필 보기</a>
+      </div>
+      <div class="sbox rel">
+        <h4>관련 글</h4>
+        <a href="post.html"><div>보도자료 배포 후 기사화 가능성을 높이는 방법이 있을까요?</div><div class="m">질문·답변 · 답변 12</div></a>
+        <a href="post-knowhow.html"><div>기자 컨택 이메일 제목, 이렇게 쓰니 열림률이 올랐어요</div><div class="m">실무 노하우 · 공감 38</div></a>
+        <a href="index.html?cat=news"><div>요즘 생성형 검색 때문에 홍보실 분위기 어떤가요</div><div class="m">업계 소식 · 댓글 14</div></a>
+        <a href="../directory/media.html"><div>언론사 디렉토리에서 담당 부서 확인하기</div><div class="m">기업·미디어 · 디렉토리</div></a>
+      </div>
+    </aside>
+  </div>
+
+  <div class="backrow"><a href="index.html?cat=news">← 업계 소식 목록으로</a></div>
+</div>
+
+<div id="mag-footer"></div>
+<script>(function(){var s=document.createElement("script");s.src="../assets/js/prcome-nav.js?t="+Date.now();document.head.appendChild(s);})();</script>
+</body>
+</html>

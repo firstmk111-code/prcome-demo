@@ -30,12 +30,12 @@
   var NAV = [
     { label:'홈', href:'index.html', ic:IC.home, home:true },
     { label:'커뮤니티', href:'community/index.html', ic:IC.comm, act:['/community/'] },
-    { label:'매거진', href:'insights/magazine.html', ic:IC.insight, act:['/insights/'], cols:1, items:[
-      ['insights/magazine.html','매거진'],
-      ['insights/pr.html','PR·언론홍보'],
-      ['insights/media.html','미디어'],
-      ['insights/aeo-seo.html','AEO·GEO·SEO'],
-      ['insights/marketing.html','마케팅'] ]},
+    { label:'인사이트', href:'insights/index.html', ic:IC.insight, act:['/insights/'], cols:1, items:[
+      ['insights/index.html','매거진'],
+      ['insights/index.html?cat=pr','PR·언론홍보'],
+      ['insights/index.html?cat=media','미디어'],
+      ['insights/index.html?cat=geo','AEO·GEO·SEO'],
+      ['insights/index.html?cat=marketing','마케팅'] ]},
     { label:'보도자료 배포 AI', href:'tools/press-release.html', ic:IC.ai, act:['/tools/press-release','/tools/pr-diagnosis','/tools/seo-aeo'] },
     { label:'언론홍보', href:'directory/media.html', ic:IC.media, act:['/directory/media'] },
     { label:'디렉토리', href:'directory/pr-directory.html', ic:IC.agency, act:['/directory/'], cols:1, items:[
@@ -78,9 +78,9 @@
     '<div class="r1">'+
       '<a class="brand" href="'+home+'" aria-label="PRCOME 홈"><span class="mk"></span>PRCOME</a>'+
       '<form class="hsearch" action="'+u('community/index.html')+'" method="get" role="search">'+
-        searchSvg+'<input name="q" placeholder="커뮤니티 글·매거진 콘텐츠 검색" aria-label="통합검색"></form>'+
+        searchSvg+'<input name="q" placeholder="커뮤니티 글·인사이트 검색" aria-label="통합검색"></form>'+
       '<div class="r1-r">'+
-        '<a class="tip" href="'+u('insights/index.html')+'">매거진</a>'+
+        '<a class="tip" href="'+u('insights/index.html')+'">인사이트</a>'+
         '<a class="write" href="'+u('community/write.html')+'">글쓰기</a>'+
         '<a class="login" href="'+u('auth/login.html')+'">로그인</a>'+
       '</div>'+
@@ -88,7 +88,7 @@
     '</div>'+
     '<div class="r2"><div class="in"><nav class="topnav" aria-label="주요 메뉴">'+navHtml+'</nav></div></div>'+
     '<div class="mpanel" id="magMpanel"><div class="in">'+accHtml+
-      '<div class="m-acc-flat"><a href="'+u('insights/index.html')+'">매거진</a><a href="'+u('community/write.html')+'">글쓰기</a><a href="'+u('auth/login.html')+'">로그인</a></div>'+
+      '<div class="m-acc-flat"><a href="'+u('insights/index.html')+'">인사이트</a><a href="'+u('community/write.html')+'">글쓰기</a><a href="'+u('auth/login.html')+'">로그인</a></div>'+
     '</div></div>'+
   '</header>';
 
