@@ -7,91 +7,64 @@
 <meta name="description" content="업종·목적·플랫폼에 맞는 해시태그를 자동 추천합니다. 클릭해 선택하고 복사해 바로 사용하세요.">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <link rel="stylesheet" href="../assets/css/magazine-system.css?v=4">
+<link rel="stylesheet" href="../assets/css/tools.css?v=1">
 <script>window.MAG={root:'../',home:'../index.html',catBase:'../insights/index.html'};</script>
-<style>
-.subhead{padding:30px 0 6px}.subhead .crumb{font-size:12.5px;color:var(--sub);margin-bottom:12px}.subhead .crumb a:hover{color:var(--pt)}
-.subhead h1{font-size:clamp(24px,3vw,32px);font-weight:800;letter-spacing:-.03em;display:flex;align-items:center;gap:12px}
-.subhead h1 .tick{width:26px;height:3px;background:var(--pt);border-radius:2px}
-.subhead .desc{font-size:15.5px;color:var(--sub);margin-top:10px;max-width:60ch;line-height:1.6}
-.tool{padding:24px 0 10px}
-.fields{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.tool label.fl{display:block;font-size:13px;font-weight:700;margin:0 0 7px;color:var(--ink)}
-.tool select,.tool input[type=text]{width:100%;border:1px solid var(--line-2);border-radius:8px;padding:0 13px;height:46px;font-family:inherit;font-size:14.5px;color:var(--ink);background:var(--surf);outline:0}
-.tool select:focus,.tool input[type=text]:focus{border-color:var(--pt);box-shadow:0 0 0 3px var(--pt-soft)}
-.plat{display:flex;gap:9px;flex-wrap:wrap;margin:16px 0}
-.plat label{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line-2);border-radius:999px;padding:9px 16px;font-size:13.5px;font-weight:700;color:var(--sub);cursor:pointer}
-.plat label.on{background:var(--pt);color:#fff;border-color:var(--pt)}.plat input{display:none}
-.btn-run{height:46px;border:0;border-radius:8px;background:var(--pt);color:#fff;font-weight:700;font-size:14.5px;padding:0 24px;cursor:pointer}
-.btn-run:hover{background:var(--pt-2)}
-.out{margin-top:22px;border-top:2px solid var(--ink);padding-top:14px;display:none}
-.out .oh{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:12px}
-.out .cnt{font-size:14px;font-weight:700}.out .cnt b{color:var(--pt)}
-.out .oa{display:flex;gap:8px}
-.out .oa button{font-size:12.5px;font-weight:700;border-radius:7px;padding:8px 13px;cursor:pointer;border:1px solid var(--line-2);background:var(--surf);color:var(--ink)}
-.out .oa .copy{border-color:var(--pt);color:#fff;background:var(--pt)}
-.tags{display:flex;flex-wrap:wrap;gap:8px}
-.tags .tag{font-size:13.5px;font-weight:600;color:var(--pt);background:var(--pt-soft);border:1px solid transparent;border-radius:999px;padding:8px 13px;cursor:pointer;user-select:none}
-.tags .tag.off{color:var(--sub);background:var(--surf);border-color:var(--line)}
-.hint{font-size:12.5px;color:var(--sub-2);margin-top:10px}
-.tips{margin-top:26px;background:var(--surf);border:1px solid var(--line);border-radius:12px;padding:20px 22px}
-.tips h3{font-size:15px;font-weight:800;margin-bottom:10px}
-.tips ul{display:flex;flex-direction:column;gap:8px}
-.tips li{font-size:13.5px;color:var(--sub);line-height:1.6;padding-left:16px;position:relative}
-.tips li::before{content:"";position:absolute;left:2px;top:8px;width:5px;height:5px;border-radius:50%;background:var(--pt)}
-@media (max-width:640px){.fields{grid-template-columns:1fr}}
-</style>
 </head>
 <body>
 <div id="mag-header"></div>
-<div class="wrap">
-  <section class="subhead">
+<div class="twrap">
+  <section class="thero">
     <div class="crumb"><a href="../index.html">홈</a> / <a href="index.html">PR도구</a> / 해시태그 생성기</div>
-    <h1><span class="tick"></span>해시태그 생성기</h1>
+    <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 9h16M4 15h16M10 3 8 21M16 3l-2 18"/></svg></div>
+    <h1>해시태그 생성기</h1>
     <p class="desc">업종·목적·플랫폼을 고르면 어울리는 해시태그를 추천합니다. 원하는 태그만 클릭해 선택하고 복사해 바로 사용하세요.</p>
   </section>
-  <div class="tool">
-    <div class="fields">
-      <div><label class="fl">업종</label>
-        <select id="ind">
+
+  <div class="panel">
+    <div class="grid2">
+      <div><label class="lab">업종</label>
+        <select class="inp" id="ind">
           <option value="food">음식·맛집</option><option value="beauty">뷰티</option><option value="fashion">패션</option>
           <option value="travel">여행</option><option value="fitness">피트니스·건강</option><option value="tech">IT·테크</option>
           <option value="edu">교육</option><option value="pet">반려동물</option><option value="interior">인테리어</option>
           <option value="pr">마케팅·PR</option>
         </select></div>
-      <div><label class="fl">목적</label>
-        <select id="pur">
+      <div><label class="lab">목적</label>
+        <select class="inp" id="pur">
           <option value="brand">브랜딩</option><option value="engage">참여 유도</option><option value="info">정보 공유</option>
           <option value="event">이벤트</option><option value="daily">일상</option>
         </select></div>
     </div>
-    <div class="plat" id="plat">
+    <div class="pills" id="plat">
       <label class="on"><input type="radio" name="pf" value="ig" checked>인스타그램</label>
       <label><input type="radio" name="pf" value="tt">틱톡</label>
       <label><input type="radio" name="pf" value="blog">블로그</label>
     </div>
-    <div class="fields">
-      <div><label class="fl">키워드 <span style="font-weight:500;color:var(--sub-2)">(선택)</span></label><input type="text" id="kw" placeholder="예: 그린테이블, 비건 간편식"></div>
-      <div style="display:flex;align-items:flex-end"><button class="btn-run" style="width:100%" onclick="gen()">해시태그 생성</button></div>
+    <div class="grid2">
+      <div><label class="lab">키워드 <span class="hint">선택</span></label><input class="inp" type="text" id="kw" placeholder="예: 그린테이블, 비건 간편식"></div>
+      <div style="display:flex;align-items:flex-end"><button class="btn" style="width:100%" onclick="gen()">해시태그 생성</button></div>
     </div>
-    <div class="out" id="out">
-      <div class="oh">
+
+    <div class="result" id="out" style="display:none">
+      <div class="rh">
         <span class="cnt" id="cnt"></span>
-        <div class="oa"><button onclick="all(true)">전체 선택</button><button onclick="all(false)">전체 해제</button><button class="copy" onclick="copySel()">선택 복사</button></div>
+        <div class="ra"><button class="chip-lite" onclick="all(true)">전체 선택</button><button class="chip-lite" onclick="all(false)">전체 해제</button><button class="copy" onclick="copySel()">선택 복사</button></div>
       </div>
       <div class="tags" id="tags"></div>
-      <p class="hint">클릭하여 선택/해제하세요. 선택한 태그만 복사됩니다.</p>
-    </div>
-    <div class="tips">
-      <h3>해시태그 전략 팁</h3>
-      <ul>
-        <li>플랫폼별 적정 개수를 지키세요 — 인스타그램 10~15개, 틱톡 3~5개, 블로그 5~10개가 무난합니다.</li>
-        <li>초대형 태그(#일상)만 쓰기보다 <b>중형·소형 태그</b>를 섞어야 노출·도달이 고릅니다.</li>
-        <li>브랜드 고유 태그(예: #그린테이블)를 하나 만들어 꾸준히 사용하면 검색·아카이빙에 유리합니다.</li>
-        <li>콘텐츠와 무관한 인기 태그 남용은 도달을 오히려 떨어뜨릴 수 있습니다.</li>
-      </ul>
+      <p class="note" style="margin-top:12px">클릭하여 선택/해제하세요. 선택한 태그만 복사됩니다.</p>
     </div>
   </div>
-  <div style="height:50px"></div>
+
+  <div class="panel psub tips">
+    <h3>해시태그 전략 팁</h3>
+    <ul>
+      <li>플랫폼별 적정 개수를 지키세요 — 인스타그램 10~15개, 틱톡 3~5개, 블로그 5~10개가 무난합니다.</li>
+      <li>초대형 태그(#일상)만 쓰기보다 <b>중형·소형 태그</b>를 섞어야 노출·도달이 고릅니다.</li>
+      <li>브랜드 고유 태그(예: #그린테이블)를 하나 만들어 꾸준히 사용하면 검색·아카이빙에 유리합니다.</li>
+      <li>콘텐츠와 무관한 인기 태그 남용은 도달을 오히려 떨어뜨릴 수 있습니다.</li>
+    </ul>
+  </div>
+  <div style="height:24px"></div>
 </div>
 <div id="mag-footer"></div>
 <script>(function(){var s=document.createElement("script");s.src="../assets/js/prcome-nav.js?t="+Date.now();document.head.appendChild(s);})();</script>
