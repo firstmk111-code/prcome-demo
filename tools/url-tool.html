@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>URL 인코더/디코더 — PRCOME 유틸리티</title>
+<meta name="description" content="URL을 인코딩·디코딩합니다. UTM 파라미터, 한글 링크, 공유 URL 처리에 활용하세요.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="../assets/css/magazine-system.css?v=4">
+<script>window.MAG={root:'../',home:'../index.html',catBase:'../insights/index.html'};</script>
+<style>
+.subhead{padding:30px 0 6px}.subhead .crumb{font-size:12.5px;color:var(--sub);margin-bottom:12px}.subhead .crumb a:hover{color:var(--pt)}
+.subhead h1{font-size:clamp(24px,3vw,32px);font-weight:800;letter-spacing:-.03em;display:flex;align-items:center;gap:12px}
+.subhead h1 .tick{width:26px;height:3px;background:var(--pt);border-radius:2px}
+.subhead .desc{font-size:15.5px;color:var(--sub);margin-top:10px;max-width:60ch;line-height:1.6}
+.tool{padding:24px 0 10px}
+.tool label{display:block;font-size:13px;font-weight:700;margin:0 0 7px;color:var(--ink)}
+.tool textarea{width:100%;border:1px solid var(--line-2);border-radius:10px;padding:14px;font-family:'Pretendard',ui-monospace,monospace;font-size:14.5px;color:var(--ink);background:var(--surf);outline:0;min-height:120px;line-height:1.65;resize:vertical;word-break:break-all}
+.tool textarea:focus{border-color:var(--pt);box-shadow:0 0 0 3px var(--pt-soft)}
+.tool textarea[readonly]{background:#FBFCFE}
+.seg{display:inline-flex;border:1px solid var(--line-2);border-radius:8px;overflow:hidden;margin:16px 0}
+.seg button{border:0;background:var(--surf);font-family:inherit;font-size:13px;font-weight:700;color:var(--sub);padding:9px 15px;cursor:pointer}
+.seg button.on{background:var(--pt);color:#fff}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:6px 0 4px}
+.btn-run{height:44px;border:0;border-radius:8px;background:var(--pt);color:#fff;font-weight:700;font-size:14.5px;padding:0 22px;cursor:pointer}
+.btn-run:hover{background:var(--pt-2)}
+.btn-ghost{height:44px;border:1px solid var(--line-2);border-radius:8px;background:var(--surf);color:var(--ink);font-weight:700;font-size:13.5px;padding:0 16px;cursor:pointer}
+.btn-ghost:hover{border-color:var(--pt);color:var(--pt)}
+.ohead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:18px}
+.copy{font-size:12.5px;font-weight:700;color:var(--pt);border:1px solid var(--pt);border-radius:7px;padding:6px 12px;background:none;cursor:pointer}
+.copy:hover{background:var(--pt-soft)}
+.err{font-size:12.5px;color:#E4612B;font-weight:600;margin-top:10px;min-height:16px}
+.note{font-size:12.5px;color:var(--sub-2);margin-top:14px;line-height:1.6}
+</style>
+</head>
+<body>
+<div id="mag-header"></div>
+<div class="wrap">
+  <section class="subhead">
+    <div class="crumb"><a href="../index.html">홈</a> / <a href="index.html">PR도구</a> / URL 인코더·디코더</div>
+    <h1><span class="tick"></span>URL 인코더 / 디코더</h1>
+    <p class="desc">URL을 인코딩(퍼센트 인코딩)하거나 다시 원래대로 디코딩합니다. UTM 파라미터, 한글이 포함된 링크, 공유 URL을 처리할 때 사용하세요.</p>
+  </section>
+  <div class="tool">
+    <div class="seg" id="mode">
+      <button class="on" data-m="component">컴포넌트 (파라미터 값)</button>
+      <button data-m="uri">전체 URI</button>
+    </div>
+    <label>입력</label>
+    <textarea id="in" oninput="go()">https://prcome.com/검색?q=언론 홍보&utm_source=뉴스레터</textarea>
+    <div class="row">
+      <button class="btn-run" onclick="enc()">인코딩 →</button>
+      <button class="btn-run" style="background:var(--navy)" onclick="dec()">← 디코딩</button>
+      <button class="btn-ghost" onclick="swap()">입력↔결과 교체</button>
+      <button class="btn-ghost" onclick="document.getElementById('in').value='';document.getElementById('out').value='';document.getElementById('err').textContent=''">지우기</button>
+    </div>
+    <div class="err" id="err"></div>
+    <div class="ohead"><label style="margin:0">결과</label><button class="copy" onclick="cp()">복사</button></div>
+    <textarea id="out" readonly></textarea>
+    <p class="note">※ ‘컴포넌트’는 파라미터 값 하나를 인코딩할 때(encodeURIComponent), ‘전체 URI’는 링크 전체를 인코딩할 때(encodeURI) 적합합니다. 모든 처리는 브라우저 안에서만 이뤄지며 서버로 전송되지 않습니다.</p>
+  </div>
+  <div style="height:50px"></div>
+</div>
+<div id="mag-footer"></div>
+<script>(function(){var s=document.createElement("script");s.src="../assets/js/prcome-nav.js?t="+Date.now();document.head.appendChild(s);})();</script>
+<script>
+var mode='component';
+document.getElementById('mode').addEventListener('click',function(e){
+  var b=e.target.closest('button'); if(!b)return;
+  [].forEach.call(this.querySelectorAll('button'),function(x){x.classList.remove('on');});
+  b.classList.add('on'); mode=b.getAttribute('data-m');
+});
+function setErr(m){document.getElementById('err').textContent=m||'';}
+function enc(){
+  var t=document.getElementById('in').value;
+  try{ document.getElementById('out').value= mode==='uri'?encodeURI(t):encodeURIComponent(t); setErr(''); }
+  catch(e){ setErr('인코딩 오류: '+e.message); }
+}
+function dec(){
+  var t=document.getElementById('in').value;
+  try{ document.getElementById('out').value= mode==='uri'?decodeURI(t):decodeURIComponent(t); setErr(''); }
+  catch(e){ setErr('디코딩할 수 없는 형식입니다. (잘못된 % 시퀀스)'); }
+}
+function go(){ /* 입력 바뀌면 결과는 버튼으로 갱신 */ }
+function swap(){var i=document.getElementById('in'),o=document.getElementById('out');var tmp=i.value;i.value=o.value;o.value=tmp;}
+function cp(){var t=document.getElementById('out').value;if(navigator.clipboard&&t){navigator.clipboard.writeText(t).then(function(){var b=event.target;b.textContent='복사됨';setTimeout(function(){b.textContent='복사';},1200);});}}
+enc();
+</script>
+</body>
+</html>

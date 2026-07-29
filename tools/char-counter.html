@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>글자수 세기 — PRCOME 유틸리티</title>
+<meta name="description" content="글자수(공백 포함/제외)·단어수·줄수·바이트를 실시간으로 셉니다. 보도자료 제목·본문 길이 점검에 활용하세요.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="../assets/css/magazine-system.css?v=4">
+<script>window.MAG={root:'../',home:'../index.html',catBase:'../insights/index.html'};</script>
+<style>
+.subhead{padding:30px 0 6px}.subhead .crumb{font-size:12.5px;color:var(--sub);margin-bottom:12px}.subhead .crumb a:hover{color:var(--pt)}
+.subhead h1{font-size:clamp(24px,3vw,32px);font-weight:800;letter-spacing:-.03em;display:flex;align-items:center;gap:12px}
+.subhead h1 .tick{width:26px;height:3px;background:var(--pt);border-radius:2px}
+.subhead .desc{font-size:15.5px;color:var(--sub);margin-top:10px;max-width:60ch;line-height:1.6}
+.tool{padding:24px 0 10px}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:18px}
+.stat{border:1px solid var(--line);border-radius:12px;background:var(--surf);padding:16px 14px;text-align:center}
+.stat b{display:block;font-size:28px;font-weight:800;color:var(--pt);letter-spacing:-.02em;line-height:1.1}
+.stat span{font-size:12.5px;color:var(--sub);margin-top:4px;display:block}
+.tool textarea{width:100%;border:1px solid var(--line-2);border-radius:10px;padding:15px;font-family:inherit;font-size:15px;color:var(--ink);background:var(--surf);outline:0;min-height:220px;line-height:1.7;resize:vertical}
+.tool textarea:focus{border-color:var(--pt);box-shadow:0 0 0 3px var(--pt-soft)}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.btn-ghost{height:40px;border:1px solid var(--line-2);border-radius:8px;background:var(--surf);color:var(--ink);font-weight:700;font-size:13.5px;padding:0 16px;cursor:pointer}
+.btn-ghost:hover{border-color:var(--pt);color:var(--pt)}
+.guide{display:flex;gap:16px;flex-wrap:wrap;margin-top:16px;font-size:12.5px;color:var(--sub-2)}
+.guide .g{display:inline-flex;align-items:center;gap:6px}
+.guide .dot{width:8px;height:8px;border-radius:50%;background:var(--pt)}
+.guide .dot.warn{background:#E4612B}
+@media (max-width:760px){.stats{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:460px){.stats{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div id="mag-header"></div>
+<div class="wrap">
+  <section class="subhead">
+    <div class="crumb"><a href="../index.html">홈</a> / <a href="index.html">PR도구</a> / 글자수 세기</div>
+    <h1><span class="tick"></span>글자수 세기</h1>
+    <p class="desc">입력한 글의 글자수·단어수·줄수·바이트를 실시간으로 셉니다. 보도자료 제목(권장 45자 이내)이나 본문 길이를 점검할 때 유용합니다.</p>
+  </section>
+  <div class="tool">
+    <div class="stats">
+      <div class="stat"><b id="s-char">0</b><span>글자수(공백 포함)</span></div>
+      <div class="stat"><b id="s-nospace">0</b><span>공백 제외</span></div>
+      <div class="stat"><b id="s-word">0</b><span>단어수</span></div>
+      <div class="stat"><b id="s-line">0</b><span>줄수</span></div>
+      <div class="stat"><b id="s-byte">0</b><span>바이트(UTF-8)</span></div>
+    </div>
+    <textarea id="txt" placeholder="여기에 텍스트를 입력하거나 붙여넣으세요." oninput="upd()"></textarea>
+    <div class="row">
+      <button class="btn-ghost" onclick="document.getElementById('txt').value='';upd();document.getElementById('txt').focus()">지우기</button>
+      <button class="btn-ghost" onclick="cp()">텍스트 복사</button>
+    </div>
+    <div class="guide">
+      <span class="g"><span class="dot" id="d-title"></span>제목 권장 45자 이내</span>
+      <span class="g"><span class="dot" id="d-lead"></span>리드 문장 권장 90자 이내</span>
+    </div>
+  </div>
+  <div style="height:50px"></div>
+</div>
+<div id="mag-footer"></div>
+<script>(function(){var s=document.createElement("script");s.src="../assets/js/prcome-nav.js?t="+Date.now();document.head.appendChild(s);})();</script>
+<script>
+function byteLen(s){var b=0;for(var i=0;i<s.length;i++){var c=s.charCodeAt(i);b+= c<0x80?1:c<0x800?2:(c>=0xD800&&c<=0xDBFF?(i++,4):3);}return b;}
+function fmt(n){return n.toLocaleString('ko-KR');}
+function upd(){
+  var t=document.getElementById('txt').value;
+  var chars=[].concat(Array.from(t)).length; // 이모지/서로게이트 안전
+  var nospace=Array.from(t.replace(/\s/g,'')).length;
+  var words=(t.trim().match(/\S+/g)||[]).length;
+  var lines=t===''?0:t.split(/\n/).length;
+  document.getElementById('s-char').textContent=fmt(chars);
+  document.getElementById('s-nospace').textContent=fmt(nospace);
+  document.getElementById('s-word').textContent=fmt(words);
+  document.getElementById('s-line').textContent=fmt(lines);
+  document.getElementById('s-byte').textContent=fmt(byteLen(t));
+  var firstLine=(t.split(/\n/)[0]||'');
+  document.getElementById('d-title').className='dot'+(Array.from(firstLine).length>45?' warn':'');
+  document.getElementById('d-lead').className='dot'+(Array.from(firstLine).length>90?' warn':'');
+}
+function cp(){var t=document.getElementById('txt').value;if(navigator.clipboard&&t){navigator.clipboard.writeText(t).then(function(){var b=event.target;b.textContent='복사됨';setTimeout(function(){b.textContent='텍스트 복사';},1200);});}}
+upd();
+</script>
+</body>
+</html>
