@@ -41,8 +41,7 @@
     { label:'디렉토리', href:'directory/pr-directory.html', ic:IC.agency, act:['/directory/'], cols:1, items:[
       ['directory/agencies.html','PR회사 가이드'],
       ['directory/pr-directory.html','PR회사 디렉토리'],
-      ['directory/media.html','언론사 리스트'],
-      ['directory/index.html?type=expert','전문가'] ]},
+      ['directory/media.html','언론사 리스트'] ]},
     { label:'PR도구', href:'tools/index.html', ic:IC.project, act:['/tools/index','/tools/rate-card'], cols:1, items:[
       ['tools/index.html','1'],['tools/index.html','2'],['tools/index.html','3'],
       ['tools/index.html','4'],['tools/index.html','5'] ]},
