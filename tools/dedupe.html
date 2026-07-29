@@ -44,14 +44,13 @@
   </section>
   <div class="tool">
     <div class="opts">
-      <label class="opt"><input type="checkbox" id="o-trim" checked>앞뒤 공백 무시</label>
-      <label class="opt"><input type="checkbox" id="o-case">대소문자 무시</label>
-      <label class="opt"><input type="checkbox" id="o-empty" checked>빈 줄 제거</label>
-      <label class="opt"><input type="checkbox" id="o-sort">가나다/알파벳 정렬</label>
+      <label class="opt"><input type="checkbox" id="o-case">대소문자 구분</label>
+      <label class="opt"><input type="checkbox" id="o-trim" checked>앞뒤 공백 제거</label>
+      <label class="opt"><input type="checkbox" id="o-sort">결과 정렬</label>
     </div>
     <div class="io">
       <div>
-        <label>입력 (한 줄에 하나씩)</label>
+        <label>입력 <span id="inCnt" style="font-weight:500;color:var(--sub-2)">0줄</span></label>
         <textarea id="in" oninput="run()">브릿지커뮤니케이션즈
 스토리브릭스
 브릿지커뮤니케이션즈
@@ -67,7 +66,8 @@
     </div>
     <div class="row" style="margin-top:14px">
       <button class="btn-run" onclick="run()">중복 제거</button>
-      <button class="btn-ghost" onclick="document.getElementById('in').value='';run();">입력 지우기</button>
+      <button class="btn-ghost" onclick="cp()">중복 제거 결과 복사</button>
+      <button class="btn-ghost" onclick="document.getElementById('in').value='';run();">초기화</button>
     </div>
     <div class="res" id="res"></div>
   </div>
@@ -78,24 +78,23 @@
 <script>
 function run(){
   var raw=document.getElementById('in').value;
+  var caseSensitive=document.getElementById('o-case').checked;
   var trim=document.getElementById('o-trim').checked;
-  var ci=document.getElementById('o-case').checked;
-  var rmEmpty=document.getElementById('o-empty').checked;
   var sort=document.getElementById('o-sort').checked;
   var lines=raw.split(/\r?\n/);
-  var seen={}, out=[], total=0;
+  var inputCount=raw===''?0:lines.length;
+  document.getElementById('inCnt').textContent=inputCount+'줄';
+  var seen={}, out=[];
   lines.forEach(function(line){
     var v=trim?line.trim():line;
-    if(rmEmpty && v==='') return;
-    total++;
-    var key=ci?v.toLowerCase():v;
+    var key=caseSensitive?v:v.toLowerCase();
     if(Object.prototype.hasOwnProperty.call(seen,key)) return;
     seen[key]=1; out.push(v);
   });
   if(sort) out.sort(function(a,b){return a.localeCompare(b,'ko');});
   document.getElementById('out').value=out.join('\n');
-  var removed=total-out.length;
-  document.getElementById('res').innerHTML='원본 <b>'+total+'줄</b> → 중복 제거 후 <b>'+out.length+'줄</b> · 제거된 중복 <span class="rm">'+removed+'개</span>';
+  var removed=inputCount-out.length; if(removed<0)removed=0;
+  document.getElementById('res').innerHTML='결과 <b>'+out.length+'줄</b> <span class="rm">('+removed+'개 제거)</span> · 입력 '+inputCount+'줄';
 }
 function cp(){var t=document.getElementById('out').value;if(navigator.clipboard&&t){navigator.clipboard.writeText(t).then(function(){var b=event.target;b.textContent='복사됨';setTimeout(function(){b.textContent='복사';},1200);});}}
 run();

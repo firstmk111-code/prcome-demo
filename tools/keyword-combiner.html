@@ -15,14 +15,14 @@
 .subhead .desc{font-size:15.5px;color:var(--sub);margin-top:10px;max-width:60ch;line-height:1.6}
 .tool{padding:24px 0 10px}
 .grp{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.tool label{display:block;font-size:13px;font-weight:700;margin:0 0 7px;color:var(--ink)}
-.tool label .hint{font-weight:500;color:var(--sub-2);font-size:12px;margin-left:4px}
+.tool label.fl{display:block;font-size:13px;font-weight:700;margin:0 0 7px;color:var(--ink)}
+.tool label.fl .hint{font-weight:500;color:var(--sub-2);font-size:12px;margin-left:4px}
 .tool textarea{width:100%;border:1px solid var(--line-2);border-radius:8px;padding:12px 13px;font-family:inherit;font-size:14.5px;color:var(--ink);background:var(--surf);outline:0;min-height:96px;line-height:1.6;resize:vertical}
 .tool textarea:focus{border-color:var(--pt);box-shadow:0 0 0 3px var(--pt-soft)}
-.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:16px}
-.seg{display:inline-flex;border:1px solid var(--line-2);border-radius:8px;overflow:hidden}
-.seg button{border:0;background:var(--surf);font-family:inherit;font-size:13px;font-weight:700;color:var(--sub);padding:9px 13px;cursor:pointer}
-.seg button.on{background:var(--pt);color:#fff}
+.opts{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin:16px 0}
+.opt{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:600;color:var(--sub);cursor:pointer}
+.opt input{width:17px;height:17px;accent-color:var(--pt)}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
 .btn-run{height:44px;border:0;border-radius:8px;background:var(--pt);color:#fff;font-weight:700;font-size:14.5px;padding:0 22px;cursor:pointer}
 .btn-run:hover{background:var(--pt-2)}
 .out{margin-top:22px;border-top:2px solid var(--ink);padding-top:14px}
@@ -46,22 +46,19 @@
   </section>
   <div class="tool">
     <div class="grp">
-      <div><label>그룹 1 <span class="hint">쉼표 또는 줄바꿈</span></label><textarea id="g1">서울, 부산, 대구</textarea></div>
-      <div><label>그룹 2 <span class="hint">쉼표 또는 줄바꿈</span></label><textarea id="g2">홍보대행, PR회사, 보도자료</textarea></div>
-      <div><label>그룹 3 <span class="hint">선택</span></label><textarea id="g3">추천, 비용, 후기</textarea></div>
+      <div><label class="fl">그룹 1 <span class="hint">필수 · 쉼표/줄바꿈</span></label><textarea id="g1">서울, 부산, 대구</textarea></div>
+      <div><label class="fl">그룹 2 <span class="hint">필수 · 쉼표/줄바꿈</span></label><textarea id="g2">홍보대행, PR회사, 보도자료</textarea></div>
+      <div><label class="fl">그룹 3 <span class="hint">선택</span></label><textarea id="g3">추천, 비용, 후기</textarea></div>
+    </div>
+    <div class="opts">
+      <label class="opt"><input type="checkbox" id="o-space" checked>키워드 사이 공백 추가</label>
+      <label class="opt"><input type="checkbox" id="o-rev">역순 조합도 생성</label>
     </div>
     <div class="row">
-      <span style="font-size:13px;font-weight:700">구분자</span>
-      <div class="seg" id="sep">
-        <button class="on" data-s=" ">공백</button>
-        <button data-s="·">·</button>
-        <button data-s="-">-</button>
-        <button data-s="">붙여쓰기</button>
-      </div>
       <button class="btn-run" onclick="gen()">조합 생성</button>
     </div>
     <div class="out" id="out" style="display:none">
-      <div class="oh"><span class="cnt" id="cnt"></span><button class="copy" onclick="copyAll()">전체 복사</button></div>
+      <div class="oh"><span class="cnt" id="cnt"></span><button class="copy" onclick="copyAll()">복사</button></div>
       <div class="chips" id="chips"></div>
       <p class="note" id="warn"></p>
     </div>
@@ -71,34 +68,34 @@
 <div id="mag-footer"></div>
 <script>(function(){var s=document.createElement("script");s.src="../assets/js/prcome-nav.js?t="+Date.now();document.head.appendChild(s);})();</script>
 <script>
-var sep=' ';
-document.getElementById('sep').addEventListener('click',function(e){
-  var b=e.target.closest('button'); if(!b)return;
-  [].forEach.call(this.querySelectorAll('button'),function(x){x.classList.remove('on');});
-  b.classList.add('on'); sep=b.getAttribute('data-s');
-});
 function parse(id){return (document.getElementById(id).value||'').split(/[\n,]/).map(function(s){return s.trim();}).filter(Boolean);}
 var LAST=[];
 function gen(){
   var groups=[parse('g1'),parse('g2'),parse('g3')].filter(function(a){return a.length;});
   if(!groups.length){document.getElementById('out').style.display='none';return;}
-  var res=groups.reduce(function(acc,arr){
+  var sp=document.getElementById('o-space').checked?' ':'';
+  var rev=document.getElementById('o-rev').checked;
+  var combos=groups.reduce(function(acc,arr){
     var out=[];
     acc.forEach(function(prefix){arr.forEach(function(w){out.push(prefix.concat(w));});});
     return out;
-  },[[]]).map(function(parts){return parts.join(sep);});
-  // 중복 제거
-  res=res.filter(function(v,i){return res.indexOf(v)===i;});
+  },[[]]);
+  var res=[];
+  combos.forEach(function(parts){
+    res.push(parts.join(sp));
+    if(rev && parts.length>1) res.push(parts.slice().reverse().join(sp));
+  });
+  res=res.filter(function(v,i){return res.indexOf(v)===i;}); // 중복 제거
   LAST=res;
   document.getElementById('out').style.display='block';
-  document.getElementById('cnt').innerHTML='생성된 조합 <b>'+res.length+'개</b>';
-  var LIMIT=500, shown=res.slice(0,LIMIT);
+  document.getElementById('cnt').innerHTML='조합 결과 <b>'+res.length+'개</b>';
+  var LIMIT=600, shown=res.slice(0,LIMIT);
   document.getElementById('chips').innerHTML=shown.map(function(k){return '<span>'+k.replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c];})+'</span>';}).join('');
-  document.getElementById('warn').textContent=res.length>LIMIT?('※ 너무 많아 상위 '+LIMIT+'개만 표시했습니다. (전체 복사에는 모두 포함)'):'';
+  document.getElementById('warn').textContent=res.length>LIMIT?('※ 상위 '+LIMIT+'개만 표시했습니다. (복사에는 전체 포함)'):'';
 }
 function copyAll(){
   var t=LAST.join('\n');
-  if(navigator.clipboard){navigator.clipboard.writeText(t).then(function(){var b=event.target;b.textContent='복사됨';setTimeout(function(){b.textContent='전체 복사';},1200);});}
+  if(navigator.clipboard&&t){navigator.clipboard.writeText(t).then(function(){var b=event.target;b.textContent='복사됨';setTimeout(function(){b.textContent='복사';},1200);});}
   else alert(t);
 }
 gen();
