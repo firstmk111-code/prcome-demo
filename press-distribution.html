@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>언론홍보 — 보도자료 배포 매체 선택 | PRCOME</title>
+<meta name="description" content="보도자료를 배포할 언론사를 업종·노출영역·가격으로 골라 담고 한 번에 배포하세요. PRCOME 언론홍보 매체 선택.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="assets/css/magazine-system.css?v=4">
+<script>window.MAG={root:'',home:'index.html',catBase:'insights/index.html'};</script>
+<style>
+.subhead{padding:30px 0 6px}
+.subhead .crumb{font-size:13px;margin-bottom:14px;display:inline-flex;align-items:center;gap:8px;background:var(--surf);border:1px solid var(--line);border-radius:999px;padding:7px 15px;color:var(--sub)}
+.subhead .crumb a{color:var(--sub);font-weight:700}.subhead .crumb a:hover{color:var(--pt)}
+.subhead .crumb .cur{color:var(--pt);font-weight:800}.subhead .crumb .sep{color:var(--line-2)}
+.subhead h1{font-size:clamp(25px,3.2vw,33px);font-weight:800;letter-spacing:-.03em;display:flex;align-items:center;gap:12px}
+.subhead h1 .tick{width:26px;height:3px;background:var(--pt);border-radius:2px}
+.subhead .desc{font-size:15px;color:var(--sub);margin-top:10px;line-height:1.65;max-width:64ch}
+/* 레이아웃 */
+.pd{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:28px;align-items:start;padding:20px 0 60px}
+/* 필터 */
+.fbox{background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin-bottom:20px}
+.fsearch{display:flex;align-items:center;gap:10px;border:1.5px solid var(--line-2);border-radius:12px;padding:0 15px;height:50px;background:var(--bg);margin-bottom:18px}
+.fsearch:focus-within{border-color:var(--pt);box-shadow:0 0 0 3px var(--pt-soft);background:var(--surf)}
+.fsearch svg{width:18px;height:18px;stroke:var(--sub);fill:none;stroke-width:1.8;flex:none}
+.fsearch input{flex:1;min-width:0;border:0;outline:0;background:transparent;font-family:inherit;font-size:15px}
+.flab{font-size:12.5px;font-weight:800;color:var(--sub-2);letter-spacing:.02em;margin:0 0 9px}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px}
+.chips button{border:1.5px solid var(--line-2);background:var(--surf);border-radius:999px;padding:8px 14px;font-family:inherit;font-size:13px;font-weight:700;color:var(--sub);cursor:pointer;transition:all .12s}
+.chips button:hover{border-color:var(--pt);color:var(--pt)}
+.chips button.on{background:var(--pt);color:#fff;border-color:var(--pt)}
+.prange{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.prange input{width:120px;height:44px;border:1.5px solid var(--line-2);border-radius:10px;padding:0 12px;font-family:inherit;font-size:14px;background:var(--bg);outline:0}
+.prange input:focus{border-color:var(--pt);background:var(--surf)}
+.prange .won{font-size:13px;color:var(--sub)}
+.freset{margin-top:16px;width:100%;height:44px;border:1px solid var(--line-2);background:var(--bg);border-radius:10px;font-family:inherit;font-size:13.5px;font-weight:700;color:var(--sub);cursor:pointer}
+.freset:hover{border-color:var(--pt);color:var(--pt)}
+.mcount{font-size:14.5px;font-weight:700;margin:2px 2px 14px;color:var(--ink)}.mcount b{color:var(--pt)}
+/* 매체 카드 */
+.mgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.mcard{border:1.5px solid var(--line);border-radius:14px;padding:16px 18px;cursor:pointer;background:var(--surf);transition:border-color .12s,box-shadow .12s,transform .1s;position:relative}
+.mcard:hover{border-color:var(--pt);transform:translateY(-2px)}
+.mcard.on{border-color:var(--pt);box-shadow:0 0 0 3px var(--pt-soft)}
+.mcard.dis{opacity:.5;cursor:not-allowed}
+.mcard .top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.mcard .nm{font-size:15px;font-weight:700;color:var(--ink);line-height:1.4}
+.mcard .pr{font-size:16.5px;font-weight:800;color:var(--pt);white-space:nowrap}
+.mcard .meta{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:10px}
+.mcard .tag{font-size:11px;font-weight:700;color:var(--sub);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:3px 8px}
+.mcard .bdg{font-size:10.5px;font-weight:800;border-radius:5px;padding:3px 7px}
+.mcard .bdg.warn{color:#E4612B;background:#FDEEE7}
+.mcard .bdg.gray{color:var(--sub);background:var(--bg);border:1px solid var(--line)}
+.mcard .bdg.exp{color:var(--pt);background:var(--pt-soft)}
+.mcard .chk{position:absolute;top:14px;right:16px;width:20px;height:20px;border-radius:50%;border:1.5px solid var(--line-2);display:none;align-items:center;justify-content:center}
+.mcard.on .pr{display:none}
+.mcard.on .chk{display:flex;background:var(--pt);border-color:var(--pt)}
+.mcard.on .chk svg{width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2.5}
+.empty{grid-column:1/-1;padding:40px 0;text-align:center;color:var(--sub-2)}
+/* 장바구니 */
+.cart{position:sticky;top:80px;background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 12px 34px rgba(15,23,42,.06)}
+.cart h3{font-size:16px;font-weight:800;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.cart .clist{max-height:340px;overflow:auto}
+.cart .citem{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.cart .citem .cn{font-size:13.5px;font-weight:600;flex:1;min-width:0}
+.cart .citem .cp{font-size:13.5px;font-weight:700;color:var(--ink);white-space:nowrap}
+.cart .citem .rm{width:22px;height:22px;border-radius:6px;border:1px solid var(--line);background:var(--bg);color:var(--sub);font-size:13px;cursor:pointer;flex:none}
+.cart .citem .rm:hover{border-color:#E4612B;color:#E4612B}
+.cart .cempty{padding:30px 0;text-align:center;color:var(--sub-2);font-size:13.5px}
+.cart .sum{display:flex;align-items:baseline;justify-content:space-between;margin:16px 0 4px}
+.cart .sum .l{font-size:13.5px;color:var(--sub)}
+.cart .sum .v{font-size:23px;font-weight:800;color:var(--pt);letter-spacing:-.02em}
+.cart .vat{font-size:11.5px;color:var(--sub-2);text-align:right}
+.cart .pay{width:100%;height:52px;margin-top:16px;border:0;border-radius:12px;background:var(--pt);color:#fff;font-family:inherit;font-size:15px;font-weight:800;cursor:pointer;transition:background .12s}
+.cart .pay:hover:not(:disabled){background:var(--pt-2)}
+.cart .pay:disabled{background:var(--line-2);cursor:not-allowed}
+.cart .cnote{font-size:11.5px;color:var(--sub-2);text-align:center;margin-top:10px;line-height:1.6}
+.disc{font-size:12px;color:var(--sub-2);line-height:1.7;margin:22px 2px 0;padding-top:16px;border-top:1px solid var(--line)}
+@media (max-width:980px){.pd{grid-template-columns:minmax(0,1fr)}.cart{position:static}}
+@media (max-width:560px){.mgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="mag-header"></div>
+<div class="wrap">
+  <section class="subhead">
+    <div class="crumb"><a href="index.html">홈</a><span class="sep">/</span><span class="cur">언론홍보</span></div>
+    <h1><span class="tick"></span>언론홍보 · 보도자료 배포 매체 선택</h1>
+    <p class="desc">보도자료를 내보낼 언론사를 <strong>업종·노출영역·가격</strong>으로 골라 담고 한 번에 배포하세요. 원하는 매체를 클릭하면 오른쪽 장바구니에 추가됩니다.</p>
+  </section>
+
+  <div class="pd">
+    <main>
+      <div class="fbox">
+        <div class="fsearch"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4" stroke-linecap="round"/></svg><input id="q" placeholder="매체사 이름으로 검색…" oninput="render()"></div>
+        <div class="flab">업종 분류</div>
+        <div class="chips" id="catchips"></div>
+        <div class="flab">노출 영역</div>
+        <div class="chips" id="expchips"></div>
+        <div class="flab">가격 범위 <span style="font-weight:500;color:var(--sub-2)">(VAT 별도)</span></div>
+        <div class="prange">
+          <input type="number" id="pmin" placeholder="최소" oninput="render()"><span class="won">~</span>
+          <input type="number" id="pmax" placeholder="최대" oninput="render()"><span class="won">원</span>
+        </div>
+        <button class="freset" onclick="resetF()">필터 초기화</button>
+      </div>
+      <div class="mcount" id="mcount"></div>
+      <div class="mgrid" id="mgrid"></div>
+      <p class="disc">※ 표시된 매체·단가는 화면 구성을 보여주기 위한 <b>예시(데모)</b>이며 실제 매체 목록·가격과 다를 수 있습니다. 실제 배포·결제 기능은 준비 중입니다.</p>
+    </main>
+
+    <aside>
+      <div class="cart">
+        <h3>선택한 매체사</h3>
+        <div class="clist" id="clist"></div>
+        <div class="sum"><span class="l">총 금액 <span style="font-size:11px;color:var(--sub-2)">(VAT 별도)</span></span><span class="v" id="total">0원</span></div>
+        <button class="pay" id="pay" disabled onclick="pay()">결제하기 →</button>
+        <p class="cnote" id="cnote">매체사를 선택하면 결제 버튼이 활성화됩니다</p>
+      </div>
+    </aside>
+  </div>
+</div>
+<div id="mag-footer"></div>
+<script>(function(){var s=document.createElement("script");s.src="assets/js/prcome-nav.js?t="+Date.now();document.head.appendChild(s);})();</script>
+<script>
+var CATS=[['all','전체'],['gen','일반'],['health','건기식'],['beauty','뷰티'],['startup','창업'],['medical','의료'],['law','법률'],['estate','부동산'],['block','블록체인'],['finance','금융'],['interview','인터뷰·기획'],['special','특수']];
+var EXPS=[['all','전체'],['cp','네이버CP'],['naver','네이버뉴스'],['etc','기타']];
+var CATNAME={};CATS.forEach(function(c){CATNAME[c[0]]=c[1];});
+var EXPNAME={cp:'네이버CP',naver:'네이버뉴스',etc:'기타'};
+/* [매체명, 업종, 노출영역, 가격, 배지] — 데모 예시 */
+var MEDIA=[
+ ['경제산업신문','gen','cp',80000,''],['데일리커머스','gen','naver',70000,''],
+ ['산업기술뉴스','gen','naver',75000,''],['대학저널','gen','etc',50000,''],
+ ['피앤피뉴스','gen','etc',50000,''],['프리미어경제','finance','etc',20000,'일반매체'],
+ ['금융투자저널','finance','cp',110000,''],['테크리포트','startup','naver',90000,''],
+ ['스타트업뉴스','startup','naver',85000,''],['뷰티데일리','beauty','etc',40000,''],
+ ['라이프앤컬처','beauty','etc',42000,''],['코스메틱리포트','beauty','etc',38000,''],
+ ['헬스앤라이프','health','etc',45000,''],['바이오헬스뉴스','health','etc',48000,''],
+ ['메디컬투데이','medical','cp',120000,''],['리걸타임즈','law','etc',60000,''],
+ ['로앤비즈','law','etc',62000,''],['부동산가이드','estate','etc',55000,''],
+ ['블록체인투데이','block','etc',70000,''],['크립토데일리','block','etc',68000,''],
+ ['인터뷰365','interview','etc',65000,''],['데일리시큐','special','naver',50000,'일시중단'],
+ ['블로그 포스팅(준최적)','special','etc',10000,'단독선택불가'],['170개 네트워크신문사 추가송출','special','etc',20000,'단독선택불가']
+];
+var fCat='all', fExp='all', sel={};
+function won(n){return n.toLocaleString('ko-KR')+'원';}
+function esc(s){return s.replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
+function drawChips(){
+ document.getElementById('catchips').innerHTML=CATS.map(function(c){return '<button class="'+(c[0]===fCat?'on':'')+'" onclick="setCat(\''+c[0]+'\')">'+c[1]+'</button>';}).join('');
+ document.getElementById('expchips').innerHTML=EXPS.map(function(e){return '<button class="'+(e[0]===fExp?'on':'')+'" onclick="setExp(\''+e[0]+'\')">'+e[1]+'</button>';}).join('');
+}
+function setCat(c){fCat=c;drawChips();render();}
+function setExp(e){fExp=e;drawChips();render();}
+function resetF(){fCat='all';fExp='all';document.getElementById('q').value='';document.getElementById('pmin').value='';document.getElementById('pmax').value='';drawChips();render();}
+function render(){
+ var q=(document.getElementById('q').value||'').trim().toLowerCase();
+ var mn=parseInt(document.getElementById('pmin').value,10); var mx=parseInt(document.getElementById('pmax').value,10);
+ var list=MEDIA.filter(function(m){
+   if(fCat!=='all'&&m[1]!==fCat)return false;
+   if(fExp!=='all'&&m[2]!==fExp)return false;
+   if(q&&m[0].toLowerCase().indexOf(q)<0)return false;
+   if(!isNaN(mn)&&m[3]<mn)return false;
+   if(!isNaN(mx)&&m[3]>mx)return false;
+   return true;
+ });
+ document.getElementById('mcount').innerHTML='<b>'+list.length+'</b>개 매체사';
+ document.getElementById('mgrid').innerHTML=list.map(function(m){
+   var i=MEDIA.indexOf(m), on=!!sel[i], stop=m[4]==='일시중단';
+   var bdg=m[4]?'<span class="bdg '+(m[4]==='일시중단'?'warn':(m[4]==='일반매체'?'gray':'warn'))+'">'+m[4]+'</span>':'';
+   var exp='<span class="bdg exp">'+EXPNAME[m[2]]+'</span>';
+   return '<div class="mcard'+(on?' on':'')+(stop?' dis':'')+'"'+(stop?'':' onclick="toggle('+i+')"')+'>'+
+     '<div class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>'+
+     '<div class="top"><div class="nm">'+esc(m[0])+'</div><div class="pr">'+won(m[3])+'</div></div>'+
+     '<div class="meta"><span class="tag">'+CATNAME[m[1]]+'</span>'+exp+bdg+'</div></div>';
+ }).join('')||'<div class="empty">조건에 맞는 매체사가 없습니다. 필터를 조정해 보세요.</div>';
+}
+function toggle(i){ if(sel[i])delete sel[i]; else sel[i]=1; render(); cart(); }
+function cart(){
+ var ids=Object.keys(sel); var total=0;
+ var html=ids.map(function(i){var m=MEDIA[i];total+=m[3];
+   return '<div class="citem"><span class="cn">'+esc(m[0])+'</span><span class="cp">'+won(m[3])+'</span><button class="rm" onclick="toggle('+i+')">×</button></div>';
+ }).join('');
+ document.getElementById('clist').innerHTML=html||'<div class="cempty">선택한 매체사가 없습니다</div>';
+ document.getElementById('total').textContent=won(total);
+ var pay=document.getElementById('pay'); pay.disabled=ids.length===0;
+ document.getElementById('cnote').textContent=ids.length?(ids.length+'개 매체 선택됨'):'매체사를 선택하면 결제 버튼이 활성화됩니다';
+}
+function pay(){ alert('실제 배포·결제는 로그인 후 이용할 수 있는 준비 중 기능입니다. (1차 데모)\n\n선택하신 매체는 로그인 시 견적/배포 요청으로 이어집니다.'); }
+drawChips(); render(); cart();
+</script>
+</body>
+</html>

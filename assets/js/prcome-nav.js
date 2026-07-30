@@ -37,7 +37,7 @@
       ['insights/index.html?cat=geo','AEO·GEO·SEO'],
       ['insights/index.html?cat=marketing','마케팅'] ]},
     { label:'보도자료 배포 AI', href:'tools/press-release.html', ic:IC.ai, act:['/tools/press-release','/tools/pr-diagnosis','/tools/seo-aeo'] },
-    { label:'언론홍보', href:'directory/media.html', ic:IC.media, act:['/directory/media'] },
+    { label:'언론홍보', href:'press-distribution.html', ic:IC.media, act:['/press-distribution'] },
     { label:'디렉토리', href:'directory/pr-directory.html', ic:IC.agency, act:['/directory/'], cols:1, items:[
       ['directory/agencies.html','PR회사 가이드'],
       ['directory/pr-directory.html','PR회사 디렉토리'],
