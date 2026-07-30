@@ -117,8 +117,6 @@
         <div class="fsearch"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4" stroke-linecap="round"/></svg><input id="q" placeholder="매체사 이름으로 검색…" oninput="render()"></div>
         <div class="flab">업종 분류</div>
         <div class="chips" id="catchips"></div>
-        <div class="flab">노출 영역</div>
-        <div class="chips" id="expchips"></div>
         <div class="flab">가격 범위 <span style="font-weight:500;color:var(--sub-2)">(VAT 별도)</span></div>
         <div class="prange">
           <input type="number" id="pmin" placeholder="최소" oninput="render()"><span class="won">~</span>
@@ -128,7 +126,7 @@
       </div>
       <div class="mcount" id="mcount"></div>
       <div class="mgrid" id="mgrid"></div>
-      <p class="disc">※ 표시된 매체·단가는 화면 구성을 보여주기 위한 <b>예시(데모)</b>이며 실제 매체 목록·가격과 다를 수 있습니다. 실제 배포·결제 기능은 준비 중입니다.</p>
+      <p class="disc">※ 단가는 PRCOME 매체 배포 <b>설정가(VAT 별도)</b> 기준이며, 매체 사정에 따라 변동될 수 있습니다. 실제 배포·결제 기능은 준비 중입니다.</p>
     </main>
 
     <aside>
@@ -143,64 +141,44 @@
   </div>
 </div>
 <div id="mag-footer"></div>
+<script src="assets/js/press-media.js?v=1"></script>
 <script>(function(){var s=document.createElement("script");s.src="assets/js/prcome-nav.js?t="+Date.now();document.head.appendChild(s);})();</script>
 <script>
-var CATS=[['all','전체'],['gen','일반'],['health','건기식'],['beauty','뷰티'],['startup','창업'],['medical','의료'],['law','법률'],['estate','부동산'],['block','블록체인'],['finance','금융'],['interview','인터뷰·기획'],['special','특수']];
-var EXPS=[['all','전체'],['cp','네이버CP'],['naver','네이버뉴스'],['etc','기타']];
-var CATNAME={};CATS.forEach(function(c){CATNAME[c[0]]=c[1];});
-var EXPNAME={cp:'네이버CP',naver:'네이버뉴스',etc:'기타'};
-/* [매체명, 업종, 노출영역, 가격, 배지] — 데모 예시 */
-var MEDIA=[
- ['경제산업신문','gen','cp',80000,''],['데일리커머스','gen','naver',70000,''],
- ['산업기술뉴스','gen','naver',75000,''],['대학저널','gen','etc',50000,''],
- ['피앤피뉴스','gen','etc',50000,''],['프리미어경제','finance','etc',20000,'일반매체'],
- ['금융투자저널','finance','cp',110000,''],['테크리포트','startup','naver',90000,''],
- ['스타트업뉴스','startup','naver',85000,''],['뷰티데일리','beauty','etc',40000,''],
- ['라이프앤컬처','beauty','etc',42000,''],['코스메틱리포트','beauty','etc',38000,''],
- ['헬스앤라이프','health','etc',45000,''],['바이오헬스뉴스','health','etc',48000,''],
- ['메디컬투데이','medical','cp',120000,''],['리걸타임즈','law','etc',60000,''],
- ['로앤비즈','law','etc',62000,''],['부동산가이드','estate','etc',55000,''],
- ['블록체인투데이','block','etc',70000,''],['크립토데일리','block','etc',68000,''],
- ['인터뷰365','interview','etc',65000,''],['데일리시큐','special','naver',50000,'일시중단'],
- ['블로그 포스팅(준최적)','special','etc',10000,'단독선택불가'],['170개 네트워크신문사 추가송출','special','etc',20000,'단독선택불가']
-];
-var fCat='all', fExp='all', sel={};
+/* 데이터: assets/js/press-media.js (엑셀 'PR컴_단가비교 및 설정' → window.PRESS_CATS / window.PRESS_MEDIA[name,항목,PR컴가격]) */
+var CATS=[['all','전체']].concat((window.PRESS_CATS||[]).map(function(c){return [c,c];}));
+var MEDIA=(window.PRESS_MEDIA||[]).slice();
+var fCat='all', sel={};
 function won(n){return n.toLocaleString('ko-KR')+'원';}
-function esc(s){return s.replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
+function esc(s){return String(s).replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
 function drawChips(){
- document.getElementById('catchips').innerHTML=CATS.map(function(c){return '<button class="'+(c[0]===fCat?'on':'')+'" onclick="setCat(\''+c[0]+'\')">'+c[1]+'</button>';}).join('');
- document.getElementById('expchips').innerHTML=EXPS.map(function(e){return '<button class="'+(e[0]===fExp?'on':'')+'" onclick="setExp(\''+e[0]+'\')">'+e[1]+'</button>';}).join('');
+ document.getElementById('catchips').innerHTML=CATS.map(function(c){var k=(''+c[0]).replace(/\\/g,'\\\\').replace(/'/g,"\\'");return '<button class="'+(c[0]===fCat?'on':'')+'" onclick="setCat(\''+k+'\')">'+esc(c[1])+'</button>';}).join('');
 }
 function setCat(c){fCat=c;drawChips();render();}
-function setExp(e){fExp=e;drawChips();render();}
-function resetF(){fCat='all';fExp='all';document.getElementById('q').value='';document.getElementById('pmin').value='';document.getElementById('pmax').value='';drawChips();render();}
+function resetF(){fCat='all';document.getElementById('q').value='';document.getElementById('pmin').value='';document.getElementById('pmax').value='';drawChips();render();}
 function render(){
  var q=(document.getElementById('q').value||'').trim().toLowerCase();
  var mn=parseInt(document.getElementById('pmin').value,10); var mx=parseInt(document.getElementById('pmax').value,10);
  var list=MEDIA.filter(function(m){
    if(fCat!=='all'&&m[1]!==fCat)return false;
-   if(fExp!=='all'&&m[2]!==fExp)return false;
    if(q&&m[0].toLowerCase().indexOf(q)<0)return false;
-   if(!isNaN(mn)&&m[3]<mn)return false;
-   if(!isNaN(mx)&&m[3]>mx)return false;
+   if(!isNaN(mn)&&m[2]<mn)return false;
+   if(!isNaN(mx)&&m[2]>mx)return false;
    return true;
  });
- document.getElementById('mcount').innerHTML='<b>'+list.length+'</b>개 매체사';
+ document.getElementById('mcount').innerHTML='<b>'+list.length+'</b>개 매체';
  document.getElementById('mgrid').innerHTML=list.map(function(m){
-   var i=MEDIA.indexOf(m), on=!!sel[i], stop=m[4]==='일시중단';
-   var bdg=m[4]?'<span class="bdg '+(m[4]==='일시중단'?'warn':(m[4]==='일반매체'?'gray':'warn'))+'">'+m[4]+'</span>':'';
-   var exp='<span class="bdg exp">'+EXPNAME[m[2]]+'</span>';
-   return '<div class="mcard'+(on?' on':'')+(stop?' dis':'')+'"'+(stop?'':' onclick="toggle('+i+')"')+'>'+
+   var i=MEDIA.indexOf(m), on=!!sel[i];
+   return '<div class="mcard'+(on?' on':'')+'" onclick="toggle('+i+')">'+
      '<div class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>'+
-     '<div class="top"><div class="nm">'+esc(m[0])+'</div><div class="pr">'+won(m[3])+'</div></div>'+
-     '<div class="meta"><span class="tag">'+CATNAME[m[1]]+'</span>'+exp+bdg+'</div></div>';
- }).join('')||'<div class="empty">조건에 맞는 매체사가 없습니다. 필터를 조정해 보세요.</div>';
+     '<div class="top"><div class="nm">'+esc(m[0])+'</div><div class="pr">'+won(m[2])+'</div></div>'+
+     '<div class="meta"><span class="tag">'+esc(m[1])+'</span></div></div>';
+ }).join('')||'<div class="empty">조건에 맞는 매체가 없습니다. 필터를 조정해 보세요.</div>';
 }
 function toggle(i){ if(sel[i])delete sel[i]; else sel[i]=1; render(); cart(); }
 function cart(){
  var ids=Object.keys(sel); var total=0;
- var html=ids.map(function(i){var m=MEDIA[i];total+=m[3];
-   return '<div class="citem"><span class="cn">'+esc(m[0])+'</span><span class="cp">'+won(m[3])+'</span><button class="rm" onclick="toggle('+i+')">×</button></div>';
+ var html=ids.map(function(i){var m=MEDIA[i];total+=m[2];
+   return '<div class="citem"><span class="cn">'+esc(m[0])+' <span style="color:var(--sub-2);font-weight:500">· '+esc(m[1])+'</span></span><span class="cp">'+won(m[2])+'</span><button class="rm" onclick="toggle('+i+')">×</button></div>';
  }).join('');
  document.getElementById('clist').innerHTML=html||'<div class="cempty">선택한 매체사가 없습니다</div>';
  document.getElementById('total').textContent=won(total);
