@@ -213,18 +213,22 @@ window.SEO={
 <div id="mag-footer"></div>
 <script>(function(){var s=document.createElement("script");s.src="../assets/js/prcome-nav.js?t="+Date.now();document.head.appendChild(s);})();</script>
 <script>
-/* 카테고리 (6) */
-var BOARDS=[['all','전체 피드'],['qa','질문·답변'],['news','업계 소식'],['knowhow','실무 노하우'],['case','언론홍보 사례'],['free','자유게시판']];
-var NAME={};BOARDS.forEach(function(b){NAME[b[0]]=b[1];});
+/* 상단 탭 (4) — 실무 노하우+언론홍보 사례 병합, 자유게시판은 탭 미노출(전체 피드엔 포함) */
+var BOARDS=[['all','전체'],['qa','질문·답변'],['practice','실무 노하우·사례'],['news','업계 소식']];
+/* 그룹 탭 → 실제 카테고리 매핑 */
+var GROUP={practice:['knowhow','case']};
+/* 전체 라벨(피드 행 표시용 — 병합 전 세부 카테고리도 유지) */
+var NAME={all:'전체',qa:'질문·답변',news:'업계 소식',knowhow:'실무 노하우',case:'언론홍보 사례',free:'자유게시판',practice:'실무 노하우·사례'};
 var DESC={
  all:'홍보담당자·언론인·PR대행사 실무자가 정보와 경험을 나누는 공간입니다.',
  qa:'보도자료·미디어 관계·위기관리 등 언론홍보 실무 질문과 답변.',
  news:'언론 환경, 매체, 검색·AI 등 업계 소식과 동향을 나눕니다.',
+ practice:'현장에서 쌓은 실무 노하우와 실제 언론홍보 사례를 함께 나눕니다.',
  knowhow:'현장에서 쌓은 실무 노하우와 자료·템플릿을 공유합니다.',
  case:'실제 언론홍보·캠페인 사례와 성과를 뜯어봅니다.',
  free:'실무자들의 자유로운 라운지.'};
-/* 별칭(구 링크 호환) */
-var ALIAS={intro:'all','pr-qa':'qa','mkt-qa':'qa',industry:'news',promo:'case',media:'news',collab:'knowhow',seo:'qa',info:'news',press:'case'};
+/* 별칭(구 링크 호환) — 노하우·사례는 병합 탭으로, 자유게시판은 전체로 */
+var ALIAS={intro:'all','pr-qa':'qa','mkt-qa':'qa',industry:'news',promo:'practice',media:'news',collab:'practice',seo:'qa',info:'news',press:'practice',knowhow:'practice','case':'practice',free:'all'};
 /* 작성자 풀 */
 var COLORS=['#315CFF','#3E4B63','#6D5DF0','#0FA6C0','#E4612B','#1E40E8'];
 function ava(name,i){return '<span class="ava" style="background:'+COLORS[i%COLORS.length]+'">'+name.charAt(0)+'</span>';}
@@ -247,7 +251,8 @@ if(ALIAS[key])key=ALIAS[key];
 if(!NAME[key])key='all';
 var sort='hot';
 /* 좌 내비 */
-function counts(k){return k==='all'?P.length:P.filter(function(p){return p[0]===k;}).length;}
+function inCat(p,k){return k==='all'?true:(GROUP[k]?GROUP[k].indexOf(p[0])>=0:p[0]===k);}
+function counts(k){return P.filter(function(p){return inCat(p,k);}).length;}
 document.getElementById('chtabs').innerHTML=BOARDS.map(function(b){
  return '<a class="'+(b[0]===key?'on':'')+'" href="index.html'+(b[0]==='all'?'':'?cat='+b[0])+'">'+b[1]+'<span class="c">'+counts(b[0])+'</span></a>';
 }).join('');
@@ -266,7 +271,7 @@ var CATBG={qa:'linear-gradient(135deg,#4A6BFF,#1E40E8)',news:'linear-gradient(13
 var POSTURL={qa:'post.html',news:'post-news.html',knowhow:'post-knowhow.html',case:'post-case.html'};
 function postUrl(cat){return POSTURL[cat]||'post.html';}
 function render(){
- var list=key==='all'?P.slice():P.filter(function(p){return p[0]===key;});
+ var list=P.filter(function(p){return inCat(p,key);});
  if(sort==='hot')list.sort(function(a,b){return b[14]-a[14];});
  document.getElementById('cnt').textContent=NAME[key]+' · '+list.length+'건';
  document.getElementById('feed').innerHTML='<div class="flist">'+list.map(function(p){
