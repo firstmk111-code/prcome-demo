@@ -147,13 +147,14 @@
 <script src="assets/js/press-notes.js?v=1"></script>
 <script src="assets/js/press-notes-med.js?v=1"></script>
 <script src="assets/js/press-notes-sl.js?v=1"></script>
+<script src="assets/js/press-notes-bh.js?v=1"></script>
 <script>(function(){var s=document.createElement("script");s.src="assets/js/prcome-nav.js?t="+Date.now();document.head.appendChild(s);})();</script>
 <script>
 /* 데이터: assets/js/press-media.js (엑셀 'PR컴_단가비교 및 설정' → window.PRESS_CATS / window.PRESS_MEDIA[name,항목,PR컴가격]) */
 /* 업종 분류 칩 = 엑셀 '항목' 세부 항목(평면) */
 var CATS=(window.PRESS_CATS||[]).map(function(c){return [c,c];});
 var MEDIA=(window.PRESS_MEDIA||[]).slice();
-(function(){var SL=window.PRESS_NOTES_SL||{};var MAPS={'일반':window.PRESS_NOTES||{},'메디컬':window.PRESS_NOTES_MED||{},'창업':SL,'법률':SL};MEDIA.forEach(function(m){var g=MAPS[m[1]];if(g&&g[m[0]]){m[3]=g[m[0]][0];m[4]=g[m[0]][1]||'';}});})();
+(function(){var SL=window.PRESS_NOTES_SL||{};var BH=window.PRESS_NOTES_BH||{};var MAPS={'일반':window.PRESS_NOTES||{},'메디컬':window.PRESS_NOTES_MED||{},'창업':SL,'법률':SL,'뷰티·헬스':BH,'건강식품':BH,'블록체인':BH,'HTS':BH};MEDIA.forEach(function(m){var g=MAPS[m[1]];if(g&&g[m[0]]){m[3]=g[m[0]][0];m[4]=g[m[0]][1]||'';}});})();
 var fCat='일반', sel={};
 function won(n){return n.toLocaleString('ko-KR')+'원';}
 function esc(s){return String(s).replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
