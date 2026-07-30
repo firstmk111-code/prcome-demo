@@ -25,13 +25,36 @@ window.SEO={
 </script>
 <script>try{if(window.matchMedia&&!matchMedia('(prefers-reduced-motion:reduce)').matches&&'IntersectionObserver'in window){document.documentElement.classList.add('reveal-js');}}catch(e){}</script>
 <style>
-/* ===== 히어로 (차분한 에디토리얼) ===== */
-.hero{background:var(--surf);border-bottom:1px solid var(--line)}
-.hero .in{max-width:1000px;margin:0 auto;padding:42px 24px 34px;text-align:center}
-.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:800;letter-spacing:.02em;color:var(--pt)}
-.eyebrow::before,.eyebrow::after{content:"";width:18px;height:2px;background:var(--pt);border-radius:2px}
-.hero h1{font-size:clamp(27px,3.6vw,40px);font-weight:800;letter-spacing:-.04em;line-height:1.24;margin:14px 0 12px}
-.hero .lead{font-size:16px;color:var(--sub);line-height:1.7;max-width:46ch;margin:0 auto}
+/* ===== 히어로 (브랜드 그라데이션) ===== */
+.hero{position:relative;overflow:hidden;background:linear-gradient(165deg,#E8EFFF 0%,#EDF1FF 46%,#F1ECFF 100%);border-bottom:1px solid var(--line)}
+.hero::before{content:"";position:absolute;top:-170px;left:50%;transform:translateX(-50%);width:940px;height:540px;background:radial-gradient(60% 60% at 50% 30%,rgba(88,128,255,.30),transparent 70%);pointer-events:none}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(40% 52% at 12% 88%,rgba(126,110,245,.20),transparent 70%),radial-gradient(38% 48% at 90% 16%,rgba(49,92,255,.17),transparent 70%);pointer-events:none}
+.hero .in{position:relative;z-index:2;max-width:1000px;margin:0 auto;padding:54px 24px 48px;text-align:center}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:800;letter-spacing:.02em;color:var(--pt)}
+.eyebrow::before,.eyebrow::after{content:"";width:28px;height:2px;background:var(--pt);border-radius:2px}
+/* PR!COME 워드마크 */
+.wordmark{position:relative;display:inline-flex;align-items:center;justify-content:center;font-weight:900;font-style:italic;letter-spacing:-.045em;line-height:.95;font-size:clamp(56px,10vw,116px);margin:20px 0 18px}
+.wordmark span{-webkit-background-clip:text;background-clip:text;color:transparent}
+.wordmark .pr{background-image:linear-gradient(180deg,#3358F2,#1B34C4)}
+.wordmark .bang{background-image:linear-gradient(180deg,#5A86FF,#2B5BFF);position:relative;padding:0 .02em}
+.wordmark .come{background-image:linear-gradient(180deg,#1A2A66,#0C1733)}
+.wordmark .spark{position:absolute;top:-.34em;left:50%;transform:translateX(-44%);width:.66em;height:.52em;overflow:visible}
+.wordmark .spark path{stroke:#2B5BFF;stroke-width:2.1;stroke-linecap:round;fill:none}
+.hero .lead{font-size:clamp(15px,1.7vw,18px);color:var(--sub);line-height:1.7;max-width:42ch;margin:0 auto;font-weight:500}
+.hero .lead b{color:var(--pt);font-weight:800}
+/* 떠 있는 아이콘 */
+.floaties{position:absolute;inset:0;z-index:1;pointer-events:none}
+.floaties .ic{position:absolute;display:flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:16px;background:rgba(255,255,255,.74);border:1px solid rgba(120,150,255,.4);box-shadow:0 12px 26px rgba(49,92,255,.15)}
+.floaties .ic svg{width:27px;height:27px;stroke:var(--pt);fill:none;stroke-width:1.7}
+.floaties .ic.i1{top:15%;left:8%;animation:fl 6s ease-in-out infinite}
+.floaties .ic.i2{top:57%;left:12%;width:48px;height:48px;animation:fl 7s ease-in-out .6s infinite}
+.floaties .ic.i3{top:19%;right:9%;width:52px;height:52px;animation:fl 6.5s ease-in-out .3s infinite}
+.floaties .ic.i4{top:60%;right:8%;animation:fl 7.4s ease-in-out .9s infinite}
+.floaties .plane{position:absolute;top:29%;right:16%;animation:fl 8s ease-in-out infinite}
+.floaties .plane svg{width:46px;height:46px;stroke:var(--pt);fill:none;stroke-width:1.5;opacity:.9}
+@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@media (prefers-reduced-motion:reduce){.floaties .ic,.floaties .plane{animation:none}}
+@media (max-width:720px){.floaties .ic.i1,.floaties .ic.i2{left:1%}.floaties .ic.i3,.floaties .ic.i4,.floaties .plane{right:1%}.floaties .ic{width:44px;height:44px}.floaties .ic svg{width:22px;height:22px}}
 .hero-cta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:24px 0 0}
 .hbtn{display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 22px;border-radius:10px;font-weight:700;font-size:14.5px}
 .hbtn.pri{background:var(--pt);color:#fff}.hbtn.pri:hover{background:var(--pt-2)}
@@ -236,19 +259,30 @@ window.SEO={
 <div id="mag-header"></div>
 
 <!-- 1) 히어로 -->
-<section class="hero"><div class="in">
-  <span class="eyebrow">언론홍보 실무 커뮤니티 · 전문 매거진</span>
-  <h1>언론홍보 실무자들이<br>정보와 경험을 나누는 곳</h1>
-  <p class="lead">홍보담당자, 언론인, PR대행사 실무자가 함께 업계 인사이트와 실무 경험을 공유합니다.</p>
-  <div class="hero-cta">
-    <a class="hbtn pri" href="community/index.html">커뮤니티 둘러보기</a>
-    <a class="hbtn gh" href="community/write.html">＋ 글쓰기</a>
-    <a class="hbtn ai" href="tools/press-release.html">✨ 보도자료 AI <span class="tag">AI</span></a>
+<section class="hero">
+  <div class="floaties" aria-hidden="true">
+    <span class="ic i1"><svg viewBox="0 0 24 24"><path d="M20.5 15a2 2 0 0 1-2 2H8l-4.5 3.5V6a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2Z"/></svg></span>
+    <span class="ic i2"><svg viewBox="0 0 24 24"><path d="M7 3.5h6.5L18.5 8v12a1.2 1.2 0 0 1-1.2 1.2H7a1.2 1.2 0 0 1-1.2-1.2V4.7A1.2 1.2 0 0 1 7 3.5Z"/><path d="M13.3 3.7V8.2H18"/><path d="M8.6 12.2h6.8M8.6 15.6h6.8"/></svg></span>
+    <span class="ic i3"><svg viewBox="0 0 24 24"><path d="M4 5h13a1 1 0 0 1 1 1v12a2 2 0 0 0 2-2V8"/><path d="M7 9h7M7 12.5h7M7 16h4"/></svg></span>
+    <span class="ic i4"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.3 9.3a2.8 2.8 0 0 1 5.4 1c0 1.9-2.7 2.3-2.7 3.9"/><path d="M12 17h.01"/></svg></span>
+    <span class="plane"><svg viewBox="0 0 24 24"><path d="M21.5 3 2.6 11l6.3 2.2 2.1 6.3L21.5 3Z"/><path d="M8.9 13.2 21.5 3"/></svg></span>
   </div>
-  <div class="hero-meta">
-    <span>회원 <b>294</b>명</span><i></i><span>게시글 <b>11,200</b></span><i></i><span>오늘 새 글 <b>80+</b></span>
+  <div class="in">
+    <span class="eyebrow">언론홍보 실무 커뮤니티 · 전문 매거진</span>
+    <div class="wordmark" aria-label="PRCOME">
+      <span class="pr">PR</span><span class="bang">!<svg class="spark" viewBox="0 0 24 24"><path d="M12 1v5M4.2 4l2.7 3.3M19.8 4l-2.7 3.3M1.5 10.6l4.2.6M22.5 10.6l-4.2.6"/></svg></span><span class="come">COME</span>
+    </div>
+    <p class="lead">홍보담당자, 언론인, PR대행사 실무자가 함께<br><b>업계 인사이트</b>와 <b>실무 경험</b>을 공유합니다.</p>
+    <div class="hero-cta">
+      <a class="hbtn pri" href="community/index.html">커뮤니티 둘러보기</a>
+      <a class="hbtn gh" href="community/write.html">＋ 글쓰기</a>
+      <a class="hbtn ai" href="tools/press-release.html">✨ 보도자료 AI <span class="tag">AI</span></a>
+    </div>
+    <div class="hero-meta">
+      <span>회원 <b>294</b>명</span><i></i><span>게시글 <b>11,200</b></span><i></i><span>오늘 새 글 <b>80+</b></span>
+    </div>
   </div>
-</div></section>
+</section>
 
 <!-- 보조 탐색 (서비스 축소) -->
 <nav class="quicknav" aria-label="업계 정보 바로가기"><div class="in">
