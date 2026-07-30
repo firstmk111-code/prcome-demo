@@ -91,8 +91,8 @@ window.SEO={
 <div class="wrap">
   <section class="subhead">
     <div class="crumb"><a href="../index.html"><svg class="hicon" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v9a1 1 0 001 1h12a1 1 0 001-1v-9"/></svg>홈</a><span class="sep">/</span><a href="index.html">기업·미디어</a><span class="sep">/</span><span class="cur">PR회사</span></div>
-    <h1><span class="tick"></span>PR회사 찾기</h1>
-    <p class="hub-lead">한국PR협회 기준 <strong>국내외 66개 PR·커뮤니케이션 회사</strong>를 찾아보세요. 선택 기준·비용·비교 같은 <strong>가이드는 아래에서 필요한 항목만 펼쳐</strong> 보면 됩니다.</p>
+    <h1><span class="tick"></span>PR회사 가이드</h1>
+    <p class="hub-lead">PR회사를 <strong>어떻게 고르고, 비용은 얼마나 드는지</strong> 한 번에 정리했습니다. 필요한 항목만 펼쳐 보고, 실제 <strong>회사 목록은 66개사 디렉토리</strong>에서 검색하세요.</p>
     <div class="src">데이터 출처 · <a href="https://www.koreapr.org/pr-company" target="_blank" rel="noopener">한국PR협회 PR회사 (koreapr.org)</a></div>
   </section>
 
@@ -117,30 +117,33 @@ window.SEO={
     <div class="ttl"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6 4.5 2.3 7.1L12 16.6 5.7 21l2.3-7.1-6-4.5h7.6z"/></svg>PR회사 가이드 · 한눈에</div>
     <div class="aguide-cards">
       <div class="c"><div class="h"><span class="no">1</span>PR회사란?</div><p>기업·브랜드를 대신해 <b>언론·대중과의 관계</b>를 설계·운영하는 전문 회사입니다. 광고가 “돈으로 지면을 사는 것(Paid)”이라면, PR은 <b>“신뢰를 얻어 자연스럽게 보도되게 하는 것(Earned)”</b>입니다.</p></div>
-      <div class="c"><div class="h"><span class="no">2</span>이 페이지 활용법</div><p>아래 <b>66개 회사 디렉토리</b>에서 검색·비교해 찾고, 그 아래 <b>선택 가이드</b>에서 고르는 법·비용 시세·인하우스 비교까지 확인하면 됩니다.</p></div>
+      <div class="c"><div class="h"><span class="no">2</span>이 페이지 활용법</div><p>아래 <b>선택 가이드</b>에서 고르는 법·비용 시세·인하우스 비교를 확인하고, 실제 회사는 <b>PR회사 디렉토리(66개사)</b>에서 검색·비교하세요.</p></div>
       <div class="c"><div class="h"><span class="no">3</span>고를 때 핵심</div><p>유명한 곳이 아니라 <b>“우리 업종 문제를 풀어본 곳”</b>을 고르세요. ① 산업 레퍼런스 ② 미디어 네트워크 ③ 전담 인력을 꼭 확인합니다.</p></div>
     </div>
     <div class="aguide-diff">
-      <span>단순히 <b>회사 목록만</b> 빠르게 보려면 → <a href="pr-directory.html">PR회사 디렉토리</a>로 이동하세요.</span>
+      <span>이 페이지는 <b>고르는 법을 알려주는 가이드</b>입니다. 회사 목록은 아래 디렉토리 버튼에서 확인하세요.</span>
       <button class="jump" type="button" onclick="document.getElementById('gacc').scrollIntoView({behavior:'smooth',block:'start'})">선택 가이드 자세히 보기 ↓</button>
     </div>
   </section>
 
-  <!-- 디렉토리 (실제 목록) — 최상단 -->
-  <section id="directory">
-    <div class="dhead2">PR회사 디렉토리 <span class="sm">· 한국PR협회 기준</span></div>
-    <p class="ddesc">회사를 누르면 상세 소개로 이동하고, 상세 페이지 하단에서 각 사 <strong>공식 홈페이지</strong>로 연결됩니다.</p>
-    <div class="topbar">
-      <div class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4" stroke-linecap="round"/></svg><input id="q" placeholder="회사명·대표자 검색" oninput="render()"></div>
-      <div class="tabs">
-        <button class="on" data-f="all" onclick="setF('all')">전체</button>
-        <button data-f="global" onclick="setF('global')">외국계·글로벌</button>
-        <button data-f="korea" onclick="setF('korea')">국내</button>
-      </div>
-      <span class="cnt" id="cnt"></span>
+  <!-- 디렉토리 바로가기 (목록은 전용 페이지로) -->
+  <style>
+    .dir-cta{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin:16px 0 6px;padding:22px 24px;background:var(--navy);border-radius:14px;color:#fff}
+    .dir-cta .txt{flex:1;min-width:240px}
+    .dir-cta .k{font-size:11.5px;font-weight:800;letter-spacing:.04em;color:#9DB2FF;margin-bottom:7px}
+    .dir-cta h2{font-size:18px;font-weight:800;letter-spacing:-.02em;margin:0 0 6px;color:#fff}
+    .dir-cta p{font-size:13px;line-height:1.6;color:#C7D0E8;margin:0}
+    .dir-cta .go{flex:none;display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--navy);font-weight:800;font-size:14px;padding:13px 22px;border-radius:9px;text-decoration:none;transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease)}
+    .dir-cta .go:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(0,0,0,.22)}
+    @media (max-width:640px){.dir-cta .go{width:100%;justify-content:center}}
+  </style>
+  <section class="dir-cta" aria-label="PR회사 디렉토리 바로가기">
+    <div class="txt">
+      <div class="k">회사 목록</div>
+      <h2>국내외 66개 PR회사, 디렉토리에서 검색·비교</h2>
+      <p>한국PR협회 기준 등록된 PR·커뮤니케이션 회사 전체를 이름·대표·업종으로 검색하고, 각 사 상세·공식 홈페이지로 바로 이동할 수 있습니다.</p>
     </div>
-    <div class="dlist" id="dlist"></div>
-    <p style="font-size:12.5px;color:var(--sub-2);line-height:1.7;margin:16px 0 0">※ 본 디렉토리는 <a href="https://www.koreapr.org/pr-company" target="_blank" rel="noopener" style="color:var(--pt);font-weight:600">한국PR협회 PR회사</a> 공개 자료 기반 참고용 목록입니다. 계약 전 각 사 공식 채널에서 확인하세요.</p>
+    <a class="go" href="pr-directory.html">PR회사 디렉토리 열기 →</a>
   </section>
 
   <!-- 선택 가이드 (아코디언) -->
@@ -299,34 +302,8 @@ window.SEO={
   <div style="height:50px"></div>
 </div>
 <div id="mag-footer"></div>
-<script src="companies.js?v=2"></script>
 <script>(function(){var s=document.createElement("script");s.src="../assets/js/prcome-nav.js?t="+Date.now();document.head.appendChild(s);})();</script>
 <script>
-/* 데이터: companies.js (window.PR_COMPANIES / window.PR_GLOBAL) 공용 */
-var CO=window.PR_COMPANIES, GLOBAL=window.PR_GLOBAL;
-function ini(n){var s=n.replace(/^[㈜（）()주\s]+/,'');return s.charAt(0)||n.charAt(0);}
-function esc(s){return s.replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
-function hl(s,q){if(!q)return esc(s);return esc(s).replace(new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig'),'<mark>$1</mark>');}
-var cur='all';
-function setF(f){cur=f;document.querySelectorAll('.tabs button').forEach(function(b){b.classList.toggle('on',b.dataset.f===f);});render();}
-function render(){
- var q=(document.getElementById('q').value||'').trim().toLowerCase();
- var list=CO.filter(function(c){
-   var g=!!GLOBAL[c[0]];
-   if(cur==='global'&&!g)return false; if(cur==='korea'&&g)return false;
-   if(q&&(c[0]+' '+c[1]).toLowerCase().indexOf(q)<0)return false; return true;
- });
- document.getElementById('cnt').innerHTML='등록 PR회사 <b>'+list.length+'</b>곳';
- document.getElementById('dlist').innerHTML=list.map(function(c){
-  var g=!!GLOBAL[c[0]];
-  return '<a class="drow" href="company.html?c='+CO.indexOf(c)+'">'+
-   '<span class="lg">'+ini(c[0])+'</span>'+
-   '<span><div class="nm">'+hl(c[0],q)+(g?'<span class="gbadge">글로벌</span>':'')+'</div><div class="rep">대표 '+hl(c[1],q)+'</div></span>'+
-   '<span class="biz"><b>업태</b>서비스업 · <b>업종</b>'+(g?'PR·커뮤니케이션(글로벌 네트워크)':'PR·커뮤니케이션(광고·홍보 대행)')+'</span>'+
-   '<span class="go">자세히 →</span></a>';
- }).join('')||'<div class="empty">조건에 맞는 회사가 없습니다.</div>';
-}
-render();
 /* 가이드 아코디언 */
 document.querySelectorAll('.gacc .ahd').forEach(function(b){b.addEventListener('click',function(){this.parentNode.classList.toggle('open');});});
 </script>
