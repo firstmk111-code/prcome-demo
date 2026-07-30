@@ -96,6 +96,36 @@ window.SEO={
     <div class="src">데이터 출처 · <a href="https://www.koreapr.org/pr-company" target="_blank" rel="noopener">한국PR협회 PR회사 (koreapr.org)</a></div>
   </section>
 
+  <!-- 가이드 요약 (설명) — 디렉토리와 구분되는 '가이드' 성격 -->
+  <style>
+    .aguide-intro{margin:6px 0 4px;padding:22px 24px;background:linear-gradient(180deg,var(--pt-soft),var(--surf));border:1px solid var(--line);border-radius:14px}
+    .aguide-intro .ttl{font-size:12px;font-weight:800;letter-spacing:.02em;color:var(--pt);display:flex;align-items:center;gap:7px;margin:0 0 14px}
+    .aguide-intro .ttl svg{width:16px;height:16px;stroke:var(--pt);fill:none;stroke-width:2}
+    .aguide-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .aguide-cards .c{background:var(--surf);border:1px solid var(--line);border-radius:10px;padding:15px 16px}
+    .aguide-cards .c .h{font-size:14px;font-weight:800;color:var(--ink);margin:0 0 6px;display:flex;align-items:center;gap:7px}
+    .aguide-cards .c .h .no{width:20px;height:20px;flex:none;border-radius:6px;background:var(--pt);color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center}
+    .aguide-cards .c p{font-size:12.8px;line-height:1.62;color:var(--sub);margin:0}
+    .aguide-cards .c p b{color:var(--ink);font-weight:700}
+    .aguide-diff{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;margin-top:15px;padding-top:14px;border-top:1px dashed var(--line-2);font-size:12.8px;color:var(--sub)}
+    .aguide-diff b{color:var(--ink)}
+    .aguide-diff a{color:var(--pt);font-weight:700}
+    .aguide-diff .jump{margin-left:auto;font-weight:700;color:var(--pt);cursor:pointer;background:none;border:0;font-family:inherit;font-size:12.8px}
+    @media (max-width:820px){.aguide-cards{grid-template-columns:1fr}.aguide-diff .jump{margin-left:0}}
+  </style>
+  <section class="aguide-intro" aria-label="PR회사 가이드 요약">
+    <div class="ttl"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6 4.5 2.3 7.1L12 16.6 5.7 21l2.3-7.1-6-4.5h7.6z"/></svg>PR회사 가이드 · 한눈에</div>
+    <div class="aguide-cards">
+      <div class="c"><div class="h"><span class="no">1</span>PR회사란?</div><p>기업·브랜드를 대신해 <b>언론·대중과의 관계</b>를 설계·운영하는 전문 회사입니다. 광고가 “돈으로 지면을 사는 것(Paid)”이라면, PR은 <b>“신뢰를 얻어 자연스럽게 보도되게 하는 것(Earned)”</b>입니다.</p></div>
+      <div class="c"><div class="h"><span class="no">2</span>이 페이지 활용법</div><p>아래 <b>66개 회사 디렉토리</b>에서 검색·비교해 찾고, 그 아래 <b>선택 가이드</b>에서 고르는 법·비용 시세·인하우스 비교까지 확인하면 됩니다.</p></div>
+      <div class="c"><div class="h"><span class="no">3</span>고를 때 핵심</div><p>유명한 곳이 아니라 <b>“우리 업종 문제를 풀어본 곳”</b>을 고르세요. ① 산업 레퍼런스 ② 미디어 네트워크 ③ 전담 인력을 꼭 확인합니다.</p></div>
+    </div>
+    <div class="aguide-diff">
+      <span>단순히 <b>회사 목록만</b> 빠르게 보려면 → <a href="pr-directory.html">PR회사 디렉토리</a>로 이동하세요.</span>
+      <button class="jump" type="button" onclick="document.getElementById('gacc').scrollIntoView({behavior:'smooth',block:'start'})">선택 가이드 자세히 보기 ↓</button>
+    </div>
+  </section>
+
   <!-- 디렉토리 (실제 목록) — 최상단 -->
   <section id="directory">
     <div class="dhead2">PR회사 디렉토리 <span class="sm">· 한국PR협회 기준</span></div>
