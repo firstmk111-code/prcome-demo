@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PR 커뮤니티 — 언론홍보 실무자 질문·노하우·사례 | PRCOME</title>
-<meta name="description" content="홍보담당자·언론인·PR회사 실무자가 교류하는 언론홍보 전문 커뮤니티. 질문·답변, 업계 소식, 실무 노하우, 언론홍보 사례, 자유게시판까지 — 같은 고민을 하는 동료와 연결되세요. PRCOME.">
+<meta name="description" content="홍보담당자·언론인·PR회사 실무자가 교류하는 언론홍보 전문 커뮤니티. 질문·고민, 실무 노하우·사례, 업계 정보, 자료실까지 — 같은 고민을 하는 동료와 연결되세요. PRCOME.">
 <meta name="keywords" content="PR 커뮤니티, 언론홍보, 홍보 실무, 보도자료 질문, PR 노하우, 홍보담당자 모임">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <link rel="stylesheet" href="../assets/css/magazine-system.css?v=4">
@@ -13,101 +13,119 @@
 window.SEO={
   faq:[
     {q:'PRCOME 커뮤니티는 누가 이용하나요?',a:'기업 홍보담당자(인하우스), PR·커뮤니케이션 대행사 실무자, 프리랜서 홍보인, 언론인, 마케터 등 언론홍보와 관련된 실무자들이 이용합니다.'},
-    {q:'어떤 글을 올릴 수 있나요?',a:'질문·답변, 업계 소식, 실무 노하우, 언론홍보 사례, 자유게시판 등 카테고리별로 글을 올릴 수 있습니다. 실무에 도움이 되는 정보 공유와 질의응답을 지향합니다.'},
+    {q:'어떤 글을 올릴 수 있나요?',a:'질문·고민, 실무 노하우·사례, 업계 정보, 자료실 등 카테고리별로 글을 올릴 수 있습니다. 실무에 도움이 되는 정보 공유와 질의응답을 지향합니다.'},
     {q:'홍보대행은 어디서 의뢰하나요?',a:'홍보대행·프로젝트 파트너 매칭은 커뮤니티가 아니라 <a href="../projects/new.html">홍보대행 의뢰(프로젝트 등록)</a>에서 진행합니다. 필요한 업무·기간·예산을 남기면 업체·전문가의 제안을 받을 수 있습니다.'},
-    {q:'실무 노하우·자료는 어디서 보나요?',a:'<a href="index.html?cat=knowhow">실무 노하우</a> 카테고리와 <a href="../insights/index.html">인사이트 매거진</a>에서 보도자료 작성·기자 컨택·위기관리 등 실무 콘텐츠를 확인할 수 있습니다.'},
+    {q:'실무 노하우·자료는 어디서 보나요?',a:'<a href="index.html?cat=practice">실무 노하우·사례</a> 카테고리와 <a href="index.html?cat=data">자료실</a>, 그리고 <a href="../insights/index.html">인사이트 매거진</a>에서 보도자료 작성·기자 컨택·위기관리 등 실무 콘텐츠를 확인할 수 있습니다.'},
     {q:'가입해야 글을 쓸 수 있나요?',a:'열람은 자유롭게 가능하며, 글쓰기·댓글 등 참여 기능은 가입 후 이용할 수 있습니다(1차 서비스).'},
     {q:'기자에게 직접 질문할 수 있나요?',a:'커뮤니티에는 현직·전직 언론인도 참여합니다. 다만 개인 연락처 요청보다는 공개 질문·노하우 공유 형태의 교류를 권장합니다.'}
   ]
 };
 </script>
 <style>
-/* ── 3분할 레이아웃 (좌 카테고리 · 중앙 피드 · 우 추천) ── */
-.cwrap{display:grid;grid-template-columns:minmax(0,1fr) 312px;gap:32px;padding:24px 0 60px;align-items:start}
-.col-side{position:sticky;top:80px}
-/* 가로 카테고리 바 (전체 피드 제목 아래) */
-.chtabs{display:flex;flex-wrap:wrap;gap:8px;overflow-x:auto;scrollbar-width:none;padding:16px 0 4px}
-.chtabs::-webkit-scrollbar{display:none}
-.chtabs a{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;font-size:13.5px;font-weight:700;color:var(--sub);background:var(--surf);border:1px solid var(--line);border-radius:999px;padding:8px 14px;transition:border-color var(--dur) var(--ease),color var(--dur) var(--ease),box-shadow var(--dur) var(--ease)}
-.chtabs a .c{font-size:11px;font-weight:800;color:var(--sub-2);background:var(--bg);border-radius:999px;padding:1px 7px;min-width:18px;text-align:center}
+/* ── 레이아웃 (중앙 피드 · 우 사이드바) ── */
+.cwrap{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:28px;padding:26px 0 56px;align-items:start}
+.col-side{position:sticky;top:80px;display:flex;flex-direction:column;gap:18px}
+
+/* 헤더 */
+.chead{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:18px}
+.chead .tt{display:flex;align-items:flex-start;gap:12px}
+.chead .ci{width:36px;height:36px;border-radius:10px;background:var(--pt-soft);display:flex;align-items:center;justify-content:center;flex:none;margin-top:2px}
+.chead .ci svg{width:21px;height:21px;stroke:var(--pt);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.chead h1{font-size:25px;font-weight:800;letter-spacing:-.03em;line-height:1.2}
+.chead .sub{font-size:13.5px;color:var(--sub);margin-top:7px;line-height:1.5}
+.sortsel{position:relative;flex:none}
+.sortsel select{appearance:none;-webkit-appearance:none;font-family:inherit;font-size:13px;font-weight:700;color:var(--ink);background:var(--surf);border:1px solid var(--line-2);border-radius:9px;padding:10px 36px 10px 15px;cursor:pointer}
+.sortsel select:focus{outline:0;border-color:var(--pt);box-shadow:0 0 0 3px var(--pt-soft)}
+.sortsel::after{content:"";position:absolute;right:14px;top:44%;width:7px;height:7px;border-right:2px solid var(--sub-2);border-bottom:2px solid var(--sub-2);transform:translateY(-50%) rotate(45deg);pointer-events:none}
+
+/* 카테고리 탭 (pill) */
+.chtabs{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:18px}
+.chtabs a{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;color:var(--sub);background:var(--surf);border:1px solid var(--line);border-radius:999px;padding:9px 16px;transition:border-color var(--dur) var(--ease),color var(--dur) var(--ease),box-shadow var(--dur) var(--ease)}
+.chtabs a .c{font-size:12px;font-weight:800;color:var(--sub-2)}
 .chtabs a:hover{border-color:var(--pt);color:var(--pt)}.chtabs a:hover .c{color:var(--pt)}
-.chtabs a.on{background:var(--pt);color:#fff;border-color:var(--pt);box-shadow:0 2px 8px rgba(49,92,255,.25)}
-.chtabs a.on .c{color:#fff;background:rgba(255,255,255,.22)}
-.feedwrite{flex:none;height:40px;display:inline-flex;align-items:center;gap:6px;background:var(--pt);color:#fff;font-weight:700;font-size:13.5px;border-radius:6px;padding:0 16px;white-space:nowrap}
-.feedwrite:hover{background:var(--pt-2)}
-/* 중앙: 헤더 + 피드 */
-.feedhead{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:6px}
-.feedhead h1{font-size:22px;font-weight:800;letter-spacing:-.03em;display:flex;align-items:center;gap:10px}
-.feedhead h1 .tick{width:22px;height:3px;background:var(--pt);border-radius:2px}
-.feedhead .desc{font-size:13px;color:var(--sub);margin-top:6px}
-.sortbar{display:flex;gap:14px;align-items:center;padding:14px 0 4px}
-.sortbar button{background:none;border:0;font-family:inherit;font-size:13px;font-weight:700;color:var(--sub-2);cursor:pointer;padding:2px 0;position:relative}
-.sortbar button.on{color:var(--ink)}.sortbar button.on::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;background:var(--pt)}
-.sortbar .cnt{margin-left:auto;font-size:12.5px;color:var(--sub-2)}
-/* 게시물 리스트 (추천 · 썸네일 · 제목[댓글]) */
-.flist{border-top:2px solid var(--ink);margin-top:4px}
-.frow{display:flex;align-items:center;gap:14px;padding:12px 8px;border-bottom:1px solid var(--line);transition:background var(--dur) var(--ease)}
-.frow:hover{background:var(--surf)}
-.frow .vote{width:46px;flex:none;display:flex;flex-direction:column;align-items:center;gap:1px}
-.frow .vote .up{font-size:10px;color:var(--sub-2);line-height:1}
-.frow .vote .n{font-size:15px;font-weight:800;color:var(--sub);line-height:1.15}
-.frow .vote.hot .n,.frow .vote.hot .up{color:var(--pt)}
-.frow .thumb{width:58px;height:58px;flex:none;border-radius:12px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
-.frow .thumb svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.frow .thumb .clip{position:absolute;right:3px;bottom:3px;background:rgba(0,0,0,.5);border-radius:4px;padding:2px;display:flex}
-.frow .thumb .clip svg{width:9px;height:9px;stroke:#fff;fill:none;stroke-width:2}
-.frow .main{min-width:0;flex:1}
-.frow .main .t{font-size:15px;font-weight:600;color:var(--ink);line-height:1.45;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:block}
-.frow:hover .main .t{color:var(--pt)}
-.frow .main .t .cm{color:var(--pt);font-weight:800;margin-left:5px;font-size:13.5px}
-.frow .main .t .nw{font-size:9.5px;font-weight:800;color:#fff;background:#E4612B;border-radius:3px;padding:1px 5px;margin-left:6px;vertical-align:middle;letter-spacing:.02em}
-.frow .main .meta{font-size:12px;color:var(--sub-2);margin-top:6px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
-.frow .main .meta .cat{font-weight:800;color:var(--pt)}
-.frow .main .meta .sep{width:2px;height:2px;border-radius:50%;background:var(--line-2)}
-.frow .main .meta .st{color:var(--sub);font-weight:600}
-@media (max-width:560px){.frow{gap:11px}.frow .thumb{width:48px;height:48px}.frow .thumb svg{width:22px;height:22px}.frow .vote{width:36px}.frow .main .t{white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}}
-.pager{display:flex;gap:6px;justify-content:center;margin-top:28px}
-.pager a{min-width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:6px;font-weight:600;color:var(--sub);font-size:13px}
+.chtabs a.on{background:var(--pt);color:#fff;border-color:var(--pt);box-shadow:0 3px 10px rgba(49,92,255,.25)}
+.chtabs a.on .c{color:#fff;opacity:.82}
+
+/* 피드 카드 리스트 */
+.flist{display:flex;flex-direction:column;gap:12px}
+.frow{display:flex;align-items:center;gap:16px;background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:16px 18px;transition:border-color .14s,box-shadow .14s,transform .1s}
+.frow:hover{border-color:var(--pt);box-shadow:0 8px 22px rgba(49,92,255,.09);transform:translateY(-1px)}
+.frow .ficon{width:52px;height:52px;flex:none;border-radius:13px;display:flex;align-items:center;justify-content:center;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
+.frow .ficon svg{width:25px;height:25px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.frow .fmain{flex:1;min-width:0}
+.frow .fcat{font-size:12px;font-weight:800;letter-spacing:.01em}
+.frow .ftitle{display:block;font-size:15.5px;font-weight:700;color:var(--ink);line-height:1.4;margin:6px 0 9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.frow:hover .ftitle{color:var(--pt)}
+.frow .fby{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--sub-2)}
+.frow .fby .av{width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.frow .fby .av svg{width:13px;height:13px;fill:#fff;display:block}
+.frow .fby b{color:var(--sub);font-weight:700}
+.frow .fby .nw{font-size:9.5px;font-weight:800;color:#fff;background:#E4612B;border-radius:3px;padding:1px 5px;letter-spacing:.02em}
+.frow .fstat{flex:none;display:flex;align-items:center;gap:16px;color:var(--sub-2)}
+.frow .fstat .s{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:600}
+.frow .fstat .s svg{width:16px;height:16px;stroke:var(--sub-2);fill:none;stroke-width:1.7}
+.frow .fstat .bm svg{width:17px;height:17px;stroke:var(--sub-2);fill:none;stroke-width:1.7}
+.frow .fstat .bm:hover svg{stroke:var(--pt)}
+
+.pager{display:flex;gap:6px;justify-content:center;margin-top:26px}
+.pager a{min-width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:8px;font-weight:600;color:var(--sub);font-size:13px}
 .pager a.on{background:var(--pt);color:#fff;border-color:var(--pt)}
 .pager a:hover:not(.on){border-color:var(--pt);color:var(--pt)}
-/* 우: 추천 정보 */
-.sbox{background:var(--surf);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin-bottom:16px}
-.sbox h4{font-size:13px;font-weight:800;color:var(--navy);letter-spacing:.01em;margin-bottom:4px;display:flex;align-items:center;gap:6px}
-.sbox h4 .dot{width:6px;height:6px;border-radius:50%;background:var(--pt)}
-/* 인기 작성자 */
-.au{display:flex;align-items:center;gap:10px;padding:11px 0;border-top:1px solid var(--line)}
+
+/* ── 사이드바 카드 ── */
+.sbox{background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:18px 18px 16px}
+.sbox h4{font-size:14px;font-weight:800;color:var(--ink);display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.sbox h4 .dot{width:7px;height:7px;border-radius:50%;background:var(--pt);flex:none}
+.sbox h4 .more{margin-left:auto;font-size:12px;font-weight:700;color:var(--sub-2);display:inline-flex;align-items:center;gap:2px}
+.sbox h4 .more:hover{color:var(--pt)}
+
+/* 오늘의 PR 정보 */
+.info a{display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid var(--line)}
+.info a:first-of-type{border-top:0}
+.info .ii{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex:none}
+.info .ii svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.info .il{font-size:13.5px;font-weight:600;color:var(--ink);flex:1;min-width:0}
+.info .il b{font-weight:800}
+.info .ar{color:var(--sub-2);font-size:15px;flex:none}
+.info a:hover .il{color:var(--pt)}
+
+/* 활동 중인 실무자 */
+.au{display:flex;align-items:center;gap:11px;padding:11px 0;border-top:1px solid var(--line)}
 .au:first-of-type{border-top:0}
 .au .ava{width:38px;height:38px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#fff;flex:none}
 .au .ava svg{width:20px;height:20px;fill:#fff;display:block}
 .au .nm{font-size:13.5px;font-weight:700;color:var(--ink)}.au:hover .nm{color:var(--pt)}
-.au .mt{font-size:11.5px;color:var(--sub);margin-top:1px}
-.au .fo{margin-left:auto;font-size:11.5px;font-weight:700;color:var(--pt);border:1px solid var(--pt);border-radius:999px;padding:4px 11px;white-space:nowrap}
-/* 추천 회사/언론사 */
-.rc{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--line)}
-.rc:first-of-type{border-top:0}
-.rc .lg{width:36px;height:36px;border-radius:7px;background:var(--pt-soft);color:var(--pt);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex:none}
-.rc .nm{font-size:13.5px;font-weight:700;color:var(--ink)}.rc:hover .nm{color:var(--pt)}
-.rc .ty{font-size:11.5px;color:var(--sub);margin-top:1px}
-.rc .go{margin-left:auto;font-size:11.5px;color:var(--pt);font-weight:700;white-space:nowrap}
-/* 인기 주제 */
-.topics{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}
-.topics a{font-size:12.5px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:5px 11px}
-.topics a:hover{color:var(--pt);border-color:var(--pt)}
-.topics a b{color:var(--pt);margin-left:4px}
-/* 최신 소식 */
-.news a{display:block;padding:10px 0;border-top:1px solid var(--line)}
-.news a:first-of-type{border-top:0}
-.news .t{font-size:13px;font-weight:600;line-height:1.45;color:var(--ink)}.news a:hover .t{color:var(--pt)}
-.news .m{font-size:11px;color:var(--sub-2);margin-top:3px}
-@media (max-width:1100px){
-  .cwrap{grid-template-columns:minmax(0,1fr)}
-  .col-side{display:none}
+.au .mt{font-size:11.5px;color:var(--sub);margin-top:1px;line-height:1.35}
+.au .fo{margin-left:auto;font-size:11.5px;font-weight:700;color:var(--pt);border:1px solid var(--pt);border-radius:999px;padding:5px 13px;white-space:nowrap;background:none;font-family:inherit;cursor:pointer;transition:background .12s,color .12s}
+.au .fo:hover{background:var(--pt);color:#fff}
+.au .fo.on{background:var(--pt);color:#fff}
+
+/* 바로가기 */
+.qgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:2px}
+.qgrid a{display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 4px;border:1px solid var(--line);border-radius:12px;background:var(--bg);text-align:center}
+.qgrid a:hover{border-color:var(--pt);background:var(--pt-soft)}
+.qgrid .qi{width:34px;height:34px;border-radius:10px;background:var(--surf);border:1px solid var(--line);display:flex;align-items:center;justify-content:center}
+.qgrid a:hover .qi{border-color:var(--pt)}
+.qgrid .qi svg{width:18px;height:18px;stroke:var(--pt);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.qgrid span{font-size:11.5px;font-weight:700;color:var(--ink);line-height:1.2}
+
+/* 반응형 */
+@media (max-width:1080px){
+  .cwrap{grid-template-columns:1fr}
+  .col-side{position:static;flex-direction:row;flex-wrap:wrap;gap:16px}
+  .col-side .sbox{flex:1;min-width:260px}
 }
-@media (max-width:760px){
-  .cwrap{gap:0;padding-top:16px}
-  main{min-width:0}
-  .chtabs{flex-wrap:nowrap;padding-bottom:8px;border-bottom:1px solid var(--line)}
-  .feedhead{flex-wrap:wrap}
+@media (max-width:640px){
+  .cwrap{padding:18px 0 44px}
+  .chead{flex-direction:column;align-items:stretch;gap:12px}
+  .sortsel select{width:100%}
+  .col-side{flex-direction:column}
+  .col-side .sbox{min-width:0}
+  .frow{padding:13px 14px;gap:13px}
+  .frow .ficon{width:44px;height:44px;border-radius:11px}
+  .frow .ficon svg{width:21px;height:21px}
+  .frow .ftitle{white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+  .frow .fstat{flex-direction:column;gap:9px;align-items:flex-end}
 }
 </style>
 </head>
@@ -118,77 +136,71 @@ window.SEO={
 
     <!-- 중앙: 피드 -->
     <main>
-      <div class="feedhead">
-        <div>
-          <h1><span class="tick"></span><span id="bName">전체 피드</span></h1>
-          <div class="desc" id="bDesc">홍보담당자·언론인·PR회사 종사자가 교류하는 전문 네트워크입니다.</div>
+      <div class="chead">
+        <div class="tt">
+          <span class="ci"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-11.6 7.7L3 21l1.8-6.4A8.5 8.5 0 1 1 21 11.5z"/></svg></span>
+          <div>
+            <h1>커뮤니티</h1>
+            <div class="sub">홍보담당자·언론인·PR대행사 실무자들이 정보를 나누는 공간입니다.</div>
+          </div>
         </div>
-        <a class="feedwrite" href="write.html">＋ 글쓰기</a>
+        <div class="sortsel">
+          <select id="sortSel" onchange="setSort(this.value)" aria-label="정렬">
+            <option value="new">최신순</option>
+            <option value="hot">인기순</option>
+          </select>
+        </div>
       </div>
-      <!-- 가로 카테고리 바 -->
+
       <nav class="chtabs" id="chtabs"></nav>
-      <div class="sortbar">
-        <button class="on" id="sHot" onclick="setSort('hot')">인기순</button>
-        <button id="sNew" onclick="setSort('new')">최신순</button>
-        <span class="cnt" id="cnt"></span>
-      </div>
       <div id="feed"></div>
       <div class="pager"><a>‹</a><a class="on">1</a><a href="index.html">2</a><a href="index.html">3</a><a>›</a></div>
     </main>
 
-    <!-- 우: 추천 정보 -->
+    <!-- 우: 사이드바 -->
     <aside class="col-side">
+      <!-- 오늘의 PR 정보 -->
       <div class="sbox">
-        <h4><span class="dot"></span>인기 작성자</h4>
-        <a class="au" href="profile.html"><span class="ava" style="background:#315CFF"><svg viewBox="0 0 24 24"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z"/></svg></span><span><div class="nm">서지현</div><div class="mt">PR 전략가 · 미디어스퀘어</div></span><span class="fo">팔로우</span></a>
-        <a class="au" href="profile.html"><span class="ava" style="background:#3E4B63"><svg viewBox="0 0 24 24"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z"/></svg></span><span><div class="nm">김도윤</div><div class="mt">전 경제일간지 산업부 기자</div></span><span class="fo">팔로우</span></a>
-        <a class="au" href="profile.html"><span class="ava" style="background:#6D5DF0"><svg viewBox="0 0 24 24"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z"/></svg></span><span><div class="nm">이수민</div><div class="mt">인하우스 홍보팀장 · 리테일</div></span><span class="fo">팔로우</span></a>
-        <a class="au" href="profile.html"><span class="ava" style="background:#0FA6C0"><svg viewBox="0 0 24 24"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z"/></svg></span><span><div class="nm">박준호</div><div class="mt">대행사 AE · 테크·B2B</div></span><span class="fo">팔로우</span></a>
-      </div>
-      <div class="sbox">
-        <h4><span class="dot"></span>추천 PR회사</h4>
-        <a class="rc" href="../directory/detail.html"><span class="lg">브</span><span><div class="nm">브릿지커뮤니케이션즈</div><div class="ty">종합PR · IT·B2B 강점</div></span><span class="go">프로필 →</span></a>
-        <a class="rc" href="../directory/detail.html"><span class="lg">스</span><span><div class="nm">스토리브릭스</div><div class="ty">콘텐츠·브랜드저널리즘</div></span><span class="go">프로필 →</span></a>
-        <a class="rc" href="../directory/agencies.html"><span class="lg">미</span><span><div class="nm">미디어웨이브</div><div class="ty">금융·위기관리 PR</div></span><span class="go">프로필 →</span></a>
-      </div>
-      <div class="sbox">
-        <h4><span class="dot"></span>추천 언론사</h4>
-        <a class="rc" href="../directory/media.html"><span class="lg">경</span><span><div class="nm">경제산업신문</div><div class="ty">경제일간지 · 산업·유통부</div></span><span class="go">매체 →</span></a>
-        <a class="rc" href="../directory/media.html"><span class="lg">테</span><span><div class="nm">테크리포트</div><div class="ty">IT 전문지 · 스타트업팀</div></span><span class="go">매체 →</span></a>
-        <a class="rc" href="../directory/media.html"><span class="lg">데</span><span><div class="nm">데일리커머스</div><div class="ty">유통·소비재 전문</div></span><span class="go">매체 →</span></a>
-      </div>
-      <div class="sbox">
-        <h4><span class="dot"></span>인기 주제</h4>
-        <div class="topics">
-          <a href="index.html?cat=qa">#보도자료<b>128</b></a>
-          <a href="index.html?cat=news">#생성형검색<b>96</b></a>
-          <a href="index.html?cat=knowhow">#기자컨택<b>84</b></a>
-          <a href="index.html?cat=case">#위기관리<b>71</b></a>
-          <a href="index.html?cat=qa">#미디어리스트<b>63</b></a>
-          <a href="index.html?cat=knowhow">#오너드미디어<b>52</b></a>
+        <h4><span class="dot"></span>오늘의 PR 정보<a class="more" href="../notice/index.html">더보기 ›</a></h4>
+        <div class="info">
+          <a href="../notice/index.html"><span class="ii" style="background:#EC4899"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="16" rx="2"/><path d="M3.5 9h17M8 3v3M16 3v3"/></svg></span><span class="il">입찰 공고 <b>3건</b></span><span class="ar">›</span></a>
+          <a href="../events/index.html"><span class="ii" style="background:#315CFF"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="16" rx="2"/><path d="M3.5 9h17M8 3v3M16 3v3M8.5 13.5l2.2 2.2 4-4.2"/></svg></span><span class="il">행사·세미나 <b>5건</b></span><span class="ar">›</span></a>
+          <a href="../events/index.html"><span class="ii" style="background:#6D5DF0"><svg viewBox="0 0 24 24"><path d="M12 4 2.5 8.5 12 13l9.5-4.5L12 4z"/><path d="M6.5 10.5v4.2c0 1.3 2.6 2.8 5.5 2.8s5.5-1.5 5.5-2.8v-4.2M21.5 8.5v5"/></svg></span><span class="il">교육·컨퍼런스 <b>4건</b></span><span class="ar">›</span></a>
+          <a href="../notice/index.html"><span class="ii" style="background:#16A34A"><svg viewBox="0 0 24 24"><path d="M4 11h16v8a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-8z"/><path d="M3 7.5h18V11H3zM12 7.5V20M12 7.5S10.5 4 8.3 4a2.3 2.3 0 0 0 0 4.5M12 7.5S13.5 4 15.7 4a2.3 2.3 0 0 1 0 4.5"/></svg></span><span class="il">지원사업 <b>2건</b></span><span class="ar">›</span></a>
         </div>
       </div>
+
+      <!-- 활동 중인 실무자 -->
       <div class="sbox">
-        <h4><span class="dot"></span>최신 업계 소식</h4>
-        <div class="news">
-          <a href="../insights/index.html?cat=trend"><div class="t">2026 상반기 PR·마케팅 트렌드 리포트 공개</div><div class="m">PRCOME 편집팀 · 1시간 전</div></a>
-          <a href="../insights/index.html?cat=geo"><div class="t">생성형 검색 인용률, 상반기 2.3배 증가</div><div class="m">업계 리포트 · 3시간 전</div></a>
-          <a href="../events/index.html"><div class="t">생성형 AI 보도자료 실무 세미나 접수 시작</div><div class="m">교육·행사 · 어제</div></a>
+        <h4><span class="dot"></span>활동 중인 실무자</h4>
+        <div id="activeUsers"></div>
+      </div>
+
+      <!-- 바로가기 -->
+      <div class="sbox">
+        <h4><span class="dot"></span>바로가기</h4>
+        <div class="qgrid">
+          <a href="write.html"><span class="qi"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.2"/><path d="M9.3 9.3a2.8 2.8 0 0 1 5.4 1c0 1.9-2.7 2.3-2.7 3.9"/><path d="M12 17.2h.01"/></svg></span><span>질문하기</span></a>
+          <a href="index.html?cat=data"><span class="qi"><svg viewBox="0 0 24 24"><path d="M7 3.5h6.5L18.5 8v12a1.2 1.2 0 0 1-1.2 1.2H7a1.2 1.2 0 0 1-1.2-1.2V4.7A1.2 1.2 0 0 1 7 3.5Z"/><path d="M13.3 3.7V8.2H18M8.6 12.2h6.8M8.6 15.6h6.8"/></svg></span><span>자료실</span></a>
+          <a href="../directory/agencies.html"><span class="qi"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg></span><span>대행사 찾기</span></a>
+          <a href="../insights/index.html"><span class="qi"><svg viewBox="0 0 24 24"><path d="M9.2 18h5.6M10 21h4M7.8 13.8a5 5 0 1 1 8.4 0c-.7.8-1.2 1.6-1.4 2.6H9.2c-.2-1-.7-1.8-1.4-2.6Z"/></svg></span><span>인사이트</span></a>
         </div>
       </div>
     </aside>
 
   </div>
 </div>
+
 <div class="wrap"><div class="hub">
   <section class="hsec" id="about-comm">
     <h2><span class="n">◎</span>PRCOME 커뮤니티 안내</h2>
-    <p><strong>언론홍보(PR) 실무는 혼자 하기 어렵습니다.</strong> 어느 매체에 보낼지, 이 이슈를 어떻게 대응할지, 대행사를 어떻게 고를지 — 실무의 판단은 결국 <strong>경험의 공유</strong>에서 옵니다. PRCOME 커뮤니티는 홍보담당자·대행사 실무자·언론인이 모여 질문하고, 노하우와 사례를 나누고, 함께 일할 사람을 찾는 공간입니다.</p>
-    <h3>게시판 구성</h3>
+    <p><strong>언론홍보(PR) 실무는 혼자 하기 어렵습니다.</strong> 어느 매체에 보낼지, 이 이슈를 어떻게 대응할지, 대행사를 어떻게 고를지 — 실무의 판단은 결국 <strong>경험의 공유</strong>에서 옵니다. PRCOME 커뮤니티는 홍보담당자·대행사 실무자·언론인이 모여 질문하고, 노하우와 사례를 나누고, 자료를 주고받는 공간입니다.</p>
+    <h3>카테고리 구성</h3>
     <ul class="bul">
-      <li><a href="index.html?cat=qa"><strong>질문·답변</strong></a> — 보도자료·매체·계약 등 실무 궁금증 해결</li>
-      <li><a href="index.html?cat=news"><strong>업계 소식</strong></a> · <a href="index.html?cat=knowhow"><strong>실무 노하우</strong></a> · <a href="index.html?cat=case"><strong>언론홍보 사례</strong></a></li>
-      <li><a href="index.html?cat=free"><strong>자유게시판</strong></a> — 실무자들의 자유로운 라운지. 홍보대행 파트너가 필요하면 <a href="../projects/new.html">홍보대행 의뢰</a>를 이용하세요.</li>
+      <li><a href="index.html?cat=qa"><strong>질문·고민</strong></a> — 보도자료·매체·계약·예산 등 실무 궁금증 해결</li>
+      <li><a href="index.html?cat=practice"><strong>실무 노하우·사례</strong></a> — 현장 노하우와 실제 언론홍보 성공/대응 사례</li>
+      <li><a href="index.html?cat=news"><strong>업계 정보</strong></a> — 매체·검색·AI 등 업계 동향과 공고·소식</li>
+      <li><a href="index.html?cat=data"><strong>자료실</strong></a> — 가이드·체크리스트·템플릿 등 실무 자료. 홍보대행 파트너가 필요하면 <a href="../projects/new.html">홍보대행 의뢰</a>를 이용하세요.</li>
     </ul>
   </section>
   <section class="hsec" id="faq">
@@ -207,87 +219,113 @@ window.SEO={
     <div class="ct-l"><h2>지금 커뮤니티에 참여하세요</h2><p>실무 질문을 남기고, 노하우를 저장하고, 같은 고민을 하는 동료와 연결되세요.</p></div>
     <div class="ct-b"><a class="btn pri" href="write.html">글쓰기</a><a class="btn sec" href="../auth/signup.html">회원가입</a><a class="btn sec" href="../insights/index.html">매거진 보기</a></div>
   </section>
-  <div class="tagrow" aria-label="관련 태그"><a class="tg" href="index.html?cat=qa">질문답변</a><a class="tg" href="index.html?cat=knowhow">실무노하우</a><a class="tg" href="index.html?cat=case">홍보사례</a><a class="tg" href="../projects/new.html">홍보대행 의뢰</a></div>
+  <div class="tagrow" aria-label="관련 태그"><a class="tg" href="index.html?cat=qa">질문·고민</a><a class="tg" href="index.html?cat=practice">실무노하우·사례</a><a class="tg" href="index.html?cat=news">업계정보</a><a class="tg" href="index.html?cat=data">자료실</a><a class="tg" href="../projects/new.html">홍보대행 의뢰</a></div>
 </div></div>
 <div style="height:40px"></div>
 <div id="mag-footer"></div>
 <script>(function(){var s=document.createElement("script");s.src="../assets/js/prcome-nav.js?t="+Date.now();document.head.appendChild(s);})();</script>
 <script>
-/* 상단 탭 (4) — 실무 노하우+언론홍보 사례 병합, 자유게시판은 탭 미노출(전체 피드엔 포함) */
-var BOARDS=[['all','전체'],['qa','질문·답변'],['practice','실무 노하우·사례'],['news','업계 소식']];
+/* 상단 탭 (5) — 전체 · 질문·고민 · 실무 노하우·사례 · 업계 정보 · 자료실 */
+var BOARDS=[['all','전체'],['qa','질문·고민'],['practice','실무 노하우·사례'],['news','업계 정보'],['data','자료실']];
 /* 그룹 탭 → 실제 카테고리 매핑 */
 var GROUP={practice:['knowhow','case']};
-/* 전체 라벨(피드 행 표시용 — 병합 전 세부 카테고리도 유지) */
-var NAME={all:'전체',qa:'질문·답변',news:'업계 소식',knowhow:'실무 노하우',case:'언론홍보 사례',free:'자유게시판',practice:'실무 노하우·사례'};
-var DESC={
- all:'홍보담당자·언론인·PR대행사 실무자가 정보와 경험을 나누는 공간입니다.',
- qa:'보도자료·미디어 관계·위기관리 등 언론홍보 실무 질문과 답변.',
- news:'언론 환경, 매체, 검색·AI 등 업계 소식과 동향을 나눕니다.',
- practice:'현장에서 쌓은 실무 노하우와 실제 언론홍보 사례를 함께 나눕니다.',
- knowhow:'현장에서 쌓은 실무 노하우와 자료·템플릿을 공유합니다.',
- case:'실제 언론홍보·캠페인 사례와 성과를 뜯어봅니다.',
- free:'실무자들의 자유로운 라운지.'};
-/* 별칭(구 링크 호환) — 노하우·사례는 병합 탭으로, 자유게시판은 전체로 */
-var ALIAS={intro:'all','pr-qa':'qa','mkt-qa':'qa',industry:'news',promo:'practice',media:'news',collab:'practice',seo:'qa',info:'news',press:'practice',knowhow:'practice','case':'practice',free:'all'};
-/* 작성자 풀 */
-var COLORS=['#315CFF','#3E4B63','#6D5DF0','#0FA6C0','#E4612B','#1E40E8'];
-function ava(name,i){return '<span class="ava" style="background:'+COLORS[i%COLORS.length]+'">'+name.charAt(0)+'</span>';}
-/* 게시물 [cat, 작성자, 직무, 소속, 제목, 본문, 태그[], 공감, 댓글, 저장, 조회, 시간, 첨부(라벨|설명) 또는 '' , 인기점수] */
-var P=[
- ['qa','이수민','홍보팀장','중소 제조기업 인하우스','보도자료 배포 후 기사화 가능성을 높이는 방법이 있을까요?','30여 개 매체에 배포하는데 실제 기사로 나가는 건 손에 꼽습니다. 배포 이후에 할 수 있는 실무적인 액션과 팔로업 타이밍이 궁금합니다.',['보도자료','기사화','미디어관계'],24,12,8,340,'2시간 전','',98],
- ['news','김도윤','전 산업부 기자','미디어 칼럼니스트','[정보공유] 산업별 전문지 담당 부서 정리해봤습니다','식품·유통·IT·금융·바이오까지 주요 전문지의 담당 부서와 제보 창구를 표로 정리했습니다. 배포 리스트 다듬을 때 참고하세요.',['미디어리스트','전문지','제보'],52,20,41,880,'5시간 전','산업별 전문지 담당부서 정리표.xlsx|첨부파일 · 표 1종',96],
- ['qa','정하늘','1인 홍보','헬스케어 스타트업','대표님이 "우리도 신문에 나오게 해달라"고 하시는데 현실적으로…','투자 유치나 신제품 같은 뉴스거리 없이도 기사화가 가능한지, 대표님께 어떻게 눈높이를 맞춰 설명드릴지 고민입니다.',['보도자료','기획기사','커뮤니케이션'],31,18,12,610,'어제','',88],
- ['case','서지현','PR 전략가','미디어스퀘어','[사례] 지방 식품 브랜드의 전국지 데뷔, 90일의 기록','무명 브랜드가 첫 경제지 기사를 얻기까지의 타임라인과 의사결정 과정을 공유합니다. 핵심은 배포량이 아니라 앵글이었습니다.',['언론홍보','사례','앵글'],47,15,38,720,'어제','90일 미디어 성과 타임라인|이미지 3종',92],
- ['knowhow','박준호','대행사 AE','테크·B2B 전문','[노하우] 기자 컨택 이메일 제목, 이렇게 쓰니 열림률이 올랐어요','회사명으로 시작하는 제목을 버리고 "독자가 왜 궁금해할지"를 앞세웠더니 오픈율이 확연히 올랐습니다. 실제 before/after 예시 첨부합니다.',['기자컨택','이메일','오픈율'],38,9,29,530,'2일 전','',85],
- ['news','최유진','B2B 마케터','SaaS','요즘 생성형 검색 때문에 홍보실 분위기 어떤가요','AI가 회사 정보를 잘못 인용하는 사례가 늘어서 대응을 고민 중입니다. 다른 홍보실은 어떻게 준비하고 계신지 궁금합니다.',['생성형검색','AEO','GEO'],28,14,11,410,'3일 전','',80],
- ['knowhow','인하우스PR','시니어 홍보','IT 서비스','[노하우] 배포 리스트, 넓히기보다 좁혀서 관리하는 법','기자 리스트를 우리 산업에 맞게 다듬고 분기마다 갱신하니 기사화율이 올랐습니다. 리스트 관리 시트 구성 방법을 공유합니다.',['미디어리스트','관리','템플릿'],33,8,24,470,'3일 전','',78],
- ['free','전직AE','프리랜서','홍보 컨설팅','홍보담당자 이직 시 포트폴리오에 뭘 담아야 할지 고민이에요','기사 클리핑만으로는 부족한 것 같고, 성과를 어떻게 정리해야 설득력이 있을지 선배님들 의견 듣고 싶습니다.',['이직','포트폴리오','커리어'],21,11,9,390,'4일 전','',66],
- ['case','오세라','홍보 매니저','공공기관','[사례] 지역 환경 캠페인, 지역지·지역방송 확산 리뷰','지자체 환경 캠페인을 지역 언론 중심으로 홍보한 과정과 노출 성과를 정리했습니다. 지역 매체 접근법이 핵심이었습니다.',['공공기관','지역언론','캠페인'],26,10,18,350,'5일 전','',64],
- ['qa','류지원','그로스','커머스','리드젠 전환율이 낮을 때 가장 먼저 점검하는 곳이 어딜까요','트래픽은 나오는데 문의 전환이 안 됩니다. 랜딩·폼·후속 커뮤니케이션 중 어디부터 봐야 할지 조언 부탁드립니다.',['리드젠','전환율','랜딩'],17,13,6,300,'6일 전','',58]
+/* 탭 표시 카운트(커뮤니티 누적 기준) */
+var COUNT={all:142,qa:38,practice:56,news:28,data:20};
+/* 카테고리 라벨(피드 행 표시용) */
+var NAME={all:'전체',qa:'질문·고민',news:'업계 정보',knowhow:'실무 노하우',case:'사례·경험',data:'자료실',practice:'실무 노하우·사례',free:'질문·고민'};
+/* 별칭(구 링크 호환) */
+var ALIAS={intro:'all','pr-qa':'qa','mkt-qa':'qa',qa:'qa',industry:'news',news:'news',promo:'practice',media:'news',collab:'practice',seo:'qa',info:'news',press:'practice',knowhow:'practice','case':'practice',free:'qa'};
+/* 카테고리 색/아이콘 */
+var CATCOLOR={qa:'#315CFF',knowhow:'#16A34A',case:'#E4612B',news:'#6D5DF0',data:'#0FA6C0'};
+var CATBG={
+ qa:'linear-gradient(135deg,#4A6BFF,#1E40E8)',
+ knowhow:'linear-gradient(135deg,#22B573,#158A50)',
+ case:'linear-gradient(135deg,#F0803C,#D2542A)',
+ news:'linear-gradient(135deg,#7E6EF5,#4A3FD0)',
+ data:'linear-gradient(135deg,#16B4CE,#0A7A8C)'};
+var CATICON={
+ qa:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.2"/><path d="M9.3 9.3a2.8 2.8 0 0 1 5.4 1c0 1.9-2.7 2.3-2.7 3.9"/><path d="M12 17.2h.01"/></svg>',
+ knowhow:'<svg viewBox="0 0 24 24"><path d="M9.2 18h5.6M10 21h4M7.8 13.8a5 5 0 1 1 8.4 0c-.7.8-1.2 1.6-1.4 2.6H9.2c-.2-1-.7-1.8-1.4-2.6Z"/></svg>',
+ case:'<svg viewBox="0 0 24 24"><rect x="3" y="7.5" width="18" height="12" rx="2"/><path d="M8.5 7.5V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v1.5M3 12.5h18"/></svg>',
+ news:'<svg viewBox="0 0 24 24"><path d="M3 10v4l11 4V6L3 10zM3 12H2M14 8l5-2v12l-5-2"/><path d="M6 15v3.5a1.5 1.5 0 0 0 3 0V16"/></svg>',
+ data:'<svg viewBox="0 0 24 24"><path d="M7 3.5h6.5L18.5 8v12a1.2 1.2 0 0 1-1.2 1.2H7a1.2 1.2 0 0 1-1.2-1.2V4.7A1.2 1.2 0 0 1 7 3.5Z"/><path d="M13.3 3.7V8.2H18M8.6 12.2h6.8M8.6 15.6h6.8"/></svg>'};
+var PERSON='<svg viewBox="0 0 24 24"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z"/></svg>';
+var AVCOLORS=['#315CFF','#3E4B63','#6D5DF0','#0FA6C0','#E4612B','#1E40E8'];
+function avColor(n){var s=0;for(var i=0;i<n.length;i++)s+=n.charCodeAt(i);return AVCOLORS[s%AVCOLORS.length];}
+
+/* 카테고리별 상세페이지 라우팅 */
+var POSTURL={qa:'post.html',news:'post-news.html',knowhow:'post-knowhow.html',case:'post-case.html',data:'post.html'};
+function postUrl(cat){return POSTURL[cat]||'post.html';}
+
+/* 게시물 {cat,author,role,title,comments,views,time,score,isNew,attach} */
+var POSTS=[
+ {cat:'qa',author:'이수민',role:'홍보담당자',title:'보도자료 배포했는데 기사화가 안 됩니다. 이유가 뭘까요?',comments:12,views:24,time:'2시간 전',score:98,isNew:true},
+ {cat:'knowhow',author:'김도윤',role:'PR 컨설턴트',title:'기자 이메일 제목, 이렇게 쓰면 열람률이 2배 높아집니다',comments:8,views:156,time:'5시간 전',score:92,isNew:true},
+ {cat:'case',author:'박준호',role:'대행사 AE',title:'식품 브랜드 전국지 기사 게재 성공 사례 공유합니다',comments:15,views:312,time:'어제',score:96},
+ {cat:'news',author:'PR컴 운영자',role:'PRCOME',title:'[공고] 2026년 수출바우처 PR 서비스 지원기업 모집',comments:3,views:98,time:'어제',score:80},
+ {cat:'data',author:'PR컴 운영자',role:'PRCOME',title:'보도자료 작성 가이드 & 체크리스트 다운로드',comments:6,views:145,time:'2일 전',score:75,attach:true},
+ {cat:'qa',author:'최유진',role:'마케팅팀',title:'언론홍보 예산, 업종별 평균 비용이 궁금합니다',comments:7,views:134,time:'2일 전',score:70},
+ {cat:'knowhow',author:'브릿지커뮤니케이션즈',role:'대행사',title:'위기 상황에서 빠르게 대응하는 언론 대응 프로세스',comments:4,views:201,time:'3일 전',score:68},
+ {cat:'case',author:'오세라',role:'공공기관 홍보',title:'지역 환경 캠페인, 지역지·지역방송 확산 리뷰',comments:10,views:350,time:'4일 전',score:64},
+ {cat:'news',author:'최유진',role:'B2B 마케터',title:'요즘 생성형 검색 때문에 홍보실 분위기 어떤가요',comments:14,views:410,time:'5일 전',score:60},
+ {cat:'data',author:'PR컴 운영자',role:'PRCOME',title:'업종별 전문지 담당 부서 정리표 (2026) 공유',comments:9,views:520,time:'6일 전',score:58,attach:true}
 ];
+
+/* 활동 중인 실무자 */
+var USERS=[
+ {name:'서지현',mt:'PR 전략가 · 미디어스퀘어'},
+ {name:'김도윤',mt:'전 경제일간지 산업부 기자'},
+ {name:'이수민',mt:'인하우스 홍보팀장 · 리테일'},
+ {name:'박준호',mt:'대행사 AE · 테크·B2B'}
+];
+
 var params=new URLSearchParams(location.search);
 var key=params.get('cat')||params.get('cate')||'all';
 if(ALIAS[key])key=ALIAS[key];
-if(!NAME[key])key='all';
-var sort='hot';
-/* 좌 내비 */
-function inCat(p,k){return k==='all'?true:(GROUP[k]?GROUP[k].indexOf(p[0])>=0:p[0]===k);}
-function counts(k){return P.filter(function(p){return inCat(p,k);}).length;}
-document.getElementById('chtabs').innerHTML=BOARDS.map(function(b){
- return '<a class="'+(b[0]===key?'on':'')+'" href="index.html'+(b[0]==='all'?'':'?cat='+b[0])+'">'+b[1]+'<span class="c">'+counts(b[0])+'</span></a>';
-}).join('');
-document.title=NAME[key]+' — PRCOME 커뮤니티';
-document.getElementById('bName').textContent=NAME[key];
-document.getElementById('bDesc').textContent=DESC[key];
+if(!COUNT.hasOwnProperty(key))key='all';
+var sort='new';
 function esc(s){return String(s==null?'':s).replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
-var CATICON={
- qa:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.2"/><path d="M9.3 9.3a2.8 2.8 0 0 1 5.4 1c0 1.9-2.7 2.3-2.7 3.9"/><path d="M12 17.2h.01"/></svg>',
- news:'<svg viewBox="0 0 24 24"><path d="M4 5.5h12.5v13H5.5a1.8 1.8 0 0 1-1.8-1.8V7"/><path d="M16.5 8.5H20v8.2a1.8 1.8 0 0 1-1.8 1.8"/><path d="M6.8 9.4h6.8M6.8 12.6h6.8M6.8 15.8h4.2"/></svg>',
- knowhow:'<svg viewBox="0 0 24 24"><path d="M9.2 18h5.6"/><path d="M10 21h4"/><path d="M7.8 13.8a5 5 0 1 1 8.4 0c-.7.8-1.2 1.6-1.4 2.6H9.2c-.2-1-.7-1.8-1.4-2.6Z"/></svg>',
- case:'<svg viewBox="0 0 24 24"><path d="M3.5 16.5 9.5 10l4 3.6L20.5 6.5"/><path d="M15 6.5h5.5V12"/></svg>',
- free:'<svg viewBox="0 0 24 24"><path d="M20.5 15a2 2 0 0 1-2 2H8l-4.5 3.5V6a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2Z"/></svg>'};
-var CATBG={qa:'linear-gradient(135deg,#4A6BFF,#1E40E8)',news:'linear-gradient(135deg,#4B5A73,#0E1B3A)',knowhow:'linear-gradient(135deg,#7E6EF5,#4A3FD0)',case:'linear-gradient(135deg,#34B978,#1E7A45)',free:'linear-gradient(135deg,#16B4CE,#0A7A8C)',jobs:'linear-gradient(135deg,#EC7038,#c0492a)',agency:'linear-gradient(135deg,#4A6BFF,#7E6EF5)'};
-/* 카테고리별 상세페이지 라우팅 */
-var POSTURL={qa:'post.html',news:'post-news.html',knowhow:'post-knowhow.html',case:'post-case.html'};
-function postUrl(cat){return POSTURL[cat]||'post.html';}
+function inCat(p,k){return k==='all'?true:(GROUP[k]?GROUP[k].indexOf(p.cat)>=0:p.cat===k);}
+
+/* 탭 렌더 */
+document.getElementById('chtabs').innerHTML=BOARDS.map(function(b){
+ return '<a class="'+(b[0]===key?'on':'')+'" href="index.html'+(b[0]==='all'?'':'?cat='+b[0])+'">'+b[1]+'<span class="c">'+COUNT[b[0]]+'</span></a>';
+}).join('');
+
+/* 활동 실무자 렌더 */
+document.getElementById('activeUsers').innerHTML=USERS.map(function(u){
+ return '<div class="au"><span class="ava" style="background:'+avColor(u.name)+'">'+PERSON+'</span>'+
+   '<span><div class="nm">'+esc(u.name)+'</div><div class="mt">'+esc(u.mt)+'</div></span>'+
+   '<button class="fo" type="button" onclick="tglFollow(this)">팔로우</button></div>';
+}).join('');
+window.tglFollow=function(b){var on=b.classList.toggle('on');b.textContent=on?'팔로잉':'팔로우';};
+
+/* 피드 렌더 */
+var ICO={
+ cm:'<svg viewBox="0 0 24 24"><path d="M20.5 12a8 8 0 0 1-11.4 7.2L4 20.5l1.4-4.8A8 8 0 1 1 20.5 12z"/></svg>',
+ eye:'<svg viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="2.6"/></svg>',
+ bm:'<svg viewBox="0 0 24 24"><path d="M6.5 4.5h11a1 1 0 0 1 1 1v14l-6.5-4-6.5 4v-14a1 1 0 0 1 1-1z"/></svg>'
+};
 function render(){
- var list=P.filter(function(p){return inCat(p,key);});
- if(sort==='hot')list.sort(function(a,b){return b[14]-a[14];});
- document.getElementById('cnt').textContent=NAME[key]+' · '+list.length+'건';
+ var list=POSTS.filter(function(p){return inCat(p,key);});
+ if(sort==='hot')list=list.slice().sort(function(a,b){return b.score-a.score;});
  document.getElementById('feed').innerHTML='<div class="flist">'+list.map(function(p){
-  var hot=p[7]>=30;
-  var isNew=/(시간|분) 전/.test(p[11]);
-  var clip=p[12]?'<span class="clip"><svg viewBox="0 0 24 24"><path d="M20 10.5 11.5 19a4.5 4.5 0 0 1-6.4-6.4l8.9-8.9a3 3 0 0 1 4.2 4.2l-8.9 8.9a1.5 1.5 0 0 1-2.1-2.1L15.6 8"/></svg></span>':'';
-  return '<a class="frow" href="'+postUrl(p[0])+'">'+
-    '<span class="vote'+(hot?' hot':'')+'"><span class="up">▲</span><span class="n">'+p[7]+'</span></span>'+
-    '<span class="thumb" style="background:'+(CATBG[p[0]]||CATBG.qa)+'">'+(CATICON[p[0]]||CATICON.qa)+clip+'</span>'+
-    '<span class="main">'+
-      '<span class="t">'+esc(p[4])+' <span class="cm">['+p[8]+']</span>'+(isNew?'<span class="nw">NEW</span>':'')+'</span>'+
-      '<span class="meta"><span class="cat">'+NAME[p[0]]+'</span><span class="sep"></span><span class="st">'+esc(p[1])+'</span><span class="sep"></span>'+esc(p[11])+' · 조회 '+p[10]+'</span>'+
+  return '<a class="frow" href="'+postUrl(p.cat)+'">'+
+    '<span class="ficon" style="background:'+(CATBG[p.cat]||CATBG.qa)+'">'+(CATICON[p.cat]||CATICON.qa)+'</span>'+
+    '<span class="fmain">'+
+      '<span class="fcat" style="color:'+(CATCOLOR[p.cat]||'#315CFF')+'">'+NAME[p.cat]+'</span>'+
+      '<span class="ftitle">'+esc(p.title)+'</span>'+
+      '<span class="fby"><span class="av" style="background:'+avColor(p.author)+'">'+PERSON+'</span><b>'+esc(p.author)+'</b> · '+esc(p.role)+' · '+esc(p.time)+(p.isNew?' <span class="nw">NEW</span>':'')+'</span>'+
+    '</span>'+
+    '<span class="fstat">'+
+      '<span class="s">'+ICO.cm+p.comments+'</span>'+
+      '<span class="s">'+ICO.eye+p.views+'</span>'+
+      '<span class="bm">'+ICO.bm+'</span>'+
     '</span></a>';
  }).join('')+'</div>'||'<div style="padding:40px 0;color:var(--sub)">아직 글이 없습니다. 첫 글을 남겨보세요.</div>';
 }
-function setSort(s){sort=s;document.getElementById('sHot').classList.toggle('on',s==='hot');document.getElementById('sNew').classList.toggle('on',s==='new');render();}
+function setSort(s){sort=s;var sel=document.getElementById('sortSel');if(sel&&sel.value!==s)sel.value=s;render();}
+document.title=(key==='all'?'PR 커뮤니티':NAME[key]+' — PRCOME 커뮤니티');
 render();
 </script>
 </body>
