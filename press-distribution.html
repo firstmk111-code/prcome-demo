@@ -146,16 +146,16 @@
 <script>
 /* 데이터: assets/js/press-media.js (엑셀 'PR컴_단가비교 및 설정' → window.PRESS_CATS / window.PRESS_MEDIA[name,항목,PR컴가격]) */
 /* 업종 분류 칩 = 엑셀 '항목' 세부 항목(평면) */
-var CATS=[['all','전체']].concat((window.PRESS_CATS||[]).map(function(c){return [c,c];}));
+var CATS=(window.PRESS_CATS||[]).map(function(c){return [c,c];});
 var MEDIA=(window.PRESS_MEDIA||[]).slice();
-var fCat='all', sel={};
+var fCat='일반', sel={};
 function won(n){return n.toLocaleString('ko-KR')+'원';}
 function esc(s){return String(s).replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
 function drawChips(){
  document.getElementById('catchips').innerHTML=CATS.map(function(c){var k=(''+c[0]).replace(/\\/g,'\\\\').replace(/'/g,"\\'");return '<button class="'+(c[0]===fCat?'on':'')+'" onclick="setCat(\''+k+'\')">'+esc(c[1])+'</button>';}).join('');
 }
 function setCat(c){fCat=c;drawChips();render();}
-function resetF(){fCat='all';document.getElementById('q').value='';document.getElementById('pmin').value='';document.getElementById('pmax').value='';drawChips();render();}
+function resetF(){fCat='일반';document.getElementById('q').value='';document.getElementById('pmin').value='';document.getElementById('pmax').value='';drawChips();render();}
 function render(){
  var q=(document.getElementById('q').value||'').trim().toLowerCase();
  var mn=parseInt(document.getElementById('pmin').value,10); var mx=parseInt(document.getElementById('pmax').value,10);
