@@ -75,6 +75,21 @@
 .cart .pay:disabled{background:var(--line-2);cursor:not-allowed}
 .cart .cnote{font-size:11.5px;color:var(--sub-2);text-align:center;margin-top:10px;line-height:1.6}
 .disc{font-size:12px;color:var(--sub-2);line-height:1.7;margin:22px 2px 0;padding-top:16px;border-top:1px solid var(--line)}
+/* 진행 단계 스텝바 */
+.steps{display:flex;align-items:center;margin:4px 0 28px;max-width:600px}
+.steps .st{display:flex;align-items:center;gap:10px}
+.steps .dot{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex:none}
+.steps .st.done .dot{background:var(--pt);color:#fff}
+.steps .st.active .dot{background:var(--pt);color:#fff;box-shadow:0 0 0 4px var(--pt-soft)}
+.steps .st.todo .dot{background:var(--bg);border:1.5px solid var(--line-2);color:var(--sub-2)}
+.steps .dot svg{width:15px;height:15px;stroke:#fff;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.steps .lb{font-size:14px;font-weight:700;white-space:nowrap}
+.steps .st.done .lb{color:var(--ink)}
+.steps .st.active .lb{color:var(--pt)}
+.steps .st.todo .lb{color:var(--sub-2)}
+.steps .bar{flex:1;height:2px;background:var(--line);margin:0 14px;border-radius:2px;min-width:22px}
+.steps .bar.on{background:var(--pt)}
+@media (max-width:560px){.steps .lb{font-size:12px}.steps .bar{margin:0 8px}}
 @media (max-width:980px){.pd{grid-template-columns:minmax(0,1fr)}.cart{position:static}}
 @media (max-width:560px){.mgrid{grid-template-columns:1fr}}
 </style>
@@ -87,6 +102,14 @@
     <h1><span class="tick"></span>언론홍보 · 보도자료 배포 매체 선택</h1>
     <p class="desc">보도자료를 내보낼 언론사를 <strong>업종·노출영역·가격</strong>으로 골라 담고 한 번에 배포하세요. 원하는 매체를 클릭하면 오른쪽 장바구니에 추가됩니다.</p>
   </section>
+
+  <div class="steps" aria-label="진행 단계">
+    <div class="st done"><span class="dot"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span class="lb">기사 작성</span></div>
+    <span class="bar on"></span>
+    <div class="st active"><span class="dot">2</span><span class="lb">매체사 선택</span></div>
+    <span class="bar"></span>
+    <div class="st todo"><span class="dot">3</span><span class="lb">결제 완료</span></div>
+  </div>
 
   <div class="pd">
     <main>
