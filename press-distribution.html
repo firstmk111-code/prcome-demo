@@ -47,6 +47,8 @@
 .mcard .pr{font-size:16.5px;font-weight:800;color:var(--pt);white-space:nowrap}
 .mcard .meta{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:10px}
 .mcard .tag{font-size:11px;font-weight:700;color:var(--sub);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:3px 8px}
+.mcard .ch{font-size:11px;font-weight:800;color:var(--pt);background:var(--pt-soft);border-radius:6px;padding:3px 8px}
+.mcard .note2{font-size:12px;color:var(--sub);line-height:1.55;margin-top:9px;padding-top:9px;border-top:1px dashed var(--line)}
 .mcard .bdg{font-size:10.5px;font-weight:800;border-radius:5px;padding:3px 7px}
 .mcard .bdg.warn{color:#E4612B;background:#FDEEE7}
 .mcard .bdg.gray{color:var(--sub);background:var(--bg);border:1px solid var(--line)}
@@ -142,12 +144,14 @@
 </div>
 <div id="mag-footer"></div>
 <script src="assets/js/press-media.js?v=1"></script>
+<script src="assets/js/press-notes.js?v=1"></script>
 <script>(function(){var s=document.createElement("script");s.src="assets/js/prcome-nav.js?t="+Date.now();document.head.appendChild(s);})();</script>
 <script>
 /* 데이터: assets/js/press-media.js (엑셀 'PR컴_단가비교 및 설정' → window.PRESS_CATS / window.PRESS_MEDIA[name,항목,PR컴가격]) */
 /* 업종 분류 칩 = 엑셀 '항목' 세부 항목(평면) */
 var CATS=(window.PRESS_CATS||[]).map(function(c){return [c,c];});
 var MEDIA=(window.PRESS_MEDIA||[]).slice();
+(function(){var N=window.PRESS_NOTES||{};MEDIA.forEach(function(m){if(m[1]==='일반'&&N[m[0]]){m[3]=N[m[0]][0];m[4]=N[m[0]][1]||'';}});})();
 var fCat='일반', sel={};
 function won(n){return n.toLocaleString('ko-KR')+'원';}
 function esc(s){return String(s).replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
@@ -172,7 +176,8 @@ function render(){
    return '<div class="mcard'+(on?' on':'')+'" onclick="toggle('+i+')">'+
      '<div class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>'+
      '<div class="top"><div class="nm">'+esc(m[0])+'</div><div class="pr">'+won(m[2])+'</div></div>'+
-     '<div class="meta"><span class="tag">'+esc(m[1])+'</span></div></div>';
+     '<div class="meta"><span class="tag">'+esc(m[1])+'</span>'+(m[3]?'<span class="ch">'+esc(m[3])+'</span>':'')+'</div>'+
+     (m[4]?'<div class="note2">'+esc(m[4])+'</div>':'')+'</div>';
  }).join('')||'<div class="empty">조건에 맞는 매체가 없습니다. 필터를 조정해 보세요.</div>';
 }
 function toggle(i){ if(sel[i])delete sel[i]; else sel[i]=1; render(); cart(); }
