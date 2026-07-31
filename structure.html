@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRCOME 구조 변경안 — 지금 → 바뀐 후 (보여주기용)</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{--bg:#F5F7FB;--surf:#fff;--ink:#0F1B2D;--sub:#4B5563;--sub2:#7A8494;--pt:#2B5BFF;--pt-soft:#EEF2FF;--navy:#0E1B3A;--line:#E4E9F1;
+--keep:#8A94A6;--keep-bg:#F1F3F7;--promote:#2B5BFF;--promote-bg:#EEF2FF;--back:#C6870B;--back-bg:#FDF4E1;--cut:#D2455F;--cut-bg:#FCEEF1;--new:#16A34A;--new-bg:#E9F7EF;--up:#7A4DE0;--up-bg:#F1EBFF}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+.cover{background:linear-gradient(150deg,#12245B,#0E1B3A);color:#fff;padding:46px 0 40px;text-align:center}
+.cover h1{font-size:clamp(23px,4vw,34px);font-weight:900;letter-spacing:-.03em}
+.cover p{color:#C7D2EA;font-size:15px;margin-top:12px}
+.cover .tag{display:inline-block;margin-top:16px;font-size:12.5px;font-weight:800;color:#9DB2FF;background:rgba(157,178,255,.13);border:1px solid rgba(157,178,255,.3);border-radius:999px;padding:6px 15px}
+section{padding:38px 0}
+section.alt{background:var(--surf);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+h2{font-size:clamp(18px,2.8vw,23px);font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
+.desc{font-size:14px;color:var(--sub);margin-bottom:20px}
+/* 범례 */
+.legend{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:8px}
+.lg{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:700;color:var(--sub);background:var(--surf);border:1px solid var(--line);border-radius:999px;padding:6px 13px}
+.lg .dot{width:10px;height:10px;border-radius:50%}
+.d-keep{background:var(--keep)}.d-promote{background:var(--promote)}.d-back{background:var(--back)}.d-cut{background:var(--cut)}.d-new{background:var(--new)}.d-up{background:var(--up)}
+/* Before/After */
+.ba{display:grid;grid-template-columns:1fr 60px 1fr;gap:0;align-items:stretch;margin-top:6px}
+.col{background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:20px 18px}
+.col.old{opacity:.96}
+.col .ct{font-size:12.5px;font-weight:800;letter-spacing:.03em;color:var(--sub2);margin-bottom:14px;text-align:center;padding-bottom:12px;border-bottom:1px dashed var(--line)}
+.col.new .ct{color:var(--pt)}
+.menu{display:flex;flex-direction:column;gap:9px}
+.mi{display:flex;align-items:center;gap:10px;border-radius:10px;padding:11px 14px;font-size:14.5px;font-weight:700;border:1px solid var(--line)}
+.mi .b{margin-left:auto;font-size:10.5px;font-weight:800;border-radius:6px;padding:2px 8px;white-space:nowrap}
+.mi.keep{background:var(--keep-bg);color:#42505f;border-color:#E1E5EC}.mi.keep .b{background:#E1E5EC;color:#5c6674}
+.mi.promote{background:var(--promote-bg);color:#123;border-color:#D6E0FF}.mi.promote .b{background:var(--promote);color:#fff}
+.mi.back{background:var(--back-bg);color:#7a5a10;border-color:#F1E1BD}.mi.back .b{background:var(--back);color:#fff}
+.mi.cut{background:var(--cut-bg);color:#9c3247;border-color:#F3D3DA;opacity:.85}.mi.cut .b{background:var(--cut);color:#fff}
+.mi.new{background:var(--new-bg);color:#155c36;border-color:#C4E9D3}.mi.new .b{background:var(--new);color:#fff}
+.mi.up{background:var(--up-bg);color:#4b2ea8;border-color:#DFD2FA}.mi.up .b{background:var(--up);color:#fff}
+.arrowcol{display:flex;align-items:center;justify-content:center;color:var(--pt);font-size:30px;font-weight:800}
+/* 매핑표 */
+table{width:100%;border-collapse:collapse;background:var(--surf);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:13.6px;margin-top:6px}
+th,td{text-align:left;padding:11px 13px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{background:#F1F5FC;font-weight:800;font-size:12.5px;color:var(--navy)}
+tr:last-child td{border-bottom:0}
+.badge{display:inline-block;font-size:11px;font-weight:800;border-radius:6px;padding:3px 9px;white-space:nowrap}
+.bg-keep{background:var(--keep-bg);color:#5c6674}.bg-promote{background:var(--promote-bg);color:var(--promote)}.bg-back{background:var(--back-bg);color:var(--back)}.bg-cut{background:var(--cut-bg);color:var(--cut)}.bg-new{background:var(--new-bg);color:var(--new)}.bg-up{background:var(--up-bg);color:var(--up)}
+/* 홈 순서 */
+.flow{display:flex;flex-direction:column;gap:9px;counter-reset:f;max-width:640px}
+.flow .s{display:flex;gap:13px;align-items:center;background:var(--surf);border:1px solid var(--line);border-radius:11px;padding:13px 16px}
+.flow .s .no{counter-increment:f;flex:none;width:26px;height:26px;border-radius:8px;background:var(--navy);color:#fff;font-weight:800;font-size:12.5px;display:flex;align-items:center;justify-content:center}
+.flow .s .no::before{content:counter(f)}
+.flow .s.star{border-color:#DFD2FA;background:var(--up-bg)}
+.flow .s .t{font-size:14.5px;font-weight:700}
+.flow .s .b{margin-left:auto;font-size:10.5px;font-weight:800;background:var(--up);color:#fff;border-radius:6px;padding:2px 8px}
+.star-note{background:var(--up-bg);border:1px solid #DFD2FA;border-left:4px solid var(--up);border-radius:12px;padding:16px 20px;margin-top:18px}
+.star-note b{color:#3d1f8f}
+.star-note .h{font-size:15.5px;font-weight:800;color:#3d1f8f;margin-bottom:4px}
+.star-note p{font-size:13.6px;color:#5b4a86}
+.end{background:linear-gradient(150deg,#12245B,#0E1B3A);color:#fff;text-align:center;padding:40px 0}
+.end h2{color:#fff}.end p{color:#C7D2EA;max-width:44ch;margin:10px auto 0;font-size:14.5px}
+.foot{text-align:center;font-size:12px;color:var(--sub2);padding:22px 0 36px}
+@media (max-width:760px){
+  .ba{grid-template-columns:1fr}
+  .arrowcol{transform:rotate(90deg);padding:6px 0}
+  table{font-size:12.3px}th,td{padding:9px}
+}
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="wrap">
+    <h1>PRCOME 구조, 이렇게 바꿉니다</h1>
+    <p>지금 만든 걸 버리지 않고 — 순서를 바꾸고, 한 곳(매체 디렉토리)만 크게 키웁니다.</p>
+    <span class="tag">보여주기용 구조 변경안 · 실제 사이트는 그대로 둔 상태</span>
+  </div>
+</div>
+
+<!-- 범례 -->
+<section>
+  <div class="wrap">
+    <div class="legend">
+      <span class="lg"><span class="dot d-promote"></span>앞으로(승격)</span>
+      <span class="lg"><span class="dot d-up"></span>크게 강화</span>
+      <span class="lg"><span class="dot d-keep"></span>유지</span>
+      <span class="lg"><span class="dot d-back"></span>뒤로 이동</span>
+      <span class="lg"><span class="dot d-cut"></span>축소/숨김</span>
+      <span class="lg"><span class="dot d-new"></span>신규</span>
+    </div>
+  </div>
+</section>
+
+<!-- Before / After 메뉴 -->
+<section class="alt">
+  <div class="wrap">
+    <h2>메뉴 구조 — 지금 → 바뀐 후</h2>
+    <p class="desc">배포 도구와 매체 목록을 앞으로, 커뮤니티는 뒤로. PR회사 관련은 접습니다.</p>
+    <div class="ba">
+      <div class="col old">
+        <div class="ct">지금 (커뮤니티 중심)</div>
+        <div class="menu">
+          <div class="mi keep">커뮤니티</div>
+          <div class="mi keep">인사이트</div>
+          <div class="mi keep">보도자료 배포 AI</div>
+          <div class="mi keep">언론홍보(매체선택)</div>
+          <div class="mi keep">디렉토리(PR회사·언론사)</div>
+          <div class="mi keep">PR도구</div>
+        </div>
+      </div>
+      <div class="arrowcol">→</div>
+      <div class="col new">
+        <div class="ct">바뀐 후 (배포·매체 중심)</div>
+        <div class="menu">
+          <div class="mi keep">홈 <span class="b">재구성</span></div>
+          <div class="mi promote">보도자료 배포(툴) <span class="b">앞으로</span></div>
+          <div class="mi up">미디어 디렉토리 <span class="b">간판·강화</span></div>
+          <div class="mi keep">가격표 <span class="b">정리</span></div>
+          <div class="mi keep">인사이트 <span class="b">유지</span></div>
+          <div class="mi back">커뮤니티 <span class="b">뒤로</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 매핑표 -->
+<section>
+  <div class="wrap">
+    <h2>지금 만든 것 → 어디로 가나 (부품별)</h2>
+    <p class="desc">대부분 이미 있는 걸 재활용합니다. 새로 만드는 건 대시보드 정도입니다.</p>
+    <table>
+      <tr><th style="width:38%">지금 있는 것</th><th style="width:30%">바뀐 후</th><th>조치</th></tr>
+      <tr><td><b>언론홍보 매체선택</b><br><span style="color:var(--sub2)">업종필터·장바구니·단가·노출채널</span></td><td>보도자료 배포 툴 (핵심)</td><td><span class="badge bg-promote">거의 그대로 승격</span></td></tr>
+      <tr><td><b>보도자료 AI 작성</b></td><td>배포 툴의 1단계(작성)</td><td><span class="badge bg-keep">연결 + 정상화</span></td></tr>
+      <tr><td><b>업종·단가·노출채널 데이터</b></td><td>디렉토리·가격표 데이터</td><td><span class="badge bg-keep">그대로 재활용</span></td></tr>
+      <tr><td><b>언론사 리스트</b><br><span style="color:var(--sub2)">지금은 단순 목록</span></td><td>미디어 디렉토리 (간판)</td><td><span class="badge bg-up">크게 강화 ⭐</span></td></tr>
+      <tr><td><b>커뮤니티</b> <span style="color:var(--sub2)">(방금 리뉴얼)</span></td><td>커뮤니티 (보조)</td><td><span class="badge bg-back">뒤로 이동·유지</span></td></tr>
+      <tr><td><b>인사이트(매거진)</b></td><td>인사이트</td><td><span class="badge bg-keep">유지(검색 유입)</span></td></tr>
+      <tr><td><b>가격표(단가)</b></td><td>가격표</td><td><span class="badge bg-keep">통합 정리</span></td></tr>
+      <tr><td><b>PR회사 가이드·디렉토리</b></td><td>—</td><td><span class="badge bg-cut">축소/숨김</span></td></tr>
+      <tr><td style="color:var(--sub2)">(없음)</td><td>개인·대행사 대시보드</td><td><span class="badge bg-new">신규</span></td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 미디어 디렉토리 강화 -->
+<section class="alt">
+  <div class="wrap">
+    <h2>딱 하나 크게 키울 것 — 미디어 디렉토리</h2>
+    <div class="star-note">
+      <div class="h">⭐ 지금 "언론사 리스트"(이름만) → "매체 설명형 디렉토리"로</div>
+      <p>매체마다 <b>상세페이지</b>를 만듭니다 — "이 매체가 어떤 곳 · 어떤 독자 · 어떤 업종 가능 · 노출채널 · 단가 · <b>[이 매체에 배포하기]</b>". 매체 수백 개 = 검색 접점 수백 개 → 네이버 검색에서 경쟁사를 앞섭니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 새 홈 순서 -->
+<section>
+  <div class="wrap">
+    <h2>바뀐 홈 — 위에서 아래로</h2>
+    <p class="desc">들어오자마자 "여기서 보도자료를 배포하는구나"가 보이게.</p>
+    <div class="flow">
+      <div class="s"><span class="no"></span><span class="t">메인 배너 — 배포 시작 버튼 + 신뢰 숫자</span></div>
+      <div class="s"><span class="no"></span><span class="t">3단계 배포 흐름 (작성 → 매체 선택 → 배포)</span></div>
+      <div class="s star"><span class="no"></span><span class="t">미디어 디렉토리 미리보기</span><span class="b">간판</span></div>
+      <div class="s"><span class="no"></span><span class="t">왜 PR컴인가 (경쟁사 대비)</span></div>
+      <div class="s"><span class="no"></span><span class="t">가격표 미리보기</span></div>
+      <div class="s"><span class="no"></span><span class="t">인사이트 · 커뮤니티 (뒤쪽 소량)</span></div>
+      <div class="s"><span class="no"></span><span class="t">후기 · 자주 묻는 질문 · 마지막 버튼</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="end">
+  <div class="wrap">
+    <h2>한 줄 정리</h2>
+    <p>새로 만들 것 없이 — <b style="color:#fff">커뮤니티는 뒤로, 언론사 목록을 "매체 설명 디렉토리"로 키우고, 홈만 다시 짜면</b> 새 방향이 완성됩니다.</p>
+  </div>
+</div>
+<div class="foot">PRCOME 구조 변경안 · 보여주기용 · 2026-07-31 · 실제 사이트 미변경</div>
+
+</body>
+</html>
