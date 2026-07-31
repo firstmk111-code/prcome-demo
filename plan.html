@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PR컴 전략 계획서 — 네이버 '언론홍보' 검색 1등 만들기</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{--bg:#F6F8FC;--surf:#fff;--ink:#0F1B2D;--sub:#4B5563;--sub2:#7A8494;--pt:#2B5BFF;--pt-soft:#EEF2FF;--navy:#0E1B3A;--line:#E4E9F1;--green:#16A34A;--orange:#E4612B;--red:#E23D5B;--gold:#B8860B}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--ink);line-height:1.72;-webkit-font-smoothing:antialiased}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+/* 표지 */
+.cover{background:linear-gradient(155deg,#0E1F52,#0E1B3A 55%,#0A1330);color:#fff;padding:66px 0 56px;position:relative;overflow:hidden}
+.cover::after{content:"";position:absolute;top:-120px;right:-80px;width:420px;height:420px;background:radial-gradient(circle,rgba(90,130,255,.35),transparent 70%)}
+.cover .wrap{position:relative;z-index:2}
+.cover .kick{display:inline-block;font-size:12.5px;font-weight:800;letter-spacing:.05em;color:#9DB2FF;background:rgba(157,178,255,.12);border:1px solid rgba(157,178,255,.3);border-radius:999px;padding:7px 15px;margin-bottom:18px}
+.cover h1{font-size:clamp(26px,4.6vw,40px);font-weight:900;letter-spacing:-.035em;line-height:1.25}
+.cover h1 b{color:#7FA0FF}
+.cover .lead{font-size:clamp(14.5px,2vw,17px);color:#C7D2EA;margin:16px 0 0;max-width:54ch;line-height:1.65}
+.cover .goalbar{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.cover .goalbar .g{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:10px 15px;font-size:13px;color:#DCE4F5}
+.cover .goalbar .g b{color:#fff}
+.cover .meta{margin-top:22px;font-size:12px;color:#8496BC}
+/* 섹션 */
+section{padding:46px 0}
+section.alt{background:var(--surf);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.snum{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:800;color:var(--pt);margin-bottom:8px}
+.snum .n{width:25px;height:25px;border-radius:7px;background:var(--pt);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:800}
+h2{font-size:clamp(20px,3.2vw,26px);font-weight:800;letter-spacing:-.03em;margin-bottom:8px;line-height:1.3}
+.desc{font-size:15px;color:var(--sub);margin-bottom:20px;max-width:66ch}
+h3{font-size:16px;font-weight:800;margin:22px 0 9px;letter-spacing:-.02em}
+p{font-size:14.7px;color:var(--sub)}
+b,strong{color:var(--ink);font-weight:700}
+.hl{background:linear-gradient(transparent 62%,#FFE9A8 0);font-weight:700;color:var(--ink)}
+/* 카드 */
+.cards{display:grid;gap:14px}
+.cards.c2{grid-template-columns:1fr 1fr}
+.cards.c3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:19px 21px}
+.card .ic{width:40px;height:40px;border-radius:11px;background:var(--pt-soft);display:flex;align-items:center;justify-content:center;margin-bottom:11px}
+.card .ic svg{width:21px;height:21px;stroke:var(--pt);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.card h4{font-size:15.5px;font-weight:800;margin-bottom:5px}
+.card p{font-size:13.6px;line-height:1.6}
+/* 강조 */
+.callout{background:var(--pt-soft);border:1px solid #D5DFFF;border-left:4px solid var(--pt);border-radius:12px;padding:18px 22px;margin:18px 0}
+.callout .q{font-size:16.5px;font-weight:800;color:var(--navy);line-height:1.5}
+.callout .s{font-size:13.8px;color:var(--sub);margin-top:6px}
+.note{background:#FFF8EC;border:1px solid #F5E4BE;border-radius:12px;padding:15px 18px;font-size:13.8px;color:#8A6D2F;margin:16px 0}
+.note b{color:#6B5011}
+.win{background:#EAF7EF;border:1px solid #BFE6CE;border-left:4px solid var(--green);border-radius:12px;padding:15px 18px;font-size:14px;color:#1B6B3D;margin:14px 0}
+.win b{color:#0F5A30}
+/* 표 */
+table{width:100%;border-collapse:collapse;background:var(--surf);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:13.6px;margin:10px 0}
+th,td{text-align:left;padding:11px 13px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:#F1F5FC;font-weight:800;font-size:12.5px;color:var(--navy)}
+tr:last-child td{border-bottom:0}
+td.good{color:var(--green);font-weight:700}
+td.bad{color:var(--red);font-weight:600}
+.tagx{color:var(--red);font-weight:800}
+.tago{color:var(--green);font-weight:800}
+/* 리스트 */
+ul.plain{list-style:none;display:flex;flex-direction:column;gap:9px;margin-top:8px}
+ul.plain li{position:relative;padding-left:25px;font-size:14.3px;color:var(--sub)}
+ul.plain li::before{content:"✓";position:absolute;left:0;top:0;color:var(--pt);font-weight:900}
+ul.plain li b{color:var(--ink)}
+ul.gap li::before{content:"✕";color:var(--red)}
+/* 엔진 다이어그램 */
+.engine{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:14px 0;text-align:center}
+.engine .e{background:var(--surf);border:1px solid var(--line);border-radius:12px;padding:16px 12px}
+.engine .e .t{font-size:13.5px;font-weight:800;color:var(--navy);margin-bottom:5px}
+.engine .e .d{font-size:12px;color:var(--sub)}
+.engine .arrow{grid-column:1/-1;text-align:center;color:var(--pt);font-weight:800;font-size:15px}
+/* 타임라인 */
+.tl .row{display:grid;grid-template-columns:78px 1fr;gap:15px;padding:13px 0;border-bottom:1px dashed var(--line)}
+.tl .row:last-child{border-bottom:0}
+.tl .ph{font-size:12px;font-weight:800;color:#fff;background:var(--pt);border-radius:8px;height:fit-content;padding:5px 0;text-align:center}
+.tl .row.m0 .ph{background:var(--navy)}
+.tl h4{font-size:14.7px;font-weight:800;margin-bottom:2px}
+.tl p{font-size:13.3px}
+/* KPI */
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:8px}
+.kpi .k{background:var(--surf);border:1px solid var(--line);border-radius:12px;padding:16px 14px;text-align:center}
+.kpi .k .v{font-size:19px;font-weight:900;color:var(--pt);letter-spacing:-.02em}
+.kpi .k .l{font-size:12px;color:var(--sub);margin-top:4px;line-height:1.4}
+/* 정해야할것 */
+.decide{display:grid;gap:11px}
+.decide .d{display:flex;gap:12px;background:var(--surf);border:1px solid var(--line);border-radius:12px;padding:14px 17px}
+.decide .d .q{flex:none;width:25px;height:25px;border-radius:50%;background:#FDEEE7;color:var(--orange);font-weight:800;font-size:12.5px;display:flex;align-items:center;justify-content:center}
+.decide .d h4{font-size:14.5px;font-weight:800;margin-bottom:2px}
+.decide .d p{font-size:13.2px}
+/* 출처 */
+.src{font-size:12px;color:var(--sub2);padding:26px 0 40px}
+.src a{color:var(--pt)}
+.src h4{font-size:13px;color:var(--ink);margin-bottom:8px}
+.end{background:linear-gradient(155deg,#0E1F52,#0E1B3A);color:#fff;text-align:center;padding:46px 0}
+.end h2{color:#fff}.end p{color:#C7D2EA;max-width:46ch;margin:10px auto 0}
+@media (max-width:760px){
+  .cards.c2,.cards.c3,.engine,.kpi{grid-template-columns:1fr}
+  table{font-size:12.5px}th,td{padding:9px}
+}
+</style>
+</head>
+<body>
+
+<!-- 표지 -->
+<div class="cover">
+  <div class="wrap">
+    <span class="kick">PR컴(PRCOME) 전략 계획서 · 2026-07-31</span>
+    <h1>네이버에 <b>'언론홍보'</b>를 치면<br>1등으로 뜨고, 1등으로 보이는 사이트</h1>
+    <p class="lead">단순 커뮤니티에서 벗어나, 보도자료를 맡기려는 사람이 검색하는 순간부터 마지막 결제까지 — 경쟁사 전부를 이기는 언론홍보 배포 플랫폼을 만듭니다.</p>
+    <div class="goalbar">
+      <div class="g">목표 키워드 <b>언론홍보 · 보도자료 배포</b></div>
+      <div class="g">경쟁 상대 <b>뉴스와이어 · 오른웍스 · 제보왕 등</b></div>
+      <div class="g">승부수 <b>매체 설명형 디렉토리 = 검색 1등 엔진</b></div>
+    </div>
+    <div class="meta">시장·경쟁사 딥서칭 기반 · 개발팀 표준(PHP·CI4·MySQL) 준수 · 1차 전략안</div>
+  </div>
+</div>
+
+<!-- 0. 목표 -->
+<section>
+  <div class="wrap">
+    <span class="snum"><span class="n">0</span>이 계획서가 겨냥하는 것</span>
+    <h2>"검색 1등"은 단순 순위가 아니라, 손님이 오는 입구입니다</h2>
+    <p class="desc">대표님 목표는 명확합니다 — <b>네이버에 '언론홍보'를 검색하면 나오는 회사들을 전부 이기는 것.</b> 그러려면 두 가지를 동시에 잡아야 합니다.</p>
+    <div class="cards c2">
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg></div><h4>① 검색에서 이긴다 (유입)</h4><p>네이버·구글·AI검색에서 경쟁사보다 위에 뜨게 만드는 <b>콘텐츠·SEO 설계</b>.</p></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"/></svg></div><h4>② 들어와서 이긴다 (전환)</h4><p>들어온 손님이 "여기 맡기는 게 낫다"고 느끼게 하는 <b>매체 정보·투명 가격·원스톱</b>.</p></div>
+    </div>
+    <div class="callout">
+      <div class="q">핵심 통찰 — 이 둘을 한 번에 푸는 무기가 "매체 디렉토리"입니다.</div>
+      <div class="s">매체 하나하나를 설명하는 페이지가 곧 검색 유입(수백 개 키워드)이자 전환 근거(신뢰 정보)가 됩니다. 뒤에서 자세히 설명합니다.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 1. 시장/경쟁사 분석 -->
+<section class="alt">
+  <div class="wrap">
+    <span class="snum"><span class="n">1</span>시장·경쟁사 분석 (딥서칭 결과)</span>
+    <h2>지금 '언론홍보'로 검색하면 나오는 회사들</h2>
+    <p class="desc">네이버에 '언론홍보/보도자료 배포'를 치면 나오는 주요 업체들을 직접 조사했습니다. 크게 <b>셀프 배포 툴형</b>과 <b>대행사형</b>으로 나뉩니다.</p>
+    <table>
+      <tr><th style="width:130px">업체</th><th>유형·특징</th><th>가격</th></tr>
+      <tr><td><b>뉴스와이어</b><br><span style="color:var(--sub2)">시장 1위</span></td><td>셀프 배포 툴. 담당기자 배포·뉴스클립·실시간 추적·결과보고서·글로벌(비즈니스와이어). 교육 콘텐츠(블로그) 운영.</td><td class="good">투명<br>7.7만/18.7만/29.7만</td></tr>
+      <tr><td><b>오른웍스</b></td><td>"언론홍보 3.0" 콘텐츠 중심 대행. 18년차, 온·오프라인(지면·매거진 포함).</td><td class="bad">문의/견적</td></tr>
+      <tr><td><b>제보왕</b></td><td>기자 DB 3.5만·제휴매체 2,000+. 맞춤 미디어리스트, <b>실제 노출 기사만 집계(노출보장)</b>, 성과 리포트.</td><td class="bad">문의/할인</td></tr>
+      <tr><td><b>mediap</b><br>(리얼타임)</td><td>3단계(작성→송출→노출) 플랫폼. "뉴스는 믿는다" 신뢰 소구.</td><td class="bad">마일리지 충전·비공개</td></tr>
+      <tr><td>프레스미디어 · 제이디미디어 · 에이피알플러스 · 뉴스옥션 · 뉴스업프레스 · 뉴스온와이어(908매체) 등</td><td>대부분 대행사형. 게시판 스타일, 상담 유도.</td><td class="bad">대체로 견적/문의</td></tr>
+    </table>
+    <div class="note">💡 참고 시장가: 대행 패키지(언론사 4~12곳)는 <b>120~380만원</b>대, 개별 매체 배포는 건당 수만~십몇만원. 해외 벤치마크는 뒤(4번)에서 다룹니다.</div>
+  </div>
+</section>
+
+<!-- 2. 경쟁사 약점 = 우리 기회 -->
+<section>
+  <div class="wrap">
+    <span class="snum"><span class="n">2</span>경쟁사 공통 약점 = 우리의 기회</span>
+    <h2>조사해보니, 뚫려 있는 구멍이 명확합니다</h2>
+    <p class="desc">1위 뉴스와이어를 빼면 대부분 아래 약점을 공유합니다. 이게 곧 PR컴이 파고들 자리입니다.</p>
+    <ul class="plain gap">
+      <li><b>가격이 안 보인다</b> — 대부분 "문의/견적/충전". 손님은 얼마인지 몰라서 답답해합니다.</li>
+      <li><b>매체를 설명 안 한다</b> — 매체 이름만 나열. "공감신문이 어떤 곳인지" 아무도 안 알려줍니다.</li>
+      <li><b>업종 적합도 정보가 없다</b> — 우리 업종에 이 매체가 되는지/안 되는지 알 수 없습니다.</li>
+      <li><b>UX가 올드하다</b> — 게시판·전화 상담 위주. 필터·장바구니 같은 요즘 방식이 드뭅니다.</li>
+      <li><b>AI 작성이 약하다</b> — 초안 작성까지 도와주는 곳이 거의 없습니다.</li>
+      <li><b>정작 자기 사이트 검색 노출이 약하다</b> — 홍보 회사인데 SEO 콘텐츠가 얇습니다.</li>
+    </ul>
+    <div class="win">✅ <b>PR컴이 이미 가진 자산</b> — 업종별(일반·메디컬·창업·법률·뷰티·헬스·건강식품·블록체인·주식) <b>노출채널·참고사항·가격 데이터</b>가 정리돼 있습니다. 위 구멍 중 3개(가격·업종적합도·매체정보)를 곧바로 메울 수 있습니다.</div>
+  </div>
+</section>
+
+<!-- 3. 승리 전략 -->
+<section class="alt">
+  <div class="wrap">
+    <span class="snum"><span class="n">3</span>PR컴 승리 전략</span>
+    <h2>한 문장 포지셔닝 + 3개의 승부수</h2>
+    <div class="callout">
+      <div class="q">"보도자료 어디에 맡길지 검색하면 — 제일 위에 뜨고, 제일 믿음이 가는 곳, PR컴"</div>
+    </div>
+    <div class="cards c3">
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2v20M6 6h9a3 3 0 0 1 0 6H8a3 3 0 0 0 0 6h10"/></svg></div><h4>승부수 ① 투명성</h4><p>매체별 가격·업종 가능여부를 <b>전부 공개</b>. 경쟁사 대부분이 못(안) 하는 것.</p></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg></div><h4>승부수 ② 매체 설명형 디렉토리</h4><p>"이 매체가 어떤 곳·어떤 독자·어떤 업종 가능"까지. <b>아무도 안 하는 정보</b>.</p></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"/></svg></div><h4>승부수 ③ 원스톱</h4><p>AI 작성 → 매체 선택(장바구니) → 배포 → 결과 리포트를 <b>한 흐름</b>으로.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. 벤치마크 -->
+<section>
+  <div class="wrap">
+    <span class="snum"><span class="n">4</span>벤치마크 레퍼런스 (배울 점)</span>
+    <h2>잘하는 곳에서 좋은 것만 가져옵니다</h2>
+    <table>
+      <tr><th style="width:120px">레퍼런스</th><th>배울 점</th></tr>
+      <tr><td><b>뉴스와이어</b> (국내 1위)</td><td>투명한 3단 요금제 · 결과 모니터링 보고서 · <b>교육 콘텐츠(블로그)로 검색 유입</b> 확보. → 우리도 콘텐츠로 유입 만든다.</td></tr>
+      <tr><td><b>PRWeb</b> (미국, Cision 계열)</td><td><b>SEO 중심</b> 배포 + 투명 4단 요금($110~455). → "검색 노출"을 상품 가치로 내세우는 방식.</td></tr>
+      <tr><td><b>PR Newswire</b> (미국 1위)</td><td>27만+ 기자·9천+ 매체 등 <b>네트워크 규모를 숫자로</b> 신뢰화. → 우리도 제휴 매체 수·실적을 전면 숫자로.</td></tr>
+      <tr><td><b>제보왕</b> (국내)</td><td><b>"실제 노출된 기사만 성과로 집계"</b>(노출보장). → 결과를 투명하게 보여주는 신뢰 장치.</td></tr>
+    </table>
+    <div class="note">정리: <b>투명 요금(뉴스와이어·PRWeb) + 규모 숫자(PR Newswire) + 결과 보장(제보왕) + 검색 유입(SEO 콘텐츠)</b> — 이 조합을 우리 강점(매체 설명·업종 데이터)에 얹으면 이깁니다.</div>
+  </div>
+</section>
+
+<!-- 5. 네이버 1등 엔진 (핵심) -->
+<section class="alt">
+  <div class="wrap">
+    <span class="snum"><span class="n">5</span>⭐ 네이버 1등 만드는 엔진</span>
+    <h2>매체 디렉토리 = 검색을 지배하는 콘텐츠 공장</h2>
+    <p class="desc">이게 이번 계획서의 핵심 발전입니다. <b>매체를 설명하는 페이지 하나하나가 곧 검색 유입 통로</b>가 됩니다. 경쟁사가 가지지 못한 구조입니다.</p>
+    <div class="engine">
+      <div class="e"><div class="t">매체 상세 수백 개</div><div class="d">"공감신문 보도자료", "OO경제 언론홍보 단가" 등 롱테일 키워드를 페이지마다 선점</div></div>
+      <div class="e"><div class="t">정보성 인사이트</div><div class="d">보도자료 작성법·업종별 홍보 가이드 (2,000~3,000자, FAQ·표 구조)</div></div>
+      <div class="e"><div class="t">구조화·AI대응</div><div class="d">Schema.org·명확한 Q&A로 스마트블록·AI검색(GEO) 인용까지</div></div>
+      <div class="arrow">↓ 이 세 가지가 쌓이면 ↓</div>
+    </div>
+    <div class="win">✅ 매체 300개 × 상세페이지 = <b>검색 접점 수백 개</b>. 경쟁사는 매체를 "이름만" 두지만, 우리는 매체마다 "설명 페이지"를 두어 <b>롱테일 검색을 싹쓸이</b>합니다. 이게 '언론홍보' 상위 노출로 이어지는 실질 엔진입니다.</div>
+    <h3>실행에 꼭 들어갈 SEO 기본기 (2026 네이버 기준)</h3>
+    <ul class="plain">
+      <li><b>네이버 서치어드바이저·구글 서치콘솔 등록</b> — 사이트맵 제출, 색인 관리 (기본 중 기본).</li>
+      <li><b>콘텐츠 품질</b> — 네이버가 스마트블록·AI(하이퍼클로바)로 <b>맥락·주제 일관성</b>을 평가. 얇은 페이지 금지, 유용한 정보 충분히.</li>
+      <li><b>이미지 원본성</b> — 2026 알고리즘은 이미지 품질·원본성 정밀 평가. 매체 로고·설명 이미지 최적화.</li>
+      <li><b>키워드 자연 배치</b> — 제목·소제목·본문에 목표 키워드를 자연스럽게(과도 반복 금지).</li>
+      <li><b>GEO(AI 검색) 동시 대응</b> — 구조화 데이터로 ChatGPT·퍼플렉시티 인용까지 노림.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 6. 사이트 구조 -->
+<section>
+  <div class="wrap">
+    <span class="snum"><span class="n">6</span>사이트 구조 (메뉴·페이지)</span>
+    <h2>배포 도구 + 매체 목록을 앞으로, 커뮤니티는 뒤로</h2>
+    <table>
+      <tr><th style="width:150px">메뉴</th><th>역할</th></tr>
+      <tr><td><b>홈</b></td><td>배포 시작 유도 + 매체 목록 미리보기 + 경쟁사 대비 강점 + 신뢰 숫자</td></tr>
+      <tr><td><b>보도자료 배포(도구)</b></td><td>AI 작성 → 매체 선택(장바구니) → 신청/결제. 진행 단계 표시</td></tr>
+      <tr><td><b>언론사(매체) 목록</b> <span class="tago">간판</span></td><td>업종·노출채널·가격 필터 + <b>매체 설명·상세페이지(SEO 엔진)</b></td></tr>
+      <tr><td><b>가격표</b></td><td>업종 × 매체 가격 공개</td></tr>
+      <tr><td><b>인사이트</b></td><td>보도자료 작성법·홍보 가이드 (검색 유입 콘텐츠)</td></tr>
+      <tr><td><b>커뮤니티</b> <span style="color:var(--sub2);font-weight:700">(뒤로)</span></td><td>실무 Q&A·자료. 신뢰·검색 보조</td></tr>
+      <tr><td>관리자(뒷단)</td><td>매체·가격·주문·게시글·문의 등록/수정</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 7. 로드맵 -->
+<section class="alt">
+  <div class="wrap">
+    <span class="snum"><span class="n">7</span>만드는 순서 (로드맵)</span>
+    <h2>검색 자산부터 쌓는 순서로 갑니다</h2>
+    <div class="tl">
+      <div class="row m0"><div class="ph">준비</div><div><h4>기본 뼈대 + SEO 세팅</h4><p>개발 표준대로 뼈대 구축, 네이버 서치어드바이저·사이트맵 등록.</p></div></div>
+      <div class="row"><div class="ph">1단계</div><div><h4>매체 목록·상세 (검색 엔진) ⭐</h4><p>매체 CRUD + 목록/상세. <b>롱테일 검색 자산을 가장 먼저 쌓는다.</b></p></div></div>
+      <div class="row"><div class="ph">2단계</div><div><h4>배포 도구 + 가격표</h4><p>작성→선택→신청, 투명 가격 연결.</p></div></div>
+      <div class="row"><div class="ph">3단계</div><div><h4>홈 재구성</h4><p>배포 도구·매체 미리보기·강점·신뢰 숫자로 첫 화면 완성.</p></div></div>
+      <div class="row"><div class="ph">4단계</div><div><h4>인사이트·커뮤니티(후방)·문의</h4><p>검색 유입 콘텐츠 지속 발행.</p></div></div>
+      <div class="row"><div class="ph">5단계</div><div><h4>AI 보도자료 작성 정상화</h4><p>지금 기사가 제대로 안 나오는 부분을 예전 정상 버전으로 복구.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. 성공 지표 -->
+<section>
+  <div class="wrap">
+    <span class="snum"><span class="n">8</span>성공 지표 (KPI)</span>
+    <h2>"1등"을 숫자로 확인합니다</h2>
+    <div class="kpi">
+      <div class="k"><div class="v">TOP 3</div><div class="l">'언론홍보·보도자료 배포' 네이버 검색 순위</div></div>
+      <div class="k"><div class="v">300+</div><div class="l">색인된 매체 상세페이지 수</div></div>
+      <div class="k"><div class="v">오가닉 ↑</div><div class="l">검색 유입 방문자(월)</div></div>
+      <div class="k"><div class="v">전환율</div><div class="l">방문 → 견적/배포 신청 비율</div></div>
+    </div>
+    <p style="margin-top:14px">→ 단계별로 <b>순위·색인 수·유입·전환</b>을 추적하며, 검색 자산(매체·콘텐츠)을 계속 늘리는 방식으로 1등을 굳힙니다.</p>
+  </div>
+</section>
+
+<!-- 9. 개발 기준 -->
+<section class="alt">
+  <div class="wrap">
+    <span class="snum"><span class="n">9</span>개발 기준</span>
+    <h2>개발팀 표준 그대로 만듭니다</h2>
+    <ul class="plain">
+      <li><b>기술</b> — PHP 8.2 · CodeIgniter 4 · MySQL. 표준 폴더·이름·보안 규칙 준수.</li>
+      <li><b>데이터</b> — 매체·가격·주문·게시글 등 12종 표로 설계. 기존 매체·가격 데이터 그대로 이관.</li>
+      <li><b>관리자</b> — 매체·가격·주문·문의를 직접 등록/수정하는 뒷단 포함.</li>
+      <li><b>SEO 친화 구조</b> — 매체 상세·인사이트가 검색에 최적화되도록 주소·구조화데이터 설계.</li>
+    </ul>
+    <div class="note">📎 개발팀 전달용 <b>상세 기술 문서</b>(폴더구조·데이터 표 설계·주소/API 규칙)는 <b>PR컴_제안서_언론홍보배포툴_v1</b> 파일에 정리돼 있습니다.</div>
+  </div>
+</section>
+
+<!-- 10. 정해야 할 것 -->
+<section>
+  <div class="wrap">
+    <span class="snum"><span class="n">10</span>정해야 할 것</span>
+    <h2>진행 전에 이 5가지를 정해주세요</h2>
+    <div class="decide">
+      <div class="d"><span class="q">?</span><div><h4>결제 방식</h4><p>실제 카드결제까지 붙일지, 1차는 "신청 → 담당자 확인"으로 갈지.</p></div></div>
+      <div class="d"><span class="q">?</span><div><h4>회원 범위</h4><p>간편 로그인 포함 여부, 사업자 정보 수집 범위.</p></div></div>
+      <div class="d"><span class="q">?</span><div><h4>AI 작성</h4><p>예전 기사 잘 나오던 방식(모델) 확인·복구.</p></div></div>
+      <div class="d"><span class="q">?</span><div><h4>매체 설명 원고</h4><p>매체별 설명 글을 내부에서 쓸지, 외주로 맡길지 (SEO 엔진의 연료).</p></div></div>
+      <div class="d"><span class="q">?</span><div><h4>서버 환경</h4><p>운영 서버(PHP·MySQL 버전, 도메인) 확정.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="end">
+  <div class="wrap">
+    <h2>결론</h2>
+    <p><b style="color:#fff">"매체를 가장 잘 설명하는 곳"</b>을 만들면,<br>그게 곧 <b style="color:#fff">검색 1등 엔진</b>이자 <b style="color:#fff">손님이 맡기고 싶은 이유</b>가 됩니다.<br>PR컴을 그렇게 만듭니다.</p>
+  </div>
+</div>
+
+<!-- 출처 -->
+<div class="wrap src">
+  <h4>조사 출처 (딥서칭)</h4>
+  뉴스와이어 요금 <a href="https://www.newswire.co.kr/?sd=11">newswire.co.kr</a> ·
+  오른웍스 <a href="https://www.orneworks.co.kr/">orneworks.co.kr</a> ·
+  mediap <a href="https://mediap.kr/">mediap.kr</a> ·
+  제보왕 <a href="https://www.jebowang.com/">jebowang.com</a> ·
+  PRWeb/PR Newswire 요금 <a href="https://www.prezly.com/academy/prweb-vs-prnewswire">prezly.com</a>, <a href="https://pressonify.ai/blog/press-release-distribution-pricing-comparison-2026">pressonify.ai</a> ·
+  네이버 SEO 2026 <a href="https://wintzlab.co.kr/homepage-seo-optimization-ai-search/">wintzlab</a>, <a href="https://idearabbit.co.kr/%EB%84%A4%EC%9D%B4%EB%B2%84-seo-%EB%B0%A9%EB%B2%95/naver-seo/">오픈타임</a>, <a href="https://webdot.co.kr/guide/%EB%84%A4%EC%9D%B4%EB%B2%84-seo-%EC%B5%9C%EC%A0%81%ED%99%94-%EB%B0%A9%EB%B2%95">webdot</a>
+  <div style="margin-top:14px;color:#9AA3B2">PR컴(PRCOME) 전략 계획서 v1 · 2026-07-31 · 내부 검토용</div>
+</div>
+
+</body>
+</html>
