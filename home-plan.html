@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRCOME 메인페이지(홈) 재구성 구상도 — 보여주기용</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{--bg:#EEF1F6;--surf:#fff;--ink:#0F1B2D;--sub:#4B5563;--sub2:#8A94A6;--pt:#2B5BFF;--pt-soft:#EAF0FF;--navy:#0E1B3A;--line:#D8DEE8;--dash:#B9C2D2;--up:#7A4DE0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;padding-bottom:50px}
+.top{background:linear-gradient(150deg,#12245B,#0E1B3A);color:#fff;padding:34px 20px 30px;text-align:center}
+.top h1{font-size:clamp(20px,3.4vw,29px);font-weight:900;letter-spacing:-.03em}
+.top p{color:#C7D2EA;font-size:14px;margin-top:9px}
+.top .tag{display:inline-block;margin-top:14px;font-size:12px;font-weight:800;color:#9DB2FF;background:rgba(157,178,255,.13);border:1px solid rgba(157,178,255,.3);border-radius:999px;padding:6px 14px}
+.page{max-width:940px;margin:26px auto 0;padding:0 16px}
+/* 6개 메뉴 매핑 */
+.maprow{background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:22px}
+.maprow h3{font-size:14.5px;font-weight:800;margin-bottom:12px}
+.mtab{width:100%;border-collapse:collapse;font-size:13px}
+.mtab td{padding:8px 6px;border-bottom:1px solid #EEF1F6;vertical-align:middle}
+.mtab tr:last-child td{border-bottom:0}
+.mtab .from{font-weight:700;color:var(--ink);width:42%}
+.mtab .arw{color:var(--pt);font-weight:800;text-align:center;width:34px}
+.mtab .to{color:var(--sub)}
+.pill{display:inline-block;font-size:10.5px;font-weight:800;border-radius:6px;padding:2px 7px;margin-left:6px}
+.p-star{background:#F1EBFF;color:var(--up)}
+.p-back{background:#FDF4E1;color:#B07708}
+.p-cut{background:#FCEEF1;color:#D2455F}
+/* 브라우저 목업 */
+.browser{background:var(--surf);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 20px 50px rgba(15,27,45,.12)}
+.bbar{display:flex;align-items:center;gap:7px;padding:11px 15px;background:#F4F6FA;border-bottom:1px solid var(--line)}
+.bbar .dot{width:11px;height:11px;border-radius:50%}
+.bbar .r{background:#FF5F57}.bbar .y{background:#FEBC2E}.bbar .g{background:#28C840}
+.bbar .url{margin-left:12px;flex:1;background:#fff;border:1px solid var(--line);border-radius:7px;padding:5px 12px;font-size:11.5px;color:var(--sub2)}
+/* 네비 목업 */
+.navmock{display:flex;align-items:center;gap:16px;padding:13px 20px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.navmock .logo{font-weight:900;color:var(--pt);font-size:16px;letter-spacing:-.02em}
+.navmock .nav{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;font-weight:700;color:var(--sub)}
+.navmock .nav .on{color:var(--pt)}
+.navmock .nav .bk{color:var(--sub2)}
+/* 섹션 블록 */
+.blocks{padding:16px}
+.blk{position:relative;border:1.5px dashed var(--dash);border-radius:12px;padding:20px 18px 18px;margin-bottom:14px;background:#FBFCFE}
+.blk .no{position:absolute;top:-11px;left:16px;width:24px;height:24px;border-radius:7px;background:var(--navy);color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.blk .src{position:absolute;top:-10px;right:14px;font-size:10.5px;font-weight:800;background:#EAF0FF;color:var(--pt);border:1px solid #CFDCFF;border-radius:999px;padding:3px 9px}
+.blk.star{border-color:var(--up);background:#F8F5FF}
+.blk.star .src{background:#F1EBFF;color:var(--up);border-color:#DFD2FA}
+.blk .lbl{font-size:11px;font-weight:800;color:var(--sub2);letter-spacing:.03em;margin-bottom:8px}
+/* 히어로 목업 */
+.hero-m{text-align:center;padding:14px 0 6px}
+.hero-m .h{font-size:clamp(18px,3vw,25px);font-weight:900;letter-spacing:-.02em}
+.hero-m .s{font-size:13px;color:var(--sub);margin-top:8px}
+.hero-m .btns{display:flex;gap:10px;justify-content:center;margin-top:14px;flex-wrap:wrap}
+.btn{font-size:13px;font-weight:800;border-radius:9px;padding:11px 20px}
+.btn.pri{background:var(--pt);color:#fff}
+.btn.gh{background:#fff;border:1.5px solid var(--line);color:var(--ink)}
+.hero-m .nums{display:flex;gap:22px;justify-content:center;margin-top:16px;flex-wrap:wrap}
+.hero-m .nums div{font-size:12px;color:var(--sub2)}
+.hero-m .nums b{display:block;font-size:17px;font-weight:900;color:var(--navy)}
+/* 3단계 */
+.steps3{display:grid;grid-template-columns:1fr 24px 1fr 24px 1fr;gap:6px;align-items:center}
+.steps3 .st{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 10px;text-align:center}
+.steps3 .st .n{width:26px;height:26px;border-radius:50%;background:var(--pt);color:#fff;font-weight:800;font-size:12px;display:inline-flex;align-items:center;justify-content:center;margin-bottom:6px}
+.steps3 .st .t{font-size:12.5px;font-weight:800}
+.steps3 .st .d{font-size:11px;color:var(--sub2);margin-top:2px}
+.steps3 .ar{text-align:center;color:var(--pt);font-weight:800}
+/* 카드 3 */
+.mini3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.mcard{background:#fff;border:1px solid var(--line);border-radius:10px;padding:13px}
+.mcard .badge{display:inline-block;font-size:10px;font-weight:800;background:var(--pt-soft);color:var(--pt);border-radius:5px;padding:2px 7px}
+.mcard .nm{font-size:13.5px;font-weight:800;margin:7px 0 3px}
+.mcard .mt{font-size:11px;color:var(--sub);line-height:1.5}
+.mcard .price{font-size:12.5px;font-weight:800;color:var(--pt);margin-top:6px}
+.viewall{text-align:center;margin-top:10px;font-size:12.5px;font-weight:800;color:var(--pt)}
+/* 비교 3 */
+.cmp{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.cmp .c{background:#fff;border:1px solid var(--line);border-radius:10px;padding:13px;text-align:center}
+.cmp .c .i{font-size:19px}
+.cmp .c .t{font-size:12.5px;font-weight:800;margin-top:5px}
+.cmp .c .d{font-size:10.5px;color:var(--sub2);margin-top:2px}
+/* 가격 미니표 */
+.ptbl{width:100%;border-collapse:collapse;font-size:12px;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.ptbl th,.ptbl td{padding:8px 10px;border-bottom:1px solid #EEF1F6;text-align:left}
+.ptbl th{background:#F4F6FA;font-weight:800;font-size:11px}
+.ptbl tr:last-child td{border-bottom:0}
+.ptbl .pr{color:var(--pt);font-weight:800}
+/* 인사이트/커뮤니티 리스트 */
+.list2{display:flex;flex-direction:column;gap:7px}
+.list2 .li{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:9px;padding:10px 13px;font-size:12.5px}
+.list2 .li .k{font-size:10px;font-weight:800;color:var(--pt);background:var(--pt-soft);border-radius:5px;padding:2px 7px;flex:none}
+.list2 .li .tt{font-weight:700;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.list2 .li .mt{margin-left:auto;font-size:11px;color:var(--sub2);flex:none}
+.small{font-size:11px;color:var(--sub2);margin-top:6px}
+/* cta */
+.ctam{background:var(--navy);border-radius:10px;padding:18px;text-align:center;color:#fff}
+.ctam .t{font-size:15px;font-weight:800}
+.ctam .btn{margin-top:12px;background:#fff;color:var(--navy)}
+.legend{font-size:11.5px;color:var(--sub2);text-align:center;margin:16px 0 0}
+.legend b{color:var(--up)}
+@media (max-width:680px){
+  .steps3{grid-template-columns:1fr;gap:8px}.steps3 .ar{transform:rotate(90deg)}
+  .mini3,.cmp{grid-template-columns:1fr}
+  .mtab .from{width:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <h1>PRCOME 메인페이지(홈) 이렇게 구성합니다</h1>
+  <p>기존 6개 메뉴를 홈 화면에서 이 순서·이 자리로 재배치합니다.</p>
+  <span class="tag">보여주기용 구상도(와이어프레임) · 실제 사이트 미변경</span>
+</div>
+
+<div class="page">
+
+  <!-- 6개 메뉴 → 홈 매핑 -->
+  <div class="maprow">
+    <h3>기존 6개 메뉴 → 홈 화면에서 어디로</h3>
+    <table class="mtab">
+      <tr><td class="from">보도자료 배포 AI</td><td class="arw">→</td><td class="to">홈 ②·상단 버튼 (작성 단계)</td></tr>
+      <tr><td class="from">언론홍보 (매체선택)</td><td class="arw">→</td><td class="to">홈 ② 3단계 배포 (매체 선택)</td></tr>
+      <tr><td class="from">디렉토리 — 언론사</td><td class="arw">→</td><td class="to">홈 ③ 미디어 디렉토리 미리보기 <span class="pill p-star">간판</span></td></tr>
+      <tr><td class="from">PR도구</td><td class="arw">→</td><td class="to">홈 ⑤ 가격표 + 배포 툴에 흡수</td></tr>
+      <tr><td class="from">매거진 (인사이트)</td><td class="arw">→</td><td class="to">홈 ⑥ 인사이트 미리보기</td></tr>
+      <tr><td class="from">커뮤니티</td><td class="arw">→</td><td class="to">홈 ⑦ 맨 아래 소량 <span class="pill p-back">뒤로</span></td></tr>
+      <tr><td class="from">디렉토리 — PR회사</td><td class="arw">→</td><td class="to">홈에서 제외 <span class="pill p-cut">축소</span></td></tr>
+    </table>
+  </div>
+
+  <!-- 브라우저 목업 -->
+  <div class="browser">
+    <div class="bbar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="url">prcome.com — 홈</span></div>
+    <div class="navmock">
+      <span class="logo">◆ PRCOME</span>
+      <span class="nav"><span class="on">홈</span><span>보도자료 배포</span><span>미디어 디렉토리</span><span>가격표</span><span>인사이트</span><span class="bk">커뮤니티</span></span>
+    </div>
+
+    <div class="blocks">
+
+      <!-- 1 히어로 -->
+      <div class="blk">
+        <span class="no">1</span><span class="src">신규 배너</span>
+        <div class="lbl">메인 배너 (첫인상)</div>
+        <div class="hero-m">
+          <div class="h">보도자료, 어디에 맡기시겠어요?</div>
+          <div class="s">AI로 작성 → 원하는 언론사 골라 → 한 번에 배포</div>
+          <div class="btns"><span class="btn pri">배포 시작하기</span><span class="btn gh">매체·가격 둘러보기</span></div>
+          <div class="nums"><div><b>200+</b>제휴 매체</div><div><b>12,000+</b>누적 배포</div><div><b>실시간</b>결과 리포트</div></div>
+        </div>
+      </div>
+
+      <!-- 2 배포 3단계 -->
+      <div class="blk">
+        <span class="no">2</span><span class="src">보도자료 AI + 언론홍보</span>
+        <div class="lbl">3단계 배포 흐름 — 바로 시작</div>
+        <div class="steps3">
+          <div class="st"><span class="n">1</span><div class="t">기사 작성</div><div class="d">AI 초안</div></div>
+          <div class="ar">→</div>
+          <div class="st"><span class="n">2</span><div class="t">매체 선택</div><div class="d">업종·가격 필터·장바구니</div></div>
+          <div class="ar">→</div>
+          <div class="st"><span class="n">3</span><div class="t">배포·결과</div><div class="d">신청 → 리포트</div></div>
+        </div>
+      </div>
+
+      <!-- 3 미디어 디렉토리 -->
+      <div class="blk star">
+        <span class="no">3</span><span class="src">디렉토리(언론사) · 간판</span>
+        <div class="lbl">⭐ 미디어 디렉토리 미리보기 — "이 매체가 어떤 곳인지"</div>
+        <div class="mini3">
+          <div class="mcard"><span class="badge">일반</span><div class="nm">공감신문</div><div class="mt">종합 인터넷신문 · 네이버 다음/네이트 노출</div><div class="price">7만원~</div></div>
+          <div class="mcard"><span class="badge">메디컬</span><div class="nm">메디컬투데이</div><div class="mt">의료 전문지 · 병원·한의원 가능</div><div class="price">12만원~</div></div>
+          <div class="mcard"><span class="badge">경제</span><div class="nm">이투데이</div><div class="mt">경제일간지 · 산업/증권 강점</div><div class="price">18만원~</div></div>
+        </div>
+        <div class="viewall">전체 매체 보기 →</div>
+      </div>
+
+      <!-- 4 왜 PR컴 -->
+      <div class="blk">
+        <span class="no">4</span><span class="src">신규(차별화)</span>
+        <div class="lbl">왜 PR컴인가 — 경쟁사보다 나은 점</div>
+        <div class="cmp">
+          <div class="c"><div class="i">💬</div><div class="t">매체 설명</div><div class="d">이름만 아닌 "어떤 곳인지"</div></div>
+          <div class="c"><div class="i">💰</div><div class="t">투명 가격</div><div class="d">매체별 가격 공개</div></div>
+          <div class="c"><div class="i">⚡</div><div class="t">원스톱</div><div class="d">작성→배포→리포트</div></div>
+        </div>
+      </div>
+
+      <!-- 5 가격표 -->
+      <div class="blk">
+        <span class="no">5</span><span class="src">PR도구 · 단가</span>
+        <div class="lbl">가격표 미리보기</div>
+        <table class="ptbl">
+          <tr><th>매체</th><th>업종</th><th>노출채널</th><th>가격</th></tr>
+          <tr><td>공감신문</td><td>일반</td><td>네이버 다음/네이트</td><td class="pr">70,000원</td></tr>
+          <tr><td>더파워</td><td>법률</td><td>네이버 다음/네이트</td><td class="pr">100,000원</td></tr>
+          <tr><td>건강다이제스트</td><td>건강식품</td><td>네이버 다음/네이트</td><td class="pr">170,000원</td></tr>
+        </table>
+        <div class="viewall">전체 가격표 보기 →</div>
+      </div>
+
+      <!-- 6 인사이트 -->
+      <div class="blk">
+        <span class="no">6</span><span class="src">매거진(인사이트)</span>
+        <div class="lbl">인사이트 미리보기 — 검색 유입 콘텐츠</div>
+        <div class="list2">
+          <div class="li"><span class="k">가이드</span><span class="tt">기사화 잘 되는 보도자료 쓰는 법</span><span class="mt">3분</span></div>
+          <div class="li"><span class="k">전략</span><span class="tt">업종별 언론홍보 접근법 총정리</span><span class="mt">5분</span></div>
+          <div class="li"><span class="k">AI검색</span><span class="tt">AI 검색(GEO) 시대의 보도자료</span><span class="mt">4분</span></div>
+        </div>
+      </div>
+
+      <!-- 7 커뮤니티 -->
+      <div class="blk">
+        <span class="no">7</span><span class="src">커뮤니티 · 뒤로</span>
+        <div class="lbl">커뮤니티 미리보기 (맨 아래·소량)</div>
+        <div class="list2">
+          <div class="li"><span class="k">Q&amp;A</span><span class="tt">보도자료 배포했는데 기사화가 안 돼요</span><span class="mt">답변 12</span></div>
+          <div class="li"><span class="k">사례</span><span class="tt">식품 브랜드 전국지 게재 성공기</span><span class="mt">조회 312</span></div>
+        </div>
+        <div class="small">※ 커뮤니티는 메인이 아니라 신뢰·검색 유입용 보조로 맨 아래 소량 노출</div>
+      </div>
+
+      <!-- 8 CTA -->
+      <div class="blk">
+        <span class="no">8</span><span class="src">마무리</span>
+        <div class="lbl">후기 · 자주 묻는 질문 · 마지막 버튼</div>
+        <div class="ctam"><div class="t">지금 보도자료를 배포해 보세요</div><span class="btn">배포 시작하기</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="legend">⭐ 표시(<b>3번</b>)가 이번 개편의 간판 — "매체를 설명하는 목록"이 검색 1등과 신뢰를 동시에 잡는 핵심입니다.</div>
+
+</div>
+</body>
+</html>
