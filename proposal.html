@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PR컴 리뉴얼 기획안 — 쉽게 정리한 버전</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{--bg:#F6F8FC;--surf:#fff;--ink:#0F1B2D;--sub:#4B5563;--sub2:#7A8494;--pt:#2B5BFF;--pt-soft:#EEF2FF;--navy:#0E1B3A;--line:#E4E9F1;--green:#16A34A;--orange:#E4612B;--purple:#6D5DF0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased}
+.wrap{max-width:920px;margin:0 auto;padding:0 20px}
+img{max-width:100%}
+/* 표지 */
+.cover{background:linear-gradient(160deg,#12245B,#0E1B3A 60%,#0A1330);color:#fff;padding:64px 0 58px;text-align:center}
+.cover .kick{display:inline-block;font-size:13px;font-weight:800;letter-spacing:.04em;color:#9DB2FF;background:rgba(157,178,255,.13);border:1px solid rgba(157,178,255,.3);border-radius:999px;padding:7px 16px;margin-bottom:20px}
+.cover h1{font-size:clamp(27px,5vw,42px);font-weight:900;letter-spacing:-.03em;line-height:1.25}
+.cover h1 b{color:#7FA0FF}
+.cover .lead{font-size:clamp(15px,2.2vw,18px);color:#C7D2EA;margin:18px auto 0;max-width:34ch;line-height:1.6}
+.cover .meta{margin-top:26px;font-size:12.5px;color:#8FA0C4}
+/* 섹션 */
+section{padding:44px 0}
+section.alt{background:var(--surf);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.snum{display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:800;color:var(--pt);margin-bottom:6px}
+.snum .n{width:26px;height:26px;border-radius:8px;background:var(--pt);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800}
+h2{font-size:clamp(21px,3.4vw,27px);font-weight:800;letter-spacing:-.03em;margin-bottom:6px}
+.desc{font-size:15px;color:var(--sub);margin-bottom:22px;max-width:62ch}
+h3{font-size:16.5px;font-weight:800;margin:22px 0 10px;letter-spacing:-.02em}
+p{font-size:15px;color:var(--sub)}
+b,strong{color:var(--ink);font-weight:700}
+/* 카드 */
+.cards{display:grid;gap:14px}
+.cards.c2{grid-template-columns:1fr 1fr}
+.cards.c3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+.card .ic{width:42px;height:42px;border-radius:11px;background:var(--pt-soft);display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+.card .ic svg{width:22px;height:22px;stroke:var(--pt);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.card h4{font-size:16px;font-weight:800;margin-bottom:6px}
+.card p{font-size:13.8px;line-height:1.6}
+/* 강조 박스 */
+.callout{background:var(--pt-soft);border:1px solid #D5DFFF;border-left:4px solid var(--pt);border-radius:12px;padding:18px 22px;margin:18px 0}
+.callout .q{font-size:17px;font-weight:800;color:var(--navy);line-height:1.5}
+.callout .s{font-size:14px;color:var(--sub);margin-top:6px}
+.note{background:#FFF8EC;border:1px solid #F5E4BE;border-radius:12px;padding:15px 18px;font-size:14px;color:#8A6D2F;margin:16px 0}
+.note b{color:#6B5011}
+/* 표 */
+table{width:100%;border-collapse:collapse;background:var(--surf);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:14px;margin:8px 0}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:#F1F5FC;font-weight:800;font-size:13px;color:var(--navy)}
+tr:last-child td{border-bottom:0}
+td.good{color:var(--pt);font-weight:700}
+td.bad{color:var(--sub2)}
+.badge{display:inline-block;font-size:11px;font-weight:800;border-radius:6px;padding:2px 8px}
+.badge.b1{background:var(--pt-soft);color:var(--pt)}
+.badge.b2{background:#FDEEE7;color:var(--orange)}
+/* 리스트 */
+ul.plain{list-style:none;display:flex;flex-direction:column;gap:9px;margin-top:8px}
+ul.plain li{position:relative;padding-left:26px;font-size:14.5px;color:var(--sub)}
+ul.plain li::before{content:"✓";position:absolute;left:0;top:0;color:var(--pt);font-weight:900}
+ul.plain li b{color:var(--ink)}
+/* before after */
+.ba{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;margin-top:8px}
+.ba .box{background:var(--surf);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.ba .box.old{opacity:.85}
+.ba .box .t{font-size:12px;font-weight:800;color:var(--sub2);margin-bottom:8px}
+.ba .box.new .t{color:var(--pt)}
+.ba .arrow{font-size:24px;color:var(--pt);font-weight:800}
+.ba .box ol{margin-left:18px;font-size:14px;color:var(--sub)}
+.ba .box li{margin:3px 0}
+/* 홈 흐름 */
+.flow{display:flex;flex-direction:column;gap:10px;margin-top:8px;counter-reset:f}
+.flow .step{display:flex;gap:14px;align-items:flex-start;background:var(--surf);border:1px solid var(--line);border-radius:12px;padding:15px 18px}
+.flow .step .no{counter-increment:f;flex:none;width:28px;height:28px;border-radius:8px;background:var(--navy);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center}
+.flow .step .no::before{content:counter(f)}
+.flow .step h4{font-size:15.5px;font-weight:800;margin-bottom:3px}
+.flow .step p{font-size:13.5px}
+/* 타임라인 */
+.tl{display:flex;flex-direction:column;gap:0;margin-top:8px}
+.tl .row{display:grid;grid-template-columns:74px 1fr;gap:16px;padding:14px 0;border-bottom:1px dashed var(--line)}
+.tl .row:last-child{border-bottom:0}
+.tl .ph{font-size:12.5px;font-weight:800;color:#fff;background:var(--pt);border-radius:8px;height:fit-content;padding:5px 0;text-align:center}
+.tl .row.m0 .ph{background:var(--navy)}
+.tl h4{font-size:15px;font-weight:800;margin-bottom:2px}
+.tl p{font-size:13.5px}
+/* 정해야할것 */
+.decide{display:grid;gap:12px}
+.decide .d{display:flex;gap:13px;background:var(--surf);border:1px solid var(--line);border-radius:12px;padding:15px 18px}
+.decide .d .q{flex:none;width:26px;height:26px;border-radius:50%;background:#FDEEE7;color:var(--orange);font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center}
+.decide .d h4{font-size:15px;font-weight:800;margin-bottom:2px}
+.decide .d p{font-size:13.5px}
+/* 마무리 */
+.end{background:linear-gradient(160deg,#12245B,#0E1B3A);color:#fff;text-align:center;padding:48px 0}
+.end h2{color:#fff}
+.end p{color:#C7D2EA;max-width:40ch;margin:10px auto 0}
+.foot{text-align:center;font-size:12px;color:var(--sub2);padding:26px 0 40px}
+@media (max-width:720px){
+  .cards.c2,.cards.c3{grid-template-columns:1fr}
+  .ba{grid-template-columns:1fr}.ba .arrow{transform:rotate(90deg);justify-self:center}
+  table{font-size:13px}th,td{padding:10px}
+}
+</style>
+</head>
+<body>
+
+<!-- 표지 -->
+<div class="cover">
+  <div class="wrap">
+    <span class="kick">PR컴(PRCOME) 리뉴얼 기획안 · 쉽게 정리한 버전</span>
+    <h1>보도자료, <b>어디에 맡길지</b> 고민이라면<br>PR컴이 제일 낫다</h1>
+    <p class="lead">커뮤니티 사이트에서 → 보도자료를 가장 잘 맡길 수 있는 서비스로 방향을 바꿉니다.</p>
+    <div class="meta">2026-07-31 · 회의 결론 정리 · 1차 기획안</div>
+  </div>
+</div>
+
+<!-- 1. 왜 바꾸나 -->
+<section>
+  <div class="wrap">
+    <span class="snum"><span class="n">1</span>지금 왜 바꾸나요</span>
+    <h2>커뮤니티만으로는 목적이 흐릿합니다</h2>
+    <p class="desc">지금 사이트는 "홍보 실무자 커뮤니티"가 중심입니다. 그런데 커뮤니티는 사람이 많이 모여야 돌아가는데, 초반에 활성화가 어렵고 "그래서 이 사이트가 뭘 해주는 곳이지?"가 잘 안 보입니다.</p>
+    <div class="cards c3">
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg></div>
+        <h4>목적이 약함</h4>
+        <p>"무엇을 해주는 곳"인지 한눈에 안 들어옵니다.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M17 20a5 5 0 0 0-10 0"/><circle cx="12" cy="8" r="4"/></svg></div>
+        <h4>활성화가 어려움</h4>
+        <p>커뮤니티는 사람이 모여야 하는데 초반 진입이 힘듭니다.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 12h18M12 3v18"/></svg></div>
+        <h4>타깃이 흐림</h4>
+        <p>누구를 위한 서비스인지 뾰족하지 않습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. 우리가 내세울 것 -->
+<section class="alt">
+  <div class="wrap">
+    <span class="snum"><span class="n">2</span>그래서 이렇게 갑니다</span>
+    <h2>보도자료 배포를 "가장 잘 맡기는 곳"</h2>
+    <p class="desc">PR컴을 보도자료(언론홍보) 배포를 도와주는 <b>실무 도구 겸 서비스</b>로 만듭니다. 손님은 이미 보도자료를 뿌리고 있거나, 뿌릴 곳을 찾는 사람들입니다.</p>
+    <div class="callout">
+      <div class="q">"보도자료, 어디에 맡길지 고민이라면 — PR컴이 제일 낫다"</div>
+      <div class="s">이 한마디를 사이트 전체로 증명하는 것이 목표입니다.</div>
+    </div>
+    <table>
+      <tr><th style="width:120px">누구를 위해</th><td>이미 보도자료를 배포하거나, 맡길 곳을 <b>비교하는 실무 담당자</b> (대행사·일반 광고주가 주 타깃 아님)</td></tr>
+      <tr><th>경쟁 상대</th><td>뉴스와이어, 미디어피, 리스토브 같은 <b>보도자료 배포 대행 서비스</b></td></tr>
+      <tr><th>이기는 방법</th><td>① 언론사를 <b>제대로 설명</b>해주는 목록 ② 가격이 <b>투명</b> ③ 글쓰기부터 배포까지 <b>한 번에</b></td></tr>
+      <tr><th>커뮤니티는</th><td>없애지 않고 <b>뒤쪽 보조 콘텐츠</b>로 이동 (신뢰·검색 유입용)</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 3. 핵심 무기 -->
+<section>
+  <div class="wrap">
+    <span class="snum"><span class="n">3</span>가장 큰 무기</span>
+    <h2>"이 언론사가 뭐하는 곳인지" 알려주는 목록</h2>
+    <p class="desc">손님은 '공감신문'이 어떤 매체인지 잘 모릅니다. 경쟁사들은 매체 이름만 쭉 나열합니다. 우리는 <b>매체 하나하나를 설명</b>해서, "우리 업종에 맞는지"를 바로 판단하게 해줍니다. 이 데이터는 이미 상당 부분 갖고 있습니다.</p>
+    <table>
+      <tr><th style="width:150px">항목</th><th>경쟁사</th><th>PR컴</th></tr>
+      <tr><td>매체 정보</td><td class="bad">이름만 나열</td><td class="good">매체 설명 + 어떤 독자 + 노출 채널</td></tr>
+      <tr><td>업종 적합도</td><td class="bad">알기 어려움</td><td class="good">업종별 가능/불가 · 참고사항 표시</td></tr>
+      <tr><td>가격</td><td class="bad">문의·불투명</td><td class="good">업종·매체별 가격 공개 + 장바구니</td></tr>
+      <tr><td>작성</td><td class="bad">직접 작성</td><td class="good">AI로 초안 작성 → 바로 배포</td></tr>
+    </table>
+    <div class="note">✅ <b>이미 가진 자산</b> — 일반·메디컬·창업·법률·뷰티·헬스·건강식품·블록체인·주식(HTS) 등 업종별 <b>노출채널·참고사항·가격</b> 데이터가 정리돼 있습니다. 여기에 "매체 설명"만 채우면 됩니다.</div>
+  </div>
+</section>
+
+<!-- 4. 메뉴 구조 -->
+<section class="alt">
+  <div class="wrap">
+    <span class="snum"><span class="n">4</span>메뉴 구조</span>
+    <h2>메뉴 순서를 이렇게 바꿉니다</h2>
+    <p class="desc">"언론사 목록"을 맨 앞 간판으로 올리고, 커뮤니티는 뒤로 뺍니다.</p>
+    <div class="ba">
+      <div class="box old">
+        <div class="t">지금 (커뮤니티 중심)</div>
+        <ol><li>커뮤니티</li><li>인사이트</li><li>보도자료 AI</li><li>언론홍보</li><li>디렉토리</li><li>PR도구</li></ol>
+      </div>
+      <div class="arrow">→</div>
+      <div class="box new">
+        <div class="t">바꾼 후 (배포·매체 중심)</div>
+        <ol><li>홈</li><li><b>보도자료 배포(도구)</b></li><li><b>언론사(매체) 목록</b></li><li>가격표</li><li>인사이트</li><li>커뮤니티 <span class="badge b1">뒤로</span></li></ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. 홈 화면 구성 -->
+<section>
+  <div class="wrap">
+    <span class="snum"><span class="n">5</span>첫 화면(홈) 구성</span>
+    <h2>홈에 들어오면 위에서 아래로</h2>
+    <p class="desc">들어오자마자 "여기서 보도자료를 배포할 수 있구나"가 바로 보이게 합니다.</p>
+    <div class="flow">
+      <div class="step"><span class="no"></span><div><h4>큰 문구 + 시작 버튼</h4><p>"보도자료, 어디에 맡기시겠어요?" · [배포 시작하기] [매체·가격 둘러보기] · 제휴 매체 수·누적 배포 같은 신뢰 숫자</p></div></div>
+      <div class="step"><span class="no"></span><div><h4>3단계 배포 흐름</h4><p>기사 작성 → 매체 선택 → 결제(신청)를 한 줄로 보여주고 바로 시작</p></div></div>
+      <div class="step"><span class="no"></span><div><h4>언론사(매체) 목록 미리보기 ⭐</h4><p>대표 매체 카드(설명·업종·노출채널) 몇 개 + "전체 보기"</p></div></div>
+      <div class="step"><span class="no"></span><div><h4>왜 PR컴인가</h4><p>경쟁사와 비교표로 "우리가 나은 이유"를 명확히</p></div></div>
+      <div class="step"><span class="no"></span><div><h4>가격표 미리보기</h4><p>업종·매체별 투명 가격</p></div></div>
+      <div class="step"><span class="no"></span><div><h4>인사이트 · 커뮤니티(뒤쪽)</h4><p>실무 글·자료를 조금만 노출 (신뢰·검색용)</p></div></div>
+      <div class="step"><span class="no"></span><div><h4>후기·실적 · 자주 묻는 질문 · 마지막 버튼</h4><p>믿음을 주고 다시 한 번 배포로 유도</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. 핵심 페이지 -->
+<section class="alt">
+  <div class="wrap">
+    <span class="snum"><span class="n">6</span>핵심 페이지 4개</span>
+    <h2>이 네 개가 사이트의 중심</h2>
+    <div class="cards c2" style="margin-top:16px">
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg></div><h4>① 언론사(매체) 목록 <span class="badge b1">간판</span></h4><p>업종·노출채널·가격으로 걸러 보고, 매체마다 "어떤 곳인지" 설명. 마음에 들면 바로 배포 담기.</p></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"/></svg></div><h4>② 보도자료 배포 도구</h4><p>AI로 기사 초안 작성 → 원하는 매체 선택(장바구니) → 신청/결제. 진행 단계 표시.</p></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2v20M6 6h9a3 3 0 0 1 0 6H8a3 3 0 0 0 0 6h10"/></svg></div><h4>③ 가격표</h4><p>업종 × 매체 가격을 한눈에. 검색·정렬 가능.</p></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-11.6 7.7L3 21l1.8-6.4A8.5 8.5 0 1 1 21 11.5z"/></svg></div><h4>④ 커뮤니티 <span class="badge b2">뒤쪽</span></h4><p>실무 질문·노하우·자료 게시판. 검색 유입과 신뢰를 위한 보조 콘텐츠.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. 만드는 순서 -->
+<section>
+  <div class="wrap">
+    <span class="snum"><span class="n">7</span>만드는 순서</span>
+    <h2>이 순서로 단계별로 만듭니다</h2>
+    <div class="tl">
+      <div class="row m0"><div class="ph">준비</div><div><h4>기본 뼈대 세팅</h4><p>개발 환경·폴더·데이터 저장 틀을 표준대로 준비합니다.</p></div></div>
+      <div class="row"><div class="ph">1단계</div><div><h4>언론사(매체) 목록부터 ⭐</h4><p>간판이니 제일 먼저. 관리자에서 매체 등록·수정, 손님용 목록/상세 완성.</p></div></div>
+      <div class="row"><div class="ph">2단계</div><div><h4>보도자료 배포 도구</h4><p>작성 → 매체 선택 → 신청까지. 가격표 연결.</p></div></div>
+      <div class="row"><div class="ph">3단계</div><div><h4>홈 새로 구성</h4><p>배포 도구 + 매체 목록 미리보기 + 차별화로 첫 화면 재구성.</p></div></div>
+      <div class="row"><div class="ph">4단계</div><div><h4>보조 콘텐츠</h4><p>인사이트, 커뮤니티(뒤쪽), 오늘의 PR 정보, 문의.</p></div></div>
+      <div class="row"><div class="ph">5단계</div><div><h4>AI 보도자료 작성 정상화</h4><p>지금 기사가 제대로 안 나오는 부분을 예전 정상 버전으로 복구·연결.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. 개발 기본 규칙 -->
+<section class="alt">
+  <div class="wrap">
+    <span class="snum"><span class="n">8</span>개발 기본 규칙</span>
+    <h2>개발팀 표준대로 만듭니다</h2>
+    <p class="desc">개발팀이 준 「제작 표준」을 그대로 지켜서 만듭니다. 아래는 쉽게 요약한 것이고, 실제 개발용 상세 규칙은 별도 문서로 함께 전달합니다.</p>
+    <ul class="plain">
+      <li><b>사용 기술</b> — PHP 8.2 · CodeIgniter 4 · MySQL(데이터베이스). 정해진 표준 그대로.</li>
+      <li><b>폴더·이름 규칙</b> — 표준에 정해진 폴더 구조와 파일 이름 규칙을 지킵니다.</li>
+      <li><b>보안</b> — 로그인 암호화, 잘못된 입력 차단, 파일 업로드 제한 등 기본 보안 규칙 적용.</li>
+      <li><b>데이터 정리</b> — 매체·가격·주문·게시글 등을 표 형태로 나눠 저장(총 12종). 지금 갖고 있는 매체·가격 데이터를 그대로 옮겨 담습니다.</li>
+      <li><b>관리자 페이지</b> — 매체·가격·주문·게시글·문의를 직접 등록/수정할 수 있는 뒷단 화면 포함.</li>
+    </ul>
+    <div class="note">📎 개발팀 전달용 <b>상세 기술 문서</b>(폴더구조·데이터 표 설계·주소 규칙·API 형식)는 <b>PR컴_제안서_언론홍보배포툴_v1</b> 파일에 정리돼 있습니다.</div>
+  </div>
+</section>
+
+<!-- 9. 정해야 할 것 -->
+<section>
+  <div class="wrap">
+    <span class="snum"><span class="n">9</span>정해야 할 것</span>
+    <h2>진행 전에 이 5가지를 정해주세요</h2>
+    <div class="decide">
+      <div class="d"><span class="q">?</span><div><h4>결제 방식</h4><p>실제 카드결제까지 붙일지, 1차는 "신청 → 담당자가 확인" 방식으로 갈지.</p></div></div>
+      <div class="d"><span class="q">?</span><div><h4>회원 가입 범위</h4><p>간편 로그인 포함할지, 사업자(회사) 정보를 어디까지 받을지.</p></div></div>
+      <div class="d"><span class="q">?</span><div><h4>AI 작성 방식</h4><p>예전에 기사 잘 나오던 방식(모델)을 확인해서 복구해야 합니다.</p></div></div>
+      <div class="d"><span class="q">?</span><div><h4>매체 설명 원고</h4><p>매체별 "어떤 곳인지" 설명 글을 내부에서 쓸지, 외주로 맡길지.</p></div></div>
+      <div class="d"><span class="q">?</span><div><h4>서버 환경</h4><p>실제 운영할 서버(PHP·MySQL 버전, 도메인) 확정.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 마무리 -->
+<div class="end">
+  <div class="wrap">
+    <h2>정리하면</h2>
+    <p>커뮤니티 대신, <b style="color:#fff">"보도자료를 가장 잘 맡기는 곳"</b>으로 방향을 잡고,<br>언론사 목록을 간판으로 세워 경쟁사를 이기는 사이트를 만듭니다.</p>
+  </div>
+</div>
+<div class="foot">PR컴(PRCOME) 리뉴얼 기획안 v1 · 2026-07-31 · 내부 검토용</div>
+
+</body>
+</html>
