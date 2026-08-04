@@ -1,0 +1,129 @@
+/* ============================================================
+   PRCOME 홈 — 섹션 스타일 (magazine-system.css 토큰 사용)
+   계획서 §5 메인페이지 구성 순서
+   ============================================================ */
+/* Pretendard 미로딩 시 시스템 폰트 폴백(맑은 고딕 등) */
+body{font-family:'Pretendard','Malgun Gothic','Apple SD Gothic Neo',system-ui,-apple-system,sans-serif}
+.sec{padding:56px 0}
+.sec .in{max-width:1180px;margin:0 auto;padding:0 24px}
+.sec.alt{background:var(--surf);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.klab{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:800;letter-spacing:.03em;color:var(--pt);margin-bottom:10px}
+.klab::before{content:"";width:16px;height:2px;background:var(--pt);border-radius:2px}
+.sec h2{font-size:clamp(22px,3vw,29px);font-weight:800;letter-spacing:-.03em;line-height:1.28}
+.sec .lead{font-size:15.5px;color:var(--sub);margin-top:10px;max-width:64ch;line-height:1.7}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:24px;flex-wrap:wrap}
+.more{font-size:13.5px;font-weight:700;color:var(--pt);white-space:nowrap}
+.more .ar{margin-left:4px}
+
+/* ── 1. 히어로 ── */
+.hero{position:relative;overflow:hidden;background:linear-gradient(160deg,#0E1F52 0%,#0E1B3A 60%,#0A1330 100%);color:#fff}
+.hero::after{content:"";position:absolute;top:-140px;right:-80px;width:520px;height:520px;background:radial-gradient(circle,rgba(90,130,255,.35),transparent 68%);pointer-events:none}
+.hero .in{position:relative;z-index:2;max-width:1180px;margin:0 auto;padding:70px 24px 64px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero .eye{display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:800;letter-spacing:.03em;color:#9DB2FF;background:rgba(157,178,255,.12);border:1px solid rgba(157,178,255,.28);border-radius:999px;padding:7px 15px}
+.hero h1{font-size:clamp(30px,4.6vw,46px);font-weight:900;letter-spacing:-.035em;line-height:1.2;margin:20px 0 0}
+.hero h1 b{color:#7FA0FF}
+.hero .sub{font-size:clamp(15px,1.8vw,18px);color:#C7D2EA;line-height:1.7;margin-top:16px;max-width:44ch}
+.hero .cta{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
+.hbtn{display:inline-flex;align-items:center;gap:8px;height:52px;padding:0 26px;border-radius:11px;font-weight:800;font-size:15px}
+.hbtn.pri{background:var(--pt);color:#fff}.hbtn.pri:hover{background:var(--pt-2)}
+.hbtn.gh{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);color:#fff}.hbtn.gh:hover{background:rgba(255,255,255,.16)}
+.hero .nums{display:flex;gap:26px;margin-top:30px;flex-wrap:wrap}
+.hero .nums div{font-size:12.5px;color:#8FA0C4}
+.hero .nums b{display:block;font-size:22px;font-weight:900;color:#fff;letter-spacing:-.02em}
+/* 히어로 우측 미리보기 카드 */
+.hero-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:20px;backdrop-filter:blur(4px)}
+.hero-card .hc-t{font-size:12.5px;font-weight:800;color:#9DB2FF;margin-bottom:12px;display:flex;align-items:center;gap:7px}
+.hero-card .hc-step{display:flex;align-items:center;gap:11px;padding:11px 0;border-top:1px solid rgba(255,255,255,.10)}
+.hero-card .hc-step:first-of-type{border-top:0}
+.hero-card .hc-no{width:26px;height:26px;border-radius:8px;background:var(--pt);color:#fff;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;flex:none}
+.hero-card .hc-tx{font-size:13.5px;font-weight:700;color:#EAF0FF}
+.hero-card .hc-tx small{display:block;font-size:11.5px;font-weight:500;color:#9FB0D0;margin-top:1px}
+
+/* ── 2. 서비스 이용 과정 ── */
+.flow4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:s}
+.flow4 .f{position:relative;background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:22px 18px}
+.flow4 .f .no{counter-increment:s;width:30px;height:30px;border-radius:9px;background:var(--pt-soft);color:var(--pt);font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+.flow4 .f .no::before{content:counter(s)}
+.flow4 .f h3{font-size:15.5px;font-weight:800;margin-bottom:5px}
+.flow4 .f p{font-size:13px;color:var(--sub);line-height:1.6}
+
+/* ── 3. 미디어 디렉토리 카드 ── */
+.mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.mcard{background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:18px 20px;transition:border-color var(--dur) var(--ease),box-shadow var(--dur) var(--ease),transform .1s}
+.mcard:hover{border-color:var(--pt);box-shadow:0 8px 22px rgba(49,92,255,.09);transform:translateY(-2px)}
+.mcard .top{display:flex;align-items:center;gap:11px;margin-bottom:10px}
+.mcard .lg{width:42px;height:42px;border-radius:11px;background:var(--pt-soft);color:var(--pt);font-weight:800;font-size:16px;display:flex;align-items:center;justify-content:center;flex:none}
+.mcard .nm{font-size:16px;font-weight:800}
+.mcard .cat{font-size:11.5px;font-weight:800;color:var(--pt);background:var(--pt-soft);border-radius:6px;padding:2px 8px;margin-left:auto}
+.mcard .desc{font-size:13px;color:var(--sub);line-height:1.6;min-height:40px}
+.mcard .foot{display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.mcard .ch{font-size:12px;color:var(--sub-2)}
+.mcard .pr{font-size:15px;font-weight:800;color:var(--pt)}
+
+/* ── 4·5·6. 소개 밴드(2열) ── */
+.band{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--surf);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.band .tx{padding:34px 34px}
+.band .tx h3{font-size:21px;font-weight:800;letter-spacing:-.02em}
+.band .tx p{font-size:14.5px;color:var(--sub);line-height:1.75;margin-top:12px}
+.band .tx .b-list{margin-top:16px;display:flex;flex-direction:column;gap:9px}
+.band .tx .b-list li{list-style:none;position:relative;padding-left:24px;font-size:13.8px;color:var(--sub)}
+.band .tx .b-list li::before{content:"✓";position:absolute;left:0;color:var(--pt);font-weight:900}
+.band .tx .b-list li b{color:var(--ink)}
+.band .tx .go{display:inline-flex;align-items:center;gap:7px;margin-top:20px;height:46px;padding:0 22px;border-radius:10px;background:var(--pt);color:#fff;font-weight:800;font-size:14px}
+.band .tx .go:hover{background:var(--pt-2)}
+.band .vis{background:linear-gradient(150deg,#12245B,#0E1B3A);color:#fff;padding:30px;display:flex;align-items:center;justify-content:center}
+.band.rev .tx{order:2}.band.rev .vis{order:1}
+/* 밴드 내부 목업 */
+.vmock{width:100%;max-width:340px}
+.vmock .row{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);border-radius:10px;padding:12px 14px;margin-bottom:9px;font-size:12.5px;color:#DCE4F5}
+.vmock .row b{color:#fff}
+.vmock .row.hi{background:var(--pt);border-color:var(--pt);color:#fff;font-weight:700}
+.tools4{display:grid;grid-template-columns:1fr 1fr;gap:9px;width:100%;max-width:360px}
+.tools4 .t{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);border-radius:10px;padding:14px;text-align:center;font-size:12.5px;font-weight:700;color:#EAF0FF}
+.tools4 .t small{display:block;font-size:10.5px;color:#9FB0D0;font-weight:500;margin-top:3px}
+
+/* ── 7. 인사이트 ── */
+.igrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.icard{background:var(--surf);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:border-color var(--dur) var(--ease),box-shadow var(--dur) var(--ease),transform .1s}
+.icard:hover{border-color:var(--pt);box-shadow:0 8px 22px rgba(49,92,255,.08);transform:translateY(-2px)}
+.icard .th{height:120px;background:linear-gradient(135deg,#4A6BFF,#1E40E8);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:13px;letter-spacing:.02em;opacity:.95}
+.icard .th.g2{background:linear-gradient(135deg,#7E6EF5,#4A3FD0)}
+.icard .th.g3{background:linear-gradient(135deg,#16B4CE,#0A7A8C)}
+.icard .ib{padding:16px 18px}
+.icard .k{font-size:11px;font-weight:800;color:var(--pt);background:var(--pt-soft);border-radius:5px;padding:2px 8px}
+.icard .t{font-size:15.5px;font-weight:700;margin:9px 0 5px;line-height:1.4}
+.icard:hover .t{color:var(--pt)}
+.icard .m{font-size:12px;color:var(--sub-2)}
+
+/* ── 8. 커뮤니티 ── */
+.clist{display:flex;flex-direction:column;gap:9px}
+.crow{display:flex;align-items:center;gap:12px;background:var(--surf);border:1px solid var(--line);border-radius:11px;padding:13px 16px}
+.crow:hover{border-color:var(--pt)}
+.crow .k{font-size:11px;font-weight:800;color:var(--pt);background:var(--pt-soft);border-radius:5px;padding:2px 8px;flex:none}
+.crow .t{font-size:14px;font-weight:700;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.crow:hover .t{color:var(--pt)}
+.crow .m{margin-left:auto;font-size:12px;color:var(--sub-2);white-space:nowrap;flex:none}
+
+/* ── 9. CTA ── */
+.finalcta{background:linear-gradient(150deg,#12245B,#0E1B3A);color:#fff;text-align:center;padding:56px 24px}
+.finalcta h2{font-size:clamp(22px,3vw,30px);font-weight:900;letter-spacing:-.03em}
+.finalcta p{color:#C7D2EA;font-size:15px;margin:12px auto 0;max-width:48ch;line-height:1.7}
+.finalcta .cta{display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap}
+.finalcta .hbtn.gh{border-color:rgba(255,255,255,.35)}
+
+/* 반응형 */
+@media (max-width:900px){
+  .hero .in{grid-template-columns:1fr;gap:28px}
+  .hero-card{max-width:460px}
+  .flow4{grid-template-columns:1fr 1fr}
+  .mgrid,.igrid{grid-template-columns:1fr}
+  .band{grid-template-columns:1fr}
+  .band.rev .tx{order:1}.band.rev .vis{order:2}
+  .band .vis{padding:26px}
+  .tools4,.vmock{max-width:none}
+}
+@media (max-width:560px){
+  .sec{padding:42px 0}
+  .flow4{grid-template-columns:1fr}
+  .hero .in{padding:52px 20px 46px}
+}
