@@ -61,6 +61,31 @@ window.SEO={
 .quicknav a:hover{color:var(--pt);border-bottom-color:var(--pt)}
 .quicknav a svg{width:16px;height:16px;fill:none;stroke:var(--sub-2);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
 .quicknav a:hover svg{stroke:var(--pt)}
+/* ===== PDF 재구성 섹션 ===== */
+.howto{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.howto .ht{background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:22px 18px}
+.howto .ht .n{width:30px;height:30px;border-radius:9px;background:var(--pt-soft);color:var(--pt);font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+.howto .ht h3{font-size:15.5px;font-weight:800;margin-bottom:5px}
+.howto .ht p{font-size:13px;color:var(--sub);line-height:1.6}
+.mcards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.mcards .mcard{background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:18px 20px;transition:border-color var(--dur) var(--ease),box-shadow var(--dur-2) var(--ease),transform var(--dur-2) var(--ease)}
+.mcards .mcard:hover{border-color:var(--pt);box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.mcards .top{display:flex;align-items:center;gap:11px;margin-bottom:9px}
+.mcards .lg{width:40px;height:40px;border-radius:10px;background:var(--pt-soft);color:var(--pt);font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;flex:none}
+.mcards .nm{font-size:15.5px;font-weight:800}
+.mcards .cat{font-size:11px;font-weight:800;color:var(--pt);background:var(--pt-soft);border-radius:6px;padding:2px 8px;margin-left:auto}
+.mcards .desc{font-size:13px;color:var(--sub);line-height:1.6;min-height:38px}
+.mcards .foot{display:flex;align-items:center;justify-content:space-between;margin-top:11px;padding-top:11px;border-top:1px dashed var(--line);font-size:12px;color:var(--sub-2)}
+.mcards .pr{font-size:14px;font-weight:800;color:var(--pt)}
+.toolgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.toolgrid .tl{background:var(--surf);border:1px solid var(--line);border-radius:12px;padding:20px 16px;text-align:center}
+.toolgrid .tl .ic{width:42px;height:42px;border-radius:12px;background:var(--pt-soft);display:flex;align-items:center;justify-content:center;margin:0 auto 11px}
+.toolgrid .tl .ic svg{width:21px;height:21px;stroke:var(--pt);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.toolgrid .tl .t{font-size:14px;font-weight:800}
+.toolgrid .tl .s{font-size:11.5px;color:var(--sub-2);margin-top:3px}
+.toolgrid .tl.soon{opacity:.7}
+@media(max-width:900px){.howto{grid-template-columns:1fr 1fr}.mcards{grid-template-columns:1fr}.toolgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.howto{grid-template-columns:1fr}.toolgrid{grid-template-columns:1fr}}
 /* ===== 공통 섹션 ===== */
 .sec{padding:44px 0}
 .sec.alt{background:var(--surf);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -257,10 +282,99 @@ window.SEO={
   <a href="insights/index.html"><svg viewBox="0 0 24 24"><path d="M12 6C10 4.6 6.7 4 4 4v14c2.7 0 6 .6 8 2 2-1.4 5.3-2 8-2V4c-2.7 0-6 .6-8 2z"/><path d="M12 6v14"/></svg>인사이트</a>
 </div></nav>
 
-<!-- 2) 커뮤니티 (최대 비중) — 첫 콘텐츠로 상단 배치 -->
+<!-- 2) PRCOME 서비스 이용 과정 -->
 <div class="wrap"><section class="sec">
+  <div class="klab">이용 과정</div>
+  <div class="sec-head"><h2>이렇게 진행됩니다</h2></div>
+  <div class="howto">
+    <div class="ht"><span class="n">1</span><h3>언론사 확인</h3><p>업종·노출채널·예상 단가로 우리에게 맞는 매체를 찾습니다.</p></div>
+    <div class="ht"><span class="n">2</span><h3>보도자료 작성</h3><p>기업·제품 정보를 넣으면 AI가 초안을 만들고, 검수·수정 후 저장합니다.</p></div>
+    <div class="ht"><span class="n">3</span><h3>언론홍보 신청</h3><p>매체를 선택해 예상 금액·조건을 확인하고 신청합니다.</p></div>
+    <div class="ht"><span class="n">4</span><h3>진행·결과 확인</h3><p>신청 상태와 게재 결과를 대시보드에서 확인합니다.</p></div>
+  </div>
+</section></div>
+
+<!-- 3) 미디어 디렉토리 주요 언론사 -->
+<div class="sec alt"><div class="wrap">
+  <div class="klab">미디어 디렉토리</div>
+  <div class="sec-head"><h2>이 매체가 어떤 곳인지까지</h2><a class="more" href="directory/media.html">전체 언론사 <span class="ar"></span></a></div>
+  <div class="mcards">
+    <div class="mcard"><div class="top"><span class="lg">공</span><span class="nm">공감신문</span><span class="cat">일반</span></div><div class="desc">종합 인터넷신문. 생활·사회 이슈 중심으로 폭넓은 독자층을 확보한 매체.</div><div class="foot"><span>네이버 · 다음/네이트</span><span class="pr">7만원~</span></div></div>
+    <div class="mcard"><div class="top"><span class="lg">메</span><span class="nm">메디컬투데이</span><span class="cat">메디컬</span></div><div class="desc">의료·헬스 전문지. 병원·한의원·피부과 등 의료 업종 홍보에 적합.</div><div class="foot"><span>네이버 · 다음/네이트</span><span class="pr">12만원~</span></div></div>
+    <div class="mcard"><div class="top"><span class="lg">이</span><span class="nm">이투데이</span><span class="cat">경제</span></div><div class="desc">경제일간지. 산업·증권·기업 이슈에 강점이 있는 매체.</div><div class="foot"><span>네이버 · 다음/네이트</span><span class="pr">18만원~</span></div></div>
+  </div>
+</div></div>
+
+<!-- 4) 보도자료 작성 AI 소개 -->
+<div class="wrap"><section class="aiband">
+  <div class="ai-l">
+    <span class="kl">보도자료 작성 AI</span>
+    <h3>정보만 넣으면, 보도자료 초안이 나옵니다</h3>
+    <p>기업·제품·홍보 목적을 입력하면 AI가 제목·부제·본문 초안을 작성합니다. 검수·수정 후 저장하고, 그대로 언론홍보 신청으로 이어집니다.</p>
+  </div>
+  <div class="ai-r">
+    <a class="ai-btn pri" href="tools/press-release.html">보도자료 작성 시작 <span class="tag">AI</span></a>
+    <a class="ai-btn gh" href="tools/pr-agent/index.html?start=write">AI 워크스페이스</a>
+  </div>
+</section></div>
+
+<!-- 5) 언론홍보 서비스 소개 -->
+<div class="wrap"><section class="sec">
+  <div class="klab">언론홍보</div>
+  <div class="sec-head"><h2>매체를 골라, 바로 언론홍보 신청</h2><a class="more" href="press-distribution.html">신청 페이지 <span class="ar"></span></a></div>
+  <p class="hub-lead" style="margin-bottom:18px">언론사별 예상 금액·진행 가능 업종·노출채널·예상 소요 기간을 확인하고, 원하는 매체를 담아 언론홍보를 신청하세요. (로그인 후 상세 조건·금액 확인)</p>
+  <div class="howto" style="grid-template-columns:repeat(3,1fr)">
+    <div class="ht"><span class="n">1</span><h3>기사 작성</h3><p>보도자료를 작성하거나 업로드합니다.</p></div>
+    <div class="ht"><span class="n">2</span><h3>매체 선택</h3><p>업종·노출채널·예상 금액을 확인하고 매체를 담습니다.</p></div>
+    <div class="ht"><span class="n">3</span><h3>신청·확인</h3><p>언론홍보를 신청하고 진행 상태를 확인합니다.</p></div>
+  </div>
+</section></div>
+
+<!-- 6) PR 도구 소개 -->
+<div class="sec alt"><div class="wrap">
+  <div class="klab">PR 도구</div>
+  <div class="sec-head"><h2>AI로 홍보를 진단하고 준비</h2><a class="more" href="tools/index.html">PR 도구 <span class="ar"></span></a></div>
+  <div class="toolgrid">
+    <a class="tl" href="tools/index.html"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg></span><span class="t">AI 노출진단</span><span class="s">현재 제공</span></a>
+    <div class="tl soon"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l2.4 6.9H22l-6 4.4 2.3 7-6.3-4.6L5.7 21 8 14.3l-6-4.4h7.6z"/></svg></span><span class="t">기사화 가능성</span><span class="s">후속 예정</span></div>
+    <div class="tl soon"><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 5h13a1 1 0 011 1v12M7 9h7M7 13h7M7 17h4"/></svg></span><span class="t">언론사 추천</span><span class="s">후속 예정</span></div>
+    <div class="tl soon"><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M4 6l8 6 8-6"/></svg></span><span class="t">피치메일 작성</span><span class="s">후속 예정</span></div>
+  </div>
+</div></div>
+
+<!-- 7) 언론홍보 인사이트 -->
+<div class="wrap"><section class="sec">
+  <div class="klab">인사이트</div>
+  <div class="sec-head"><h2>언론홍보 인사이트</h2><a class="more" href="insights/index.html">인사이트 전체 <span class="ar"></span></a></div>
+  <div class="mag-cats">
+    <a href="insights/index.html?cat=pr">언론홍보 전략</a>
+    <a href="insights/index.html?cat=pr">보도자료 작성</a>
+    <a href="insights/index.html?cat=media">기자 커뮤니케이션</a>
+    <a href="insights/index.html?cat=pr">위기관리</a>
+    <a href="insights/index.html?cat=case">성공사례</a>
+    <a href="insights/index.html?cat=geo">AEO·GEO</a>
+  </div>
+  <div class="mag">
+    <a class="feature" href="insights/article.html">
+      <div class="cv"><span class="bar"></span><span class="lb">AI × PR</span><span class="k">AI READS<br><u>PR</u></span><span class="rl"></span></div>
+      <span class="cat">언론홍보 전략</span>
+      <h3>AI가 보도자료를 읽는 시대, 기업 PR은 무엇을 준비해야 하나</h3>
+      <p class="sum">생성형 AI가 보도자료를 요약·인용하기 시작하면서, 홍보실의 문장 하나가 검색과 AI 답변으로 확산된다. 지금 준비할 것을 짚었다.</p>
+      <div class="byl">PRCOME 편집팀 · 2026.07.20 · 10분 읽기</div>
+    </a>
+    <div class="mag-latest">
+      <a href="insights/article.html"><span class="th"><span class="b"></span></span><span><span class="cat">보도자료 작성</span><span class="t">기자가 실제로 읽는 보도자료의 첫 문장</span><span class="m">PRCOME 편집팀 · 2026.07.19</span></span></a>
+      <a href="insights/article.html"><span class="th"><span class="b"></span></span><span><span class="cat">위기관리</span><span class="t">브랜드 위기 대응, 최초 30분이 중요한 이유</span><span class="m">PRCOME 편집팀 · 2026.07.18</span></span></a>
+      <a href="insights/article.html"><span class="th"><span class="b"></span></span><span><span class="cat">기자 커뮤니케이션</span><span class="t">기자의 메일함에서 살아남는 피치 메일</span><span class="m">PRCOME 편집팀 · 2026.07.17</span></span></a>
+      <a href="insights/article.html"><span class="th"><span class="b"></span></span><span><span class="cat">AEO·GEO</span><span class="t">검색에서 답변으로, GEO가 바꾸는 기업 홍보</span><span class="m">PRCOME 편집팀 · 2026.07.16</span></span></a>
+    </div>
+  </div>
+</section></div>
+
+<!-- 8) 커뮤니티 주요 콘텐츠 -->
+<div class="sec alt"><div class="wrap">
   <div class="klab">커뮤니티</div>
-  <div class="sec-head"><h2>지금 실무자들이 나누는 이야기</h2><a class="more" href="community/index.html">커뮤니티 전체 <span class="ar"></span></a></div>
+  <div class="sec-head"><h2>실무자들이 나누는 이야기</h2><a class="more" href="community/index.html">커뮤니티 전체 <span class="ar"></span></a></div>
   <div class="comm">
     <div class="feed">
       <div class="ctabs">
@@ -290,118 +404,7 @@ window.SEO={
       </div>
     </aside>
   </div>
-</section></div>
-
-<!-- PR 업계 뉴스 (한국PR협회 뉴스룸) -->
-<div class="wrap"><section class="sec newslead">
-  <div class="klab">PR 업계 뉴스</div>
-  <div class="sec-head"><h2>지금 PR 업계에서는 — 주요 매체 최신 기사</h2><a class="more" href="https://www.koreapr.org/newsroom-prnews" target="_blank" rel="noopener">PR 뉴스 더보기 ↗</a></div>
-  <div class="newsgrid" id="news"></div>
-</section></div>
-
-<!-- 3) PR 매거진 -->
-<div class="sec alt"><div class="wrap">
-  <div class="klab">PR 인사이트</div>
-  <div class="sec-head"><h2>편집팀이 정리한 언론홍보 인사이트</h2><a class="more" href="insights/index.html">인사이트 전체 <span class="ar"></span></a></div>
-  <div class="mag-cats">
-    <a href="insights/index.html?cat=pr">언론홍보 전략</a>
-    <a href="insights/index.html?cat=pr">보도자료 작성</a>
-    <a href="insights/index.html?cat=media">기자 커뮤니케이션</a>
-    <a href="insights/index.html?cat=pr">위기관리</a>
-    <a href="insights/index.html?cat=case">성공사례</a>
-    <a href="insights/index.html?cat=geo">AEO·GEO</a>
-  </div>
-  <div class="mag">
-    <a class="feature" href="insights/article.html">
-      <div class="cv"><span class="bar"></span><span class="lb">AI × PR</span><span class="k">AI READS<br><u>PR</u></span><span class="rl"></span></div>
-      <span class="cat">언론홍보 전략</span>
-      <h3>AI가 보도자료를 읽는 시대, 기업 PR은 무엇을 준비해야 하나</h3>
-      <p class="sum">생성형 AI가 보도자료를 요약·인용하기 시작하면서, 홍보실의 문장 하나가 검색과 AI 답변으로 확산된다. 지금 준비할 것을 짚었다.</p>
-      <div class="byl">PRCOME 편집팀 · 2026.07.20 · 10분 읽기</div>
-    </a>
-    <div class="mag-latest">
-      <a href="insights/article.html"><span class="th"><span class="b"></span></span><span><span class="cat">보도자료 작성</span><span class="t">기자가 실제로 읽는 보도자료의 첫 문장</span><span class="m">PRCOME 편집팀 · 2026.07.19</span></span></a>
-      <a href="insights/article.html"><span class="th"><span class="b"></span></span><span><span class="cat">위기관리</span><span class="t">브랜드 위기 대응, 최초 30분이 중요한 이유</span><span class="m">PRCOME 편집팀 · 2026.07.18</span></span></a>
-      <a href="insights/article.html"><span class="th"><span class="b"></span></span><span><span class="cat">기자 커뮤니케이션</span><span class="t">기자의 메일함에서 살아남는 피치 메일</span><span class="m">PRCOME 편집팀 · 2026.07.17</span></span></a>
-      <a href="insights/article.html"><span class="th"><span class="b"></span></span><span><span class="cat">AEO·GEO</span><span class="t">검색에서 답변으로, GEO가 바꾸는 기업 홍보</span><span class="m">PRCOME 편집팀 · 2026.07.16</span></span></a>
-    </div>
-  </div>
 </div></div>
-
-<!-- AI 워크스페이스 (보도자료 작성·배포 AI 데모) -->
-<div class="wrap"><section class="aiband">
-  <div class="ai-l">
-    <span class="kl">PRCOME AI PR 워크스페이스</span>
-    <h3>보도자료, AI로 작성하고 배포하세요</h3>
-    <p>초안 작성부터 매체 매칭·배포까지 — PR 실무를 돕는 AI 도구를 지금 사용해 보세요.</p>
-  </div>
-  <div class="ai-r">
-    <a class="ai-btn pri" href="tools/pr-agent/index.html?start=write">보도자료 작성 <span class="tag">AI</span></a>
-    <a class="ai-btn gh" href="tools/pr-agent/index.html?start=distribute">보도자료 배포 <span class="tag">AI</span></a>
-  </div>
-</section></div>
-
-<!-- 4) 업계 정보 (PR회사 + 언론사) -->
-<div class="wrap"><section class="sec">
-  <div class="klab">업계 정보</div>
-  <div class="sec-head sm"><h2>업계를 움직이는 회사와 매체</h2></div>
-  <div class="two">
-    <div>
-      <div class="colhead"><h3>추천 PR회사</h3><a href="directory/agencies.html">전체 →</a></div>
-      <div class="dir">
-        <a href="directory/detail.html"><span class="lg">브</span><span><div class="nm">브릿지커뮤니케이션즈</div><div class="ty">종합PR · 서울 · IT·B2B 미디어 릴레이션</div></span><span class="go">프로필</span></a>
-        <a href="directory/detail.html"><span class="lg">미</span><span><div class="nm">미디어웨이브</div><div class="ty">종합PR · 서울 · 금융·위기관리</div></span><span class="go">프로필</span></a>
-        <a href="directory/detail.html"><span class="lg">스</span><span><div class="nm">스토리브릭스</div><div class="ty">콘텐츠 · 서울 · 브랜드 저널리즘</div></span><span class="go">프로필</span></a>
-        <a href="directory/detail.html"><span class="lg">한</span><span><div class="nm">한결피알</div><div class="ty">공공·지역 · 부산 · 지역 언론 네트워크</div></span><span class="go">프로필</span></a>
-      </div>
-    </div>
-    <div>
-      <div class="colhead"><h3>추천 언론사</h3><a href="directory/media.html">전체 →</a></div>
-      <div class="dir">
-        <a href="directory/media.html"><span class="lg">경</span><span><div class="nm">경제산업신문</div><div class="ty">경제일간지 · 산업·유통부</div></span><span class="go">매체</span></a>
-        <a href="directory/media.html"><span class="lg">테</span><span><div class="nm">테크리포트</div><div class="ty">IT 전문지 · 스타트업팀</div></span><span class="go">매체</span></a>
-        <a href="directory/media.html"><span class="lg">데</span><span><div class="nm">데일리커머스</div><div class="ty">유통·소비재 전문</div></span><span class="go">매체</span></a>
-        <a href="directory/media.html"><span class="lg">바</span><span><div class="nm">바이오헬스뉴스</div><div class="ty">제약·바이오 전문지</div></span><span class="go">매체</span></a>
-      </div>
-    </div>
-  </div>
-</section></div>
-
-<!-- 5) 업계 기회 (채용 + 홍보대행 의뢰) -->
-<div class="sec alt tight"><div class="wrap">
-  <div class="klab">업계 기회</div>
-  <div class="sec-head sm"><h2>채용과 홍보대행 의뢰</h2></div>
-  <div class="two opp">
-    <div>
-      <div class="colhead"><h3>최신 채용</h3><a href="career/index.html">전체 →</a></div>
-      <a class="row" href="career/detail.html"><span><div class="t">PR·콘텐츠 마케터 (경력 3년+)</div><div class="sub">브릿지커뮤니케이션즈 · 서울 강남 · 정규직</div></span><span class="tag">D-9</span></a>
-      <a class="row" href="career/detail.html"><span><div class="t">커뮤니케이션 매니저 (위기관리 우대)</div><div class="sub">미디어웨이브 · 서울 여의도 · 정규직</div></span><span class="tag">D-20</span></a>
-      <a class="row" href="career/detail.html"><span><div class="t">브랜드 콘텐츠 에디터</div><div class="sub">스토리브릭스 · 서울 마포 · 계약직</div></span><span class="tag warm">D-5</span></a>
-      <a class="row" href="career/detail.html"><span><div class="t">보도자료 작성 프리랜서 (재택)</div><div class="sub">다수 클라이언트 · 원격 · 프리랜서</div></span><span class="tag">상시</span></a>
-    </div>
-    <div>
-      <div class="colhead"><h3>홍보대행 의뢰</h3><a href="projects/index.html">전체 →</a></div>
-      <a class="row" href="projects/detail.html"><span><div class="t">식품 브랜드 신제품 언론홍보 대행사 모집</div><div class="sub">언론홍보 · 월 300~500만원 · 3개월</div></span><span class="tag">모집중</span></a>
-      <a class="row" href="projects/detail.html"><span><div class="t">B2B 기업 홈페이지 SEO·AEO 개선</div><div class="sub">SEO·GEO · 1,000~1,500만원 · 2개월</div></span><span class="tag">모집중</span></a>
-      <a class="row" href="projects/detail.html"><span><div class="t">스타트업 오너드미디어 콘텐츠 제작</div><div class="sub">콘텐츠 · 월 200~300만원 · 6개월</div></span><span class="tag warm">마감임박</span></a>
-      <a class="row" href="projects/detail.html"><span><div class="t">투자유치 보도자료 작성·배포 (단건)</div><div class="sub">보도자료 · 80~150만원 · 2주</div></span><span class="tag">모집중</span></a>
-    </div>
-  </div>
-</div></div>
-
-<!-- 6) PR 자료 (도서·교육) -->
-<div class="wrap"><section class="sec tight">
-  <div class="klab">PR 자료</div>
-  <div class="sec-head sm"><h2>실무에 힘이 되는 도서·교육</h2><a class="more" href="resources/books.html">도서·교육 <span class="ar"></span></a></div>
-  <div class="res-grid">
-    <a class="book" href="resources/books.html"><div class="cv"><span class="ini">디</span><img src="assets/img/books/book-139836151.png" alt="디지털 시대의 PR 용어 300 표지" loading="lazy" onerror="this.remove()"></div><div class="t">디지털 시대의 PR 용어 300</div><div class="c">PR 이론·용어</div></a>
-    <a class="book" href="resources/books.html"><div class="cv"><span class="ini">AI</span><img src="assets/img/books/book-168372118.png" alt="AI와 PR회사에서 일하기 표지" loading="lazy" onerror="this.remove()"></div><div class="t">AI와 PR회사에서 일하기</div><div class="c">AI·트렌드</div></a>
-    <a class="book" href="resources/books.html"><div class="cv"><span class="ini">블</span><img src="assets/img/books/book-17178674.jpg" alt="블랙스완 시대의 PR 표지" loading="lazy" onerror="this.remove()"></div><div class="t">블랙스완 시대의 PR</div><div class="c">위기·사례</div></a>
-    <a class="book edu" href="events/index.html?type=course"><div class="cv"><span class="ini">실</span></div><div class="t">PR 실무 입문 4주 과정</div><div class="c">교육 · 온라인</div></a>
-    <a class="book edu" href="events/index.html?type=seminar"><div class="cv"><span class="ini">AI</span></div><div class="t">생성형 AI 보도자료 세미나</div><div class="c">세미나 · 무료</div></a>
-    <a class="book edu" href="events/index.html?type=conference"><div class="cv"><span class="ini">브</span></div><div class="t">브랜드 커뮤니케이션 컨퍼런스</div><div class="c">행사 · 코엑스</div></a>
-  </div>
-</section></div>
 
 <!-- 6.5) 자주 묻는 질문 (FAQ) -->
 <section><div class="wrap"><div class="hub"><div class="hsec" id="faq" style="margin:44px 0">
@@ -411,11 +414,11 @@ window.SEO={
 
 <!-- 7) 가입 유도 (커뮤니티 참여) -->
 <section class="join"><div class="in">
-  <h2>업계 동료들과 함께, PRCOME에서</h2>
-  <p>커뮤니티에 실무 질문을 남기고, 유용한 자료와 기사를 저장하고, 같은 고민을 하는 실무자와 연결되세요. 가입하면 더 많은 정보를 확인할 수 있습니다.</p>
+  <h2>언론 홍보, PRCOME에서 시작하세요</h2>
+  <p>언론사를 확인하고, 보도자료를 작성하고, 바로 언론홍보 신청까지 — 흩어진 과정을 하나로 연결합니다.</p>
   <div class="btns">
-    <a class="b1" href="auth/signup.html">커뮤니티 참여하기</a>
-    <a class="b2" href="insights/index.html">인사이트 먼저 읽기</a>
+    <a class="b1" href="tools/press-release.html">보도자료 작성 시작</a>
+    <a class="b2" href="directory/media.html">언론사 둘러보기</a>
   </div>
 </div></section>
 
@@ -454,24 +457,7 @@ function ctab(mode,btn){
  document.getElementById('posts').innerHTML=list.map(rowHtml).join('')||'<div class="empty-st"><span class="ic">💬</span><b>아직 등록된 글이 없어요</b><span>이 카테고리의 첫 이야기를 남겨보세요.</span><a href="community/write.html">글쓰기 →</a></div>';
 }
 ctab('hot');
-/* PR 업계 뉴스 (한국PR협회 뉴스룸 newsroom-prnews) */
-/* 주요 PR·광고 매체 실제 최신 기사 (더피알·브랜드브리프·매드타임스·AP신문) — 클릭 시 원문 기사로 이동 */
-/* [원문URL, 제목, 썸네일파일, 매체명] */
-var NEWS=[
- ['https://www.the-pr.co.kr/news/articleView.html?idxno=61998','스파이더맨이 폰 부수는 광고를 찍었다…새 갤럭시 폴더블은 버틸 수 있을까?','art-61998.jpg','더피알'],
- ['https://www.brandbrief.co.kr/news/articleView.html?idxno=10115','현대차가 개구리 울음 소리로 칸라이언즈 그랑프리를 수상한 전략은?','bb-10115.jpg','브랜드브리프'],
- ['https://www.madtimes.org/news/articleView.html?idxno=28398','[MAD Relay] 어깨에 힘을 뺀 광고들에 대하여','mt-28398.jpg','매드타임스'],
- ['https://www.apnews.kr/news/articleView.html?idxno=3049845','日 주도 아시아 온체인 금융 본격화…韓 넥써쓰, 원스토어 앞세워 "새 판 짠다"','ap-3049845.jpg','AP신문'],
- ['https://www.the-pr.co.kr/news/articleView.html?idxno=61968','팔로워는 죽었다…2026 월드컵이 보여준 새 소셜미디어 법칙','art-61968.jpg','더피알'],
- ['https://www.madtimes.org/news/articleView.html?idxno=28384','신념의 시대는 끝났다: 오틀리(Oatly)가 쏘아 올린 ‘브랜드 법정’과 증거의 마케팅','mt-28384.jpg','매드타임스'],
- ['https://www.apnews.kr/news/articleView.html?idxno=3049769','[이재현의 청년 사다리①] K-푸드·뷰티 키운 청년…CJ가 주역으로 세운다','ap-3049769.jpg','AP신문'],
- ['https://www.the-pr.co.kr/news/articleView.html?idxno=61977','PR Newswire “AI도 오디언스다”…AI가 바꾸는 PR의 역할','art-61977.jpg','더피알']
-];
-document.getElementById('news').innerHTML=NEWS.map(function(n){
- return '<a href="'+n[0]+'" target="_blank" rel="noopener">'+
-  '<span class="thumb"><img src="assets/img/news/'+n[2]+'" alt="'+n[3]+' 기사 이미지" loading="lazy"></span>'+
-  '<span><span class="nsrc">'+n[3]+'</span><span class="t">'+n[1]+'</span><span class="read">원문 보기 ↗</span></span></a>';
-}).join('');
+/* PR 업계 뉴스 섹션은 PDF 재구성으로 메인에서 제거됨 */
 /* 스크롤 진입 리빌 (+ 콘텐츠가 숨은 채 남지 않도록 failsafe) */
 (function(){
  if(!document.documentElement.classList.contains('reveal-js'))return;
