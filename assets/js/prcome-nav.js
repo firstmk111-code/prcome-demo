@@ -75,14 +75,13 @@
         searchSvg+'<input name="q" placeholder="커뮤니티 글·인사이트 검색" aria-label="통합검색"></form>'+
       '<div class="r1-r">'+
         '<a class="tip" href="'+u('insights/index.html')+'">인사이트</a>'+
-        '<a class="write" href="'+u('community/write.html')+'">글쓰기</a>'+
         '<a class="login" href="'+u('auth/login.html')+'">로그인</a>'+
       '</div>'+
       '<button class="mbtn" id="magMbtn" aria-label="메뉴 열기" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/></svg></button>'+
     '</div>'+
     '<div class="r2"><div class="in"><nav class="topnav" aria-label="주요 메뉴">'+navHtml+'</nav></div></div>'+
     '<div class="mpanel" id="magMpanel"><div class="in">'+accHtml+
-      '<div class="m-acc-flat"><a href="'+u('insights/index.html')+'">인사이트</a><a href="'+u('community/write.html')+'">글쓰기</a><a href="'+u('auth/login.html')+'">로그인</a></div>'+
+      '<div class="m-acc-flat"><a href="'+u('insights/index.html')+'">인사이트</a><a href="'+u('auth/login.html')+'">로그인</a></div>'+
     '</div></div>'+
   '</header>';
 
