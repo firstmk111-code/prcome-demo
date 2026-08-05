@@ -29,22 +29,17 @@
   /* 대분류 · act=현재위치 활성 판별 substring들 · items 없으면 단일 링크 · ic=구분 아이콘 */
   var NAV = [
     { label:'홈', href:'index.html', ic:IC.home, home:true },
-    { label:'커뮤니티', href:'community/index.html', ic:IC.comm, act:['/community/'] },
+    { label:'미디어 디렉토리', href:'directory/media.html', ic:IC.media, act:['/directory/media','/directory/'] },
+    { label:'보도자료 작성 AI', href:'tools/press-release.html', ic:IC.ai, act:['/tools/press-release','/tools/pr-diagnosis','/tools/seo-aeo'] },
+    { label:'언론홍보', href:'press-distribution.html', ic:IC.project, act:['/press-distribution'] },
+    { label:'PR 도구', href:'tools/index.html', ic:IC.more, act:['/tools/index','/tools/rate-card'] },
     { label:'인사이트', href:'insights/index.html', ic:IC.insight, act:['/insights/'], cols:1, items:[
       ['insights/index.html','매거진'],
       ['insights/index.html?cat=pr','PR·언론홍보'],
       ['insights/index.html?cat=media','미디어'],
       ['insights/index.html?cat=geo','AEO·GEO·SEO'],
       ['insights/index.html?cat=marketing','마케팅'] ]},
-    { label:'보도자료 배포 AI', href:'tools/press-release.html', ic:IC.ai, act:['/tools/press-release','/tools/pr-diagnosis','/tools/seo-aeo'] },
-    { label:'언론홍보', href:'press-distribution.html', ic:IC.media, act:['/press-distribution'] },
-    { label:'디렉토리', href:'directory/pr-directory.html', ic:IC.agency, act:['/directory/'], cols:1, items:[
-      ['directory/agencies.html','PR회사 가이드'],
-      ['directory/pr-directory.html','PR회사 디렉토리'],
-      ['directory/media.html','언론사 리스트'] ]},
-    { label:'PR도구', href:'tools/index.html', ic:IC.project, act:['/tools/index','/tools/rate-card'], cols:1, items:[
-      ['tools/index.html','1'],['tools/index.html','2'],['tools/index.html','3'],
-      ['tools/index.html','4'],['tools/index.html','5'] ]},
+    { label:'커뮤니티', href:'community/index.html', ic:IC.comm, act:['/community/'] },
   ];
 
   function navActive(n){
