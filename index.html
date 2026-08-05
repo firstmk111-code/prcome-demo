@@ -62,11 +62,12 @@ window.SEO={
 .quicknav a svg{width:16px;height:16px;fill:none;stroke:var(--sub-2);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
 .quicknav a:hover svg{stroke:var(--pt)}
 /* ===== PDF 재구성 섹션 ===== */
-.howto{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.howto .ht{background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:22px 18px}
-.howto .ht .n{width:30px;height:30px;border-radius:9px;background:var(--pt-soft);color:var(--pt);font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
-.howto .ht h3{font-size:15.5px;font-weight:800;margin-bottom:5px}
-.howto .ht p{font-size:13px;color:var(--sub);line-height:1.6}
+.howto{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.howto .ht{position:relative;background:var(--surf);border:1px solid var(--line);border-radius:18px;padding:28px 24px 24px;box-shadow:0 10px 28px rgba(17,24,39,.05);transition:transform .18s var(--ease),box-shadow .18s var(--ease),border-color .18s var(--ease)}
+.howto .ht:hover{transform:translateY(-5px);box-shadow:0 20px 46px rgba(49,92,255,.13);border-color:#CFDBFF}
+.howto .ht .n{width:46px;height:46px;border-radius:14px;background:var(--pt-soft);color:var(--pt);font-weight:900;font-size:17px;display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.howto .ht h3{font-size:17px;font-weight:800;margin-bottom:8px;letter-spacing:-.02em}
+.howto .ht p{font-size:13.5px;color:var(--sub);line-height:1.7}
 .mcards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .mcards .mcard{background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:18px 20px;transition:border-color var(--dur) var(--ease),box-shadow var(--dur-2) var(--ease),transform var(--dur-2) var(--ease)}
 .mcards .mcard:hover{border-color:var(--pt);box-shadow:var(--shadow-md);transform:translateY(-2px)}
@@ -107,7 +108,7 @@ window.SEO={
 .toolgrid .tl{box-shadow:0 8px 24px rgba(17,24,39,.05)}
 .toolgrid .tl .ic{background:linear-gradient(135deg,#4A6BFF,#1E40E8)}
 .toolgrid .tl .ic svg{stroke:#fff}
-.howto .ht .n{background:linear-gradient(135deg,#4A6BFF,#1E40E8);color:#fff}
+.howto .ht .n{background:linear-gradient(135deg,#4A6BFF,#1E40E8);color:#fff;box-shadow:0 8px 18px rgba(49,92,255,.28)}
 .hbtn.pri{background:linear-gradient(135deg,#4A6BFF,#315CFF);box-shadow:0 10px 26px rgba(49,92,255,.30)}
 .hbtn.pri:hover{background:linear-gradient(135deg,#3E5EFF,#2450F0)}
 @media(max-width:820px){.works .cards{grid-template-columns:1fr}.works{padding:48px 0}}
@@ -307,18 +308,17 @@ window.SEO={
   <a href="insights/index.html"><svg viewBox="0 0 24 24"><path d="M12 6C10 4.6 6.7 4 4 4v14c2.7 0 6 .6 8 2 2-1.4 5.3-2 8-2V4c-2.7 0-6 .6-8 2z"/><path d="M12 6v14"/></svg>인사이트</a>
 </div></nav>
 
-<!-- 2) PRCOME 서비스 이용 과정 (HOW IT WORKS) -->
-<section class="works"><div class="in">
-  <span class="ey">HOW IT WORKS</span>
-  <h2>3단계로 완성되는<br>전문 언론사 기사</h2>
-  <p class="sub">복잡한 과정 없이, 누구나 쉽게<br>전문 기사를 언론사에 송출할 수 있습니다</p>
-  <div class="cards">
-    <div class="c"><div class="no">01</div><h3>기업 정보 입력</h3><p>기업명·기사 유형·핵심 메시지·강조 포인트 등 필요한 정보를 입력합니다. 어렵지 않아요.</p></div>
-    <div class="c"><div class="no">02</div><h3>AI 보도자료 자동 작성</h3><p>네이버 뉴스 기준에 맞춘 전문 보도자료를 AI가 빠르게 자동 생성합니다.</p></div>
-    <div class="c"><div class="no">03</div><h3>언론사 선택 &amp; 신청</h3><p>200개 이상 언론사 중 원하는 매체를 선택해 예상 금액을 확인하고 신청합니다.</p></div>
+<!-- 2) PRCOME 서비스 이용 과정 (4단계) -->
+<div class="wrap"><section class="sec">
+  <div class="klab">이용 과정</div>
+  <div class="sec-head"><h2>이렇게 진행됩니다</h2></div>
+  <div class="howto">
+    <div class="ht"><span class="n">1</span><h3>언론사 확인</h3><p>업종·노출채널·예상 단가로 우리에게 맞는 매체를 찾습니다.</p></div>
+    <div class="ht"><span class="n">2</span><h3>보도자료 작성</h3><p>기업·제품 정보를 넣으면 AI가 초안을 만들고, 검수·수정 후 저장합니다.</p></div>
+    <div class="ht"><span class="n">3</span><h3>언론홍보 신청</h3><p>매체를 선택해 예상 금액·조건을 확인하고 신청합니다.</p></div>
+    <div class="ht"><span class="n">4</span><h3>진행·결과 확인</h3><p>신청 상태와 게재 결과를 대시보드에서 확인합니다.</p></div>
   </div>
-  <div class="cta-wrap"><a class="gcta" href="tools/press-release.html">지금 바로 시작하기 →</a></div>
-</div></section>
+</section></div>
 
 <!-- 3) 미디어 디렉토리 주요 언론사 -->
 <div class="sec alt"><div class="wrap">
