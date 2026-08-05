@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>미디어 디렉토리 — 언론사 탐색·비교 | PRCOME</title>
+<meta name="description" content="언론홍보를 진행할 실제 언론사를 업종·노출채널·예상 금액으로 검색·비교하고, 보도자료 작성·언론홍보 신청으로 연결합니다.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="css/magazine-system.css?v=1">
+<link rel="stylesheet" href="css/directory.css?v=3">
+<script>window.MAG={root:'',home:'index.html'};</script>
+</head>
+<body>
+<div id="mag-header"></div>
+
+<div class="wrap">
+  <!-- 1) 제목 · 2) 이용 안내 -->
+  <section class="dirhead">
+    <div class="crumb"><a href="index.html">홈</a> / 미디어 디렉토리</div>
+    <h1><span class="tick"></span>미디어 디렉토리</h1>
+    <p class="guide">언론홍보를 진행할 언론사를 <b>업종·노출채널</b>로 찾아 비교하고, 관심 언론사로 저장한 뒤 보도자료 작성·언론홍보 신청으로 이어가세요. (업종별 예상 금액은 언론사 상세에서 확인)</p>
+  </section>
+
+  <!-- 3) 검색 · 4) 필터 · 5) 결과수 · 6) 정렬 -->
+  <section class="dirtools">
+    <div class="dsearch">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4" stroke-linecap="round"/></svg>
+      <input id="q" placeholder="언론사명 검색" aria-label="언론사명 검색">
+    </div>
+
+    <div class="frow">
+      <span class="flab">업종</span>
+      <div class="fchips" id="catChips"></div>
+    </div>
+    <div class="frow">
+      <span class="flab">노출채널</span>
+      <div class="fchips" id="chanChips">
+        <button class="on" data-chan="">전체</button>
+        <button data-chan="네이버">네이버</button>
+        <button data-chan="다음">다음·네이트</button>
+      </div>
+      <div class="dsort">
+        <span class="dcount" id="dcount">검색 결과 <b>0</b>개</span>
+        <select id="sort" aria-label="정렬">
+          <option value="">기본순</option>
+          <option value="name">가나다순</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7) 언론사 목록 (PC 2열 / 모바일 1열 카드) -->
+  <div class="mgrid" id="mlist"></div>
+
+  <p class="mnote">※ 언론사 상세에서 업종별 예상 금액·진행 참고사항을 확인할 수 있습니다. 주요 보도분야 등 일부 항목은 데이터 확보 후 순차 제공됩니다.</p>
+</div>
+
+<!-- 8) 비교 바 -->
+<div class="cmpbar" id="cmpBar">
+  <span class="lb">비교 담기</span>
+  <div class="items" id="cmpItems"></div>
+  <button class="go" id="cmpGo" disabled>비교하기</button>
+</div>
+
+<!-- 비교 모달 -->
+<div class="modal" id="cmpModal">
+  <div class="box">
+    <h3>언론사 비교<button class="x" id="cmpX" aria-label="닫기">×</button></h3>
+    <div id="cmpBody"></div>
+  </div>
+</div>
+
+<div id="mag-footer"></div>
+<script src="js/prcome-nav.js"></script>
+<script src="js/directory.js?v=3"></script>
+</body>
+</html>
