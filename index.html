@@ -86,6 +86,31 @@ window.SEO={
 .toolgrid .tl.soon{opacity:.7}
 @media(max-width:900px){.howto{grid-template-columns:1fr 1fr}.mcards{grid-template-columns:1fr}.toolgrid{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.howto{grid-template-columns:1fr}.toolgrid{grid-template-columns:1fr}}
+/* ===== 디자인 강화(그라데이션·입체 카드) ===== */
+.gcta{display:inline-flex;align-items:center;gap:8px;height:54px;padding:0 32px;border-radius:14px;font-weight:800;font-size:15.5px;color:#fff;background:linear-gradient(135deg,#4A6BFF,#315CFF);box-shadow:0 14px 30px rgba(49,92,255,.30);transition:transform .16s var(--ease),box-shadow .16s var(--ease)}
+.gcta:hover{transform:translateY(-2px);box-shadow:0 18px 40px rgba(49,92,255,.42);color:#fff}
+.works{text-align:center;padding:66px 0}
+.works .in{max-width:1100px;margin:0 auto;padding:0 24px}
+.works .ey{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:800;letter-spacing:.06em;color:var(--pt);background:var(--pt-soft);border-radius:999px;padding:8px 16px}
+.works .ey::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--pt)}
+.works h2{font-size:clamp(26px,4vw,40px);font-weight:900;letter-spacing:-.035em;line-height:1.25;margin:20px 0 0;color:var(--ink)}
+.works .sub{font-size:16px;color:var(--sub);line-height:1.7;margin:16px 0 0}
+.works .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+.works .c{position:relative;background:var(--surf);border:1px solid var(--line);border-radius:22px;padding:36px 26px 30px;box-shadow:0 12px 34px rgba(17,24,39,.06);transition:transform .18s var(--ease),box-shadow .18s var(--ease)}
+.works .c:hover{transform:translateY(-6px);box-shadow:0 22px 50px rgba(49,92,255,.14)}
+.works .c .no{width:56px;height:56px;border-radius:16px;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:#fff;background:linear-gradient(135deg,#7E6EF5,#315CFF);box-shadow:0 10px 22px rgba(99,102,241,.35)}
+.works .c h3{font-size:18px;font-weight:800;color:var(--ink)}
+.works .c p{font-size:13.8px;color:var(--sub);line-height:1.7;margin-top:12px}
+.works .cta-wrap{margin-top:42px}
+.mcards .mcard{box-shadow:0 8px 24px rgba(17,24,39,.05)}
+.mcards .lg{background:linear-gradient(135deg,#7E6EF5,#315CFF);color:#fff}
+.toolgrid .tl{box-shadow:0 8px 24px rgba(17,24,39,.05)}
+.toolgrid .tl .ic{background:linear-gradient(135deg,#7E6EF5,#315CFF)}
+.toolgrid .tl .ic svg{stroke:#fff}
+.howto .ht .n{background:linear-gradient(135deg,#7E6EF5,#315CFF);color:#fff}
+.hbtn.pri{background:linear-gradient(135deg,#4A6BFF,#315CFF);box-shadow:0 10px 26px rgba(49,92,255,.30)}
+.hbtn.pri:hover{background:linear-gradient(135deg,#3E5EFF,#2450F0)}
+@media(max-width:820px){.works .cards{grid-template-columns:1fr}.works{padding:48px 0}}
 /* ===== 공통 섹션 ===== */
 .sec{padding:44px 0}
 .sec.alt{background:var(--surf);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -282,17 +307,18 @@ window.SEO={
   <a href="insights/index.html"><svg viewBox="0 0 24 24"><path d="M12 6C10 4.6 6.7 4 4 4v14c2.7 0 6 .6 8 2 2-1.4 5.3-2 8-2V4c-2.7 0-6 .6-8 2z"/><path d="M12 6v14"/></svg>인사이트</a>
 </div></nav>
 
-<!-- 2) PRCOME 서비스 이용 과정 -->
-<div class="wrap"><section class="sec">
-  <div class="klab">이용 과정</div>
-  <div class="sec-head"><h2>이렇게 진행됩니다</h2></div>
-  <div class="howto">
-    <div class="ht"><span class="n">1</span><h3>언론사 확인</h3><p>업종·노출채널·예상 단가로 우리에게 맞는 매체를 찾습니다.</p></div>
-    <div class="ht"><span class="n">2</span><h3>보도자료 작성</h3><p>기업·제품 정보를 넣으면 AI가 초안을 만들고, 검수·수정 후 저장합니다.</p></div>
-    <div class="ht"><span class="n">3</span><h3>언론홍보 신청</h3><p>매체를 선택해 예상 금액·조건을 확인하고 신청합니다.</p></div>
-    <div class="ht"><span class="n">4</span><h3>진행·결과 확인</h3><p>신청 상태와 게재 결과를 대시보드에서 확인합니다.</p></div>
+<!-- 2) PRCOME 서비스 이용 과정 (HOW IT WORKS) -->
+<section class="works"><div class="in">
+  <span class="ey">HOW IT WORKS</span>
+  <h2>3단계로 완성되는<br>전문 언론사 기사</h2>
+  <p class="sub">복잡한 과정 없이, 누구나 쉽게<br>전문 기사를 언론사에 송출할 수 있습니다</p>
+  <div class="cards">
+    <div class="c"><div class="no">01</div><h3>기업 정보 입력</h3><p>기업명·기사 유형·핵심 메시지·강조 포인트 등 필요한 정보를 입력합니다. 어렵지 않아요.</p></div>
+    <div class="c"><div class="no">02</div><h3>AI 보도자료 자동 작성</h3><p>네이버 뉴스 기준에 맞춘 전문 보도자료를 AI가 빠르게 자동 생성합니다.</p></div>
+    <div class="c"><div class="no">03</div><h3>언론사 선택 &amp; 신청</h3><p>200개 이상 언론사 중 원하는 매체를 선택해 예상 금액을 확인하고 신청합니다.</p></div>
   </div>
-</section></div>
+  <div class="cta-wrap"><a class="gcta" href="tools/press-release.html">지금 바로 시작하기 →</a></div>
+</div></section>
 
 <!-- 3) 미디어 디렉토리 주요 언론사 -->
 <div class="sec alt"><div class="wrap">
@@ -322,12 +348,8 @@ window.SEO={
 <div class="wrap"><section class="sec">
   <div class="klab">언론홍보</div>
   <div class="sec-head"><h2>매체를 골라, 바로 언론홍보 신청</h2><a class="more" href="press-distribution.html">신청 페이지 <span class="ar"></span></a></div>
-  <p class="hub-lead" style="margin-bottom:18px">언론사별 예상 금액·진행 가능 업종·노출채널·예상 소요 기간을 확인하고, 원하는 매체를 담아 언론홍보를 신청하세요. (로그인 후 상세 조건·금액 확인)</p>
-  <div class="howto" style="grid-template-columns:repeat(3,1fr)">
-    <div class="ht"><span class="n">1</span><h3>기사 작성</h3><p>보도자료를 작성하거나 업로드합니다.</p></div>
-    <div class="ht"><span class="n">2</span><h3>매체 선택</h3><p>업종·노출채널·예상 금액을 확인하고 매체를 담습니다.</p></div>
-    <div class="ht"><span class="n">3</span><h3>신청·확인</h3><p>언론홍보를 신청하고 진행 상태를 확인합니다.</p></div>
-  </div>
+  <p class="hub-lead" style="margin:0 0 22px">언론사별 예상 금액·진행 가능 업종·노출채널·예상 소요 기간을 확인하고, 원하는 매체를 담아 언론홍보를 신청하세요. (로그인 후 상세 조건·금액 확인)</p>
+  <a class="gcta" href="press-distribution.html">언론홍보 신청하기 →</a>
 </section></div>
 
 <!-- 6) PR 도구 소개 -->
