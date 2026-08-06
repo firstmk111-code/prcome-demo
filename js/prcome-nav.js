@@ -31,10 +31,10 @@
     { label:'홈', href:'index.html', ic:IC.home, home:true },
     { label:'미디어 디렉토리', href:'directory.html', ic:IC.media, act:['/directory'] },
     { label:'보도자료 작성 AI', href:'write-ai.html', ic:IC.ai, act:['/write-ai'] },
-    { label:'언론홍보', href:'press.html', ic:IC.agency, act:['/press'] },
-    { label:'PR 도구', href:'tools.html', ic:IC.project, act:['/tools'] },
-    { label:'인사이트', href:'insights.html', ic:IC.insight, act:['/insights'] },
-    { label:'커뮤니티', href:'community.html', ic:IC.comm, act:['/community'] },
+    { label:'언론홍보', href:'press-distribution.html', ic:IC.agency, act:['/press'] },
+    { label:'PR 도구', href:'tools/index.html', ic:IC.project, act:['/tools'] },
+    { label:'인사이트', href:'insights/index.html', ic:IC.insight, act:['/insights'] },
+    { label:'커뮤니티', href:'community/index.html', ic:IC.comm, act:['/community'] },
   ];
 
   function navActive(n){
@@ -70,14 +70,14 @@
         searchSvg+'<input name="q" placeholder="언론사·인사이트 검색" aria-label="통합검색"></form>'+
       '<div class="r1-r">'+
         '<a class="tip" href="'+u('write-ai.html')+'">보도자료 작성</a>'+
-        '<a class="write" href="'+u('press.html')+'">언론홍보 신청</a>'+
+        '<a class="write" href="'+u('press-distribution.html')+'">언론홍보 신청</a>'+
         '<a class="login" href="'+u('login.html')+'">로그인</a>'+
       '</div>'+
       '<button class="mbtn" id="magMbtn" aria-label="메뉴 열기" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/></svg></button>'+
     '</div>'+
     '<div class="r2"><div class="in"><nav class="topnav" aria-label="주요 메뉴">'+navHtml+'</nav></div></div>'+
     '<div class="mpanel" id="magMpanel"><div class="in">'+accHtml+
-      '<div class="m-acc-flat"><a href="'+u('write-ai.html')+'">보도자료 작성</a><a href="'+u('press.html')+'">언론홍보 신청</a><a href="'+u('login.html')+'">로그인</a></div>'+
+      '<div class="m-acc-flat"><a href="'+u('write-ai.html')+'">보도자료 작성</a><a href="'+u('press-distribution.html')+'">언론홍보 신청</a><a href="'+u('login.html')+'">로그인</a></div>'+
     '</div></div>'+
   '</header>';
 
